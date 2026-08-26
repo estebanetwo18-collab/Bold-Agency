@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef } from "react";
 import { hero } from "@/lib/content";
@@ -26,86 +27,119 @@ export function Hero() {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, reducedMotion ? 0 : 120]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, reducedMotion ? 0 : 60]);
 
   return (
     <section
       id="top"
       ref={sectionRef}
-      className="relative overflow-hidden bg-paper pb-24 pt-40 sm:pt-48"
+      className="relative overflow-hidden bg-paper pb-16 pt-40 sm:pt-48"
       aria-label="Presentación"
     >
       <div
         className="bg-grid pointer-events-none absolute inset-0 opacity-40"
         aria-hidden="true"
       />
-      <motion.div
-        style={{ y: parallaxY }}
-        className="pointer-events-none absolute -right-24 -top-24 h-[32rem] w-[32rem] rounded-full bg-volt/25 blur-3xl"
-        aria-hidden="true"
-      />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-        <motion.span
-          initial={reducedMotion ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-4 py-1.5 font-display text-xs font-bold uppercase tracking-[0.2em] text-ink/70"
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-volt" />
-          {hero.eyebrow}
-        </motion.span>
+        <div className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <motion.span
+              initial={reducedMotion ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-4 py-1.5 font-display text-xs font-bold uppercase tracking-[0.2em] text-ink/70"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-volt" />
+              {hero.eyebrow}
+            </motion.span>
 
-        <h1 className="mt-8 max-w-5xl font-display text-[13vw] font-extrabold leading-[0.95] tracking-tight sm:text-[7.5vw] lg:text-[6.2rem]">
-          {hero.headline.map((line, i) => (
-            <span key={line} className="block overflow-hidden">
-              <motion.span
-                className="block"
-                custom={i}
-                initial={reducedMotion ? false : "hidden"}
-                animate="visible"
-                variants={lineVariants}
-              >
-                {line}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
+            <h1 className="mt-7 max-w-xl font-display text-[13vw] font-extrabold leading-[0.98] tracking-tight sm:text-[5.6vw] lg:text-[3.6rem]">
+              {hero.headline.map((line, i) => (
+                <span key={line} className="block overflow-hidden">
+                  <motion.span
+                    className="block"
+                    custom={i}
+                    initial={reducedMotion ? false : "hidden"}
+                    animate="visible"
+                    variants={lineVariants}
+                  >
+                    {line}
+                  </motion.span>
+                </span>
+              ))}
+            </h1>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <motion.p
-            initial={reducedMotion ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-xl text-lg leading-relaxed text-grey sm:text-xl"
-          >
-            {hero.subhead}
-          </motion.p>
+            <motion.p
+              initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 max-w-lg text-lg leading-relaxed text-grey"
+            >
+              {hero.subhead}
+            </motion.p>
+
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-9 flex flex-wrap items-center gap-4"
+            >
+              <MagneticButton href={hero.ctaPrimary.href} variant="volt">
+                {hero.ctaPrimary.label}
+              </MagneticButton>
+              <MagneticButton href={hero.ctaSecondary.href} variant="ghost">
+                {hero.ctaSecondary.label}
+              </MagneticButton>
+            </motion.div>
+          </div>
 
           <motion.div
-            initial={reducedMotion ? false : { opacity: 0, scale: 0.85, rotate: -8 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:block"
-            aria-hidden="true"
+            initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
           >
-            <Monogram size={96} animateStates state="outline" />
+            <div className="absolute -left-4 -top-4 z-10 flex h-20 w-20 items-center justify-center rounded-full bg-volt shadow-[0_10px_30px_rgba(17,17,17,.18)] sm:h-24 sm:w-24">
+              <Monogram size={40} state="solid" />
+            </div>
+
+            <motion.div
+              style={{ y: parallaxY }}
+              className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-surface"
+            >
+              <Image
+                src="/images/hero-grid.jpg"
+                alt="Detalle arquitectónico en blanco y negro, estructura triangular de vidrio y acero"
+                fill
+                priority
+                sizes="(min-width: 1024px) 45vw, 90vw"
+                className="object-cover"
+              />
+              <Monogram
+                size={110}
+                state="active"
+                className="pointer-events-none absolute right-[6%] top-[8%] opacity-55"
+              />
+            </motion.div>
+
+            <div className="absolute -bottom-6 -left-6 max-w-[240px] rounded-2xl bg-paper p-5 shadow-[0_20px_40px_rgba(17,17,17,.16)] sm:left-[-28px] sm:bottom-8">
+              <span className="flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.08em] text-grey">
+                <Image
+                  src="/images/avatar.jpg"
+                  alt="Esteban Muñoz, founder de BOLD Agency"
+                  width={26}
+                  height={26}
+                  className="rounded-full object-cover"
+                />
+                {hero.floatCard.name}
+              </span>
+              <p className="mt-2.5 font-display text-base font-bold leading-tight text-ink">
+                {hero.floatCard.role}
+              </p>
+            </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-wrap items-center gap-4"
-        >
-          <MagneticButton href={hero.ctaPrimary.href} variant="volt">
-            {hero.ctaPrimary.label}
-          </MagneticButton>
-          <MagneticButton href={hero.ctaSecondary.href} variant="ghost">
-            {hero.ctaSecondary.label}
-          </MagneticButton>
-        </motion.div>
 
         <motion.ul
           initial={reducedMotion ? false : { opacity: 0 }}

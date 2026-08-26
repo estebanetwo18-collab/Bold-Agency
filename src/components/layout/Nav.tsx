@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { nav } from "@/lib/content";
 import { Monogram } from "@/components/ui/Monogram";
+import { LogoLockup } from "@/components/ui/LogoLockup";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/cn";
 
@@ -41,12 +42,9 @@ export function Nav() {
         className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10"
         aria-label="Navegación principal"
       >
-        <Link
-          href="/"
-          className="flex items-center gap-3 font-display text-lg font-extrabold tracking-tight text-ink"
-        >
-          <Monogram size={32} state="solid" />
-          {nav.logoLabel}
+        <Link href="/" className="flex items-center gap-2.5 text-ink" aria-label="BOLD Agency, inicio">
+          <Monogram size={30} state="solid" />
+          <LogoLockup />
         </Link>
 
         <ul className="hidden items-center gap-9 md:flex">

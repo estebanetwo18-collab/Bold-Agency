@@ -2,13 +2,14 @@
  * Todo el copy visible del sitio vive aquí, separado de los componentes,
  * para que se pueda editar sin tocar JSX ni lógica de presentación.
  *
- * Nada aquí es un dato inventado: cifras, clientes o resultados que no
- * estaban confirmados en el material fuente se dejan como placeholders
- * explícitos (marcados con "// EDITABLE" o texto entre corchetes).
+ * El contenido de negocio (servicios, precios, resultados, clientes,
+ * fundador) viene de "BOLD Agency — Presentación Comercial 2026". Lo que
+ * no está confirmado ahí queda marcado explícitamente con // EDITABLE.
  */
 
 export const nav = {
-  logoLabel: "BOLD Agency",
+  logoWord: "BOLD",
+  logoSub: "AGENCY",
   links: [
     { href: "/#enfoque", label: "Enfoque" },
     { href: "/#como-trabajamos", label: "Cómo trabajamos" },
@@ -18,17 +19,21 @@ export const nav = {
 };
 
 export const hero = {
-  eyebrow: "Dirección de crecimiento integrada",
-  headline: ["Un solo equipo.", "Toda la dirección", "que tu negocio necesita."],
+  eyebrow: "The bold way to grow",
+  headline: ["Marketing 360,", "branding y rotulación.", "Una sola estrategia."],
   subhead:
-    "Estrategia, marca, contenido, medios y ventas trabajando como un solo sistema — no como cinco proveedores que no se hablan entre sí.",
+    "No como piezas sueltas. Un mismo equipo piensa tu marca, tu presencia digital y tu presencia física — con base en Costa Rica y alcance en Brasil, Estados Unidos y España.",
   ctaPrimary: { href: "#diagnostico", label: "Agendar Diagnóstico 360" },
   ctaSecondary: { href: "#sistema", label: "Cómo trabajamos" },
   proofPoints: [
-    "Para negocios con producto validado y más de dos años operando",
-    "Un equipo, una sola dirección",
-    "Sin contratos de canal aislado",
+    "Costa Rica · Brasil · Estados Unidos · España",
+    "+9 años de experiencia en marketing digital y estratégico",
+    "+16 campañas exitosas para marcas como Toyota, Avon y Swarovski",
   ],
+  floatCard: {
+    name: "Esteban Muñoz",
+    role: "Founder · Estratega de marca",
+  },
 };
 
 export const problem = {
@@ -59,42 +64,53 @@ export const problem = {
 };
 
 export const system = {
-  eyebrow: "El sistema BOLD",
-  headline: "Seis funciones. Un solo criterio.",
-  intro:
-    "No vendemos canales sueltos. Integramos las seis funciones que mueven el crecimiento de un negocio real, coordinadas por un mismo criterio estratégico.",
+  eyebrow: "Nuestros servicios",
+  headline: "Todo lo que una marca necesita, en un solo equipo.",
+  intro: "Seis frentes, un mismo equipo detrás.",
   pillars: [
     {
       index: "01",
-      title: "Estrategia",
-      body: "Un diagnóstico honesto del negocio y una dirección clara de hacia dónde crecer primero.",
+      title: "Publicidad digital",
+      body: "Google · Meta · TikTok. Pauta con enfoque en performance.",
     },
     {
       index: "02",
-      title: "Marca",
-      body: "Una identidad y un mensaje que reflejan lo que tu negocio realmente vale, no una plantilla genérica.",
+      title: "Estrategia de marca",
+      body: "Posicionamiento, asesoría y arquitectura de marca.",
     },
     {
       index: "03",
-      title: "Contenido",
-      body: "Presencia digital que comunica autoridad, no publicaciones sueltas sin hilo conductor.",
+      title: "Rotulación & gran formato",
+      body: "Punto de venta, activaciones y presencia física.",
     },
     {
       index: "04",
-      title: "Medios y PR",
-      body: "Visibilidad pagada y ganada que amplifica el mensaje correcto frente a la audiencia correcta.",
+      title: "Audiovisual & diseño",
+      body: "Producción de contenido, fotografía y diseño gráfico.",
     },
     {
       index: "05",
-      title: "Ventas",
-      body: "Procesos y materiales que convierten conversaciones de WhatsApp en decisiones de compra.",
+      title: "Consultoría 360",
+      body: "Diagnóstico integral y estrategia end-to-end.",
     },
     {
       index: "06",
-      title: "Ejecución",
-      body: "Un equipo que se involucra en la operación, no que desaparece después de entregar un plan.",
+      title: "Experiencias 360",
+      body: "En tienda y virtual, conectando lo físico con lo digital.",
     },
   ],
+};
+
+export const midBanner = {
+  caption: "No trabajamos como agencia externa. Nos volvemos implant de tu equipo.",
+};
+
+export const teamBanner = {
+  caption: "Un equipo que se sienta a revisar resultados contigo, no que desaparece después de entregar un plan.",
+};
+
+export const skylineBanner = {
+  caption: "Dirigimos negocios reales, no campañas aisladas en el vacío.",
 };
 
 export const differentiators = {
@@ -103,7 +119,7 @@ export const differentiators = {
   items: [
     {
       title: "Expertise y especialización",
-      body: "Acceso a un equipo con experiencia en varias disciplinas de crecimiento, no a una sola persona haciendo de todo.",
+      body: "+9 años de experiencia en marketing digital y estratégico, con operación en Costa Rica, Brasil, Estados Unidos y España.",
     },
     {
       title: "Perspectiva fresca",
@@ -116,6 +132,31 @@ export const differentiators = {
     {
       title: "Optimización de recursos",
       body: "Aprovechas un equipo completo ya formado, en lugar de contratar y entrenar una estructura interna desde cero.",
+    },
+  ],
+};
+
+export const founder = {
+  eyebrow: "Nuestro fundador",
+  headline: "Quién dirige esto.",
+  name: "Esteban Muñoz Malavé",
+  role: "Founder · Estratega de marca · Trilingüe",
+  bio: "+9 años de experiencia en marketing digital y estratégico, entre B2B y B2C, para marcas líderes en Costa Rica, LATAM, Brasil, España y Estados Unidos.",
+  cards: [
+    {
+      tag: "Formación",
+      value: "Comunicación Social + Marketing Digital",
+      sub: "George Washington University",
+    },
+    {
+      tag: "Hoy",
+      value: "Implant · Paid Media",
+      sub: "Centro de Convenciones · CCCR",
+    },
+    {
+      tag: "Idiomas",
+      value: "Español · English · Português",
+      sub: "3 idiomas nativos-fluidos",
     },
   ],
 };
@@ -153,78 +194,83 @@ export const process = {
 };
 
 export const plans = {
-  eyebrow: "Planes",
-  headline: "Empaquetados por resultado, no por horas.",
+  eyebrow: "Cómo trabajar con BOLD",
+  headline: "Dos caminos. Un mismo compromiso.",
   intro:
-    "Cada plan se ajusta después del Diagnóstico 360, según el punto en el que está tu negocio hoy. Estas son las tres direcciones típicas de trabajo — el alcance exacto y la inversión se definen contigo, nunca antes de conocer tu negocio.",
-  tiers: [
+    "Cotización estándar con entregables claros, o modalidad implant si querés que seamos parte de tu equipo. El Diagnóstico 360 te ayuda a decidir cuál te conviene.",
+  modalities: [
     {
-      name: "Fundación", // EDITABLE: nombre y alcance final a confirmar
-      description:
-        "Para negocios que necesitan poner en orden marca, presencia digital y proceso comercial antes de escalar la inversión en crecimiento.",
+      name: "Grow Your Way",
+      description: "Cotización estándar o fee mensual. Servicios paquetizados con entregables claros.",
       includes: [
-        "Diagnóstico 360 completo",
-        "Sistema de marca y mensaje central",
-        "Presencia digital ordenada (sitio + perfiles clave)",
+        { label: "Paquetes digitales", detail: "redes · ads · contenido" },
+        { label: "Branding & asesoría", detail: "identidad + estrategia" },
+        { label: "Rotulación", detail: "independiente o refuerzo" },
+        { label: "Diseño & audiovisual", detail: "por proyecto o retainer" },
       ],
-      priceNote: "Inversión definida tras el Diagnóstico 360", // EDITABLE
+      price: "Desde $200 usd/mes + % comisión ajustable",
     },
     {
-      name: "Crecimiento", // EDITABLE
-      description:
-        "Para negocios con base sólida que necesitan un motor constante de contenido, medios y ventas trabajando en conjunto.",
-      includes: [
-        "Todo lo de Fundación",
-        "Contenido y medios en operación continua",
-        "Proceso de ventas y seguimiento de leads",
-      ],
-      priceNote: "Inversión definida tras el Diagnóstico 360", // EDITABLE
+      name: "The Bold Way",
+      badge: "★ Top Tier",
       featured: true,
-    },
-    {
-      name: "Dirección Integral", // EDITABLE
       description:
-        "Para negocios que quieren un equipo de crecimiento completo, integrado a la operación como si fuera parte interna del negocio.",
+        "No trabajamos como agencia externa: nos convertimos en implant de tu equipo. Vivimos tu marca, la analizamos por dentro y crecemos con vos.",
       includes: [
-        "Todo lo de Crecimiento",
-        "Equipo dedicado multidisciplinario",
-        "Revisión estratégica recurrente con el dueño",
+        { label: "Involucramiento total", detail: "pensamos como parte del equipo" },
+        { label: "Presencia semanal", detail: "reuniones, estrategia, ejecución" },
+        { label: "Análisis end-to-end", detail: "del brief a los resultados" },
+        { label: "Estrategia 360 dedicada", detail: "branding + digital + físico" },
       ],
-      priceNote: "Inversión definida tras el Diagnóstico 360", // EDITABLE
+      price: "Fee base + performance share · a cotizar",
     },
   ],
-  disclaimer:
-    "Los nombres, alcances e inversión de cada plan son una propuesta editable — se confirman con datos reales del negocio antes de publicarse como oferta final.",
+  disclaimer: "Precios de referencia en USD, sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final.",
 };
 
-export const caseStudies = {
-  eyebrow: "Casos",
-  headline: "Negocios que ya dirigimos.",
-  intro:
-    "Estos casos están preparados como estructura editorial lista para publicarse en cuanto se confirmen los datos reales del proyecto — evitamos publicar cifras o resultados sin verificar.",
+export const pointPricing = {
+  eyebrow: "Servicios puntuales",
+  headline: "Cuando no querés paquete: contratás por unidad o pieza.",
   items: [
-    {
-      client: "VoltTech", // EDITABLE: confirmar nombre público y datos reales
-      sector: "[Sector por confirmar]",
-      challenge:
-        "[Editable: describe aquí el reto real de VoltTech antes de publicar este caso.]",
-      approach:
-        "[Editable: resume el enfoque de BOLD para este proyecto.]",
-      result:
-        "[Editable: agrega solo resultados verificados — no publiques cifras sin confirmar.]",
-      status: "En preparación",
-    },
-    {
-      client: "FreshGo", // EDITABLE: confirmar nombre público y datos reales
-      sector: "[Sector por confirmar]",
-      challenge:
-        "[Editable: describe aquí el reto real de FreshGo antes de publicar este caso.]",
-      approach:
-        "[Editable: resume el enfoque de BOLD para este proyecto.]",
-      result:
-        "[Editable: agrega solo resultados verificados — no publiques cifras sin confirmar.]",
-      status: "En preparación",
-    },
+    { tag: "Social Media Management", amount: "$150", unit: "/mes", desc: "Gestión integral de redes" },
+    { tag: "Paid Media · Ads", amount: "$60", unit: "/campaña", desc: "Pauta Meta, Google, TikTok" },
+    { tag: "Copywriting & Contenido", amount: "$5", unit: "/pieza", desc: "Textos publicitarios y editoriales" },
+    { tag: "Diseño Gráfico", amount: "$8", unit: "/pieza", desc: "Piezas para redes y campañas" },
+    { tag: "Estrategia de Marketing", amount: "$50", unit: "/sesión", desc: "Asesoría estratégica puntual" },
+    { tag: "Branding & Rotulación", amount: "A cotizar", unit: "", desc: "Proyecto integral personalizado" },
+  ],
+  promo: "★ Promo de lanzamiento — 10% OFF en paquetes personalizados · Social · Paid · Diseño · Estrategia",
+};
+
+export const results = {
+  eyebrow: "Resultados",
+  headline: "Los números hablan.",
+  intro: "Resultados reales de campañas, no promesas.",
+  stats: [
+    { num: "+85%", label: "Leads calidad generados", src: "CCCR" },
+    { num: "$300K", label: "Ventas mensuales", src: "CCCR" },
+    { num: "+8K", label: "Usuarios en app", src: "Grupo Purdy" },
+    { num: "+900K", label: "USD de ROI", src: "Euromobilia" },
+    { num: "+70%", label: "Productividad", src: "Avon" },
+    { num: "+16", label: "Campañas exitosas", src: "9+ años de trayectoria" },
+  ],
+};
+
+export const clients = {
+  eyebrow: "Clientes y partners",
+  headline: "Marcas que eligieron ser bold.",
+  intro: "Portafolio de marcas con las que hemos trabajado en 9+ años. Logos originales disponibles bajo solicitud.",
+  names: [
+    "TOYOTA",
+    "FORD",
+    "LEXUS",
+    "AVON",
+    "SWAROVSKI",
+    "GRUPO PURDY",
+    "EUROMOBILIA",
+    "NOUVELL",
+    "RENTCARS",
+    "CUSHMAN & WAKEFIELD",
   ],
 };
 
@@ -240,7 +286,12 @@ export const faq = {
     {
       question: "¿Cuánto cuesta trabajar con BOLD?",
       answer:
-        "Depende del punto en el que está tu negocio y de lo que decidamos priorizar en el Diagnóstico 360. No vendemos paquetes cerrados sin conocer tu operación primero — por eso el primer paso siempre es sin costo.",
+        "Depende de la modalidad: paquetes desde $200 usd/mes en Grow Your Way, o fee base + performance share si trabajamos como implant de tu equipo (The Bold Way). El Diagnóstico 360 —el primer paso— no tiene costo.",
+    },
+    {
+      question: "¿Trabajan fuera de Costa Rica?",
+      answer:
+        "Sí. Tenemos base en Costa Rica y operación en Brasil (Curitiba, São Paulo), Estados Unidos (Orlando, Philadelphia, Chicago) y España (Barcelona, Valencia, Madrid).",
     },
     {
       question: "Mi negocio es pequeño, ¿igual aplica?",
@@ -275,11 +326,11 @@ export const finalCta = {
 
 export const footer = {
   description:
-    "Dirección de crecimiento integrada para negocios reales, al precio de una PYME.",
+    "The bold way to grow. Agencia creativa y estratégica con base en Costa Rica y alcance en Brasil, Estados Unidos y España.",
   contact: {
-    email: "hola@boldagency.com", // EDITABLE
-    whatsapp: "+000 000 0000", // EDITABLE
-    address: "[Ciudad, país] — EDITABLE",
+    email: "esteban.munoz@boldagencycr.com",
+    whatsapp: "+506 7244 5642",
+    address: "Costa Rica → LATAM · USA · Europa",
   },
   columns: [
     {
@@ -300,8 +351,8 @@ export const footer = {
     },
   ],
   social: [
-    { href: "#", label: "Instagram" }, // EDITABLE
-    { href: "#", label: "LinkedIn" }, // EDITABLE
+    { href: "#", label: "Instagram" }, // EDITABLE: agregar URL real
+    { href: "#", label: "LinkedIn" }, // EDITABLE: agregar URL real
   ],
   copyright: `© ${new Date().getFullYear()} BOLD Agency. Todos los derechos reservados.`,
 };

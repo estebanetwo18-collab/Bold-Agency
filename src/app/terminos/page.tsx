@@ -26,8 +26,8 @@ export default function TerminosPage() {
       </p>
       <p>
         Para cualquier consulta sobre estos términos, escríbenos a{" "}
-        <a href="mailto:hola@boldagency.com" className="underline underline-offset-4">
-          hola@boldagency.com
+        <a href="mailto:esteban.munoz@boldagencycr.com" className="underline underline-offset-4">
+          esteban.munoz@boldagencycr.com
         </a>{" "}
         (dirección editable).
       </p>

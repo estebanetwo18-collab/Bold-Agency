@@ -28,8 +28,8 @@ export default function PrivacidadPage() {
       <p>
         Para ejercer cualquiera de estos derechos o resolver dudas sobre el
         tratamiento de tu información, escríbenos a{" "}
-        <a href="mailto:hola@boldagency.com" className="underline underline-offset-4">
-          hola@boldagency.com
+        <a href="mailto:esteban.munoz@boldagencycr.com" className="underline underline-offset-4">
+          esteban.munoz@boldagencycr.com
         </a>{" "}
         (dirección editable).
       </p>

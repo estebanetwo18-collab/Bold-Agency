@@ -17,27 +17,27 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.boldagency.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.boldagencycr.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "BOLD Agency — Dirección de crecimiento integrada",
+    default: "BOLD Agency — The bold way to grow",
     template: "%s — BOLD Agency",
   },
   description:
-    "BOLD integra estrategia, marca, contenido, medios y ventas bajo un solo equipo de dirección de crecimiento para negocios reales. Agenda tu Diagnóstico 360.",
+    "Marketing 360, branding y rotulación como una sola estrategia. Agencia creativa con base en Costa Rica y alcance en Brasil, Estados Unidos y España. Agenda tu Diagnóstico 360.",
   keywords: [
-    "dirección de crecimiento",
-    "agencia de marketing integral",
-    "diagnóstico de negocio",
-    "estrategia de marca",
+    "marketing 360",
+    "agencia de branding",
+    "rotulación",
+    "publicidad digital Costa Rica",
     "BOLD Agency",
   ],
   openGraph: {
-    title: "BOLD Agency — Dirección de crecimiento integrada",
+    title: "BOLD Agency — The bold way to grow",
     description:
-      "Estrategia, marca, contenido, medios y ventas trabajando como un solo sistema. Agenda tu Diagnóstico 360.",
+      "Marketing 360, branding y rotulación como una sola estrategia. Agenda tu Diagnóstico 360.",
     url: siteUrl,
     siteName: "BOLD Agency",
     locale: "es_ES",
@@ -46,9 +46,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BOLD Agency — Dirección de crecimiento integrada",
-    description:
-      "Estrategia, marca, contenido, medios y ventas trabajando como un solo sistema.",
+    title: "BOLD Agency — The bold way to grow",
+    description: "Marketing 360, branding y rotulación como una sola estrategia.",
     images: ["/opengraph-image"],
   },
   robots: {

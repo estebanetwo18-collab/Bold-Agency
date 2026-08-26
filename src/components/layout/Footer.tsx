@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { footer, nav } from "@/lib/content";
+import { footer } from "@/lib/content";
 import { Monogram } from "@/components/ui/Monogram";
+import { LogoLockup } from "@/components/ui/LogoLockup";
 
 export function Footer() {
   return (
@@ -8,9 +9,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 border-b border-paper/10 pb-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Link href="/" className="flex items-center gap-3 font-display text-xl font-extrabold">
-              <Monogram size={32} state="inverted" />
-              {nav.logoLabel}
+            <Link href="/" className="flex items-center gap-2.5" aria-label="BOLD Agency, inicio">
+              <Monogram size={30} state="inverted" />
+              <LogoLockup />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-grey-light">
               {footer.description}

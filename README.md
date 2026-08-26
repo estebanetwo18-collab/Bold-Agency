@@ -39,7 +39,10 @@ src/
     privacidad/, terminos/ # páginas legales (plantillas editables)
     sitemap.ts, robots.ts, opengraph-image.tsx
   components/
-    sections/               # las 11 secciones de la landing
+    sections/               # las secciones de la landing (Hero, Mosaic,
+                             # Problem, System, PhotoBanner, Differentiators,
+                             # Founder, Process, Plans, Results, Faq,
+                             # DiagnosticSection, FinalCta)
     forms/DiagnosticForm.tsx # formulario de Diagnóstico 360
     layout/                 # Nav y Footer
     ui/                     # Monogram, MagneticButton, Reveal, etc.
@@ -54,23 +57,23 @@ componentes — para editar textos no hace falta tocar JSX.
 
 ## Contenido pendiente de confirmar
 
-Ningún dato de este sitio es inventado. Lo que no estaba confirmado en el
-material fuente quedó como placeholder explícito, marcado con `// EDITABLE`
-o texto entre corchetes en `src/lib/content.ts`:
+El contenido de negocio (servicios, precios, resultados, clientes, datos del
+fundador) viene de "BOLD Agency — Presentación Comercial 2026". Lo que no
+estaba confirmado ahí queda marcado explícitamente con `// EDITABLE` en
+`src/lib/content.ts`:
 
-- **Casos de estudio (VoltTech, FreshGo):** estructura editorial lista, sin
-  cifras ni resultados — hay que completarlos con datos reales verificados
-  antes de publicar.
-- **Planes y precios:** nombres, alcances e "inversión definida tras el
-  Diagnóstico 360" son una propuesta editable, no una oferta cerrada.
-- **Datos de contacto del footer** (email, WhatsApp, dirección, redes
-  sociales): valores de ejemplo, hay que reemplazarlos.
+- **Redes sociales del footer** (Instagram, LinkedIn): faltan las URLs
+  reales, hoy apuntan a `#`.
 - **Páginas legales** (`/privacidad`, `/terminos`): plantillas con la
   estructura correcta, pendientes del texto legal definitivo.
-- **Fotografía:** no se usó ningún banco de imágenes por defecto. El hero y
-  las secciones usan geometría/tipografía en vez de fotos de stock sin
-  criterio; si se quiere incorporar fotografía en blanco y negro del
-  brandbook, el lugar natural es el bloque de `System`/`Differentiators`.
+- **Fotografía:** las fotos en blanco y negro (hero, mosaico, banners,
+  founder) son fotografía real provista para el proyecto, ya procesada
+  y optimizada en `public/images/`. Si se reemplazan por fotografía propia
+  de BOLD, mantener el tratamiento en blanco y negro de alto contraste del
+  brandbook.
+- **Foto del founder:** confirmar que la fotografía en `founder-photo.jpg` /
+  `avatar.jpg` (Esteban Muñoz Malavé) está autorizada para uso público en
+  el sitio antes de publicar.
 
 ## Captura de leads: cómo funciona
 
@@ -154,6 +157,25 @@ LEAD_WEBHOOK_TOKEN=          # opcional, se envía como "Authorization: Bearer <
 Si `LEAD_WEBHOOK_URL` queda vacío, el sitio sigue funcionando normalmente
 en modo de prueba local (ver sección anterior) — útil para desarrollar y
 para QA sin depender de credenciales reales.
+
+## Desplegar en Vercel con dominio propio
+
+1. En [vercel.com](https://vercel.com), "Add New… → Project" e importa este
+   repositorio (rama a desplegar: `claude/bold-agency-website-c8o01j` o la
+   que corresponda tras el merge).
+2. Configura las variables de entorno del proyecto en Vercel (mínimo
+   `NEXT_PUBLIC_SITE_URL=https://www.boldagencycr.com`, más
+   `LEAD_WEBHOOK_URL` cuando esté listo).
+3. Deploy. Vercel da un dominio `*.vercel.app` funcionando de inmediato.
+4. En **Settings → Domains** agrega `www.boldagencycr.com`. Vercel muestra
+   el registro DNS a crear (un `CNAME` para el subdominio `www`).
+5. En el proveedor DNS de `boldagencycr.com` (donde esté registrado el
+   dominio — normalmente **no** es el admin de Google Workspace, que solo
+   controla el correo vía registros MX) agrega ese `CNAME`. **No toques**
+   los registros `MX` ni `google._domainkey`: son los que mantienen el
+   correo corporativo funcionando.
+6. Espera la propagación (minutos a un par de horas) y Vercel confirma el
+   dominio con SSL automático.
 
 ## Accesibilidad y rendimiento
 
