@@ -102,13 +102,32 @@ en memoria del proceso del servidor. Es una primera barrera contra doble
 clic y spam básico, no un reemplazo de un rate limiter distribuido para
 tráfico alto en producción con múltiples instancias serverless.
 
-## Conectar con Excel Online
+## Conectar con Excel Online / Google Sheets
 
 No se necesita ningún SDK ni credencial en el código: todo pasa por una
 variable de entorno, `LEAD_WEBHOOK_URL`, a la que el servidor le hace un
 `POST` con el lead en JSON. Elige la opción que prefieras:
 
-### Opción A — Power Automate (recomendada, sin código)
+### Opción activa — Google Sheets con Apps Script
+
+La hoja en uso: [BOLD Agency — Leads Diagnóstico
+360](https://docs.google.com/spreadsheets/d/12FDeO18EmZxTp17NsdJmhmb5lLrV__hWKUQNKAIKhpI/edit),
+con columnas que calzan 1:1 con `LeadRecord` (`src/lib/lead-record.ts`).
+
+1. Abre la hoja → **Extensiones → Apps Script**.
+2. Pega el script de `doPost` que agrega cada lead como fila nueva
+   (deduplicado por `submissionId`) — el código completo vive en el
+   historial de este proyecto; pídelo si se pierde.
+3. **Deploy → New deployment → Web app**, Execute as: *Me*, Who has
+   access: *Anyone*. Copia la URL `/exec`.
+4. Colócala en `LEAD_WEBHOOK_URL` (en Vercel: Settings → Environment
+   Variables) y vuelve a desplegar.
+
+La URL del deployment es en sí misma el secreto (es un ID largo e
+impredecible) — no hace falta `LEAD_WEBHOOK_TOKEN` con esta opción, porque
+Apps Script no procesa headers `Authorization` de forma confiable.
+
+### Opción A — Power Automate (para Excel Online, sin código)
 
 1. En [Power Automate](https://make.powerautomate.com), crea un flujo con
    disparador **"Cuando se recibe una solicitud HTTP"**.
