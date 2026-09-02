@@ -280,10 +280,10 @@ export const pointPricing = {
 };
 
 export const launchPricing = {
-  eyebrow: "Precios de lanzamiento",
-  headline: "Tres paquetes. Un mismo compromiso.",
+  eyebrow: "Precios de lanzamiento · The Bold Way",
+  headline: "Así arranca The Bold Way.",
   intro:
-    "El acompañamiento es igual en los tres: lo que cambia es cuánto contenido recibís y su balance estático–video.",
+    "Tres paquetes, un mismo compromiso: el acompañamiento es igual en los tres — lo que cambia es cuánto contenido recibís y su balance estático–video.",
   tiers: [
     {
       name: "Paquete Bronce",

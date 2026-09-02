@@ -1,4 +1,4 @@
-import { plans, pointPricing } from "@/lib/content";
+import { plans, pointPricing, launchPricing } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -68,6 +68,73 @@ export function Plans() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.14} className="mt-14 overflow-hidden rounded-[1.75rem] bg-ink p-8 text-paper sm:p-10">
+          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
+            <span className="h-1.5 w-1.5 rounded-full bg-volt" />
+            {launchPricing.eyebrow}
+          </span>
+          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight sm:text-[1.7rem]">
+            {launchPricing.headline}
+          </h3>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-grey-light">
+            {launchPricing.intro}
+          </p>
+
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {launchPricing.tiers.map((tier) => (
+              <div
+                key={tier.name}
+                className={cn(
+                  "flex flex-col rounded-2xl border p-6",
+                  tier.featured
+                    ? "border-volt/50 bg-gradient-to-b from-surface to-ink"
+                    : "border-paper/10 bg-surface",
+                )}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h4 className="font-display text-sm font-bold uppercase tracking-wide text-grey-light">
+                    {tier.name}
+                  </h4>
+                  {tier.badge ? (
+                    <span
+                      className={cn(
+                        "shrink-0 rounded-full px-2.5 py-1 font-display text-[0.65rem] font-bold uppercase tracking-wide",
+                        tier.featured ? "bg-volt text-ink" : "bg-paper/10 text-paper",
+                      )}
+                    >
+                      {tier.badge}
+                    </span>
+                  ) : null}
+                </div>
+
+                <p className="mt-3 flex items-baseline gap-1.5 font-display text-3xl font-extrabold">
+                  {tier.price}
+                  <span className="font-display text-sm font-semibold text-grey-light">
+                    {tier.unit}
+                  </span>
+                </p>
+                <p className="mt-1 text-xs text-grey-light">{tier.priceNote}</p>
+
+                <ul className="mt-6 flex flex-1 flex-col gap-4 border-t border-paper/10 pt-5">
+                  {tier.features.map((feature) => (
+                    <li key={feature.label} className="flex items-start gap-3">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-volt" aria-hidden="true" />
+                      <span>
+                        <span className="font-display text-sm font-bold">{feature.label}</span>
+                        <span className="block text-sm text-grey-light">{feature.detail}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-2xl bg-volt px-6 py-4 text-center">
+            <p className="text-sm font-semibold text-ink">{launchPricing.promo}</p>
+          </div>
+        </Reveal>
 
         <Reveal delay={0.16} className="mt-16">
           <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-grey">

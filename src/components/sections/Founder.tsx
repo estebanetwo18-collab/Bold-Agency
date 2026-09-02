@@ -81,14 +81,22 @@ export function Founder() {
               <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
                 Certificación
               </span>
-              <div className="relative mt-4 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-grey-light">
-                <Image
-                  src="/images/founder-certificate.jpg"
-                  alt={`Certificado de ${founder.certificate.institution} — ${founder.certificate.program}, a nombre de ${founder.certificate.honoree}`}
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 90vw"
-                  className="object-contain"
-                />
+              <div className="mt-4 flex items-center gap-4">
+                <div className="relative aspect-[4/3] w-40 shrink-0 overflow-hidden rounded-xl border border-grey-light sm:w-48">
+                  <Image
+                    src="/images/founder-certificate.jpg"
+                    alt={`Certificado de ${founder.certificate.institution} — ${founder.certificate.program}, a nombre de ${founder.certificate.honoree}`}
+                    fill
+                    sizes="200px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <p className="text-sm leading-relaxed text-grey">
+                  {founder.certificate.program}
+                  <span className="block text-xs text-grey">
+                    {founder.certificate.institution} · {founder.certificate.date}
+                  </span>
+                </p>
               </div>
             </div>
           </Reveal>

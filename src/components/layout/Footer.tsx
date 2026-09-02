@@ -5,7 +5,7 @@ import { LogoLockup } from "@/components/ui/LogoLockup";
 
 export function Footer() {
   return (
-    <footer className="bg-ink px-6 pb-10 pt-20 text-paper lg:px-10">
+    <footer className="bg-ink px-6 pb-28 pt-20 text-paper lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 border-b border-paper/10 pb-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
