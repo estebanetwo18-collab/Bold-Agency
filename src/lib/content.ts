@@ -148,7 +148,7 @@ export const founder = {
   headline: "Quién dirige esto.",
   name: "Esteban Muñoz Malavé",
   role: "Marketing Strategist & Growth Leader · Trilingüe",
-  bio: "Estratega de marketing con más de 9 años liderando crecimiento B2B y B2C para marcas en Costa Rica, Brasil y Latinoamérica. Experto en planificación estratégica, paid media, branding y liderazgo de equipos multidisciplinarios, con resultados medibles en los sectores automotriz, belleza, retail, mobiliario/diseño, tecnología y eventos/turismo.",
+  bio: "Comunicador Social con mención en Mercadeo y Publicidad, con más de 9 años liderando crecimiento B2B y B2C para marcas en Venezuela, Costa Rica, Panamá, México, Argentina y Brasil. Experto en planificación estratégica, paid media, branding y liderazgo de equipos multidisciplinarios, con resultados medibles en los sectores automotriz, belleza, retail, mobiliario/diseño, tecnología y eventos/turismo.",
   experience: [
     {
       role: "Founder & Estratega de marca",
@@ -174,8 +174,8 @@ export const founder = {
   cards: [
     {
       tag: "Formación",
-      value: "Executive Certificate, Digital Marketing",
-      sub: "The George Washington University · 2023",
+      value: "Comunicador Social",
+      sub: "Mención Mercadeo y Publicidad",
     },
     {
       tag: "Hoy",
