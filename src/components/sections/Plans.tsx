@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 
 export function Plans() {
   return (
-    <section className="relative bg-paper py-28 lg:py-36">
+    <section id="planes" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
           eyebrow={plans.eyebrow}

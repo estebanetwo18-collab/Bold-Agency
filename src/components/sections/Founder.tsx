@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function Founder() {
   return (
-    <section className="relative bg-paper py-28 lg:py-36">
+    <section id="fundador" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading eyebrow={founder.eyebrow} headline={founder.headline} />
 
@@ -44,7 +44,7 @@ export function Founder() {
             <p className="mt-2 font-display text-sm font-bold text-grey">{founder.role}</p>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-grey">{founder.bio}</p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {founder.cards.map((card) => (
                 <div key={card.tag} className="rounded-2xl border border-grey-light p-5">
                   <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">

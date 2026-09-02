@@ -12,8 +12,13 @@ export const nav = {
   logoSub: "AGENCY",
   links: [
     { href: "/#enfoque", label: "Enfoque" },
+    { href: "/#sistema", label: "Servicios" },
+    { href: "/#diferenciales", label: "Por qué BOLD" },
+    { href: "/#fundador", label: "Fundador" },
     { href: "/#como-trabajamos", label: "Cómo trabajamos" },
+    { href: "/#planes", label: "Planes" },
     { href: "/#casos", label: "Casos" },
+    { href: "/#preguntas", label: "FAQ" },
   ],
   cta: { href: "/cotizacion", label: "Diagnóstico 360" },
 };
@@ -176,6 +181,11 @@ export const founder = {
       tag: "Formación",
       value: "Comunicador Social",
       sub: "Mención Mercadeo y Publicidad",
+    },
+    {
+      tag: "Certificación",
+      value: "Executive Certificate, Digital Marketing",
+      sub: "The George Washington University · 2023",
     },
     {
       tag: "Hoy",
@@ -416,8 +426,13 @@ export const footer = {
       title: "Sitio",
       links: [
         { href: "/#enfoque", label: "Enfoque" },
+        { href: "/#sistema", label: "Servicios" },
+        { href: "/#diferenciales", label: "Por qué BOLD" },
+        { href: "/#fundador", label: "Fundador" },
         { href: "/#como-trabajamos", label: "Cómo trabajamos" },
+        { href: "/#planes", label: "Planes" },
         { href: "/#casos", label: "Casos" },
+        { href: "/#preguntas", label: "FAQ" },
         { href: "/#diagnostico", label: "Diagnóstico 360" },
       ],
     },

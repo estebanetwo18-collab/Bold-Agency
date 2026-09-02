@@ -12,7 +12,7 @@ export function Faq() {
   const reducedMotion = usePrefersReducedMotion();
 
   return (
-    <section className="relative bg-paper py-28 lg:py-36">
+    <section id="preguntas" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-4xl px-6 lg:px-10">
         <SectionHeading
           eyebrow={faq.eyebrow}

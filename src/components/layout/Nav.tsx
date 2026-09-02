@@ -47,12 +47,12 @@ export function Nav() {
           <LogoLockup />
         </Link>
 
-        <ul className="hidden items-center gap-9 md:flex">
+        <ul className="hidden items-center gap-5 xl:flex">
           {nav.links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="font-display text-sm font-semibold text-ink/80 transition-colors hover:text-ink"
+                className="whitespace-nowrap font-display text-sm font-semibold text-ink/80 transition-colors hover:text-ink"
               >
                 {link.label}
               </Link>
@@ -60,7 +60,7 @@ export function Nav() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden xl:block">
           <MagneticButton href={nav.cta.href} variant="ink" strength={10}>
             {nav.cta.label}
           </MagneticButton>
@@ -68,7 +68,7 @@ export function Nav() {
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -84,7 +84,7 @@ export function Nav() {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-x-0 top-[var(--nav-height)] bottom-0 z-40 flex flex-col gap-1 bg-ink px-6 pt-6 md:hidden"
+          className="fixed inset-x-0 top-[var(--nav-height)] bottom-0 z-40 flex flex-col gap-1 overflow-y-auto bg-ink px-6 pt-6 xl:hidden"
         >
           {nav.links.map((link) => (
             <Link

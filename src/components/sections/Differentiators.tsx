@@ -57,7 +57,7 @@ function Icon({ name }: { name: string }) {
 
 export function Differentiators() {
   return (
-    <section className="relative bg-paper py-28 lg:py-36">
+    <section id="diferenciales" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
           eyebrow={differentiators.eyebrow}
