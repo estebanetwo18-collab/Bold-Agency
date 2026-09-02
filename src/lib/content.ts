@@ -15,7 +15,7 @@ export const nav = {
     { href: "/#como-trabajamos", label: "Cómo trabajamos" },
     { href: "/#casos", label: "Casos" },
   ],
-  cta: { href: "/#diagnostico", label: "Diagnóstico 360" },
+  cta: { href: "/cotizacion", label: "Diagnóstico 360" },
 };
 
 export const hero = {
@@ -24,7 +24,7 @@ export const hero = {
   tagline: "Una sola estrategia.",
   subhead:
     "No como piezas sueltas. Un mismo equipo piensa tu marca, tu presencia digital y tu presencia física — con base en Costa Rica y alcance en Brasil, Estados Unidos y España.",
-  ctaPrimary: { href: "#diagnostico", label: "Agendar Diagnóstico 360" },
+  ctaPrimary: { href: "/cotizacion", label: "Agendar Diagnóstico 360" },
   ctaSecondary: { href: "#sistema", label: "Cómo trabajamos" },
   proofPoints: [
     "Costa Rica · Brasil · Estados Unidos · España",
@@ -430,8 +430,9 @@ export const footer = {
     },
   ],
   social: [
-    { href: "#", label: "Instagram" }, // EDITABLE: agregar URL real
-    { href: "https://linkedin.com/in/estebanjm", label: "LinkedIn" },
+    { href: "https://www.facebook.com/profile.php?id=61594134985999", label: "Facebook", icon: "facebook" },
+    { href: "https://www.instagram.com/boldagency.cr/", label: "Instagram", icon: "instagram" },
+    { href: "https://www.linkedin.com/company/em-agency-latam", label: "LinkedIn", icon: "linkedin" },
   ],
   whatsappLink: "https://wa.me/50672445642",
   copyright: `© ${new Date().getFullYear()} BOLD Agency. Todos los derechos reservados.`,
@@ -448,4 +449,21 @@ export const diagnosticForm = {
   errorTitle: "No pudimos enviar tu solicitud.",
   errorBody:
     "Tu información no se perdió. Intenta de nuevo en unos segundos o escríbenos directamente por WhatsApp.",
+};
+
+/**
+ * Página independiente en /cotizacion — URL única y compartible para
+ * campañas, bio de redes y WhatsApp, que lleva directo al formulario
+ * sin depender de un ancla dentro del home.
+ */
+export const cotizacionPage = {
+  eyebrow: "Cotización BOLD Agency",
+  headline: "Contanos tu negocio y arrancamos tu cotización.",
+  intro:
+    "Menos de dos minutos. Con esta información preparamos tu Diagnóstico 360 y te contactamos por WhatsApp o email con los próximos pasos — sin costo y sin compromiso.",
+  trustPoints: [
+    "Respuesta en menos de 24 horas hábiles",
+    "Diagnóstico 360 sin costo y sin compromiso",
+    "+9 años de experiencia en marketing digital y estratégico",
+  ],
 };

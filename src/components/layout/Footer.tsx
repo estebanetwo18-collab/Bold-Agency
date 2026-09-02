@@ -23,6 +23,22 @@ export function Footer() {
               <span>{footer.contact.whatsapp}</span>
               <span>{footer.contact.address}</span>
             </div>
+
+            <ul className="mt-7 flex items-center gap-3">
+              {footer.social.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-paper/15 text-paper transition-colors hover:border-volt hover:bg-volt hover:text-ink"
+                  >
+                    <SocialIcon name={s.icon} />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {footer.columns.map((col) => (
@@ -46,19 +62,42 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col items-start justify-between gap-4 pt-8 text-xs text-grey sm:flex-row sm:items-center">
+        <div className="pt-8 text-xs text-grey">
           <p>{footer.copyright}</p>
-          <ul className="flex gap-6">
-            {footer.social.map((s) => (
-              <li key={s.label}>
-                <a href={s.href} className="transition-colors hover:text-volt">
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </footer>
   );
+}
+
+function SocialIcon({ name }: { name: string }) {
+  switch (name) {
+    case "facebook":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M15 8.5h2V5.2c-.35-.05-1.53-.15-2.92-.15-2.9 0-4.88 1.77-4.88 5.02v2.68H6.3v3.7h2.9V21h3.8v-4.55h2.78l.44-3.7h-3.22V10.4c0-1.07.29-1.9 1.9-1.9Z"
+            fill="currentColor"
+          />
+        </svg>
+      );
+    case "instagram":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.75" />
+          <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.75" />
+          <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
+        </svg>
+      );
+    case "linkedin":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" strokeWidth="1.75" />
+          <path d="M8 10.5V17M8 7.6v.01M12 17v-3.8c0-1.2.8-2 1.9-2 1 0 1.6.7 1.6 2V17" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M12 17v-3.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+        </svg>
+      );
+    default:
+      return null;
+  }
 }
