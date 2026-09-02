@@ -31,10 +31,6 @@ export const hero = {
     "+9 años de experiencia en marketing digital y estratégico",
     "+16 campañas exitosas para marcas como Toyota, Avon y Swarovski",
   ],
-  floatCard: {
-    name: "Esteban Muñoz",
-    role: "Estratega de marca",
-  },
 };
 
 export const problem = {
@@ -155,6 +151,11 @@ export const founder = {
   bio: "Estratega de marketing con más de 9 años liderando crecimiento B2B y B2C para marcas en Costa Rica, Brasil y Latinoamérica. Experto en planificación estratégica, paid media, branding y liderazgo de equipos multidisciplinarios, con resultados medibles en los sectores automotriz, belleza, retail, mobiliario/diseño, tecnología y eventos/turismo.",
   experience: [
     {
+      role: "Founder & Estratega de marca",
+      company: "BOLD Agency",
+      period: "2026 – Presente",
+    },
+    {
       role: "Senior Marketing Specialist",
       company: "Shift Latam Porter Novelli — Implant en CCCR",
       period: "2026",
@@ -178,8 +179,8 @@ export const founder = {
     },
     {
       tag: "Hoy",
-      value: "Implant · Paid Media",
-      sub: "Centro de Convenciones · CCCR",
+      value: "Hacer crecer tu empresa",
+      sub: "BOLD Agency",
     },
     {
       tag: "Idiomas",

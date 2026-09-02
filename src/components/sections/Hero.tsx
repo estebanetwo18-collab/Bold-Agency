@@ -131,22 +131,6 @@ export function Hero() {
                 className="pointer-events-none absolute right-[6%] top-[8%] opacity-55"
               />
             </motion.div>
-
-            <div className="absolute -bottom-6 -left-6 max-w-[240px] rounded-2xl bg-paper p-5 shadow-[0_20px_40px_rgba(17,17,17,.16)] sm:left-[-28px] sm:bottom-8">
-              <span className="flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.08em] text-grey">
-                <Image
-                  src="/images/avatar2.jpg"
-                  alt="Esteban Muñoz, founder de BOLD Agency"
-                  width={26}
-                  height={26}
-                  className="rounded-full object-cover"
-                />
-                {hero.floatCard.name}
-              </span>
-              <p className="mt-2.5 font-display text-base font-bold leading-tight text-ink">
-                {hero.floatCard.role}
-              </p>
-            </div>
           </motion.div>
         </div>
 

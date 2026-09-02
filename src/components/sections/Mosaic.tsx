@@ -44,7 +44,7 @@ export function Mosaic() {
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               aria-label="Reel de marca BOLD Agency"
             />
           </div>
