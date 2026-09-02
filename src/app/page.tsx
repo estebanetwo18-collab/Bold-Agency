@@ -28,14 +28,14 @@ export default function Home() {
         <System />
         <DiagonalDivider from="ink" to="paper" flip />
         <PhotoBanner
-          src="/images/mid-chevron.jpg"
-          alt="Fachada arquitectónica en blanco y negro con líneas en chevron"
+          src="/images/mid-banner.jpg"
+          alt="Equipo revisando gráficos de crecimiento, blanco y negro"
           caption={midBanner.caption}
           align="center"
         />
         <PhotoBanner
-          src="/images/team-presentation-wide.jpg"
-          alt="Equipo revisando resultados en una pantalla, blanco y negro"
+          src="/images/team-banner.jpg"
+          alt="Equipo analizando resultados en pantalla, blanco y negro"
           caption={teamBanner.caption}
           aspect="aspect-[5/2]"
           align="end"

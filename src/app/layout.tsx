@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -67,6 +68,7 @@ export default function RootLayout({
         </a>
         <CustomCursor />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

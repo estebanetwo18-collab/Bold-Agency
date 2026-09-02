@@ -19,8 +19,9 @@ export const nav = {
 };
 
 export const hero = {
-  eyebrow: "The bold way to grow",
-  headline: ["Marketing 360,", "branding y rotulación.", "Una sola estrategia."],
+  eyebrow: "Marketing 360, branding y rotulación",
+  headline: ["THE BOLD WAY", "TO GROW"],
+  tagline: "Una sola estrategia.",
   subhead:
     "No como piezas sueltas. Un mismo equipo piensa tu marca, tu presencia digital y tu presencia física — con base en Costa Rica y alcance en Brasil, Estados Unidos y España.",
   ctaPrimary: { href: "#diagnostico", label: "Agendar Diagnóstico 360" },
@@ -98,6 +99,12 @@ export const system = {
       title: "Experiencias 360",
       body: "En tienda y virtual, conectando lo físico con lo digital.",
     },
+    {
+      index: "07",
+      title: "Desarrollo de webs y apps",
+      body: "Sitios, e-commerce y aplicaciones a medida — como este mismo sitio.",
+      wide: true,
+    },
   ],
 };
 
@@ -140,13 +147,30 @@ export const founder = {
   eyebrow: "Nuestro fundador",
   headline: "Quién dirige esto.",
   name: "Esteban Muñoz Malavé",
-  role: "Founder · Estratega de marca · Trilingüe",
-  bio: "+9 años de experiencia en marketing digital y estratégico, entre B2B y B2C, para marcas líderes en Costa Rica, LATAM, Brasil, España y Estados Unidos.",
+  role: "Marketing Strategist & Growth Leader · Trilingüe",
+  bio: "Estratega de marketing con más de 9 años liderando crecimiento B2B y B2C para marcas en Costa Rica, Brasil y Latinoamérica. Experto en planificación estratégica, paid media, branding y liderazgo de equipos multidisciplinarios, con resultados medibles en los sectores automotriz, belleza, retail, mobiliario/diseño, tecnología y eventos/turismo.",
+  experience: [
+    {
+      role: "Senior Marketing Specialist",
+      company: "Shift Latam Porter Novelli — Implant en CCCR",
+      period: "2026",
+    },
+    {
+      role: "Marketing Manager",
+      company: "Euromobilia & Nouvell (Ara Group)",
+      period: "2024 – 2026",
+    },
+    {
+      role: "Digital Marketing Manager",
+      company: "AVON Costa Rica",
+      period: "2022 – 2023",
+    },
+  ],
   cards: [
     {
       tag: "Formación",
-      value: "Comunicación Social + Marketing Digital",
-      sub: "George Washington University",
+      value: "Executive Certificate, Digital Marketing",
+      sub: "The George Washington University · 2023",
     },
     {
       tag: "Hoy",
@@ -155,10 +179,11 @@ export const founder = {
     },
     {
       tag: "Idiomas",
-      value: "Español · English · Português",
-      sub: "3 idiomas nativos-fluidos",
+      value: "Español C2 · Português C1 · English B2",
+      sub: "Nativo · Avanzado · Intermedio",
     },
   ],
+  linkedIn: "https://linkedin.com/in/estebanjm",
 };
 
 export const process = {
@@ -352,8 +377,9 @@ export const footer = {
   ],
   social: [
     { href: "#", label: "Instagram" }, // EDITABLE: agregar URL real
-    { href: "#", label: "LinkedIn" }, // EDITABLE: agregar URL real
+    { href: "https://linkedin.com/in/estebanjm", label: "LinkedIn" },
   ],
+  whatsappLink: "https://wa.me/50672445642",
   copyright: `© ${new Date().getFullYear()} BOLD Agency. Todos los derechos reservados.`,
 };
 

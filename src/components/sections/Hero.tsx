@@ -71,6 +71,15 @@ export function Hero() {
             </h1>
 
             <motion.p
+              initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-4 font-display text-xl font-bold text-ink sm:text-2xl"
+            >
+              {hero.tagline}
+            </motion.p>
+
+            <motion.p
               initial={reducedMotion ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -109,8 +118,8 @@ export function Hero() {
               className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-surface"
             >
               <Image
-                src="/images/hero-grid.jpg"
-                alt="Detalle arquitectónico en blanco y negro, estructura triangular de vidrio y acero"
+                src="/images/hero-main.jpg"
+                alt="Equipo de BOLD Agency revisando resultados de una campaña, blanco y negro"
                 fill
                 priority
                 sizes="(min-width: 1024px) 45vw, 90vw"
@@ -126,7 +135,7 @@ export function Hero() {
             <div className="absolute -bottom-6 -left-6 max-w-[240px] rounded-2xl bg-paper p-5 shadow-[0_20px_40px_rgba(17,17,17,.16)] sm:left-[-28px] sm:bottom-8">
               <span className="flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.08em] text-grey">
                 <Image
-                  src="/images/avatar.jpg"
+                  src="/images/avatar2.jpg"
                   alt="Esteban Muñoz, founder de BOLD Agency"
                   width={26}
                   height={26}
