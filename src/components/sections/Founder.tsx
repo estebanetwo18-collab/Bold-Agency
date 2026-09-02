@@ -12,7 +12,7 @@ export function Founder() {
         <div className="mt-14 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <Reveal className="relative aspect-[4/5] max-w-sm overflow-hidden rounded-[1.5rem]">
             <Image
-              src="/images/founder-photo2.jpg"
+              src="/images/founder-about-me.jpg"
               alt={`${founder.name}, founder de BOLD Agency`}
               fill
               sizes="(min-width: 1024px) 30vw, 80vw"
@@ -75,6 +75,34 @@ export function Founder() {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div className="mt-10">
+              <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
+                Certificación
+              </span>
+              <div className="mt-4 rounded-2xl border border-grey-light bg-paper p-7 text-center sm:p-9">
+                <p className="font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] text-grey">
+                  {founder.certificate.institution}
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-[0.15em] text-grey">
+                  {founder.certificate.school}
+                </p>
+                <div className="mx-auto mt-5 h-px w-16 bg-volt" />
+                <p className="mt-5 text-sm italic text-grey">certifies that</p>
+                <p className="mt-2 font-serif text-2xl italic text-ink sm:text-3xl">
+                  {founder.certificate.honoree}
+                </p>
+                <p className="mt-4 text-sm text-grey">
+                  has successfully completed the Executive Education Program
+                </p>
+                <p className="mt-1 font-display text-base font-bold text-ink">
+                  {founder.certificate.program}
+                </p>
+                <p className="mt-4 font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
+                  {founder.certificate.date}
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>

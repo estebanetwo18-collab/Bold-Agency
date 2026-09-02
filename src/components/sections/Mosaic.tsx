@@ -35,16 +35,18 @@ export function Mosaic() {
             </div>
           </div>
 
-          <div className="relative flex aspect-[3/4] flex-col items-center justify-center gap-3 rounded-2xl bg-ink p-6 text-center text-paper">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-volt text-ink">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M6 4.5v11l9-5.5-9-5.5Z" fill="currentColor" />
-              </svg>
-            </span>
-            <p className="font-display text-sm font-bold leading-snug">
-              Reel de marca
-            </p>
-            <p className="text-xs text-grey-light">Video próximamente</p>
+          <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-ink">
+            <video
+              src="/videos/mosaic-reel.mp4"
+              poster="/images/mosaic-reel-poster.jpg"
+              className="h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Reel de marca BOLD Agency"
+            />
           </div>
         </Reveal>
       </div>

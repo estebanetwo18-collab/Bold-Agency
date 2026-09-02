@@ -33,7 +33,7 @@ export const hero = {
   ],
   floatCard: {
     name: "Esteban Muñoz",
-    role: "Founder · Estratega de marca",
+    role: "Estratega de marca",
   },
 };
 
@@ -125,18 +125,22 @@ export const differentiators = {
   headline: "Cuatro razones por las que negocios como el tuyo eligen dirigirse con nosotros.",
   items: [
     {
+      icon: "expertise",
       title: "Expertise y especialización",
       body: "+9 años de experiencia en marketing digital y estratégico, con operación en Costa Rica, Brasil, Estados Unidos y España.",
     },
     {
+      icon: "perspective",
       title: "Perspectiva fresca",
       body: "Vemos tu negocio desde afuera, sin los puntos ciegos que se acumulan después de años operando dentro de él.",
     },
     {
+      icon: "flexibility",
       title: "Flexibilidad y escalabilidad",
       body: "Empezamos donde estás hoy y ajustamos el alcance conforme el negocio crece, sin estructuras rígidas.",
     },
     {
+      icon: "resources",
       title: "Optimización de recursos",
       body: "Aprovechas un equipo completo ya formado, en lugar de contratar y entrenar una estructura interna desde cero.",
     },
@@ -184,6 +188,13 @@ export const founder = {
     },
   ],
   linkedIn: "https://linkedin.com/in/estebanjm",
+  certificate: {
+    institution: "The George Washington University",
+    school: "School of Business",
+    program: "Specialization in Digital Marketing",
+    honoree: "Esteban Jose Muñoz Malave",
+    date: "Noviembre 2023",
+  },
 };
 
 export const process = {
@@ -265,6 +276,48 @@ export const pointPricing = {
     { tag: "Branding & Rotulación", amount: "A cotizar", unit: "", desc: "Proyecto integral personalizado" },
   ],
   promo: "★ Promo de lanzamiento — 10% OFF en paquetes personalizados · Social · Paid · Diseño · Estrategia",
+};
+
+export const launchPricing = {
+  eyebrow: "Precios de lanzamiento",
+  headline: "Tres paquetes. Un mismo compromiso.",
+  intro:
+    "El acompañamiento es igual en los tres: lo que cambia es cuánto contenido recibís y su balance estático–video.",
+  tiers: [
+    {
+      name: "Paquete Bronce",
+      price: "₡65,000",
+      unit: "/mes",
+      priceNote: "precio de lanzamiento",
+      features: [
+        { label: "12 piezas al mes", detail: "10 estático + 2 en video" },
+      ],
+    },
+    {
+      name: "Paquete Silver",
+      badge: "Más elegido",
+      price: "₡85,000",
+      unit: "/mes",
+      priceNote: "precio de lanzamiento",
+      features: [
+        { label: "18 piezas al mes", detail: "12 estático + 6 en video" },
+      ],
+    },
+    {
+      name: "Paquete B-Gold",
+      badge: "★ Top Tier",
+      featured: true,
+      price: "₡175,000",
+      unit: "/mes",
+      priceNote: "precio de lanzamiento",
+      features: [
+        { label: "24 piezas al mes", detail: "100% a tu elección" },
+        { label: "Formato flexible", detail: "todo reels · todo estático · o balance" },
+      ],
+    },
+  ],
+  promo:
+    "★ Precios de lanzamiento — Cotización personalizada para necesidades especiales · Social · Paid · Diseño · Estrategia",
 };
 
 export const results = {

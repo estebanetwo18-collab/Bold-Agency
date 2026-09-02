@@ -9,6 +9,7 @@ import { Differentiators } from "@/components/sections/Differentiators";
 import { Founder } from "@/components/sections/Founder";
 import { Process } from "@/components/sections/Process";
 import { Plans } from "@/components/sections/Plans";
+import { LaunchPricing } from "@/components/sections/LaunchPricing";
 import { Results } from "@/components/sections/Results";
 import { Faq } from "@/components/sections/Faq";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
@@ -45,6 +46,7 @@ export default function Home() {
         <Process />
         <Plans />
         <DiagonalDivider from="paper" to="ink" />
+        <LaunchPricing />
         <Results />
         <DiagonalDivider from="ink" to="paper" flip />
         <Faq />
