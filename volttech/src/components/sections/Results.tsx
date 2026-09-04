@@ -47,7 +47,7 @@ export function Results() {
           </div>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
+        <div className="mt-16 grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-start">
           <Reveal className="min-w-0">
             <div>
               <h3 className="text-lg font-semibold text-text">{WARRANTIES.title}</h3>
@@ -68,17 +68,15 @@ export function Results() {
           </Reveal>
 
           <Reveal delay={100} className="min-w-0">
-            <div className="flex h-full min-w-0 flex-col justify-between rounded-2xl border border-border bg-surface p-6">
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-text-faint">{BRANDS.eyebrow}</h3>
-                <div className="mt-4 space-y-3">
-                  {BRANDS.groups.map((group) => (
-                    <div key={group.category} className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                      <span className="text-xs font-semibold text-accent">{group.category}</span>
-                      <span className="text-sm text-text-muted">{group.names.join(" · ")}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="min-w-0 rounded-2xl border border-border bg-surface p-6">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-text-faint">{BRANDS.eyebrow}</h3>
+              <div className="mt-4 space-y-3">
+                {BRANDS.groups.map((group) => (
+                  <div key={group.category} className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <span className="text-xs font-semibold text-accent">{group.category}</span>
+                    <span className="text-sm text-text-muted">{group.names.join(" · ")}</span>
+                  </div>
+                ))}
               </div>
               <div className="mt-6 min-w-0 overflow-hidden border-t border-border pt-5">
                 <div className="marquee-track flex w-max gap-8 whitespace-nowrap">

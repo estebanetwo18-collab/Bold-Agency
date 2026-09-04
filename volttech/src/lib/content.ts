@@ -66,7 +66,7 @@ export const HERO = {
   // usarla en marketing pagado — el alt evita afirmar autoría específica.
   image: {
     src: "/images/hero/instalacion-techo-zona-sur.jpg",
-    alt: "Instalación de paneles solares en un techo de zona costera",
+    alt: "Instalación de paneles solares en un techo de zona costera, con vista al mar de fondo",
     isPlaceholder: false,
   },
 } as const;
@@ -156,8 +156,8 @@ export type ServiceKey =
 export type ServiceSegment = "residencial" | "comercial";
 
 export const SERVICES_IMAGE = {
-  src: "/images/servicios/equipo-instalacion-paneles.jpg",
-  alt: "Calentador solar de agua instalado en un techo",
+  src: "/images/proyectos/supermercado/instalacion-comercial.jpg",
+  alt: "Equipo técnico instalando y revisando un sistema de paneles solares",
   isPlaceholder: false,
 } as const;
 
@@ -471,7 +471,7 @@ export const BUDGET_RANGE_OPTIONS = [
 export const FINAL_CTA = {
   eyebrow: "Siguiente paso",
   title: "¿Listo para dejar de depender solo de la red?",
-  body: "Escribinos por WhatsApp con tu factura eléctrica y te respondemos con next steps reales, no una promesa vacía.",
+  body: "Escribinos por WhatsApp con tu factura eléctrica y te respondemos con pasos concretos, no una promesa vacía.",
   cta: { label: "Escribir por WhatsApp", href: whatsappHref(DEFAULT_WHATSAPP_MESSAGE) },
   secondaryCta: { label: "Calcular mi sistema", href: "#calculadora" },
 } as const;

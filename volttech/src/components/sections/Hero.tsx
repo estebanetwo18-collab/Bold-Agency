@@ -82,14 +82,14 @@ export function Hero() {
                 sizes="(min-width: 1024px) 40vw, 90vw"
                 className="object-cover"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/70 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
             </div>
           )}
-          <div className="glass absolute -bottom-6 -left-6 hidden rounded-2xl border border-border-strong px-5 py-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:block">
+          <div className="glass absolute -bottom-6 -left-6 hidden rounded-2xl border border-border-strong px-5 py-4 shadow-[0_16px_40px_rgba(20,83,45,0.18)] sm:block">
             <p className="text-2xl font-semibold text-energy">13 años</p>
             <p className="text-xs font-medium text-text-muted">de experiencia técnica</p>
           </div>
-          <div className="glass absolute -right-4 -top-4 hidden rounded-2xl border border-border-strong px-4 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:block">
+          <div className="glass absolute right-4 top-4 hidden rounded-2xl border border-border-strong px-4 py-3 shadow-[0_16px_40px_rgba(20,83,45,0.18)] sm:block">
             <p className="text-xs font-medium text-text-muted">Garantía por componente</p>
           </div>
         </Reveal>
