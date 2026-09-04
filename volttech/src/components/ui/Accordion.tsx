@@ -8,7 +8,7 @@ export function Accordion({ items }: { items: ReadonlyArray<{ question: string; 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-green/15 rounded-2xl border border-green/15 bg-white">
+    <div className="divide-y divide-border rounded-2xl border border-border bg-surface">
       {items.map((item, i) => {
         const isOpen = openIndex === i;
         return (
@@ -19,13 +19,13 @@ export function Accordion({ items }: { items: ReadonlyArray<{ question: string; 
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
             >
-              <span className="text-sm font-bold text-forest sm:text-base">{item.question}</span>
+              <span className="text-sm font-semibold text-text sm:text-base">{item.question}</span>
               <ChevronDownIcon
-                className={cn("h-5 w-5 shrink-0 text-green transition-transform", isOpen && "rotate-180")}
+                className={cn("h-5 w-5 shrink-0 text-accent transition-transform", isOpen && "rotate-180")}
               />
             </button>
             {isOpen && (
-              <div className="px-5 pb-5 text-sm leading-relaxed text-ink-soft">{item.answer}</div>
+              <div className="px-5 pb-5 text-sm leading-relaxed text-text-muted">{item.answer}</div>
             )}
           </div>
         );

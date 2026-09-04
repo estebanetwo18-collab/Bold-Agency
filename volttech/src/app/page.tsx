@@ -1,11 +1,9 @@
 import { Hero } from "@/components/sections/Hero";
-import { Stats } from "@/components/sections/Stats";
-import { About } from "@/components/sections/About";
+import { ValueProposition } from "@/components/sections/ValueProposition";
 import { Services } from "@/components/sections/Services";
-import { Brands } from "@/components/sections/Brands";
-import { Warranties } from "@/components/sections/Warranties";
-import { Process } from "@/components/sections/Process";
 import { Calculator } from "@/components/sections/Calculator";
+import { Process } from "@/components/sections/Process";
+import { Results } from "@/components/sections/Results";
 import { CaseStudy } from "@/components/sections/CaseStudy";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
@@ -16,13 +14,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Stats />
-      <About />
+      <ValueProposition />
       <Services />
-      <Brands />
-      <Warranties />
-      <Process />
       <Calculator />
+      <Process />
+      <Results />
       <CaseStudy />
       <Testimonials />
       <Faq />

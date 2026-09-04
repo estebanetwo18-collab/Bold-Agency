@@ -2,8 +2,9 @@
 
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { PillBadge } from "@/components/ui/PillBadge";
+import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
-import { SITE, whatsappHref } from "@/lib/content";
+import { BUDGET_RANGE_OPTIONS, CLIENT_TYPE_OPTIONS, COVERAGE_AREAS, SITE, whatsappHref } from "@/lib/content";
 import {
   APPLIANCE_CHECKLIST,
   MARGIN_RATE,
@@ -32,25 +33,26 @@ function getIsAdminServerSnapshot() {
 }
 
 const SYSTEM_TYPE_LABELS: Record<SystemType, string> = {
-  "on-grid": "On-grid (sin batería)",
-  hibrido: "Híbrido (con batería)",
-  "off-grid": "Off-grid (autónomo)",
+  "on-grid": "Sin batería",
+  hibrido: "Con batería (híbrido)",
+  "off-grid": "Autónomo (off-grid)",
 };
 
 export function Calculator() {
   const [inputMode, setInputMode] = useState<InputMode>("factura");
   const [billInput, setBillInput] = useState("120000");
   const [selectedAppliances, setSelectedAppliances] = useState<string[]>([]);
-  const [isCommercial, setIsCommercial] = useState(false);
+  const [clientType, setClientType] = useState<(typeof CLIENT_TYPE_OPTIONS)[number]["value"]>("residencial");
   const [systemType, setSystemType] = useState<SystemType>("on-grid");
+  const [location, setLocation] = useState<string>("");
+  const [budget, setBudget] = useState<string>("");
 
-  // Lectura de ?admin=1 vía useSyncExternalStore: evita el mismatch de
-  // hidratación que tendría un useState leído desde window en un effect.
   const isAdminUrl = useSyncExternalStore(subscribeNoop, getIsAdminSnapshot, getIsAdminServerSnapshot);
   const [adminUnlocked, setAdminUnlocked] = useState(false);
   const [adminPasswordInput, setAdminPasswordInput] = useState("");
   const [adminError, setAdminError] = useState(false);
 
+  const isCommercial = clientType === "comercial";
   const billColones = Number(billInput.replace(/[^\d]/g, "")) || 0;
 
   const consumption = useMemo(() => {
@@ -80,202 +82,266 @@ export function Calculator() {
     }
   }
 
+  const budgetLabel = BUDGET_RANGE_OPTIONS.find((b) => b.value === budget)?.label;
+
   const whatsappSummary = [
     "Hola VoltTech, hice un estimado en la calculadora del sitio:",
     inputMode === "factura"
       ? `Factura mensual aprox.: ₡${billColones.toLocaleString("es-CR")}`
-      : `Equipos seleccionados: ${selectedAppliances
-          .map((k) => APPLIANCE_CHECKLIST.find((a) => a.key === k)?.label)
-          .filter(Boolean)
-          .join(", ") || "ninguno aún"}`,
-    `Tipo de sistema: ${SYSTEM_TYPE_LABELS[systemType]}`,
+      : `Equipos seleccionados: ${
+          selectedAppliances.map((k) => APPLIANCE_CHECKLIST.find((a) => a.key === k)?.label).filter(Boolean).join(", ") ||
+          "ninguno aún"
+        }`,
+    `Tipo de cliente: ${CLIENT_TYPE_OPTIONS.find((c) => c.value === clientType)?.label}`,
+    location ? `Ubicación: ${location}` : null,
+    `Sistema: ${SYSTEM_TYPE_LABELS[systemType]}`,
+    budgetLabel ? `Presupuesto aproximado: ${budgetLabel}` : null,
     `Rango estimado: ${formatColones(quote.clientPrice.lowColones)} – ${formatColones(quote.clientPrice.highColones)} (estimado preliminar)`,
     "Adjunto mi factura eléctrica real para afinar la cotización.",
-  ].join("\n");
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   return (
-    <section id="calculadora" className="bg-cream py-20 sm:py-28">
-      <div className="mx-auto max-w-5xl px-5 sm:px-8">
-        <PillBadge tone="green">Calculadora de cotización</PillBadge>
-        <h2 className="mt-5 max-w-2xl text-balance text-3xl font-black tracking-tight text-forest sm:text-4xl">
-          Un estimado preliminar en minutos, no un compromiso
-        </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
-          El resultado es siempre un <strong>rango estimado preliminar, sujeto a confirmación con tu
-          factura real</strong> — los bloques tarifarios y cargos fijos varían según tu proveedor (ICE,
-          CNFL, Coopelesca, ESPH) y no se pueden derivar con precisión solo del monto que pagás.
-        </p>
+    <section id="calculadora" className="bg-bg py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <Reveal>
+          <PillBadge tone="energy">Calculadora de cotización</PillBadge>
+        </Reveal>
+        <Reveal delay={60}>
+          <h2 className="mt-5 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-text sm:text-4xl">
+            Un estimado preliminar en minutos, no un compromiso
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-muted">
+            El resultado es siempre un <strong className="text-text">rango estimado preliminar, sujeto a
+            confirmación con tu factura real</strong> — los bloques tarifarios y cargos fijos varían según tu
+            proveedor (ICE, CNFL, Coopelesca, ESPH) y no se pueden derivar con precisión solo del monto que pagás.
+          </p>
+        </Reveal>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-green/20 bg-white shadow-sm">
-          {/* Selector de modo de entrada */}
-          <div className="grid grid-cols-2 border-b border-green/15">
-            {(
-              [
-                ["factura", "Tengo factura eléctrica"],
-                ["checklist", "No tengo electricidad todavía"],
-              ] as const
-            ).map(([mode, label]) => (
-              <button
-                key={mode}
-                type="button"
-                onClick={() => setInputMode(mode)}
-                className={cn(
-                  "px-4 py-4 text-sm font-bold transition-colors",
-                  inputMode === mode ? "bg-forest text-cream" : "bg-white text-ink-soft hover:bg-cream",
-                )}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+        <Reveal delay={140}>
+          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-surface">
+            <div className="grid grid-cols-2 border-b border-border">
+              {(
+                [
+                  ["factura", "Tengo factura eléctrica"],
+                  ["checklist", "No tengo electricidad todavía"],
+                ] as const
+              ).map(([mode, label]) => (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => setInputMode(mode)}
+                  className={cn(
+                    "px-4 py-4 text-sm font-semibold transition-colors",
+                    inputMode === mode ? "bg-accent text-accent-ink" : "text-text-muted hover:bg-white/[0.03]",
+                  )}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
 
-          <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-2">
-            {/* Inputs */}
-            <div>
-              {inputMode === "factura" ? (
+            <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-2">
+              {/* Inputs */}
+              <div className="space-y-6">
                 <div>
-                  <label htmlFor="bill" className="text-sm font-bold text-forest">
-                    Monto mensual de tu factura eléctrica (₡)
-                  </label>
-                  <input
-                    id="bill"
-                    type="text"
-                    inputMode="numeric"
-                    value={billInput}
-                    onChange={(e) => setBillInput(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-green/25 px-4 py-3 text-lg font-bold text-forest outline-none focus:border-gold"
-                    placeholder="120000"
-                  />
-                  <p className="mt-2 text-xs text-ink-soft/70">
-                    Consumo estimado: ~{Math.round(consumption.monthlyKwh)} kWh/mes (estimado, no exacto).
-                  </p>
-                </div>
-              ) : (
-                <div>
-                  <p className="text-sm font-bold text-forest">Marcá los equipos que tenés o vas a tener</p>
-                  <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                    {APPLIANCE_CHECKLIST.map((item) => (
-                      <label
-                        key={item.key}
+                  <p className="text-sm font-semibold text-text">Tipo de cliente</p>
+                  <div className="mt-2 flex gap-2">
+                    {CLIENT_TYPE_OPTIONS.map((opt) => (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => setClientType(opt.value)}
                         className={cn(
-                          "flex cursor-pointer items-center gap-2.5 rounded-xl border px-3 py-2.5 text-sm",
-                          selectedAppliances.includes(item.key)
-                            ? "border-gold bg-gold/10 text-forest"
-                            : "border-green/20 text-ink-soft",
+                          "rounded-full border px-4 py-2 text-xs font-semibold transition-colors",
+                          clientType === opt.value
+                            ? "border-accent bg-accent text-accent-ink"
+                            : "border-border-strong text-text-muted hover:text-text",
                         )}
                       >
-                        <input
-                          type="checkbox"
-                          checked={selectedAppliances.includes(item.key)}
-                          onChange={() => toggleAppliance(item.key)}
-                          className="h-4 w-4 accent-[#1E6B4F]"
-                        />
-                        {item.label}
-                      </label>
+                        {opt.label}
+                      </button>
                     ))}
                   </div>
-                  <p className="mt-2 text-xs text-ink-soft/70">
-                    Consumo estimado: ~{Math.round(consumption.monthlyKwh)} kWh/mes (patrón de industria, no
-                    cotización específica de CR).
-                  </p>
                 </div>
-              )}
 
-              <label className="mt-5 flex items-center gap-2.5 text-sm font-semibold text-ink-soft">
-                <input
-                  type="checkbox"
-                  checked={isCommercial}
-                  onChange={(e) => setIsCommercial(e.target.checked)}
-                  className="h-4 w-4 accent-[#1E6B4F]"
-                />
-                Es para un negocio / comercio
-              </label>
+                {inputMode === "factura" ? (
+                  <div>
+                    <label htmlFor="bill" className="text-sm font-semibold text-text">
+                      Monto mensual de tu factura eléctrica (₡)
+                    </label>
+                    <input
+                      id="bill"
+                      type="text"
+                      inputMode="numeric"
+                      value={billInput}
+                      onChange={(e) => setBillInput(e.target.value)}
+                      className="mt-2 w-full rounded-xl border border-border-strong bg-bg px-4 py-3 text-lg font-semibold text-text outline-none focus:border-accent"
+                      placeholder="120000"
+                    />
+                    <p className="mt-2 text-xs text-text-faint">
+                      Consumo estimado: ~{Math.round(consumption.monthlyKwh)} kWh/mes (estimado, no exacto).
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-sm font-semibold text-text">Marcá los equipos que tenés o vas a tener</p>
+                    <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                      {APPLIANCE_CHECKLIST.map((item) => (
+                        <label
+                          key={item.key}
+                          className={cn(
+                            "flex cursor-pointer items-center gap-2.5 rounded-xl border px-3 py-2.5 text-sm transition-colors",
+                            selectedAppliances.includes(item.key)
+                              ? "border-accent bg-accent/10 text-text"
+                              : "border-border-strong text-text-muted",
+                          )}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={selectedAppliances.includes(item.key)}
+                            onChange={() => toggleAppliance(item.key)}
+                            className="h-4 w-4 accent-[#2fd6d1]"
+                          />
+                          {item.label}
+                        </label>
+                      ))}
+                    </div>
+                    <p className="mt-2 text-xs text-text-faint">
+                      Consumo estimado: ~{Math.round(consumption.monthlyKwh)} kWh/mes (patrón de industria, no
+                      cotización específica de CR).
+                    </p>
+                  </div>
+                )}
 
-              <div className="mt-6">
-                <p className="text-sm font-bold text-forest">Tipo de sistema</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {(Object.keys(SYSTEM_TYPE_LABELS) as SystemType[]).map((type) => (
-                    <button
-                      key={type}
-                      type="button"
-                      onClick={() => setSystemType(type)}
-                      className={cn(
-                        "rounded-full border-2 px-4 py-2 text-xs font-bold transition-colors",
-                        systemType === type
-                          ? "border-forest bg-forest text-cream"
-                          : "border-green/50 bg-white text-ink-soft hover:border-forest",
-                      )}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="location" className="text-sm font-semibold text-text">
+                      Ubicación
+                    </label>
+                    <select
+                      id="location"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      className="mt-2 w-full rounded-xl border border-border-strong bg-bg px-3 py-2.5 text-sm text-text outline-none focus:border-accent"
                     >
-                      {SYSTEM_TYPE_LABELS[type]}
-                    </button>
-                  ))}
+                      <option value="">Seleccioná tu zona</option>
+                      {COVERAGE_AREAS.map((area) => (
+                        <option key={area} value={area}>
+                          {area}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="budget" className="text-sm font-semibold text-text">
+                      Presupuesto aproximado
+                    </label>
+                    <select
+                      id="budget"
+                      value={budget}
+                      onChange={(e) => setBudget(e.target.value)}
+                      className="mt-2 w-full rounded-xl border border-border-strong bg-bg px-3 py-2.5 text-sm text-text outline-none focus:border-accent"
+                    >
+                      <option value="">Opcional</option>
+                      {BUDGET_RANGE_OPTIONS.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold text-text">¿Necesitás batería de respaldo?</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {(Object.keys(SYSTEM_TYPE_LABELS) as SystemType[]).map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => setSystemType(type)}
+                        className={cn(
+                          "rounded-full border px-4 py-2 text-xs font-semibold transition-colors",
+                          systemType === type
+                            ? "border-energy bg-energy text-energy-ink"
+                            : "border-border-strong text-text-muted hover:text-text",
+                        )}
+                      >
+                        {SYSTEM_TYPE_LABELS[type]}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Resultado */}
-            <div className="rounded-2xl bg-forest p-6 text-cream">
-              {!viability.isViable ? (
-                <div className="rounded-xl border border-gold/40 bg-gold/10 p-4">
-                  <p className="text-sm font-bold text-gold">Podría no ser rentable todavía</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-cream/80">{viability.reason}</p>
-                </div>
-              ) : (
-                <>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-gold/80">
-                    Rango estimado preliminar
-                  </p>
-                  <p className="mt-2 text-2xl font-black leading-tight text-cream sm:text-3xl">
-                    {formatColones(quote.clientPrice.lowColones)}
-                    <span className="mx-1 text-gold">–</span>
-                    {formatColones(quote.clientPrice.highColones)}
-                  </p>
-                  <p className="mt-1 text-xs text-cream/60">
-                    Sistema estimado: ~{quote.estimatedKw.toFixed(1)} kW · {SYSTEM_TYPE_LABELS[systemType]}
-                  </p>
+              {/* Resultado */}
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-bg-elevated p-6">
+                {!viability.isViable ? (
+                  <div className="rounded-xl border border-warn/40 bg-warn/10 p-4">
+                    <p className="text-sm font-semibold text-warn">Podría no ser rentable todavía</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-text-muted">{viability.reason}</p>
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-text-faint">
+                      Rango estimado preliminar
+                    </p>
+                    <p className="tabular-nums mt-2 text-2xl font-semibold leading-tight text-text sm:text-3xl">
+                      {formatColones(quote.clientPrice.lowColones)}
+                      <span className="mx-1 text-accent">–</span>
+                      {formatColones(quote.clientPrice.highColones)}
+                    </p>
+                    <p className="mt-1 text-xs text-text-faint">
+                      Sistema estimado: ~{quote.estimatedKw.toFixed(1)} kW · {SYSTEM_TYPE_LABELS[systemType]}
+                    </p>
 
-                  {savings && (
-                    <div className="mt-5 border-t border-cream/15 pt-4">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-gold/80">
-                        Ahorro estimado a 5 años
-                      </p>
-                      <p className="mt-1.5 text-lg font-bold text-cream">
-                        {formatColones(savings.lowColones)} – {formatColones(savings.highColones)}
-                      </p>
-                      <p className="mt-1 text-[11px] leading-snug text-cream/55">
-                        Rango conservador, no una cifra única — las tarifas 2026 bajaron entre 4,9% y 16,4%
-                        según distribuidora, así que el valor real de VoltTech está en la independencia y el
-                        respaldo, no solo en el ahorro mensual.
-                      </p>
-                    </div>
-                  )}
+                    {savings && (
+                      <div className="mt-5 border-t border-border pt-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-text-faint">
+                          Ahorro estimado a 5 años
+                        </p>
+                        <p className="tabular-nums mt-1.5 text-lg font-semibold text-energy">
+                          {formatColones(savings.lowColones)} – {formatColones(savings.highColones)}
+                        </p>
+                        <p className="mt-1 text-[11px] leading-snug text-text-faint">
+                          Rango conservador, no una cifra única — las tarifas 2026 bajaron entre 4,9% y 16,4%
+                          según distribuidora, así que el valor real de VoltTech está en la independencia y el
+                          respaldo, no solo en el ahorro mensual.
+                        </p>
+                      </div>
+                    )}
 
-                  <a
-                    href={whatsappHref(whatsappSummary)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 flex w-full items-center justify-center rounded-full bg-gold px-6 py-3.5 text-sm font-bold text-forest transition-colors hover:bg-gold-bright"
-                  >
-                    Enviar este estimado por WhatsApp
-                  </a>
-                  <p className="mt-2 text-center text-[11px] text-cream/50">
-                    Te vamos a pedir tu factura eléctrica real para confirmar el precio final.
-                  </p>
-                </>
-              )}
+                    <a
+                      href={whatsappHref(whatsappSummary)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 flex w-full items-center justify-center rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-strong"
+                    >
+                      Enviar este estimado por WhatsApp
+                    </a>
+                    <p className="mt-2 text-center text-[11px] text-text-faint">
+                      Próximo paso recomendado: adjuntá tu factura eléctrica real para confirmar el precio final.
+                    </p>
+                  </>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <p className="mt-4 text-xs text-ink-soft/60">
-          Umbrales de referencia: el solar suele activarse sobre {MIN_VIABLE_RESIDENTIAL_KWH_MONTH} kWh/mes
-          en residencial y {MIN_VIABLE_COMMERCIAL_KWH_YEAR.toLocaleString("es-CR")} kWh/año en comercial.
+        <p className="mt-4 text-xs text-text-faint">
+          Umbrales de referencia: el solar suele activarse sobre {MIN_VIABLE_RESIDENTIAL_KWH_MONTH} kWh/mes en
+          residencial y {MIN_VIABLE_COMMERCIAL_KWH_YEAR.toLocaleString("es-CR")} kWh/año en comercial.
         </p>
 
         {/* Vista interna/admin — sin seguridad robusta, solo para demos internas */}
         {isAdminUrl && (
-          <div className="mt-10 rounded-3xl border-2 border-dashed border-gold/50 bg-forest/5 p-6">
-            <p className="text-xs font-bold uppercase tracking-wide text-gold">
+          <div className="mt-10 rounded-3xl border-2 border-dashed border-warn/40 bg-warn/[0.04] p-6">
+            <p className="text-xs font-semibold uppercase tracking-wide text-warn">
               Vista interna (?admin=1) — no usar como control de acceso real
             </p>
 
@@ -286,12 +352,12 @@ export function Calculator() {
                   value={adminPasswordInput}
                   onChange={(e) => setAdminPasswordInput(e.target.value)}
                   placeholder="Password de demo"
-                  className="w-full rounded-xl border border-green/25 px-3 py-2 text-sm outline-none focus:border-gold"
+                  className="w-full rounded-xl border border-border-strong bg-bg px-3 py-2 text-sm text-text outline-none focus:border-accent"
                 />
                 <button
                   type="button"
                   onClick={unlockAdmin}
-                  className="rounded-xl bg-forest px-4 py-2 text-sm font-bold text-cream"
+                  className="rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-accent-ink"
                 >
                   Ver desglose
                 </button>
@@ -307,24 +373,24 @@ export function Calculator() {
                 )}
                 <AdminRow label="Subtotal antes de margen" value={quote.subtotalBeforeMargin} />
                 <AdminRow label={`Margen VoltTech (${Math.round(MARGIN_RATE * 100)}% configurable)`} value={quote.marginAmount} />
-                <div className="sm:col-span-2 rounded-xl border border-gold bg-gold/15 p-4">
-                  <p className="text-xs font-bold uppercase tracking-wide text-forest">Precio final al cliente</p>
-                  <p className="mt-1 text-lg font-black text-forest">
+                <div className="rounded-xl border border-warn/40 bg-warn/10 p-4 sm:col-span-2">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-text">Precio final al cliente</p>
+                  <p className="mt-1 text-lg font-semibold text-text">
                     {formatColones(quote.clientPrice.lowColones)} – {formatColones(quote.clientPrice.highColones)}
                   </p>
                 </div>
-                <p className="text-xs text-ink-soft/70 sm:col-span-2">
+                <p className="text-xs text-text-faint sm:col-span-2">
                   Esto es lo que la calculadora captura automáticamente por cotización, comparado con armar
                   cada proforma a mano — el margen queda visible aquí solo para uso interno de VoltTech, y en
                   la vista pública el cliente nunca ve este desglose.
                 </p>
               </div>
             )}
-            {adminError && <p className="mt-2 text-xs font-semibold text-red-600">Password incorrecto.</p>}
+            {adminError && <p className="mt-2 text-xs font-semibold text-red-400">Password incorrecto.</p>}
           </div>
         )}
 
-        <p className="mt-6 text-center text-xs text-ink-soft/50">
+        <p className="mt-6 text-center text-xs text-text-faint">
           ¿Preferís hablar directo? WhatsApp {SITE.whatsapp} · {SITE.email}
         </p>
       </div>
@@ -334,9 +400,9 @@ export function Calculator() {
 
 function AdminRow({ label, value }: { label: string; value: { lowColones: number; highColones: number } }) {
   return (
-    <div className="rounded-xl border border-green/20 bg-white p-4">
-      <p className="text-xs font-semibold text-ink-soft/70">{label}</p>
-      <p className="mt-1 font-bold text-forest">
+    <div className="rounded-xl border border-border bg-bg p-4">
+      <p className="text-xs font-semibold text-text-faint">{label}</p>
+      <p className="mt-1 font-semibold text-text">
         {formatColones(value.lowColones)} – {formatColones(value.highColones)}
       </p>
     </div>

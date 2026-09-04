@@ -40,7 +40,7 @@ export function ContactForm() {
   }, []);
 
   const inputClass =
-    "w-full rounded-xl border border-green/25 bg-white px-4 py-3 text-ink placeholder:text-ink-soft/50 transition-colors focus:border-gold focus:outline-none";
+    "w-full rounded-xl border border-border-strong bg-bg px-4 py-3 text-text placeholder:text-text-faint transition-colors focus:border-accent focus:outline-none";
 
   function updateField<K extends keyof typeof rawDefaults>(field: K, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }));
@@ -106,16 +106,16 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center rounded-3xl border border-green/20 bg-white p-10 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-green text-cream">
+      <div className="flex flex-col items-center rounded-3xl border border-border bg-surface p-10 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-energy text-energy-ink">
           <CheckIcon className="h-6 w-6" />
         </span>
-        <h3 className="mt-5 text-xl font-bold text-forest">Recibimos tu solicitud</h3>
-        <p className="mt-2 max-w-sm text-sm leading-relaxed text-ink-soft">
+        <h3 className="mt-5 text-xl font-semibold text-text">Recibimos tu solicitud</h3>
+        <p className="mt-2 max-w-sm text-sm leading-relaxed text-text-muted">
           Te vamos a contactar por teléfono o WhatsApp para revisar tu caso — esto no es una cotización
           automática, es el primer paso para preparar una real.
         </p>
-        <button type="button" onClick={handleReset} className="mt-6 text-sm font-bold text-green underline">
+        <button type="button" onClick={handleReset} className="mt-6 text-sm font-semibold text-accent underline">
           Enviar otra solicitud
         </button>
       </div>
@@ -126,7 +126,7 @@ export function ContactForm() {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="relative flex flex-col gap-5 rounded-3xl border border-green/20 bg-white p-6 sm:p-8"
+      className="relative flex flex-col gap-5 rounded-3xl border border-border bg-surface p-6 sm:p-8"
     >
       <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
         <label htmlFor="website">No completar este campo</label>
@@ -212,7 +212,7 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
           {serverError ?? "No pudimos enviar tu solicitud. Intenta de nuevo."}
         </div>
       )}
@@ -221,12 +221,12 @@ export function ContactForm() {
         type="submit"
         disabled={status === "submitting"}
         className={cn(
-          "mt-1 inline-flex items-center justify-center rounded-full bg-forest px-8 py-3.5 text-sm font-bold text-cream transition-colors hover:bg-green disabled:cursor-not-allowed disabled:opacity-60",
+          "mt-1 inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-60",
         )}
       >
         {status === "submitting" ? "Enviando…" : "Solicitar contacto"}
       </button>
-      <p className="text-center text-xs text-ink-soft/60">
+      <p className="text-center text-xs text-text-faint">
         Esto no genera una cotización automática — es el primer paso para preparar una real, con tu
         factura eléctrica.
       </p>
@@ -249,12 +249,12 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={htmlFor} className="text-sm font-bold text-forest">
+      <label htmlFor={htmlFor} className="text-sm font-semibold text-text">
         {label}
       </label>
       {children}
-      {hint && !error ? <span className="text-xs text-ink-soft/60">{hint}</span> : null}
-      {error ? <span className="text-xs font-semibold text-red-600">{error}</span> : null}
+      {hint && !error ? <span className="text-xs text-text-faint">{hint}</span> : null}
+      {error ? <span className="text-xs font-semibold text-red-400">{error}</span> : null}
     </div>
   );
 }

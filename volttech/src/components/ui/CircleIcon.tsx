@@ -3,23 +3,23 @@ import type { ReactNode } from "react";
 
 export function CircleIcon({
   children,
-  tone = "gold",
+  tone = "accent",
   className,
 }: {
   children: ReactNode;
-  tone?: "gold" | "cream" | "forest";
+  tone?: "accent" | "energy" | "surface";
   className?: string;
 }) {
   const tones = {
-    gold: "bg-gold text-forest",
-    cream: "bg-cream text-forest",
-    forest: "bg-forest text-gold border border-gold/30",
+    accent: "bg-accent text-accent-ink",
+    energy: "bg-energy text-energy-ink",
+    surface: "bg-surface text-accent border border-border-strong",
   } as const;
 
   return (
     <div
       className={cn(
-        "flex h-14 w-14 shrink-0 items-center justify-center rounded-full",
+        "flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl",
         tones[tone],
         className,
       )}

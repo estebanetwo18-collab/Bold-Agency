@@ -13,6 +13,24 @@ captura de leads vía formulario de contacto.
 > `package.json`, `node_modules`, etc.) — no comparte código ni build con
 > el sitio de BOLD Agency que vive en la raíz del repo.
 
+## Dirección visual (rediseño)
+
+Rediseño completo pedido por el cliente: identidad "tech premium", minimalista
+y dinámica — pivote deliberado desde la paleta verde-bosque/dorado original.
+
+- **Paleta**: fondo casi negro con matiz azul (`--bg`), turquesa/azul eléctrico
+  de acento (`--accent`) y verde energético para datos de ahorro (`--energy`).
+  Tokens completos en `src/app/globals.css`.
+- **Tipografía**: Space Grotesk (headings) + Inter (body), vía `next/font/google`.
+- **Movimiento**: entrada progresiva al hacer scroll (`Reveal`), contadores
+  animados (`AnimatedCounter`), parallax sutil en orbes decorativos
+  (`ParallaxGlow`), línea de proceso animada — todo sin dependencias nuevas
+  (IntersectionObserver + CSS) y respetando `prefers-reduced-motion`.
+- **Estructura**: Hero → Propuesta de valor (absorbe la narrativa de "Nosotros")
+  → Servicios (segmentado Residencial/Comercial) → Calculadora → Proceso →
+  Resultados y confianza (métricas + garantías + marcas, antes 3 secciones
+  separadas) → Casos de éxito → Testimonios → FAQ → Contacto → CTA final.
+
 ## Stack
 
 - **Next.js 16** (App Router, React 19, Turbopack)
@@ -49,16 +67,19 @@ volttech/
       privacidad/, terminos/ # páginas legales (plantillas editables)
       sitemap.ts, robots.ts
     components/
-      sections/               # Hero, Stats, About, Services, Brands,
-                               # Warranties, Process, Calculator, CaseStudy,
-                               # Testimonials, Faq, ContactSection, FinalCta
+      sections/               # Hero, ValueProposition, Services, Calculator,
+                               # Process, Results (métricas+garantías+marcas),
+                               # CaseStudy, Testimonials, Faq, ContactSection,
+                               # FinalCta
       forms/ContactForm.tsx    # formulario de contacto
       layout/                 # Header y Footer
-      ui/                     # PillBadge, CircleIcon, Accordion,
+      ui/                     # PillBadge, CircleIcon, Accordion, Reveal,
+                               # AnimatedCounter, ParallaxGlow,
                                # PlaceholderImage, WhatsAppButton, íconos
     lib/
       content.ts               # todo el copy del sitio, en un solo lugar
       pricing.ts                # motor de cálculo de la calculadora
+      motion.ts                 # hook usePrefersReducedMotion
       lead-schema.ts, lead-record.ts, lead-storage.ts, lead-webhook.ts,
       rate-limit.ts
 ```

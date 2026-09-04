@@ -1,6 +1,11 @@
-import { SERVICES, type ServiceKey } from "@/lib/content";
+"use client";
+
+import { useState } from "react";
+import { SERVICES, SERVICE_SEGMENTS, type ServiceKey, type ServiceSegment } from "@/lib/content";
 import { PillBadge } from "@/components/ui/PillBadge";
 import { CircleIcon } from "@/components/ui/CircleIcon";
+import { Reveal } from "@/components/ui/Reveal";
+import { cn } from "@/lib/cn";
 import {
   BoltIcon,
   CarIcon,
@@ -25,39 +30,68 @@ const ICONS: Record<ServiceKey, typeof SunIcon> = {
 };
 
 export function Services() {
-  return (
-    <section id="servicios" className="bg-forest py-20 text-cream sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <PillBadge tone="gold">Servicios</PillBadge>
-        <h2 className="mt-5 max-w-xl text-balance text-3xl font-black tracking-tight sm:text-4xl">
-          Todo lo eléctrico y solar, bajo un mismo equipo técnico
-        </h2>
+  const [segment, setSegment] = useState<ServiceSegment>("residencial");
+  const visibleServices = SERVICES.filter((s) => s.segments.includes(segment));
+  const activeSegment = SERVICE_SEGMENTS.find((s) => s.key === segment)!;
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => {
+  return (
+    <section id="servicios" className="bg-bg py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <Reveal>
+          <PillBadge tone="accent">Servicios</PillBadge>
+        </Reveal>
+        <Reveal delay={60}>
+          <h2 className="mt-5 max-w-xl text-balance text-3xl font-semibold tracking-tight text-text sm:text-4xl">
+            Todo lo eléctrico y solar, bajo un mismo equipo técnico
+          </h2>
+        </Reveal>
+
+        <Reveal delay={100}>
+          <div className="mt-9 inline-flex rounded-full border border-border bg-surface p-1">
+            {SERVICE_SEGMENTS.map((seg) => (
+              <button
+                key={seg.key}
+                type="button"
+                onClick={() => setSegment(seg.key)}
+                className={cn(
+                  "rounded-full px-5 py-2 text-sm font-semibold transition-colors",
+                  segment === seg.key ? "bg-accent text-accent-ink" : "text-text-muted hover:text-text",
+                )}
+              >
+                {seg.label}
+              </button>
+            ))}
+          </div>
+          <p className="mt-4 max-w-2xl text-sm text-text-muted">{activeSegment.description}</p>
+        </Reveal>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {visibleServices.map((service, i) => {
             const Icon = ICONS[service.key];
             return (
-              <div
-                key={service.key}
-                className={
-                  service.highlight
-                    ? "rounded-3xl border-2 border-gold bg-gold/10 p-6"
-                    : service.muted
-                      ? "rounded-3xl border border-cream/10 bg-cream/[0.03] p-6 opacity-80"
-                      : "rounded-3xl border border-cream/12 bg-charcoal/60 p-6"
-                }
-              >
-                {service.highlight && (
-                  <span className="mb-3 inline-block rounded-full bg-gold px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-forest">
-                    Nicho sin competencia mapeada
-                  </span>
-                )}
-                <CircleIcon tone={service.highlight ? "gold" : "cream"}>
-                  <Icon className="h-6 w-6" />
-                </CircleIcon>
-                <h3 className="mt-4 text-base font-bold text-cream">{service.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-cream/65">{service.description}</p>
-              </div>
+              <Reveal key={service.key} delay={i * 40}>
+                <div
+                  className={cn(
+                    "group h-full rounded-3xl border p-6 transition-colors",
+                    service.highlight
+                      ? "border-energy/30 bg-energy/[0.06] hover:border-energy/50"
+                      : service.muted
+                        ? "border-border bg-white/[0.02] opacity-80"
+                        : "border-border bg-surface hover:border-border-strong hover:bg-surface-hover",
+                  )}
+                >
+                  {service.highlight && (
+                    <span className="mb-3 inline-block rounded-full bg-energy px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-energy-ink">
+                      Nicho sin competencia mapeada
+                    </span>
+                  )}
+                  <CircleIcon tone={service.highlight ? "energy" : "surface"}>
+                    <Icon className="h-5 w-5" />
+                  </CircleIcon>
+                  <h3 className="mt-4 text-base font-semibold text-text">{service.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-muted">{service.description}</p>
+                </div>
+              </Reveal>
             );
           })}
         </div>

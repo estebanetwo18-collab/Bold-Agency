@@ -20,7 +20,7 @@ export function PlaceholderImage({
       aria-label={label}
       className={cn(
         aspect,
-        "relative flex w-full items-center justify-center overflow-hidden rounded-3xl border-2 border-dashed border-gold/40 bg-[repeating-linear-gradient(135deg,color-mix(in_srgb,var(--color-forest)_92%,transparent)_0px,color-mix(in_srgb,var(--color-forest)_92%,transparent)_14px,color-mix(in_srgb,var(--color-charcoal)_92%,transparent)_14px,color-mix(in_srgb,var(--color-charcoal)_92%,transparent)_28px)] p-6 text-center",
+        "placeholder-box relative flex w-full items-center justify-center overflow-hidden rounded-3xl p-6 text-center",
         className,
       )}
     >
@@ -28,7 +28,7 @@ export function PlaceholderImage({
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
-          className="h-9 w-9 text-gold/70"
+          className="h-9 w-9 text-accent/70"
           fill="none"
           stroke="currentColor"
           strokeWidth={1.5}
@@ -37,7 +37,7 @@ export function PlaceholderImage({
           <circle cx="8.5" cy="9.5" r="1.5" />
           <path d="M21 16.5 15.5 11 6 20" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <p className="max-w-[22ch] text-xs font-semibold uppercase tracking-wide text-cream/80">
+        <p className="max-w-[22ch] text-xs font-semibold uppercase tracking-wide text-text-muted">
           {label}
         </p>
       </div>

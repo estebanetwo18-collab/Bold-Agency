@@ -1,31 +1,84 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { PROCESS } from "@/lib/content";
 import { PillBadge } from "@/components/ui/PillBadge";
+import { Reveal } from "@/components/ui/Reveal";
+import { cn } from "@/lib/cn";
 
 export function Process() {
-  return (
-    <section className="bg-forest py-20 text-cream sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <PillBadge tone="gold">{PROCESS.eyebrow}</PillBadge>
-        <h2 className="mt-5 max-w-2xl text-balance text-3xl font-black tracking-tight sm:text-4xl">
-          {PROCESS.title}
-        </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-cream/70">{PROCESS.intro}</p>
+  const containerRef = useRef<HTMLOListElement>(null);
+  const [lineVisible, setLineVisible] = useState(false);
 
-        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setLineVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className="bg-bg py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <Reveal>
+          <PillBadge tone="accent">{PROCESS.eyebrow}</PillBadge>
+        </Reveal>
+        <Reveal delay={60}>
+          <h2 className="mt-5 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-text sm:text-4xl">
+            {PROCESS.title}
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-muted">{PROCESS.intro}</p>
+        </Reveal>
+
+        <ol ref={containerRef} className="relative mt-16 grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-6">
+          {/* línea vertical (móvil) */}
+          <div
+            className={cn(
+              "process-line-vertical absolute left-[15px] top-2 h-[calc(100%-1rem)] w-px bg-border-strong sm:hidden",
+              lineVisible && "is-visible",
+            )}
+            aria-hidden="true"
+          />
+          {/* línea horizontal (desktop) */}
+          <div
+            className={cn(
+              "process-line absolute left-[8.3%] right-[8.3%] top-[15px] hidden h-px bg-border-strong lg:block",
+              lineVisible && "is-visible",
+            )}
+            aria-hidden="true"
+          />
+
           {PROCESS.steps.map((step, i) => (
-            <li key={step.title} className="rounded-3xl border border-cream/12 bg-charcoal/60 p-6">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold text-sm font-black text-forest">
-                {i + 1}
-              </span>
-              <h3 className="mt-4 text-base font-bold text-cream">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-cream/65">{step.description}</p>
-            </li>
+            <Reveal as="li" key={step.title} delay={i * 90} className="relative pl-10 sm:pl-0">
+              <div className="flex items-center gap-3 sm:flex-col sm:items-start sm:gap-0">
+                <span className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-xs font-bold text-accent-ink sm:relative sm:mb-4">
+                  {i + 1}
+                </span>
+              </div>
+              <h3 className="text-sm font-semibold text-text">{step.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-text-muted">{step.description}</p>
+            </Reveal>
           ))}
         </ol>
 
-        <div className="mt-10 rounded-2xl border border-gold/25 bg-gold/10 p-6">
-          <p className="text-sm leading-relaxed text-cream/85">{PROCESS.transparencyNote}</p>
-        </div>
+        <Reveal delay={120}>
+          <div className="mt-12 rounded-2xl border border-accent/25 bg-accent/[0.06] p-6">
+            <p className="text-sm leading-relaxed text-text-muted">{PROCESS.transparencyNote}</p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
