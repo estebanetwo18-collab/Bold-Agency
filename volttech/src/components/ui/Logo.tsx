@@ -1,24 +1,23 @@
 import { cn } from "@/lib/cn";
 
 /**
- * Isotipo VolTech: panel solar en perspectiva (cuatro celdas rotadas 45°)
- * con la V de "Volt" en el espacio negativo central. Recreado en SVG a
- * partir del Manual de Marca v1.0 (2026) — no se dispone del archivo
- * vectorial original (LOGOS_INDIVIDUALES.ai), así que esta es una
- * reconstrucción fiel a la geometría y paleta documentadas ahí.
+ * Isotipo VolTech: 4 rombos de esquina redondeada agrupados en cruz, con
+ * la "V" de "Volt" formada en el espacio negativo central. Geometría y
+ * colores extraídos por muestreo de píxeles del isotipo oficial del
+ * Manual de Marca v1.0 (2026) — no se dispone del archivo vectorial
+ * original (LOGOS_INDIVIDUALES.ai). Mapeo de color verificado: arriba y
+ * abajo en Verde Brote, izquierda y derecha en Verde Hoja.
  */
 export function LogoMark({ className, tone = "color" }: { className?: string; tone?: "color" | "light" }) {
-  const light = tone === "light" ? "#ffffff" : "var(--verde-brote)";
-  const lightSoft = tone === "light" ? "rgba(255,255,255,0.92)" : "var(--verde-menta)";
-  const dark = tone === "light" ? "rgba(255,255,255,0.55)" : "var(--verde-bosque)";
-  const darkAlt = tone === "light" ? "rgba(255,255,255,0.7)" : "var(--verde-hoja)";
+  const brightGreen = tone === "light" ? "#ffffff" : "var(--verde-brote)";
+  const darkGreen = tone === "light" ? "rgba(255,255,255,0.55)" : "var(--verde-hoja)";
 
   return (
     <svg viewBox="0 0 100 100" className={cn("h-8 w-8", className)} aria-hidden="true">
-      <polygon points="50,10 64,26 50,42 36,26" fill={light} />
-      <polygon points="14,50 30,36 46,50 30,64" fill={dark} />
-      <polygon points="54,50 70,36 86,50 70,64" fill={darkAlt} />
-      <polygon points="50,58 62,70 50,90 38,70" fill={lightSoft} />
+      <rect x="37.5" y="12.5" width="25" height="25" rx="5.5" fill={brightGreen} transform="rotate(45 50 25)" />
+      <rect x="38.5" y="61.5" width="23" height="23" rx="5" fill={brightGreen} transform="rotate(45 50 73)" />
+      <rect x="12.5" y="37.5" width="25" height="25" rx="5.5" fill={darkGreen} transform="rotate(45 25 50)" />
+      <rect x="62.5" y="37.5" width="25" height="25" rx="5.5" fill={darkGreen} transform="rotate(45 75 50)" />
     </svg>
   );
 }

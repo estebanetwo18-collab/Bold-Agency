@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState, useSyncExternalStore } from "react";
-import { PillBadge } from "@/components/ui/PillBadge";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 import { BUDGET_RANGE_OPTIONS, CLIENT_TYPE_OPTIONS, COVERAGE_AREAS, SITE, whatsappHref } from "@/lib/content";
@@ -103,26 +102,33 @@ export function Calculator() {
     .join("\n");
 
   return (
-    <section id="calculadora" className="bg-bg py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+    <section id="calculadora" className="relative overflow-hidden bg-dark-bg py-20 sm:py-28">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "radial-gradient(ellipse 70% 55% at 85% 0%, rgba(79,203,119,.16), transparent 60%)" }}
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <PillBadge tone="energy">Calculadora de cotización</PillBadge>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white">
+            Calculadora de cotización
+          </span>
         </Reveal>
         <Reveal delay={60}>
-          <h2 className="mt-5 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-text sm:text-4xl">
+          <h2 className="mt-5 max-w-2xl text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Un estimado preliminar en minutos, no un compromiso
           </h2>
         </Reveal>
         <Reveal delay={100}>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-muted">
-            El resultado es siempre un <strong className="text-text">rango estimado preliminar, sujeto a
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-dark-text-muted">
+            El resultado es siempre un <strong className="text-white">rango estimado preliminar, sujeto a
             confirmación con tu factura real</strong> — los bloques tarifarios y cargos fijos varían según tu
             proveedor (ICE, CNFL, Coopelesca, ESPH) y no se pueden derivar con precisión solo del monto que pagás.
           </p>
         </Reveal>
 
         <Reveal delay={140}>
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-surface">
+          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-surface shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
             <div className="grid grid-cols-2 border-b border-border">
               {(
                 [
@@ -333,7 +339,7 @@ export function Calculator() {
           </div>
         </Reveal>
 
-        <p className="mt-4 text-xs text-text-faint">
+        <p className="mt-4 text-xs text-dark-text-muted">
           Umbrales de referencia: el solar suele activarse sobre {MIN_VIABLE_RESIDENTIAL_KWH_MONTH} kWh/mes en
           residencial y {MIN_VIABLE_COMMERCIAL_KWH_YEAR.toLocaleString("es-CR")} kWh/año en comercial.
         </p>
@@ -390,7 +396,7 @@ export function Calculator() {
           </div>
         )}
 
-        <p className="mt-6 text-center text-xs text-text-faint">
+        <p className="mt-6 text-center text-xs text-dark-text-muted">
           ¿Preferís hablar directo? WhatsApp {SITE.whatsapp} · {SITE.email}
         </p>
       </div>
