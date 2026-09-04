@@ -1,33 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  /* Sistema de diseño "tech premium" — negro/azul muy oscuro de base,
-     neutros fríos, verde energético y turquesa/azul eléctrico de acento.
-     (Pivote deliberado desde la paleta verde-bosque/dorado original, a
-     pedido explícito del cliente: "tecnología, innovación, modernidad".) */
-  --bg: #060a10; /* fondo base, casi negro con matiz azul */
-  --bg-elevated: #0b1119; /* paneles ligeramente más claros que el fondo */
-  --surface: #101822; /* tarjetas */
-  --surface-hover: #141e2b;
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  /* Paleta oficial del Manual de Marca VolTech v1.0 (2026). Ver
+     src/components/ui/Logo.tsx para el isotipo y src/lib/content.ts
+     para el copy. Tema claro a pedido explícito del cliente. */
+  --verde-bosque: #14532d; /* Primario */
+  --verde-hoja: #1e7a3c;
+  --verde-senal: #2e9e4f;
+  --verde-brote: #4fcb77;
+  --verde-menta: #7ed09a;
+  --amarillo-sol: #ffcb47; /* Acento — reservado para llamados a la acción */
+  --amarillo-sol-strong: #f3b930;
+  --crema: #eceae4; /* Fondo */
+  --verde-bruma: #f4f8f3; /* Fondo */
+  --carbon: #4a4636; /* Texto */
 
-  --paper: #f6f8fa; /* neutro claro, usado con moderación (formularios) */
-  --ink: #0a0e14;
+  --bg: var(--verde-bruma);
+  --bg-alt: var(--crema);
+  --surface: #ffffff;
+  --surface-hover: #f6f9f5;
+  --border: rgba(20, 83, 45, 0.13);
+  --border-strong: rgba(20, 83, 45, 0.24);
 
-  --text: #f3f6f9;
-  --text-muted: #8fa0b3; /* gris con sesgo azul, no gris puro */
-  --text-faint: #5b6b7d;
+  --ink: var(--verde-bosque); /* headings */
+  --text: var(--carbon); /* cuerpo */
+  --text-muted: #7a7461;
+  --text-faint: #a39c87;
 
-  --accent: #2fd6d1; /* turquesa / azul eléctrico — marca y tecnología */
-  --accent-strong: #45e8e3;
-  --accent-ink: #04211f; /* texto sobre fondo --accent */
+  --accent: var(--verde-senal); /* interacción: links, iconos, tabs */
+  --accent-strong: var(--verde-hoja);
+  --accent-ink: #ffffff;
 
-  --energy: #35d68a; /* verde energético — ahorro, energía, datos positivos */
-  --energy-strong: #4be89f;
-  --energy-ink: #04231a;
+  --cta: var(--amarillo-sol); /* SOLO llamados a la acción */
+  --cta-strong: var(--amarillo-sol-strong);
+  --cta-ink: var(--verde-bosque);
 
-  --warn: #f2b84b; /* usado puntualmente para "estimado/pendiente", no decorativo */
+  --energy: var(--verde-hoja); /* datos positivos: ahorro, métricas */
+  --energy-bg: rgba(79, 203, 119, 0.16);
+  --energy-ink: #ffffff;
+
+  --warn: #b8862f; /* "estimado / pendiente" — deliberadamente distinto del amarillo de CTA */
+
+  --dark-bg: var(--verde-bosque);
+  --dark-text: var(--verde-bruma);
+  --dark-text-muted: rgba(244, 248, 243, 0.7);
+  --dark-border: rgba(244, 248, 243, 0.14);
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --nav-height: 4.75rem;
@@ -36,12 +53,12 @@
 
 @theme inline {
   --color-bg: var(--bg);
-  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-alt: var(--bg-alt);
+  --color-bg-elevated: var(--bg-alt); /* alias retro-compatible */
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
-  --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-text: var(--text);
   --color-text-muted: var(--text-muted);
@@ -49,13 +66,23 @@
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
   --color-accent-ink: var(--accent-ink);
+  --color-cta: var(--cta);
+  --color-cta-strong: var(--cta-strong);
+  --color-cta-ink: var(--cta-ink);
   --color-energy: var(--energy);
-  --color-energy-strong: var(--energy-strong);
+  --color-energy-bg: var(--energy-bg);
   --color-energy-ink: var(--energy-ink);
   --color-warn: var(--warn);
+  --color-dark-bg: var(--dark-bg);
+  --color-dark-text: var(--dark-text);
+  --color-dark-text-muted: var(--dark-text-muted);
+  --color-dark-border: var(--dark-border);
 
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Poppins única familia, per manual de marca: 800 titulares / 600
+     subtítulos / 400 cuerpo. La variable --font-poppins la inyecta
+     next/font/google en layout.tsx. */
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
@@ -64,7 +91,7 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -80,12 +107,14 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--verde-menta);
+  color: var(--verde-bosque);
 }
 
 :focus-visible {
@@ -99,8 +128,8 @@ h4 {
   top: -100%;
   left: 1rem;
   z-index: 100;
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--cta);
+  color: var(--cta-ink);
   padding: 0.75rem 1.25rem;
   font-weight: 700;
   border-radius: 999px;
@@ -119,21 +148,21 @@ h4 {
 
 .grid-overlay {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(20, 83, 45, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 83, 45, 0.06) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
 .glow-accent {
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 32%, transparent) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--verde-menta) 45%, transparent) 0%, transparent 70%);
 }
 
 .glow-energy {
-  background: radial-gradient(circle, color-mix(in srgb, var(--energy) 26%, transparent) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--verde-brote) 38%, transparent) 0%, transparent 70%);
 }
 
 .glass {
-  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -141,8 +170,8 @@ h4 {
 .placeholder-box {
   background-image: repeating-linear-gradient(
     135deg,
-    var(--bg-elevated) 0px,
-    var(--bg-elevated) 14px,
+    var(--bg-alt) 0px,
+    var(--bg-alt) 14px,
     var(--surface) 14px,
     var(--surface) 28px
   );

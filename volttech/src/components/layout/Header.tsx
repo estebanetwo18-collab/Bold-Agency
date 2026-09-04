@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { DEFAULT_WHATSAPP_MESSAGE, HEADER_CTA, NAV_LINKS, SITE, whatsappHref } from "@/lib/content";
+import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
 
 export function Header() {
@@ -20,19 +21,16 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,height] duration-300",
-        scrolled ? "border-b border-border bg-bg/85 backdrop-blur-xl" : "border-b border-transparent bg-transparent",
+        "fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,box-shadow,height] duration-300",
+        scrolled
+          ? "border-b border-border bg-surface/90 shadow-[0_1px_0_rgba(20,83,45,0.04)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent",
       )}
       style={{ height: scrolled ? "var(--nav-height-scrolled)" : "var(--nav-height)" }}
     >
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-5 sm:px-8">
-        <a href="#inicio" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-accent text-xs font-bold text-accent-ink">
-            VT
-          </span>
-          <span className="text-base font-semibold tracking-tight text-text">
-            VoltTech
-          </span>
+        <a href="#inicio" onClick={() => setOpen(false)}>
+          <Logo />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -40,7 +38,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3.5 py-2 text-sm font-medium text-text-muted transition-colors hover:bg-white/5 hover:text-text"
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-text-muted transition-colors hover:bg-black/[0.03] hover:text-ink"
             >
               {link.label}
             </a>
@@ -50,7 +48,7 @@ export function Header() {
         <div className="hidden lg:block">
           <a
             href={HEADER_CTA.href}
-            className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-strong"
+            className="group inline-flex items-center gap-2 rounded-full bg-cta px-5 py-2.5 text-sm font-semibold text-cta-ink transition-colors hover:bg-cta-strong"
           >
             {HEADER_CTA.label}
           </a>
@@ -61,7 +59,7 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Abrir menú"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-border-strong text-text lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border-strong text-ink lg:hidden"
         >
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8}>
             {open ? (
@@ -74,14 +72,14 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-bg px-5 pb-6 pt-2 lg:hidden">
+        <div className="border-t border-border bg-surface px-5 pb-6 pt-2 lg:hidden">
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-3 text-sm font-medium text-text-muted hover:bg-white/5 hover:text-text"
+                className="rounded-xl px-3 py-3 text-sm font-medium text-text-muted hover:bg-black/[0.03] hover:text-ink"
               >
                 {link.label}
               </a>
@@ -90,7 +88,7 @@ export function Header() {
               href={whatsappHref(DEFAULT_WHATSAPP_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 rounded-full bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-ink"
+              className="mt-2 rounded-full bg-cta px-5 py-3 text-center text-sm font-semibold text-cta-ink"
             >
               Cotizar por WhatsApp — {SITE.whatsapp}
             </a>

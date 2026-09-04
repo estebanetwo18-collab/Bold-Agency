@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CASE_STUDY } from "@/lib/content";
 import { PillBadge } from "@/components/ui/PillBadge";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
@@ -13,7 +14,19 @@ export function CaseStudy() {
 
         <div className="mt-8 grid gap-10 rounded-3xl border border-border bg-surface p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
           <Reveal delay={60}>
-            <PlaceholderImage label={CASE_STUDY.image.alt} aspect="aspect-[4/3]" />
+            {CASE_STUDY.image.isPlaceholder ? (
+              <PlaceholderImage label={CASE_STUDY.image.alt} aspect="aspect-[4/3]" />
+            ) : (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-border-strong">
+                <Image
+                  src={CASE_STUDY.image.src}
+                  alt={CASE_STUDY.image.alt}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
+            )}
           </Reveal>
 
           <Reveal delay={120}>

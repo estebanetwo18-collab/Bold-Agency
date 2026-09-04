@@ -4,7 +4,7 @@ import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Política de privacidad",
-  description: "Cómo VoltTech Soluciones recopila, usa y protege la información de sus visitantes y leads.",
+  description: "Cómo VolTech recopila, usa y protege la información de sus visitantes y leads.",
 };
 
 export default function PrivacidadPage() {

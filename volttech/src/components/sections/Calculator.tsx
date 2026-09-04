@@ -85,7 +85,7 @@ export function Calculator() {
   const budgetLabel = BUDGET_RANGE_OPTIONS.find((b) => b.value === budget)?.label;
 
   const whatsappSummary = [
-    "Hola VoltTech, hice un estimado en la calculadora del sitio:",
+    "Hola VolTech, hice un estimado en la calculadora del sitio:",
     inputMode === "factura"
       ? `Factura mensual aprox.: ₡${billColones.toLocaleString("es-CR")}`
       : `Equipos seleccionados: ${
@@ -136,7 +136,7 @@ export function Calculator() {
                   onClick={() => setInputMode(mode)}
                   className={cn(
                     "px-4 py-4 text-sm font-semibold transition-colors",
-                    inputMode === mode ? "bg-accent text-accent-ink" : "text-text-muted hover:bg-white/[0.03]",
+                    inputMode === mode ? "bg-accent text-accent-ink" : "text-text-muted hover:bg-black/[0.03]",
                   )}
                 >
                   {label}
@@ -204,7 +204,7 @@ export function Calculator() {
                             type="checkbox"
                             checked={selectedAppliances.includes(item.key)}
                             onChange={() => toggleAppliance(item.key)}
-                            className="h-4 w-4 accent-[#2fd6d1]"
+                            className="h-4 w-4 accent-[#2e9e4f]"
                           />
                           {item.label}
                         </label>
@@ -309,7 +309,7 @@ export function Calculator() {
                         </p>
                         <p className="mt-1 text-[11px] leading-snug text-text-faint">
                           Rango conservador, no una cifra única — las tarifas 2026 bajaron entre 4,9% y 16,4%
-                          según distribuidora, así que el valor real de VoltTech está en la independencia y el
+                          según distribuidora, así que el valor real de VolTech está en la independencia y el
                           respaldo, no solo en el ahorro mensual.
                         </p>
                       </div>
@@ -319,7 +319,7 @@ export function Calculator() {
                       href={whatsappHref(whatsappSummary)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-6 flex w-full items-center justify-center rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-strong"
+                      className="mt-6 flex w-full items-center justify-center rounded-full bg-cta px-6 py-3.5 text-sm font-semibold text-cta-ink transition-colors hover:bg-cta-strong"
                     >
                       Enviar este estimado por WhatsApp
                     </a>
@@ -372,7 +372,7 @@ export function Calculator() {
                   />
                 )}
                 <AdminRow label="Subtotal antes de margen" value={quote.subtotalBeforeMargin} />
-                <AdminRow label={`Margen VoltTech (${Math.round(MARGIN_RATE * 100)}% configurable)`} value={quote.marginAmount} />
+                <AdminRow label={`Margen VolTech (${Math.round(MARGIN_RATE * 100)}% configurable)`} value={quote.marginAmount} />
                 <div className="rounded-xl border border-warn/40 bg-warn/10 p-4 sm:col-span-2">
                   <p className="text-xs font-semibold uppercase tracking-wide text-text">Precio final al cliente</p>
                   <p className="mt-1 text-lg font-semibold text-text">
@@ -381,7 +381,7 @@ export function Calculator() {
                 </div>
                 <p className="text-xs text-text-faint sm:col-span-2">
                   Esto es lo que la calculadora captura automáticamente por cotización, comparado con armar
-                  cada proforma a mano — el margen queda visible aquí solo para uso interno de VoltTech, y en
+                  cada proforma a mano — el margen queda visible aquí solo para uso interno de VolTech, y en
                   la vista pública el cliente nunca ve este desglose.
                 </p>
               </div>

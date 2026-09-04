@@ -37,7 +37,7 @@ export function Hero() {
                 href={HERO.primaryCta.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-accent-ink transition-all hover:bg-accent-strong hover:shadow-[0_0_0_6px_rgba(47,214,209,0.12)]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-cta px-7 py-3.5 text-sm font-semibold text-cta-ink transition-all hover:bg-cta-strong hover:shadow-[0_0_0_6px_rgba(255,203,71,0.3)]"
               >
                 {HERO.primaryCta.label}
                 <ArrowUpRightIcon className="h-4 w-4" />
@@ -56,7 +56,7 @@ export function Hero() {
               {HERO.hooks.map((hook) => (
                 <span
                   key={hook}
-                  className="rounded-full border border-border bg-white/[0.03] px-4 py-2 text-xs font-medium text-text-muted sm:text-sm"
+                  className="rounded-full border border-border bg-black/[0.02] px-4 py-2 text-xs font-medium text-text-muted sm:text-sm"
                 >
                   {hook}
                 </span>

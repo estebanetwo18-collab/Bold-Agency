@@ -46,7 +46,7 @@ export const OFF_GRID_BATTERY_MULTIPLIER = 2.2; // Inferencia
 export const OFF_GRID_CONTROL_ELECTRONICS_SURCHARGE = 0.08; // Inferencia
 
 /**
- * Margen interno de VoltTech aplicado sobre el costo base para llegar al
+ * Margen interno de VolTech aplicado sobre el costo base para llegar al
  * precio final del cliente. Configurable — NUNCA se muestra en la vista
  * pública/cliente, solo en la vista admin (?admin=1).
  */

@@ -4,7 +4,7 @@ import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Términos y condiciones",
-  description: "Términos de uso del sitio y del proceso de cotización de VoltTech Soluciones.",
+  description: "Términos de uso del sitio y del proceso de cotización de VolTech.",
 };
 
 export default function TerminosPage() {

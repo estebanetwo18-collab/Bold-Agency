@@ -221,7 +221,7 @@ export function ContactForm() {
         type="submit"
         disabled={status === "submitting"}
         className={cn(
-          "mt-1 inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-60",
+          "mt-1 inline-flex items-center justify-center rounded-full bg-cta px-8 py-3.5 text-sm font-semibold text-cta-ink transition-colors hover:bg-cta-strong disabled:cursor-not-allowed disabled:opacity-60",
         )}
       >
         {status === "submitting" ? "Enviando…" : "Solicitar contacto"}

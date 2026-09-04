@@ -17,6 +17,17 @@ export function ValueProposition() {
           </h2>
         </Reveal>
 
+        <Reveal delay={90}>
+          <div className="mt-6 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-wide text-text-faint">A quién le hablamos</span>
+            {VALUE_PROP.audience.map((a) => (
+              <span key={a} className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-medium text-text-muted">
+                {a}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+
         <div className="mt-14 grid gap-5 lg:grid-cols-2">
           <Reveal delay={100}>
             <div className="flex h-full flex-col rounded-3xl border border-border bg-surface p-8">

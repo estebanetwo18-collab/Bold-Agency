@@ -26,7 +26,7 @@ export function FinalCta() {
               href={FINAL_CTA.cta.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-semibold text-accent-ink transition-all hover:bg-accent-strong hover:shadow-[0_0_0_6px_rgba(47,214,209,0.12)]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-cta px-8 py-4 text-sm font-semibold text-cta-ink transition-all hover:bg-cta-strong hover:shadow-[0_0_0_6px_rgba(255,203,71,0.3)]"
             >
               {FINAL_CTA.cta.label}
               <ArrowUpRightIcon className="h-4 w-4" />

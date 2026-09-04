@@ -1,15 +1,24 @@
 /**
- * Copy real de VoltTech Soluciones, centralizado — para editar textos no
- * hace falta tocar JSX. Todo lo que no esté confirmado por el cliente
- * lleva la marca // EDITABLE o [PENDIENTE: ...] explícita.
+ * Copy real de VolTech, centralizado — para editar textos no hace falta
+ * tocar JSX. Todo lo que no esté confirmado por el cliente lleva la marca
+ * // EDITABLE o [PENDIENTE: ...] explícita.
+ *
+ * Naming: el Manual de Marca v1.0 (2026) fija el wordmark como "VolTech"
+ * (una sola t). El nombre comercial usado hasta ahora en redes/WhatsApp
+ * era "VoltTech Soluciones" (dos t) — [PENDIENTE: confirmar con VoltTech
+ * si Instagram/Facebook también se renombran, o si el "Soluciones" se
+ * mantiene como nombre comercial largo junto al isotipo corto].
  */
 
 export const SITE = {
   legalName: "German Vargas Corrales",
   legalId: "114610102",
-  brandName: "VoltTech Soluciones",
-  wordmark: "VOLTTECH",
-  tagline: "Energía solar y soluciones eléctricas — Zona Sur, Costa Rica",
+  brandName: "VolTech",
+  brandNameLong: "VolTech Soluciones", // EDITABLE: ver nota de naming arriba
+  wordmark: "VOLTECH",
+  tagline: "Energía solar · Costa Rica",
+  purpose:
+    "Llevar independencia energética a hogares, comercios y fincas de la Zona Sur de Costa Rica, con instalaciones solares llave en mano que se pagan solas.",
   whatsapp: "+506 8559 3214",
   whatsappDigits: "50685593214",
   email: "volttechsoluciones@gmail.com",
@@ -22,7 +31,7 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { href: "#inicio", label: "Inicio" },
-  { href: "#propuesta", label: "Por qué VoltTech" },
+  { href: "#propuesta", label: "Por qué VolTech" },
   { href: "#servicios", label: "Servicios" },
   { href: "#calculadora", label: "Calculadora" },
   { href: "#resultados", label: "Resultados" },
@@ -35,12 +44,12 @@ export function whatsappHref(message: string) {
 }
 
 export const DEFAULT_WHATSAPP_MESSAGE =
-  "Hola VoltTech, quiero cotizar un sistema solar / servicio eléctrico.";
+  "Hola VolTech, quiero cotizar un sistema solar / servicio eléctrico.";
 
 export const HEADER_CTA = { label: "Calcular mi sistema", href: "#calculadora" };
 
 export const HERO = {
-  eyebrow: "VoltTech Soluciones · Ingeniería solar en la Zona Sur",
+  eyebrow: "VolTech · Ingeniería solar en la Zona Sur",
   // Anclas de mensaje comercial ya calibradas y en uso activo — no reformular.
   hooks: [
     "¿Pagás más de ₡100.000 al mes de luz?",
@@ -52,7 +61,7 @@ export const HERO = {
     "Diseñamos e instalamos sistemas solares y damos servicio eléctrico con respaldo real ante cortes — con un proceso técnico transparente, garantía por componente y un precio que revisás antes de firmar.",
   primaryCta: { label: "Cotizar por WhatsApp", href: whatsappHref(DEFAULT_WHATSAPP_MESSAGE) },
   secondaryCta: { label: "Calcular mi sistema", href: "#calculadora" },
-  // Foto provista por el cliente. [PENDIENTE: confirmar con VoltTech si es
+  // Foto provista por el cliente. [PENDIENTE: confirmar con VolTech si es
   // un proyecto propio documentado o una foto de referencia] antes de
   // usarla en marketing pagado — el alt evita afirmar autoría específica.
   image: {
@@ -66,7 +75,7 @@ export const STATS = [
   { value: 13, suffix: "", label: "años de experiencia técnica de German Vargas" },
   { value: 7, suffix: "", label: "proyectos solares completados" },
   { value: 9, suffix: "+", label: "zonas de cobertura en el sur y costa del país" },
-  { value: 3, suffix: "", label: "años de VoltTech como empresa formal" },
+  { value: 3, suffix: "", label: "años de VolTech como empresa formal" },
 ] as const;
 
 export const COVERAGE_AREAS = [
@@ -85,29 +94,35 @@ export const COVERAGE_AREAS = [
 /**
  * "Propuesta de valor" — absorbe la narrativa que antes vivía en una
  * sección "Nosotros" separada: el problema real del cliente, cómo lo
- * resuelve VoltTech, y por qué confiar en German específicamente. Se
+ * resuelve VolTech, y por qué confiar en German específicamente. Se
  * reorganiza en un solo bloque en vez de repetirse en dos secciones.
  */
 export const VALUE_PROP = {
-  eyebrow: "Por qué VoltTech",
+  eyebrow: "Por qué VolTech",
   title: "El problema no es el sol. Es no saber en qué estás invirtiendo.",
   problem: {
     title: "Lo que enfrentás hoy",
     body: "Las tarifas eléctricas suben, los cortes en zonas costeras y rurales son reales, y cotizar un sistema solar suele sentirse como una caja negra — precios que varían sin explicación y adelantos que dan miedo soltar.",
   },
   solution: {
-    title: "Cómo lo resuelve VoltTech",
+    title: "Cómo lo resuelve VolTech",
     body: "Diseñamos tu sistema a partir de tu factura real, te mostramos el proceso completo antes de cobrar un adelanto, y cada componente lleva su propia garantía por escrito — no una promesa genérica de \"todo incluido\".",
   },
   credibility: {
     title: "German Vargas Corrales, 13 años de oficio",
-    body: "German lleva 13 años trabajando en electricidad y energía solar. VoltTech, la empresa, tiene 3 años operando de forma formal en Pérez Zeledón — la experiencia técnica es real y de largo plazo; la marca es joven y la construimos con esa misma honestidad. El equipo lo forman el dueño (instalación y diseño de sistemas), dos instaladores y aliados técnicos para trámites e interconexión.",
+    body: "German lleva 13 años trabajando en electricidad y energía solar. VolTech, la empresa, tiene 3 años operando de forma formal en Pérez Zeledón — la experiencia técnica es real y de largo plazo; la marca es joven y la construimos con esa misma honestidad. El equipo lo forman el dueño (instalación y diseño de sistemas), dos instaladores y aliados técnicos para trámites e interconexión.",
     image: {
       src: "/images/equipo/tecnico-tablero-electrico.jpg",
-      alt: "Técnico revisando un tablero eléctrico industrial",
+      alt: "Técnico de VolTech junto a un inversor Sol-Ark recién instalado",
       isPlaceholder: false,
     },
   },
+  // "A quién le hablamos" — del Manual de Marca, sección 01.
+  audience: [
+    "Comercios de alto consumo",
+    "Residentes extranjeros",
+    "Productores agropecuarios",
+  ],
   pillars: [
     {
       title: "Especialista local de Zona Sur",
@@ -142,7 +157,7 @@ export type ServiceSegment = "residencial" | "comercial";
 
 export const SERVICES_IMAGE = {
   src: "/images/servicios/equipo-instalacion-paneles.jpg",
-  alt: "Equipo técnico instalando y revisando un sistema de paneles solares",
+  alt: "Calentador solar de agua instalado en un techo",
   isPlaceholder: false,
 } as const;
 
@@ -213,7 +228,7 @@ export const SERVICES: Array<{
     key: "bombeo",
     title: "Sistemas de bombeo solar",
     description:
-      "Riego agrícola, bombeo de pozo a tanque y presión constante — un nicho técnico donde VoltTech no ha mapeado competencia directa en la zona.",
+      "Riego agrícola, bombeo de pozo a tanque y presión constante — un nicho técnico donde VolTech no ha mapeado competencia directa en la zona.",
     segments: ["comercial", "residencial"],
     highlight: true,
   },
@@ -258,9 +273,9 @@ export const WARRANTIES = {
       confidence: "Estimado, no es una garantía contractual",
     },
     {
-      component: "Mano de obra VoltTech",
+      component: "Mano de obra VolTech",
       warranty: "2 años en proyectos grandes / 1 año en proyectos pequeños",
-      confidence: "Política VoltTech",
+      confidence: "Política VolTech",
     },
   ],
 } as const;
@@ -298,6 +313,11 @@ export const PROCESS = {
   ],
   transparencyNote:
     "Ejemplo de transparencia de costos: el trámite de interconexión ante CNFL ronda los $975 de referencia — el monto varía según distribuidora, y te lo mostramos desde la proforma, no como sorpresa después.",
+  image: {
+    src: "/images/proceso/tecnico-tablero-industrial.jpg",
+    alt: "Técnico revisando un tablero eléctrico durante una instalación",
+    isPlaceholder: false,
+  },
 } as const;
 
 export const CASE_STUDY = {
@@ -313,11 +333,14 @@ export const CASE_STUDY = {
     { label: "Banco de baterías", value: "64 kWh" },
   ],
   note: "No se incluyen cifras de ahorro porque no están documentadas para este proyecto.",
-  // [PENDIENTE: confirmar con VoltTech] fotos reales antes/durante/después del proyecto.
+  // Foto ilustrativa de instalación comercial provista por el cliente — no
+  // confirmada como la foto específica de este proyecto (el supermercado).
+  // [PENDIENTE: confirmar con VolTech] fotos reales antes/durante/después
+  // de ESTE proyecto puntual, si existen, para reemplazar esta imagen.
   image: {
-    src: "/images/proyectos/supermercado/placeholder-supermercado.svg",
-    alt: "[PLACEHOLDER] Instalación solar en supermercado — reemplazar con foto real del proyecto",
-    isPlaceholder: true,
+    src: "/images/proyectos/supermercado/instalacion-comercial.jpg",
+    alt: "Instalación solar en un proyecto de escala comercial",
+    isPlaceholder: false,
   },
 } as const;
 
@@ -380,7 +403,7 @@ export const FAQ_PRACTICAL = [
       "Un sistema solar bien instalado añade valor a la propiedad. Podés venderla con el sistema incluido o, en algunos casos, coordinar el traslado — hablalo con nosotros antes de decidir.",
   },
   {
-    question: "¿VoltTech ofrece financiamiento?",
+    question: "¿VolTech ofrece financiamiento?",
     answer: "No, actualmente no ofrecemos financiamiento como servicio.",
   },
 ] as const;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { PROCESS } from "@/lib/content";
 import { PillBadge } from "@/components/ui/PillBadge";
 import { Reveal } from "@/components/ui/Reveal";
@@ -74,11 +75,22 @@ export function Process() {
           ))}
         </ol>
 
-        <Reveal delay={120}>
-          <div className="mt-12 rounded-2xl border border-accent/25 bg-accent/[0.06] p-6">
-            <p className="text-sm leading-relaxed text-text-muted">{PROCESS.transparencyNote}</p>
-          </div>
-        </Reveal>
+        <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_1.4fr] lg:items-stretch">
+          <Reveal delay={120} className="relative min-h-[14rem] overflow-hidden rounded-2xl border border-border-strong">
+            <Image
+              src={PROCESS.image.src}
+              alt={PROCESS.image.alt}
+              fill
+              sizes="(min-width: 1024px) 28vw, 90vw"
+              className="object-cover"
+            />
+          </Reveal>
+          <Reveal delay={160}>
+            <div className="flex h-full items-center rounded-2xl border border-accent/25 bg-accent/[0.06] p-6">
+              <p className="text-sm leading-relaxed text-text-muted">{PROCESS.transparencyNote}</p>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

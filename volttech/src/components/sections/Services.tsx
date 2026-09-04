@@ -91,7 +91,7 @@ export function Services() {
                     service.highlight
                       ? "border-energy/30 bg-energy/[0.06] hover:border-energy/50"
                       : service.muted
-                        ? "border-border bg-white/[0.02] opacity-80"
+                        ? "border-border bg-black/[0.015] opacity-80"
                         : "border-border bg-surface hover:border-border-strong hover:bg-surface-hover",
                   )}
                 >

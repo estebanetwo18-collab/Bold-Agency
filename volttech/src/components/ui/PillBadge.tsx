@@ -13,7 +13,7 @@ export function PillBadge({
   const tones = {
     accent: "border-accent/30 bg-accent/10 text-accent",
     energy: "border-energy/30 bg-energy/10 text-energy",
-    neutral: "border-border-strong bg-white/[0.04] text-text-muted",
+    neutral: "border-border-strong bg-black/[0.02] text-text-muted",
   } as const;
 
   return (

@@ -6,7 +6,7 @@ export function WhatsAppButton() {
       href={whatsappHref(DEFAULT_WHATSAPP_MESSAGE)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Escribir a VoltTech por WhatsApp"
+      aria-label="Escribir a VolTech por WhatsApp"
       className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-transform hover:scale-105 active:scale-95"
     >
       <svg viewBox="0 0 32 32" className="h-7 w-7" fill="currentColor" aria-hidden="true">

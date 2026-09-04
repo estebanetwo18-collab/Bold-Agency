@@ -1,8 +1,9 @@
-# VoltTech Soluciones — Sitio web
+# VolTech — Sitio web
 
-Sitio web de VoltTech Soluciones (German Vargas Corrales, cédula 114610102),
-empresa de energía solar y servicios eléctricos en San Antonio de la
-Amistad, Pérez Zeledón, Costa Rica.
+Sitio web de VolTech (German Vargas Corrales, cédula 114610102), empresa de
+energía solar y servicios eléctricos en San Antonio de la Amistad, Pérez
+Zeledón, Costa Rica. Nombre comercial largo: "VolTech Soluciones" — ver nota
+de naming en `src/lib/content.ts`.
 
 Construido en Next.js (App Router) + TypeScript + Tailwind CSS v4, con
 calculadora de cotización propia (vista cliente + vista interna/admin) y
@@ -13,15 +14,19 @@ captura de leads vía formulario de contacto.
 > `package.json`, `node_modules`, etc.) — no comparte código ni build con
 > el sitio de BOLD Agency que vive en la raíz del repo.
 
-## Dirección visual (rediseño)
+## Dirección visual
 
-Rediseño completo pedido por el cliente: identidad "tech premium", minimalista
-y dinámica — pivote deliberado desde la paleta verde-bosque/dorado original.
+El sitio sigue el **Manual de Marca VolTech v1.0 (2026)** provisto por el
+cliente (`src/components/ui/Logo.tsx` recrea el isotipo en SVG a partir de
+ese manual — no había archivo vectorial exportado disponible).
 
-- **Paleta**: fondo casi negro con matiz azul (`--bg`), turquesa/azul eléctrico
-  de acento (`--accent`) y verde energético para datos de ahorro (`--energy`).
-  Tokens completos en `src/app/globals.css`.
-- **Tipografía**: Space Grotesk (headings) + Inter (body), vía `next/font/google`.
+- **Paleta**: Verde Bosque `#14532D` (primario/headings), Verde Señal
+  `#2E9E4F` (interacción: links, iconos, tabs), Amarillo Sol `#FFCB47`
+  — **reservado exclusivamente para llamados a la acción** por el manual de
+  marca —, Verde Bruma `#F4F8F3` / Crema `#ECEAE4` de fondo, Carbón `#4A4636`
+  de texto. Tokens completos en `src/app/globals.css`.
+- **Tipografía**: Poppins única familia (800 titulares / 600 subtítulos / 400
+  cuerpo), vía `next/font/google`.
 - **Movimiento**: entrada progresiva al hacer scroll (`Reveal`), contadores
   animados (`AnimatedCounter`), parallax sutil en orbes decorativos
   (`ParallaxGlow`), línea de proceso animada — todo sin dependencias nuevas
@@ -30,6 +35,9 @@ y dinámica — pivote deliberado desde la paleta verde-bosque/dorado original.
   → Servicios (segmentado Residencial/Comercial) → Calculadora → Proceso →
   Resultados y confianza (métricas + garantías + marcas, antes 3 secciones
   separadas) → Casos de éxito → Testimonios → FAQ → Contacto → CTA final.
+- **Fotografía**: todas las secciones usan fotos reales provistas por el
+  cliente — no queda ningún placeholder de imagen en el sitio (ver
+  "Contenido pendiente de confirmar" abajo para los detalles de cada foto).
 
 ## Stack
 
@@ -152,21 +160,32 @@ reemplazo de un rate limiter distribuido para tráfico alto en producción.
 Ver `// EDITABLE` y `[PENDIENTE: ...]` en `src/lib/content.ts`. Los más
 relevantes:
 
-- **Fotografía real**: no se pudo acceder al contenido de la carpeta de
-  Google Drive compartida (el conector de Drive de esta sesión no devolvió
-  archivos dentro de esa carpeta específica, aunque la carpeta en sí es
-  accesible). Todas las fotos del sitio (hero, caso del supermercado,
-  equipo/instalación) están como **placeholders etiquetados** —
-  componente `PlaceholderImage` — hasta recibir las ~20 fotos reales.
-  Cuando estén disponibles: colocarlas en
-  `public/images/{hero,servicios,proyectos/supermercado,equipo}/` y
-  actualizar las rutas `image.src` + `image.isPlaceholder = false` en
-  `src/lib/content.ts`.
-- **URL exacta de Facebook** de la página "VoltTech Soluciones".
+- **Fotografía**: el cliente proveyó 6 fotos reales (instalación en techo,
+  inversor Sol-Ark, calentador solar, tablero eléctrico, equipo en un
+  proyecto solar) que ya están en `public/images/` y cubren todas las
+  secciones — no queda ningún `PlaceholderImage` activo en el sitio. La
+  única salvedad: la foto usada en el caso de éxito del supermercado
+  (`CASE_STUDY.image`) es una foto ilustrativa de instalación comercial, no
+  confirmada como la foto específica de *ese* proyecto — reemplazar si el
+  cliente tiene una foto real de ese sitio puntual.
+- **Naming "VolTech" vs "VoltTech Soluciones"**: el Manual de Marca fija el
+  wordmark como "VolTech" (una t), aplicado en todo el sitio. Instagram y
+  Facebook siguen usando el nombre anterior ("VoltTech Soluciones", dos t)
+  — confirmar si también se renombran o si "Soluciones" se mantiene como
+  nombre comercial largo junto al isotipo corto.
+- **Copy "Bajá tu recibo hasta un 70%"**: el Manual de Marca lo lista como
+  ejemplo de tono de voz aprobado, pero es una cifra de ahorro no verificada
+  — choca con la regla de integridad de datos del proyecto original ("sin
+  cifra única de ahorro, nunca un %"). Deliberadamente NO se usó en el sitio.
+  Confirmar con el cliente cuál regla prevalece antes de usarla en cualquier
+  pieza de marketing.
+- **URL exacta de Facebook** de la página.
 - **2 testimonios adicionales** (solo Edwin Méndez está confirmado).
 - **Nombre del supermercado** del caso de éxito (30kW / 34kWp / 64kWh).
-- **Logo en alta resolución** — el header/footer usan un monograma "VT"
-  como placeholder de marca.
+- **Logo vectorial**: se recreó el isotipo en SVG a partir del PDF del
+  manual de marca (`src/components/ui/Logo.tsx`) porque el archivo `.ai`
+  original no se pudo leer en este entorno — reemplazar por el vector
+  exportado real cuando esté disponible (SVG/PNG desde Illustrator).
 
 ## Despliegue
 
