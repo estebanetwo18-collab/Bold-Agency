@@ -52,12 +52,13 @@ export const HERO = {
     "Diseñamos e instalamos sistemas solares y damos servicio eléctrico con respaldo real ante cortes — con un proceso técnico transparente, garantía por componente y un precio que revisás antes de firmar.",
   primaryCta: { label: "Cotizar por WhatsApp", href: whatsappHref(DEFAULT_WHATSAPP_MESSAGE) },
   secondaryCta: { label: "Calcular mi sistema", href: "#calculadora" },
-  // [PENDIENTE: confirmar con VoltTech] foto real de instalación en techo para el hero;
-  // usar public/images/hero/placeholder-instalador-techo.jpg mientras tanto.
+  // Foto provista por el cliente. [PENDIENTE: confirmar con VoltTech si es
+  // un proyecto propio documentado o una foto de referencia] antes de
+  // usarla en marketing pagado — el alt evita afirmar autoría específica.
   image: {
-    src: "/images/hero/placeholder-instalador-techo.svg",
-    alt: "[PLACEHOLDER] Instalador de VoltTech en techo con paneles solares — reemplazar con foto real",
-    isPlaceholder: true,
+    src: "/images/hero/instalacion-techo-zona-sur.jpg",
+    alt: "Instalación de paneles solares en un techo de zona costera",
+    isPlaceholder: false,
   },
 } as const;
 
@@ -101,6 +102,11 @@ export const VALUE_PROP = {
   credibility: {
     title: "German Vargas Corrales, 13 años de oficio",
     body: "German lleva 13 años trabajando en electricidad y energía solar. VoltTech, la empresa, tiene 3 años operando de forma formal en Pérez Zeledón — la experiencia técnica es real y de largo plazo; la marca es joven y la construimos con esa misma honestidad. El equipo lo forman el dueño (instalación y diseño de sistemas), dos instaladores y aliados técnicos para trámites e interconexión.",
+    image: {
+      src: "/images/equipo/tecnico-tablero-electrico.jpg",
+      alt: "Técnico revisando un tablero eléctrico industrial",
+      isPlaceholder: false,
+    },
   },
   pillars: [
     {
@@ -133,6 +139,12 @@ export type ServiceKey =
   | "tramites";
 
 export type ServiceSegment = "residencial" | "comercial";
+
+export const SERVICES_IMAGE = {
+  src: "/images/servicios/equipo-instalacion-paneles.jpg",
+  alt: "Equipo técnico instalando y revisando un sistema de paneles solares",
+  isPlaceholder: false,
+} as const;
 
 export const SERVICE_SEGMENTS: Array<{ key: ServiceSegment; label: string; description: string }> = [
   {

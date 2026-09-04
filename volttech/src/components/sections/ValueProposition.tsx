@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { VALUE_PROP } from "@/lib/content";
 import { PillBadge } from "@/components/ui/PillBadge";
 import { Reveal } from "@/components/ui/Reveal";
@@ -34,25 +35,36 @@ export function ValueProposition() {
         </div>
 
         <Reveal delay={100}>
-          <div className="mt-6 rounded-3xl border border-border bg-surface p-8 sm:p-10">
-            <h3 className="text-lg font-semibold text-text sm:text-xl">{VALUE_PROP.credibility.title}</h3>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted sm:text-base">
-              {VALUE_PROP.credibility.body}
-            </p>
+          <div className="mt-6 grid gap-0 overflow-hidden rounded-3xl border border-border bg-surface lg:grid-cols-[1.6fr_1fr]">
+            <div className="p-8 sm:p-10">
+              <h3 className="text-lg font-semibold text-text sm:text-xl">{VALUE_PROP.credibility.title}</h3>
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted sm:text-base">
+                {VALUE_PROP.credibility.body}
+              </p>
 
-            <div className="mt-9 grid gap-8 border-t border-border pt-8 sm:grid-cols-3">
-              {VALUE_PROP.pillars.map((pillar, i) => {
-                const Icon = [CompassIcon, ShieldIcon, DocumentIcon][i % 3];
-                return (
-                  <div key={pillar.title} className="flex items-start gap-3.5">
-                    <Icon className="mt-0.5 h-5 w-5 shrink-0 text-energy" />
-                    <div>
-                      <h4 className="text-sm font-semibold text-text">{pillar.title}</h4>
-                      <p className="mt-1.5 text-sm leading-relaxed text-text-muted">{pillar.description}</p>
+              <div className="mt-9 grid gap-8 border-t border-border pt-8 sm:grid-cols-3">
+                {VALUE_PROP.pillars.map((pillar, i) => {
+                  const Icon = [CompassIcon, ShieldIcon, DocumentIcon][i % 3];
+                  return (
+                    <div key={pillar.title} className="flex items-start gap-3.5">
+                      <Icon className="mt-0.5 h-5 w-5 shrink-0 text-energy" />
+                      <div>
+                        <h4 className="text-sm font-semibold text-text">{pillar.title}</h4>
+                        <p className="mt-1.5 text-sm leading-relaxed text-text-muted">{pillar.description}</p>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+            </div>
+            <div className="relative min-h-[16rem] border-t border-border lg:min-h-0 lg:border-l lg:border-t-0">
+              <Image
+                src={VALUE_PROP.credibility.image.src}
+                alt={VALUE_PROP.credibility.image.alt}
+                fill
+                sizes="(min-width: 1024px) 30vw, 100vw"
+                className="object-cover"
+              />
             </div>
           </div>
         </Reveal>

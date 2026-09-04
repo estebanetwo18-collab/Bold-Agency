@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HERO, SITE } from "@/lib/content";
 import { PillBadge } from "@/components/ui/PillBadge";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
@@ -71,7 +72,19 @@ export function Hero() {
         <Reveal delay={160} className="relative">
           {HERO.image.isPlaceholder ? (
             <PlaceholderImage label={HERO.image.alt} aspect="aspect-[4/5] sm:aspect-[5/6]" />
-          ) : null}
+          ) : (
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border-strong sm:aspect-[5/6]">
+              <Image
+                src={HERO.image.src}
+                alt={HERO.image.alt}
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/70 via-transparent to-transparent" />
+            </div>
+          )}
           <div className="glass absolute -bottom-6 -left-6 hidden rounded-2xl border border-border-strong px-5 py-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] sm:block">
             <p className="text-2xl font-semibold text-energy">13 años</p>
             <p className="text-xs font-medium text-text-muted">de experiencia técnica</p>
