@@ -160,14 +160,20 @@ reemplazo de un rate limiter distribuido para tráfico alto en producción.
 Ver `// EDITABLE` y `[PENDIENTE: ...]` en `src/lib/content.ts`. Los más
 relevantes:
 
-- **Fotografía**: el cliente proveyó 6 fotos reales (instalación en techo,
+- **Fotografía**: el cliente proveyó 7 fotos reales (instalación en techo ×2,
   inversor Sol-Ark, calentador solar, tablero eléctrico, equipo en un
   proyecto solar) que ya están en `public/images/` y cubren todas las
-  secciones — no queda ningún `PlaceholderImage` activo en el sitio. La
-  única salvedad: la foto usada en el caso de éxito del supermercado
-  (`CASE_STUDY.image`) es una foto ilustrativa de instalación comercial, no
-  confirmada como la foto específica de *ese* proyecto — reemplazar si el
-  cliente tiene una foto real de ese sitio puntual.
+  secciones — no queda ningún `PlaceholderImage` activo en el sitio. Por
+  balance visual (menos fotos de perfil cerrado de German, más fotos de
+  equipo/instalación), la sección de Servicios y el caso de éxito del
+  supermercado reutilizan la misma foto de equipo técnico
+  (`public/images/proyectos/supermercado/instalacion-comercial.jpg`); el
+  calentador solar (`public/images/servicios/equipo-instalacion-paneles.jpg`)
+  quedó sin usar en el sitio, disponible para una futura sección o galería.
+  Salvedad ya existente: esa foto de equipo técnico es ilustrativa de
+  instalación comercial, no confirmada como la foto específica del proyecto
+  del caso de éxito — reemplazar si el cliente tiene una foto real de ese
+  sitio puntual.
 - **Naming "VolTech" vs "VoltTech Soluciones"**: el Manual de Marca fija el
   wordmark como "VolTech" (una t), aplicado en todo el sitio. Instagram y
   Facebook siguen usando el nombre anterior ("VoltTech Soluciones", dos t)
