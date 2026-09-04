@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  /* Paleta de marca validada por el cliente (ver AGENTS del proyecto) */
+  --color-forest: #0f3d2e; /* fondo oscuro principal */
+  --color-charcoal: #14181b; /* fondo oscuro secundario / near-black */
+  --color-green: #1e6b4f; /* verde primario */
+  --color-green-deep: #1e5e45; /* verde primario, variante oscura */
+  --color-gold: #c9a24e; /* dorado de acento */
+  --color-gold-bright: #f0a93a; /* dorado de acento, variante brillante */
+  --color-cream: #f7f2e7; /* crema */
+  --color-ink: #101613; /* texto sobre fondos claros */
+  --color-ink-soft: #3c463f;
+
+  --ease-bold: cubic-bezier(0.16, 1, 0.3, 1);
+  --nav-height: 5.25rem;
+}
+
+@theme inline {
+  --color-forest: var(--color-forest);
+  --color-charcoal: var(--color-charcoal);
+  --color-green: var(--color-green);
+  --color-green-deep: var(--color-green-deep);
+  --color-gold: var(--color-gold);
+  --color-gold-bright: var(--color-gold-bright);
+  --color-cream: var(--color-cream);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+
+  /* Cambria (headings) / Calibri (body) — tipografía web-safe pedida por
+     la marca; no requiere carga de fuentes externas. */
+  --font-display: Cambria, Georgia, "Times New Roman", serif;
+  --font-body: Calibri, "Segoe UI", Candara, Optima, sans-serif;
+}
+
+* {
+  border-color: color-mix(in srgb, var(--color-cream) 20%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-forest);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold-bright);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  background: var(--color-gold-bright);
+  color: var(--color-forest);
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  border-radius: 999px;
+  transition: top 0.2s var(--ease-bold);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Textura sutil de rejilla usada en franjas oscuras (stats, footer) */
+.bg-grid-gold {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-gold) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-gold) 10%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
