@@ -323,8 +323,9 @@ export const PROCESS = {
 export const CASE_STUDY = {
   eyebrow: "Proyectos y casos de éxito",
   title: "Sistema solar para supermercado",
-  description:
-    "Proyecto comercial de 30 kW, con 34 kWp en paneles y 64 kWh de banco de baterías. [PENDIENTE: confirmar con el cliente si se puede publicar el nombre del supermercado].",
+  // [PENDIENTE: confirmar con el cliente si se puede publicar el nombre
+  // del supermercado] — mientras tanto, la descripción pública no lo nombra.
+  description: "Proyecto comercial de 30 kW, con 34 kWp en paneles y 64 kWh de banco de baterías.",
   clientType: "Comercial",
   location: "Zona Sur, Costa Rica", // EDITABLE: confirmar ubicación exacta publicable
   specs: [

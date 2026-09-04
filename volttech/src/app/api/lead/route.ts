@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
   if (isRateLimited(ip)) {
     return NextResponse.json(
-      { ok: false, message: "Demasiadas solicitudes. Intenta de nuevo en un minuto." },
+      { ok: false, message: "Demasiadas solicitudes. Intentá de nuevo en un minuto." },
       { status: 429 },
     );
   }
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         ok: false,
-        message: "Revisa los campos del formulario.",
+        message: "Revisá los campos del formulario.",
         issues: parsed.error.issues.map((i) => ({ path: i.path, message: i.message })),
       },
       { status: 422 },
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         ok: false,
-        message: "No pudimos registrar tu solicitud en este momento. Tus datos no se perdieron, por favor intenta de nuevo.",
+        message: "No pudimos registrar tu solicitud en este momento. Tus datos no se perdieron, por favor intentá de nuevo.",
       },
       { status: 502 },
     );

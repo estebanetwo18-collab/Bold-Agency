@@ -95,11 +95,6 @@ export function Services() {
                         : "border-border bg-surface hover:border-border-strong hover:bg-surface-hover",
                   )}
                 >
-                  {service.highlight && (
-                    <span className="mb-3 inline-block rounded-full bg-energy px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-energy-ink">
-                      Nicho sin competencia mapeada
-                    </span>
-                  )}
                   <CircleIcon tone={service.highlight ? "energy" : "surface"}>
                     <Icon className="h-5 w-5" />
                   </CircleIcon>

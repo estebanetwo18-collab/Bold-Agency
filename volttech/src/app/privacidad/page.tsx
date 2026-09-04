@@ -14,7 +14,7 @@ export default function PrivacidadPage() {
       updatedNote="Plantilla editable — reemplazar con el texto legal definitivo antes de publicar."
     >
       <p>
-        {SITE.legalName} ({SITE.brandName}) recopila la información que envías voluntariamente a través
+        {SITE.legalName} ({SITE.brandName}) recopila la información que enviás voluntariamente a través
         del formulario de contacto o de la calculadora de cotización (nombre, teléfono, ubicación, rango de
         factura eléctrica y tipo de interés) con el único fin de preparar y coordinar tu cotización.
       </p>
@@ -25,7 +25,7 @@ export default function PrivacidadPage() {
       </p>
       <p>
         Para ejercer cualquiera de estos derechos o resolver dudas sobre el tratamiento de tu información,
-        escríbenos a{" "}
+        escribinos a{" "}
         <a href={`mailto:${SITE.email}`} className="underline underline-offset-4">
           {SITE.email}
         </a>

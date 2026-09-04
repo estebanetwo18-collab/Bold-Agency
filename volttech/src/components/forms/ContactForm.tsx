@@ -182,7 +182,7 @@ export function ContactForm() {
             onChange={(e) => updateField("billRange", e.target.value)}
           >
             <option value="" disabled>
-              Selecciona un rango
+              Seleccioná un rango
             </option>
             {BILL_RANGE_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -200,7 +200,7 @@ export function ContactForm() {
             onChange={(e) => updateField("interest", e.target.value)}
           >
             <option value="" disabled>
-              Selecciona una opción
+              Seleccioná una opción
             </option>
             {CONTACT_INTEREST_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -213,7 +213,7 @@ export function ContactForm() {
 
       {status === "error" && (
         <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300">
-          {serverError ?? "No pudimos enviar tu solicitud. Intenta de nuevo."}
+          {serverError ?? "No pudimos enviar tu solicitud. Intentá de nuevo."}
         </div>
       )}
 
