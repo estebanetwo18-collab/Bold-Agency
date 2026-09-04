@@ -1,38 +1,60 @@
 import Image from "next/image";
-import { HERO, SITE } from "@/lib/content";
-import { PillBadge } from "@/components/ui/PillBadge";
+import { HERO, SITE, STATS } from "@/lib/content";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { ArrowUpRightIcon } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/Reveal";
-import { ParallaxGlow } from "@/components/ui/ParallaxGlow";
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-bg pb-16 pt-[calc(var(--nav-height)+2.5rem)] sm:pb-24 sm:pt-[calc(var(--nav-height)+4rem)]">
-      <div className="grid-overlay pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,black,transparent)]" />
-      <ParallaxGlow tone="accent" className="left-1/2 top-[-10%] h-[36rem] w-[36rem] -translate-x-1/2" strength={0.08} />
-      <ParallaxGlow tone="energy" className="bottom-[-15%] right-[-10%] h-[28rem] w-[28rem]" strength={0.14} />
+    <section id="inicio" className="relative flex min-h-[720px] items-end overflow-hidden sm:min-h-[800px]">
+      {HERO.image.isPlaceholder ? (
+        <div className="absolute inset-0 flex items-center justify-center bg-[var(--dark-bg)]">
+          <PlaceholderImage label={HERO.image.alt} aspect="aspect-auto" className="h-full w-full" />
+        </div>
+      ) : (
+        <Image
+          src={HERO.image.src}
+          alt={HERO.image.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      )}
 
-      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div>
+      {/* Degradado para legibilidad del texto blanco sobre la foto — deja el
+          tercio superior (donde flota el header) prácticamente sin tocar,
+          ya que el cielo de la foto ya es claro ahí. */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(100deg, rgba(6,20,12,.82) 0%, rgba(6,20,12,.6) 30%, rgba(6,20,12,.2) 55%, rgba(6,20,12,.02) 75%), linear-gradient(to top, rgba(6,20,12,.72) 0%, transparent 32%, transparent 68%, rgba(6,20,12,.1) 100%)",
+        }}
+      />
+
+      <div className="relative mx-auto w-full max-w-7xl px-5 pb-12 pt-[calc(var(--nav-height)+2rem)] sm:px-8 sm:pb-16">
+        <div className="max-w-xl">
           <Reveal>
-            <PillBadge tone="accent">{HERO.eyebrow}</PillBadge>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm">
+              {HERO.eyebrow}
+            </span>
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.06] tracking-tight text-text sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
               {HERO.headline}
             </h1>
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-text-muted sm:text-lg">
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-white/80 sm:text-lg">
               {HERO.subheadline}
             </p>
           </Reveal>
 
           <Reveal delay={220}>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href={HERO.primaryCta.href}
                 target="_blank"
@@ -44,7 +66,7 @@ export function Hero() {
               </a>
               <a
                 href={HERO.secondaryCta.href}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-border-strong px-7 py-3.5 text-sm font-semibold text-text transition-colors hover:border-accent hover:text-accent"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
               >
                 {HERO.secondaryCta.label}
               </a>
@@ -52,11 +74,11 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={280}>
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="mt-7 flex flex-wrap gap-2">
               {HERO.hooks.map((hook) => (
                 <span
                   key={hook}
-                  className="rounded-full border border-border bg-black/[0.02] px-4 py-2 text-xs font-medium text-text-muted sm:text-sm"
+                  className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-medium text-white/90 backdrop-blur-sm sm:text-sm"
                 >
                   {hook}
                 </span>
@@ -64,33 +86,28 @@ export function Hero() {
             </div>
           </Reveal>
 
-          <p className="mt-7 text-xs text-text-faint">
+          <p className="mt-6 text-xs text-white/70">
             WhatsApp directo: {SITE.whatsapp} · {SITE.schedule}
           </p>
         </div>
 
-        <Reveal delay={160} className="relative">
-          {HERO.image.isPlaceholder ? (
-            <PlaceholderImage label={HERO.image.alt} aspect="aspect-[4/5] sm:aspect-[5/6]" />
-          ) : (
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border-strong sm:aspect-[5/6]">
-              <Image
-                src={HERO.image.src}
-                alt={HERO.image.alt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+        <Reveal delay={200}>
+          <div className="mt-10 flex gap-10 border-t border-white/20 pt-6 sm:mt-14 sm:gap-16">
+            <div>
+              <p className="text-3xl font-semibold text-white sm:text-4xl">{STATS[0].value} años</p>
+              <p className="mt-1 max-w-[16ch] text-xs font-medium leading-snug text-white/70 sm:text-sm">
+                de experiencia técnica
+              </p>
             </div>
-          )}
-          <div className="glass absolute -bottom-6 -left-6 hidden rounded-2xl border border-border-strong px-5 py-4 shadow-[0_16px_40px_rgba(20,83,45,0.18)] sm:block">
-            <p className="text-2xl font-semibold text-energy">13 años</p>
-            <p className="text-xs font-medium text-text-muted">de experiencia técnica</p>
-          </div>
-          <div className="glass absolute right-4 top-4 hidden rounded-2xl border border-border-strong px-4 py-3 shadow-[0_16px_40px_rgba(20,83,45,0.18)] sm:block">
-            <p className="text-xs font-medium text-text-muted">Garantía por componente</p>
+            <div>
+              <p className="text-3xl font-semibold text-white sm:text-4xl">
+                {STATS[1].value}
+                {STATS[1].suffix}
+              </p>
+              <p className="mt-1 max-w-[16ch] text-xs font-medium leading-snug text-white/70 sm:text-sm">
+                {STATS[1].label}
+              </p>
+            </div>
           </div>
         </Reveal>
       </div>
