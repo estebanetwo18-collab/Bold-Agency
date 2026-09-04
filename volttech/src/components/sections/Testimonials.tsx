@@ -14,7 +14,7 @@ export function Testimonials() {
         </Reveal>
         <Reveal delay={60}>
           <h2 className="mt-5 max-w-xl text-balance text-3xl font-semibold tracking-tight text-text sm:text-4xl">
-            Lo que dicen quienes ya trabajaron con VolTech
+            Lo que dicen quienes ya trabajaron con Volt Tech
           </h2>
         </Reveal>
 

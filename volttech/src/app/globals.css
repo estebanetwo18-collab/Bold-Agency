@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Paleta oficial del Manual de Marca VolTech v1.0 (2026). Ver
+  /* Paleta oficial del Manual de Marca Volt Tech v1.0 (2026). Ver
      src/components/ui/Logo.tsx para el isotipo y src/lib/content.ts
      para el copy. Tema claro a pedido explícito del cliente. */
   --verde-bosque: #14532d; /* Primario */

@@ -19,8 +19,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.volttechcr.com"
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "VolTech — Energía solar e ingeniería eléctrica en la Zona Sur",
-    template: "%s — VolTech",
+    default: "Volt Tech — Energía solar e ingeniería eléctrica en la Zona Sur",
+    template: "%s — Volt Tech",
   },
   description:
     "Diseño e instalación de sistemas solares on-grid, híbridos y off-grid, servicios eléctricos y bombeo solar en Pérez Zeledón, Quepos, Dominical y la Zona Sur de Costa Rica. Calculadora de cotización, garantías por componente y proceso 100% transparente.",
@@ -28,16 +28,16 @@ export const metadata: Metadata = {
     "energía solar Costa Rica",
     "paneles solares Pérez Zeledón",
     "instalación eléctrica Zona Sur",
-    "VolTech",
+    "Volt Tech",
     "bombeo solar Costa Rica",
     "sistema híbrido solar",
   ],
   openGraph: {
-    title: "VolTech — Energía solar e ingeniería eléctrica en la Zona Sur",
+    title: "Volt Tech — Energía solar e ingeniería eléctrica en la Zona Sur",
     description:
       "Independencia energética y respaldo ante cortes, con procesos y garantías transparentes.",
     url: siteUrl,
-    siteName: "VolTech",
+    siteName: "Volt Tech",
     locale: "es_CR",
     type: "website",
   },

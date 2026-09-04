@@ -1,9 +1,9 @@
-# VolTech — Sitio web
+# Volt Tech — Sitio web
 
-Sitio web de VolTech (German Vargas Corrales, cédula 114610102), empresa de
+Sitio web de Volt Tech (German Vargas Corrales, cédula 114610102), empresa de
 energía solar y servicios eléctricos en San Antonio de la Amistad, Pérez
-Zeledón, Costa Rica. Nombre comercial largo: "VolTech Soluciones" — ver nota
-de naming en `src/lib/content.ts`.
+Zeledón, Costa Rica. Nombre comercial largo: "Volt Tech Soluciones" — ver
+nota de naming en `src/lib/content.ts`.
 
 Construido en Next.js (App Router) + TypeScript + Tailwind CSS v4, con
 calculadora de cotización propia (vista cliente + vista interna/admin) y
@@ -16,7 +16,7 @@ captura de leads vía formulario de contacto.
 
 ## Dirección visual
 
-El sitio sigue el **Manual de Marca VolTech v1.0 (2026)** provisto por el
+El sitio sigue el **Manual de Marca Volt Tech v1.0 (2026)** provisto por el
 cliente (`src/components/ui/Logo.tsx` recrea el isotipo en SVG a partir de
 ese manual — no había archivo vectorial exportado disponible).
 
@@ -104,7 +104,7 @@ La lógica vive en `src/lib/pricing.ts` y el componente en
 - **Vista cliente** (pública, en `/#calculadora`): el visitante ingresa el
   monto de su factura eléctrica mensual (o marca un checklist de equipos si
   todavía no tiene electricidad), elige tipo de sistema (on-grid / híbrido /
-  off-grid), y recibe un **rango** de precio ya con el margen de VoltTech
+  off-grid), y recibe un **rango** de precio ya con el margen de Volt Tech
   incluido — nunca se ve el desglose de costo base vs. margen. Si el consumo
   estimado cae bajo los umbrales de viabilidad (200 kWh/mes residencial,
   3.000 kWh/año comercial), se muestra un aviso honesto en vez de forzar una
@@ -174,11 +174,12 @@ relevantes:
   instalación comercial, no confirmada como la foto específica del proyecto
   del caso de éxito — reemplazar si el cliente tiene una foto real de ese
   sitio puntual.
-- **Naming "VolTech" vs "VoltTech Soluciones"**: el Manual de Marca fija el
-  wordmark como "VolTech" (una t), aplicado en todo el sitio. Instagram y
-  Facebook siguen usando el nombre anterior ("VoltTech Soluciones", dos t)
-  — confirmar si también se renombran o si "Soluciones" se mantiene como
-  nombre comercial largo junto al isotipo corto.
+- **Naming**: confirmado con el cliente — el copy del sitio usa "Volt Tech"
+  (dos palabras), como German lo escribe siempre. El isotipo/wordmark del
+  Manual de Marca junta las dos palabras ("VolTech"), y el handle/URL de
+  Instagram y Facebook ya están registrados sin espacio
+  ("@volttech.cr", "VoltTechSoluciones") — esos tres casos se dejaron tal
+  cual porque son el nombre real ya usado en esas plataformas, no un error.
 - **Copy "Bajá tu recibo hasta un 70%"**: el Manual de Marca lo lista como
   ejemplo de tono de voz aprobado, pero es una cifra de ahorro no verificada
   — choca con la regla de integridad de datos del proyecto original ("sin

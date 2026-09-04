@@ -1,7 +1,7 @@
 import { cn } from "@/lib/cn";
 
 /**
- * Isotipo VolTech: 4 rombos de esquina redondeada agrupados en cruz, con
+ * Isotipo Volt Tech: 4 rombos de esquina redondeada agrupados en cruz, con
  * la "V" de "Volt" formada en el espacio negativo central. Geometría y
  * colores extraídos por muestreo de píxeles del isotipo oficial del
  * Manual de Marca v1.0 (2026) — no se dispone del archivo vectorial
@@ -30,8 +30,7 @@ export function Logo({ className, tone = "color" }: { className?: string; tone?:
     <span className={cn("flex items-center gap-2", className)}>
       <LogoMark tone={tone} className="h-7 w-7 sm:h-8 sm:w-8" />
       <span className="text-lg font-extrabold tracking-tight">
-        <span className={wordmarkVol}>Vol</span>
-        <span className={wordmarkTech}>Tech</span>
+        <span className={wordmarkVol}>Volt</span> <span className={wordmarkTech}>Tech</span>
       </span>
     </span>
   );

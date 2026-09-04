@@ -73,20 +73,7 @@ export function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delay={280}>
-            <div className="mt-7 flex flex-wrap gap-2">
-              {HERO.hooks.map((hook) => (
-                <span
-                  key={hook}
-                  className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-medium text-white/90 backdrop-blur-sm sm:text-sm"
-                >
-                  {hook}
-                </span>
-              ))}
-            </div>
-          </Reveal>
-
-          <p className="mt-6 text-xs text-white/70">
+          <p className="mt-7 text-xs text-white/70">
             WhatsApp directo: {SITE.whatsapp} · {SITE.schedule}
           </p>
         </div>

@@ -84,7 +84,7 @@ export function Calculator() {
   const budgetLabel = BUDGET_RANGE_OPTIONS.find((b) => b.value === budget)?.label;
 
   const whatsappSummary = [
-    "Hola VolTech, hice un estimado en la calculadora del sitio:",
+    "Hola Volt Tech, hice un estimado en la calculadora del sitio:",
     inputMode === "factura"
       ? `Factura mensual aprox.: ₡${billColones.toLocaleString("es-CR")}`
       : `Equipos seleccionados: ${
@@ -315,7 +315,7 @@ export function Calculator() {
                         </p>
                         <p className="mt-1 text-[11px] leading-snug text-text-faint">
                           Rango conservador, no una cifra única — las tarifas 2026 bajaron entre 4,9% y 16,4%
-                          según distribuidora, así que el valor real de VolTech está en la independencia y el
+                          según distribuidora, así que el valor real de Volt Tech está en la independencia y el
                           respaldo, no solo en el ahorro mensual.
                         </p>
                       </div>
@@ -378,7 +378,7 @@ export function Calculator() {
                   />
                 )}
                 <AdminRow label="Subtotal antes de margen" value={quote.subtotalBeforeMargin} />
-                <AdminRow label={`Margen VolTech (${Math.round(MARGIN_RATE * 100)}% configurable)`} value={quote.marginAmount} />
+                <AdminRow label={`Margen Volt Tech (${Math.round(MARGIN_RATE * 100)}% configurable)`} value={quote.marginAmount} />
                 <div className="rounded-xl border border-warn/40 bg-warn/10 p-4 sm:col-span-2">
                   <p className="text-xs font-semibold uppercase tracking-wide text-text">Precio final al cliente</p>
                   <p className="mt-1 text-lg font-semibold text-text">
@@ -387,7 +387,7 @@ export function Calculator() {
                 </div>
                 <p className="text-xs text-text-faint sm:col-span-2">
                   Esto es lo que la calculadora captura automáticamente por cotización, comparado con armar
-                  cada proforma a mano — el margen queda visible aquí solo para uso interno de VolTech, y en
+                  cada proforma a mano — el margen queda visible aquí solo para uso interno de Volt Tech, y en
                   la vista pública el cliente nunca ve este desglose.
                 </p>
               </div>
