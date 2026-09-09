@@ -43,13 +43,27 @@ export function Results() {
           {caseStudies.items.map((item, i) => (
             <Reveal key={item.client} delay={i * 0.08}>
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  sizes="(min-width: 640px) 33vw, 100vw"
-                  className="object-cover"
-                />
+                {item.video ? (
+                  <video
+                    src={item.video}
+                    poster={item.image}
+                    className="h-full w-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    aria-label={item.alt}
+                  />
+                ) : (
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    className="object-cover"
+                  />
+                )}
               </div>
               <p className="mt-3 font-display text-sm font-bold text-paper">
                 {item.client}

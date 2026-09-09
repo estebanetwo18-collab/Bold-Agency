@@ -366,7 +366,8 @@ export const caseStudies = {
     },
     {
       image: "/images/case-nouvell.jpg",
-      alt: "Showroom de cocinas Nouvell",
+      video: "/videos/mosaic-reel.mp4",
+      alt: "Reel del showroom de cocinas Nouvell",
       client: "Nouvell",
       market: "Costa Rica",
     },
