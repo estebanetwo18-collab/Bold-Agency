@@ -272,7 +272,7 @@ export const plans = {
       price: "Fee base + performance share · a cotizar",
     },
   ],
-  disclaimer: "Precios de referencia en USD, sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final.",
+  disclaimer: "Precios de referencia en USD, sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final. Todos los planes incluyen facturación electrónica.",
 };
 
 export const pointPricing = {
@@ -297,33 +297,36 @@ export const launchPricing = {
   tiers: [
     {
       name: "Paquete Bronce",
-      price: "₡65,000",
+      price: "Desde ₡75,000",
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
         { label: "12 piezas al mes", detail: "10 estático + 2 en video" },
+        { label: "Involucramiento 100%", detail: "durante el mes de prueba" },
       ],
     },
     {
       name: "Paquete Silver",
       badge: "Más elegido",
-      price: "₡85,000",
+      price: "Desde ₡150,000",
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
         { label: "18 piezas al mes", detail: "12 estático + 6 en video" },
+        { label: "Involucramiento 100%", detail: "durante el mes de prueba" },
       ],
     },
     {
       name: "Paquete B-Gold",
       badge: "★ Top Tier",
       featured: true,
-      price: "₡175,000",
+      price: "Desde ₡220,000",
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
         { label: "24 piezas al mes", detail: "100% a tu elección" },
         { label: "Formato flexible", detail: "todo reels · todo estático · o balance" },
+        { label: "Involucramiento 100%", detail: "durante el mes de prueba" },
       ],
     },
   ],
