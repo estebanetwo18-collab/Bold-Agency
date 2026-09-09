@@ -1,4 +1,5 @@
-import { results, clients } from "@/lib/content";
+import Image from "next/image";
+import { results, clients, caseStudies } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -24,6 +25,36 @@ export function Results() {
               <p className="font-display text-4xl font-extrabold tracking-tight">{stat.num}</p>
               <p className="mt-1.5 font-semibold">{stat.label}</p>
               <p className="mt-0.5 text-sm text-grey-light">{stat.src}</p>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.12} className="mt-20">
+          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
+            <span className="h-1.5 w-1.5 rounded-full bg-volt" />
+            {caseStudies.eyebrow}
+          </span>
+          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight sm:text-[1.7rem]">
+            {caseStudies.headline}
+          </h3>
+        </Reveal>
+
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {caseStudies.items.map((item, i) => (
+            <Reveal key={item.client} delay={i * 0.08}>
+              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <p className="mt-3 font-display text-sm font-bold text-paper">
+                {item.client}
+                <span className="font-normal text-grey-light"> · {item.market}</span>
+              </p>
             </Reveal>
           ))}
         </div>

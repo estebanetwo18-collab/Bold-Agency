@@ -1,7 +1,6 @@
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Mosaic } from "@/components/sections/Mosaic";
 import { Problem } from "@/components/sections/Problem";
 import { System } from "@/components/sections/System";
 import { PhotoBanner } from "@/components/sections/PhotoBanner";
@@ -22,7 +21,6 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
-        <Mosaic />
         <Problem />
         <DiagonalDivider from="paper" to="ink" />
         <System />

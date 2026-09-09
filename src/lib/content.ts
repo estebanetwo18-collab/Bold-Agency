@@ -348,6 +348,31 @@ export const results = {
   ],
 };
 
+export const caseStudies = {
+  eyebrow: "Piezas reales",
+  headline: "Trabajo ejecutado, no mockups.",
+  items: [
+    {
+      image: "/images/case-rentcars.jpg",
+      alt: "Pieza publicitaria de campaña para Rentcars",
+      client: "RentCars",
+      market: "Brasil",
+    },
+    {
+      image: "/images/case-herramientas.jpg",
+      alt: "Pieza publicitaria de campaña de masterclass con Rossanna",
+      client: "Rossanna",
+      market: "Influencer · Argentina",
+    },
+    {
+      image: "/images/case-nouvell.jpg",
+      alt: "Showroom de cocinas Nouvell",
+      client: "Nouvell",
+      market: "Costa Rica",
+    },
+  ],
+};
+
 export const clients = {
   eyebrow: "Clientes y partners",
   headline: "Marcas que eligieron ser bold.",
