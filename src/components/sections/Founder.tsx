@@ -10,7 +10,7 @@ export function Founder() {
         <SectionHeading eyebrow={founder.eyebrow} headline={founder.headline} />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <Reveal className="relative aspect-[4/5] max-w-sm overflow-hidden rounded-[1.5rem]">
+          <Reveal className="relative aspect-[4/5] max-w-sm overflow-hidden">
             <Image
               src="/images/founder-about-me.jpg"
               alt={`${founder.name}, founder de BOLD Agency`}
@@ -46,7 +46,7 @@ export function Founder() {
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {founder.cards.map((card) => (
-                <div key={card.tag} className="rounded-2xl border border-grey-light p-5">
+                <div key={card.tag} className="border border-grey-light p-5">
                   <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
                     {card.tag}
                   </span>
@@ -82,7 +82,7 @@ export function Founder() {
                 Certificación
               </span>
               <div className="mt-4 flex items-center gap-4">
-                <div className="relative aspect-[4/3] w-40 shrink-0 overflow-hidden rounded-xl border border-grey-light sm:w-48">
+                <div className="relative aspect-[4/3] w-40 shrink-0 overflow-hidden border border-grey-light sm:w-48">
                   <Image
                     src="/images/founder-certificate.jpg"
                     alt={`Certificado de ${founder.certificate.institution} — ${founder.certificate.program}, a nombre de ${founder.certificate.honoree}`}

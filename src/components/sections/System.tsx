@@ -24,7 +24,7 @@ export function System() {
               key={pillar.title}
               delay={i * 0.06}
               className={cn(
-                "group relative overflow-hidden rounded-2xl border border-paper/10 bg-surface p-8 transition-colors duration-300 hover:border-volt/60",
+                "group relative overflow-hidden border border-paper/10 bg-surface p-8 transition-colors duration-300 hover:border-volt/60",
                 pillar.wide && "sm:col-span-2 lg:col-span-3",
               )}
             >

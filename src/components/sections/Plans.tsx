@@ -20,7 +20,7 @@ export function Plans() {
               key={modality.name}
               delay={i * 0.08}
               className={cn(
-                "flex flex-col rounded-[1.75rem] border p-9",
+                "flex flex-col border p-9",
                 modality.featured
                   ? "border-ink bg-ink text-paper"
                   : "border-grey-light bg-paper text-ink",
@@ -69,7 +69,7 @@ export function Plans() {
           ))}
         </div>
 
-        <Reveal delay={0.14} className="mt-14 overflow-hidden rounded-[1.75rem] bg-ink p-8 text-paper sm:p-10">
+        <Reveal delay={0.14} className="mt-14 overflow-hidden bg-ink p-8 text-paper sm:p-10">
           <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
             <span className="h-1.5 w-1.5 rounded-full bg-volt" />
             {launchPricing.eyebrow}
@@ -86,7 +86,7 @@ export function Plans() {
               <div
                 key={tier.name}
                 className={cn(
-                  "flex flex-col rounded-2xl border p-6",
+                  "flex flex-col border p-6",
                   tier.featured
                     ? "border-volt/50 bg-gradient-to-b from-surface to-ink"
                     : "border-paper/10 bg-surface",
@@ -131,7 +131,7 @@ export function Plans() {
             ))}
           </div>
 
-          <div className="mt-6 rounded-2xl bg-volt px-6 py-4 text-center">
+          <div className="mt-6 bg-volt px-6 py-4 text-center">
             <p className="text-sm font-semibold text-ink">{launchPricing.promo}</p>
           </div>
         </Reveal>
@@ -151,7 +151,7 @@ export function Plans() {
             <Reveal
               key={item.tag}
               delay={i * 0.05}
-              className="rounded-2xl border border-grey-light p-6"
+              className="border border-grey-light p-6"
             >
               <span className="font-display text-xs font-bold uppercase tracking-[0.1em] text-grey">
                 {item.tag}
@@ -169,7 +169,7 @@ export function Plans() {
           ))}
         </div>
 
-        <Reveal delay={0.1} className="mt-5 rounded-2xl bg-ink px-6 py-4 text-center">
+        <Reveal delay={0.1} className="mt-5 bg-ink px-6 py-4 text-center">
           <p className="text-sm text-paper">
             {pointPricing.promo.split("—").map((part, i) =>
               i === 0 ? (
@@ -183,7 +183,7 @@ export function Plans() {
           </p>
         </Reveal>
 
-        <div className="mt-8 flex flex-col items-start gap-6 rounded-2xl bg-grey-light/40 p-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col items-start gap-6 bg-grey-light/40 p-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-relaxed text-grey">{plans.disclaimer}</p>
           <MagneticButton href="#diagnostico" variant="ink" strength={10}>
             Definir mi plan

@@ -74,7 +74,7 @@ export function DiagnosticForm() {
   }, []);
 
   const inputClass =
-    "w-full rounded-xl border border-grey-light bg-paper px-4 py-3.5 text-ink placeholder:text-grey/70 transition-colors focus:border-ink focus:outline-none";
+    "w-full border border-grey-light bg-paper px-4 py-3.5 text-ink placeholder:text-grey/70 transition-colors focus:border-ink focus:outline-none";
 
   function updateField<K extends keyof typeof rawDefaults>(
     field: K,
@@ -150,7 +150,7 @@ export function DiagnosticForm() {
   }
 
   return (
-    <div className="relative rounded-[2rem] border border-grey-light bg-paper p-6 sm:p-10">
+    <div className="relative border border-grey-light bg-paper p-6 sm:p-10">
       <AnimatePresence mode="wait">
         {status === "success" ? (
           <motion.div
@@ -326,7 +326,7 @@ export function DiagnosticForm() {
             {errors.consent ? <ErrorText>{errors.consent}</ErrorText> : null}
 
             {status === "error" ? (
-              <div className="rounded-xl border border-ink/15 bg-grey-light/30 p-4 text-sm">
+              <div className="border border-ink/15 bg-grey-light/30 p-4 text-sm">
                 <p className="font-display font-bold text-ink">
                   {diagnosticForm.errorTitle}
                 </p>

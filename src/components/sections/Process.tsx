@@ -42,7 +42,7 @@ export function Process() {
               <Reveal
                 key={step.index}
                 delay={i * 0.05}
-                className="relative flex gap-6 rounded-2xl border border-grey-light bg-paper p-8 shadow-[0_1px_0_0_rgba(17,17,17,0.04)]"
+                className="relative flex gap-6 border border-grey-light bg-paper p-8 shadow-[0_1px_0_0_rgba(17,17,17,0.04)]"
               >
                 <span className="font-display text-3xl font-extrabold text-grey-light">
                   {step.index}

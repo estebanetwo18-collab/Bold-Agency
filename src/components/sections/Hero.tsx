@@ -115,7 +115,7 @@ export function Hero() {
 
             <motion.div
               style={{ y: parallaxY }}
-              className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-surface"
+              className="relative aspect-[4/5] overflow-hidden bg-surface"
             >
               <Image
                 src="/images/hero-main.jpg"

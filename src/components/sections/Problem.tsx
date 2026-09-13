@@ -12,7 +12,7 @@ export function Problem() {
           intro={problem.intro}
         />
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-[2rem] border border-grey-light bg-grey-light sm:grid-cols-2">
+        <div className="mt-16 grid gap-px overflow-hidden border border-grey-light bg-grey-light sm:grid-cols-2">
           {problem.points.map((point, i) => (
             <Reveal key={point.title} delay={i * 0.08} className="bg-paper p-8 sm:p-10">
               <span className="font-display text-xs font-bold uppercase tracking-[0.2em] text-grey">
