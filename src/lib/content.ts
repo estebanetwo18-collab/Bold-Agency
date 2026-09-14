@@ -288,20 +288,6 @@ export const plans = {
   disclaimer: "Precios de referencia en USD, sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final. Todos los planes incluyen facturación electrónica.",
 };
 
-export const pointPricing = {
-  eyebrow: "Servicios puntuales",
-  headline: "Cuando no querés paquete: contratás por unidad o pieza.",
-  items: [
-    { tag: "Social Media Management", amount: "$150", unit: "/mes", desc: "Gestión integral de redes" },
-    { tag: "Paid Media · Ads", amount: "$60", unit: "/campaña", desc: "Pauta Meta, Google, TikTok" },
-    { tag: "Copywriting & Contenido", amount: "$5", unit: "/pieza", desc: "Textos publicitarios y editoriales" },
-    { tag: "Diseño Gráfico", amount: "$8", unit: "/pieza", desc: "Piezas para redes y campañas" },
-    { tag: "Estrategia de Marketing", amount: "$50", unit: "/sesión", desc: "Asesoría estratégica puntual" },
-    { tag: "Branding & Rotulación", amount: "A cotizar", unit: "", desc: "Proyecto integral personalizado" },
-  ],
-  promo: "★ Promo de lanzamiento — 10% OFF en paquetes personalizados · Social · Paid · Diseño · Estrategia",
-};
-
 export const launchPricing = {
   eyebrow: "Precios de lanzamiento · The Bold Way",
   headline: "Así arranca The Bold Way.",

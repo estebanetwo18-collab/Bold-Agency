@@ -10,6 +10,7 @@ import { Founder } from "@/components/sections/Founder";
 import { Process } from "@/components/sections/Process";
 import { VideoFeature } from "@/components/sections/VideoFeature";
 import { Plans } from "@/components/sections/Plans";
+import { Calculator } from "@/components/sections/Calculator";
 import { Results } from "@/components/sections/Results";
 import { Faq } from "@/components/sections/Faq";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
@@ -46,6 +47,7 @@ export default function Home() {
         <Process />
         <VideoFeature />
         <Plans />
+        <Calculator />
         <DiagonalDivider from="paper" to="ink" />
         <Results />
         <DiagonalDivider from="ink" to="paper" flip />

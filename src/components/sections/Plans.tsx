@@ -1,4 +1,4 @@
-import { plans, pointPricing, launchPricing } from "@/lib/content";
+import { plans, launchPricing } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -136,54 +136,7 @@ export function Plans() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.16} className="mt-16">
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-grey">
-            <span className="h-1.5 w-1.5 rounded-full bg-ink" />
-            {pointPricing.eyebrow}
-          </span>
-          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight text-ink sm:text-[1.7rem]">
-            {pointPricing.headline}
-          </h3>
-        </Reveal>
-
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {pointPricing.items.map((item, i) => (
-            <Reveal
-              key={item.tag}
-              delay={i * 0.05}
-              className="border border-grey-light p-6"
-            >
-              <span className="font-display text-xs font-bold uppercase tracking-[0.1em] text-grey">
-                {item.tag}
-              </span>
-              <p className="mt-2.5 font-display text-xl font-extrabold text-ink">
-                {item.amount}
-                {item.unit ? (
-                  <span className="ml-1 font-display text-sm font-semibold text-grey">
-                    {item.unit}
-                  </span>
-                ) : null}
-              </p>
-              <p className="mt-1 text-sm text-grey">{item.desc}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.1} className="mt-5 bg-ink px-6 py-4 text-center">
-          <p className="text-sm text-paper">
-            {pointPricing.promo.split("—").map((part, i) =>
-              i === 0 ? (
-                <span key={i} className="font-display font-bold text-volt">
-                  {part}—
-                </span>
-              ) : (
-                <span key={i}>{part}</span>
-              ),
-            )}
-          </p>
-        </Reveal>
-
-        <div className="mt-8 flex flex-col items-start gap-6 bg-grey-light/40 p-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col items-start gap-6 bg-grey-light/40 p-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-relaxed text-grey">{plans.disclaimer}</p>
           <MagneticButton href="#diagnostico" variant="ink" strength={10}>
             Definir mi plan
