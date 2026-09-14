@@ -231,6 +231,7 @@ export const portfolioPage = {
   filterBrandLabel: "Brand",
   filterTypeLabel: "Type of work",
   emptyLabel: "No cases with that filter yet.",
+  inProgressLabel: "Updating soon",
   roleLabel: "My role",
   backLabel: "← Back to portfolio",
   clientsEyebrow: "Clients & partners",

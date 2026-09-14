@@ -1,33 +1,40 @@
-// Fuente única de verdad para el carrusel full-bleed del home (§6).
-// Imágenes fuente: carpeta "Banners Web" del Drive compartido, recortadas
-// centradas a 16:5 (1920x600) sin deformar — el archivo original medía
-// 4240x1200 (ratio 3.53:1), más ancho que 16:5, así que se recortó por
-// los costados. No hardcodear la cantidad de slides en ningún componente:
-// siempre iterar este arreglo.
+// Fuente única de verdad para el carrusel de promos del home (§6).
+// El contenido se renderiza como texto real (no imágenes con texto
+// incrustado) para controlar el espaciado en cualquier viewport.
+// No hardcodear la cantidad de slides en ningún componente: siempre
+// iterar este arreglo.
 
 export type HeroBanner = {
   id: string;
-  src: string;
-  alt: string;
-  href?: string;
+  eyebrow: string;
+  headline: string[];
+  subhead: string;
+  oldPrice?: string;
+  price: string;
+  priceUnit?: string;
+  ctaLabel: string;
+  href: string;
 };
 
 export const heroBannersConfig: HeroBanner[] = [
   {
     id: "precios-web",
-    src: "/images/banners/banner-01-precios-web.jpg",
-    alt: "Precio de lanzamiento: tu página web lista en días, desde ₡67,500",
+    eyebrow: "Precio de lanzamiento",
+    headline: ["Tu página web,", "lista en días."],
+    subhead: "Diseño, desarrollo y hosting incluidos. Precio especial por tiempo limitado.",
+    oldPrice: "₡85,000 / $189",
+    price: "₡67,500 / $149.99",
+    ctaLabel: "Cotizar ahora →",
     href: "/cotizacion",
   },
   {
     id: "marketing-desde",
-    src: "/images/banners/banner-02-marketing-desde.jpg",
-    alt: "Manejo de redes y ads: marketing digital desde ₡65,000 al mes",
+    eyebrow: "Manejo de redes y ads",
+    headline: ["Marketing digital", "desde ₡65,000/mes."],
+    subhead: "Contenido, pauta y estrategia para redes sociales. Tú te enfocás en tu negocio, nosotros en crecerlo.",
+    price: "₡65,000 / $144",
+    priceUnit: "/mes",
+    ctaLabel: "Quiero crecer →",
     href: "#planes",
   },
-  // REVISAR ASSET: "03-banner-generico.jpg" llegó con un placeholder de
-  // editor sin rellenar ("Foto de marca / equipo — Browse files") en el
-  // costado derecho — es un borrador, no una pieza terminada. Lo dejo
-  // fuera del carrusel hasta que llegue la versión final con la foto
-  // real puesta.
 ];

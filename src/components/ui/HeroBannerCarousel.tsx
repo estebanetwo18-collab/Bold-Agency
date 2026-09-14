@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import { heroBannersConfig } from "@/lib/hero-banners-config";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Monogram } from "@/components/ui/Monogram";
 import { usePrefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/cn";
 
@@ -42,51 +42,79 @@ export function HeroBannerCarousel() {
     else if (info.offset.x > SWIPE_THRESHOLD) goTo(index - 1);
   };
 
-  const slide = (
-    <div className="relative h-[50vh] max-h-[420px] min-h-[220px] w-full overflow-hidden bg-ink sm:h-auto sm:max-h-none sm:min-h-0 sm:aspect-[16/5]">
-      <AnimatePresence initial={false} mode="wait">
-        <motion.div
-          key={active.id}
-          drag={reducedMotion || banners.length < 2 ? false : "x"}
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.15}
-          onDragEnd={handleDragEnd}
-          initial={reducedMotion ? { opacity: 0 } : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 cursor-grab active:cursor-grabbing"
-        >
-          <Image
-            src={active.src}
-            alt={active.alt}
-            fill
-            priority={index === 0}
-            loading={index === 0 ? undefined : "lazy"}
-            sizes="100vw"
-            className="object-cover"
-          />
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-
   return (
     <section
-      className="relative bg-ink"
+      className="relative overflow-hidden bg-ink"
       aria-label="Promociones destacadas"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      {active.href ? (
-        <Link href={active.href} aria-label={active.alt} className="block">
-          {slide}
-        </Link>
-      ) : (
-        slide
-      )}
+      <div
+        className="bg-grid pointer-events-none absolute inset-0 opacity-[0.07]"
+        aria-hidden="true"
+      />
+      <Monogram
+        size={220}
+        state="active"
+        className="pointer-events-none absolute -right-10 top-1/2 hidden -translate-y-1/2 opacity-[0.08] sm:block lg:right-10"
+      />
+
+      <div className="relative min-h-[480px] w-full sm:min-h-[460px]">
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div
+            key={active.id}
+            drag={reducedMotion || banners.length < 2 ? false : "x"}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.15}
+            onDragEnd={handleDragEnd}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 flex cursor-grab active:cursor-grabbing"
+          >
+            <div className="mx-auto flex h-full w-full max-w-7xl flex-col justify-center gap-4 px-6 pb-16 pt-28 sm:gap-6 sm:px-10 sm:pb-14 sm:pt-28 lg:gap-7">
+              <span className="inline-flex w-fit items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
+                <span className="h-1.5 w-1.5 bg-volt" />
+                {active.eyebrow}
+              </span>
+
+              <h2 className="max-w-lg font-display text-4xl font-black leading-[1.05] text-paper sm:text-5xl lg:text-[3.25rem]">
+                {active.headline.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </h2>
+
+              <p className="max-w-md text-sm leading-relaxed text-paper/60 sm:text-base">
+                {active.subhead}
+              </p>
+
+              <div className="mt-1 flex flex-wrap items-center gap-4 sm:gap-5">
+                <div className="flex items-baseline gap-2">
+                  {active.oldPrice ? (
+                    <span className="font-data text-sm text-paper/40 line-through">
+                      {active.oldPrice}
+                    </span>
+                  ) : null}
+                  <span className="font-data text-2xl font-extrabold text-paper sm:text-3xl">
+                    {active.price}
+                  </span>
+                  {active.priceUnit ? (
+                    <span className="font-data text-sm text-paper/50">{active.priceUnit}</span>
+                  ) : null}
+                </div>
+                <MagneticButton href={active.href} variant="volt">
+                  {active.ctaLabel}
+                </MagneticButton>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
       {banners.length > 1 ? (
         <div className="absolute inset-x-0 bottom-4 z-10 flex items-center justify-center gap-4 sm:bottom-6">

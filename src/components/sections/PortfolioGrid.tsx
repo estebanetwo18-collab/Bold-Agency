@@ -42,7 +42,7 @@ export function PortfolioGrid() {
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((item, i) => (
             <Reveal key={item.slug} delay={i * 0.05}>
-              <PortfolioCard slug={item.slug} />
+              <PortfolioCard slug={item.slug} inProgressLabel={portfolioPage.inProgressLabel} />
             </Reveal>
           ))}
         </div>
@@ -122,7 +122,7 @@ function FilterGroup<T extends string>({
   );
 }
 
-function PortfolioCard({ slug }: { slug: string }) {
+function PortfolioCard({ slug, inProgressLabel }: { slug: string; inProgressLabel: string }) {
   const item = portfolioConfig.find((p) => p.slug === slug);
   if (!item) return null;
 
@@ -131,6 +131,12 @@ function PortfolioCard({ slug }: { slug: string }) {
       href={`/portafolio/${item.slug}`}
       className="group relative block aspect-[4/3] overflow-hidden border border-transparent transition-colors duration-300 hover:border-volt"
     >
+      {item.inProgress ? (
+        <span className="absolute right-3 top-3 z-10 bg-volt px-2.5 py-1 font-display text-[0.65rem] font-bold uppercase tracking-[0.12em] text-ink">
+          {inProgressLabel}
+        </span>
+      ) : null}
+
       {item.cardBanner ? (
         <>
           <Image

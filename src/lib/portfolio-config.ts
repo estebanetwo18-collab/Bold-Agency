@@ -26,6 +26,8 @@ export type PortfolioItem = {
    * blanco). Si falta, la tarjeta cae de vuelta al bloque negro/Volt.
    */
   cardBanner?: string;
+  /** Caso todavía no cerrado al 100% — muestra una nota discreta en la tarjeta del grid. */
+  inProgress?: boolean;
   /** Media adicional para el hover-cycle de la tarjeta y la vista de detalle. */
   gallery: PortfolioMediaItem[];
 };
@@ -95,6 +97,7 @@ export const portfolioConfig: PortfolioItem[] = [
     descripcion: "Sesión y lanzamiento Showroom Omega en Daoro Costa Rica.",
     rol: "Conceptualización completa de la sesión y moodboard; coordinación con casa matriz para el visual merchandising de la marca y el plan de comunicación con medios e influencers.",
     cardBanner: "/portfolio/daoro/banner.jpg",
+    inProgress: true,
     cover: {
       type: "image",
       src: "/portfolio/daoro/cover.jpg",
@@ -134,6 +137,7 @@ export const portfolioConfig: PortfolioItem[] = [
       "Creación de contenido y manejo estratégico de marca personal y comercial junto al salón de belleza Adora.",
     rol: "Creación de contenido y manejo estratégico de marca personal y comercial junto al salón de belleza Adora.",
     cardBanner: "/portfolio/daniela-portillo-adora/banner.jpg",
+    inProgress: true,
     cover: {
       type: "image",
       src: "/portfolio/daniela-portillo-adora/cover.jpg",
@@ -155,6 +159,7 @@ export const portfolioConfig: PortfolioItem[] = [
       "Apertura de tienda en La Marina de Flamingo; conceptualización y ejecución estratégica de contenido y acciones de marketing, como estratega líder de la campaña de lanzamiento. Crédito de diseño: Juan Rodríguez y Pablo Aguilar.",
     rol: "Estratega líder de la campaña de lanzamiento: conceptualización y ejecución estratégica de contenido y acciones de marketing para la apertura de tienda en La Marina de Flamingo. Crédito de diseño: Juan Rodríguez y Pablo Aguilar.",
     cardBanner: "/portfolio/nouvell/banner.jpg",
+    inProgress: true,
     cover: {
       type: "image",
       src: "/portfolio/nouvell/cover.jpg",
@@ -182,6 +187,7 @@ export const portfolioConfig: PortfolioItem[] = [
     descripcion: "Conceptualización, diseño y ejecución estratégica de contenido y acciones de marketing.",
     rol: "Conceptualización, diseño y ejecución estratégica de contenido y acciones de marketing.",
     cardBanner: "/portfolio/volt-tech/banner.jpg",
+    inProgress: true,
     cover: {
       type: "image",
       src: "/portfolio/volt-tech/cover.jpg",
