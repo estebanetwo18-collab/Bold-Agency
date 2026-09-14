@@ -37,7 +37,6 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Boutique Daoro con exhibición de relojes Omega",
     },
     gallery: [
-      { type: "image", src: "/portfolio/daoro/cover.jpg", alt: "Boutique Daoro con exhibición de relojes Omega" },
       { type: "image", src: "/portfolio/daoro/01.jpg", alt: "Pieza de campaña Omega — colecciones especiales" },
       { type: "image", src: "/portfolio/daoro/02.jpg", alt: "Pieza de campaña Omega Seamaster — regalo con estilo" },
       { type: "image", src: "/portfolio/daoro/04.jpg", alt: "Pieza de campaña Omega Seamaster — regalo exquisito" },
@@ -57,7 +56,6 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Pieza de campaña de redes sociales para Plastigel / Plastiwax",
     },
     gallery: [
-      { type: "image", src: "/portfolio/ingo/cover.jpg", alt: "Pieza de campaña de redes sociales para Plastigel / Plastiwax" },
       { type: "video", src: "/portfolio/ingo/reel.mp4", poster: "/portfolio/ingo/reel-poster.jpg", alt: "Tutorial en video de uso de Plastiwax" },
       { type: "image", src: "/portfolio/ingo/01.jpg", alt: "Pieza de campaña Plastiwax — amor propio" },
       { type: "image", src: "/portfolio/ingo/02.jpg", alt: "Pieza de campaña Plastigel — humor de marca" },
@@ -77,7 +75,6 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Frame de contenido de maquillaje para Avon Costa Rica",
     },
     gallery: [
-      { type: "image", src: "/portfolio/avon/cover.jpg", alt: "Frame de contenido de maquillaje para Avon Costa Rica" },
       // Prueba piloto: shorts alojados en YouTube en vez de mp4 local
       // (subidos por el cliente). Si funciona bien, se replica al resto
       // de las marcas.
@@ -104,7 +101,6 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Captura de la app Purdy Go de Toyota",
     },
     gallery: [
-      { type: "image", src: "/portfolio/purdy-go/cover.jpg", alt: "Captura de la app Purdy Go de Toyota" },
       { type: "image", src: "/portfolio/purdy-go/screenshot1.jpg", alt: "Captura de pantalla de la estrategia digital Purdy Go" },
       { type: "image", src: "/portfolio/purdy-go/screenshot2.jpg", alt: "Captura de pantalla de la landing page Purdy Go" },
       { type: "image", src: "/portfolio/purdy-go/screenshot3.jpg", alt: "Captura de pantalla del posicionamiento digital Purdy Go" },
@@ -123,11 +119,6 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Frame de contenido de marca personal para Daniela Portillo y Adora",
     },
     gallery: [
-      {
-        type: "image",
-        src: "/portfolio/daniela-portillo-adora/cover.jpg",
-        alt: "Frame de contenido de marca personal para Daniela Portillo y Adora",
-      },
       {
         type: "video",
         src: "/portfolio/daniela-portillo-adora/reel.mp4",
@@ -148,7 +139,6 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Showroom de cocinas Nouvell en La Marina de Flamingo",
     },
     gallery: [
-      { type: "image", src: "/portfolio/nouvell/cover.jpg", alt: "Showroom de cocinas Nouvell en La Marina de Flamingo" },
       { type: "video", src: "/videos/mosaic-reel.mp4", poster: "/portfolio/nouvell/mosaic-poster.jpg", alt: "Reel del showroom de cocinas Nouvell" },
       { type: "image", src: "/portfolio/nouvell/img1.jpg", alt: "Apertura de Nouvell Flamingo — velada de lanzamiento" },
       { type: "image", src: "/portfolio/nouvell/img2.jpg", alt: "Apertura de Nouvell Flamingo — velada de lanzamiento (2)" },
@@ -176,7 +166,6 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Proyecto de cocina de diseño para Euromobilia",
     },
     gallery: [
-      { type: "image", src: "/portfolio/euromobilia/cover.jpg", alt: "Proyecto de cocina de diseño para Euromobilia" },
       { type: "video", src: "/portfolio/euromobilia/reel.mp4", poster: "/portfolio/euromobilia/reel-poster.jpg", alt: "Reel de proyecto de cocina para Euromobilia" },
       { type: "video", src: "/portfolio/euromobilia/01.mp4", poster: "/portfolio/euromobilia/01-poster.jpg", alt: "Open House New Collection — evento Euromobilia" },
       { type: "video", src: "/portfolio/euromobilia/02.mp4", poster: "/portfolio/euromobilia/02-poster.jpg", alt: "Future Design by Ara Group — evento exclusivo" },
@@ -199,7 +188,6 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Pieza gráfica de campaña para Volt Tech",
     },
     gallery: [
-      { type: "image", src: "/portfolio/volt-tech/cover.jpg", alt: "Pieza gráfica de campaña para Volt Tech" },
       { type: "image", src: "/portfolio/volt-tech/piece1.jpg", alt: "Pieza de contenido de campaña Volt Tech — agosto" },
       { type: "image", src: "/portfolio/volt-tech/piece2.jpg", alt: "Pieza gráfica de campaña Volt Tech — parrillas" },
       { type: "image", src: "/portfolio/volt-tech/piece3.jpg", alt: "Pieza gráfica de campaña Volt Tech — productos variados" },
