@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { faq } from "@/lib/content";
+import { useContent } from "@/lib/useContent";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { usePrefersReducedMotion } from "@/lib/motion";
 
 export function Faq() {
+  const { faq } = useContent();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const reducedMotion = usePrefersReducedMotion();
 

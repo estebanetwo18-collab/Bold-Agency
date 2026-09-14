@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { portfolioHero } from "@/lib/content";
+import { useContent } from "@/lib/useContent";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { usePrefersReducedMotion } from "@/lib/motion";
 
 export function PortfolioHero() {
+  const { portfolioHero } = useContent();
   const reducedMotion = usePrefersReducedMotion();
 
   return (

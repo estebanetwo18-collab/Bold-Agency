@@ -1,12 +1,14 @@
 import Image from "next/image";
-import { founder, portfolioPage } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
 // Migrado tal cual del antiguo Founder.tsx del home (§5.4b) — mismo
 // copy, mismo layout, solo sin el <section id="fundador"> que ya no
 // existe como ancla independiente.
-export function AboutMe() {
+export async function AboutMe() {
+  const { founder, portfolioPage } = await getServerContent();
+
   return (
     <section id="sobre-mi" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -63,7 +65,7 @@ export function AboutMe() {
 
             <div className="mt-10">
               <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
-                Experiencia reciente
+                {founder.experienceLabel}
               </span>
               <ul className="mt-4 flex flex-col divide-y divide-grey-light border-t border-grey-light">
                 {founder.experience.map((role) => (
@@ -82,7 +84,7 @@ export function AboutMe() {
 
             <div className="mt-10">
               <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
-                Certificación
+                {founder.certificationLabel}
               </span>
               <div className="mt-4 flex items-center gap-4">
                 <div className="relative aspect-[4/3] w-40 shrink-0 overflow-hidden border border-grey-light sm:w-48">

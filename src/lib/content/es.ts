@@ -198,6 +198,8 @@ export const founder = {
     },
   ],
   linkedIn: "https://linkedin.com/in/estebanjm",
+  experienceLabel: "Experiencia reciente",
+  certificationLabel: "Certificación",
   certificate: {
     institution: "The George Washington University",
     school: "School of Business",
@@ -228,15 +230,20 @@ export const portfolioPage = {
   gridHeadline: "Marcas con las que he construido, de cerca.",
   gridIntro: "Filtrá por marca o por tipo de trabajo. Cada caso muestra mi rol real en el proyecto.",
   filterAllLabel: "Todas",
+  filterBrandLabel: "Marca",
+  filterTypeLabel: "Tipo de trabajo",
+  emptyLabel: "No hay casos con ese filtro todavía.",
   roleLabel: "Mi rol",
   backLabel: "← Volver al portafolio",
   clientsEyebrow: "Clientes y partners",
   clientsHeadline: "Marcas que eligieron ser bold.",
+  detailCtaLabel: "Agendar Diagnóstico 360",
 };
 
 export const process = {
   eyebrow: "Cómo trabajamos",
   headline: "Un proceso, no una lista de entregables.",
+  subhead: "Cada etapa se apoya en la anterior. No saltamos a ejecución sin diagnóstico, ni medimos sin haber ejecutado con intención.",
   steps: [
     {
       index: "01",
@@ -264,19 +271,6 @@ export const process = {
       body: "Ajustamos la dirección con lo aprendido. El crecimiento real es un ciclo, no un proyecto con fecha de cierre.",
     },
   ],
-};
-
-// REVISAR COPY: el brief (punto 7) no trajo texto definido para esta
-// sección, solo la estructura (video + texto). Borrador a revisar antes
-// de publicar — video reutilizado de mosaic-reel.mp4 por decisión del
-// usuario, ya que no hay un video corporativo genérico entre los assets.
-export const videoFeature = {
-  eyebrow: "Cómo trabajamos, en video",
-  title: "El mismo equipo que planea, ejecuta.",
-  body: "No entregamos un documento de estrategia y desaparecemos. Nos sentamos con tu equipo, coordinamos con tus proveedores y nos involucramos hasta que la pieza está en producción — como con Nouvell, de la conceptualización a la apertura de tienda.",
-  cta: { href: "/cotizacion", label: "Agendar Diagnóstico 360" },
-  video: "/videos/mosaic-reel.mp4",
-  poster: "/images/case-nouvell.jpg",
 };
 
 export const plans = {
@@ -312,6 +306,7 @@ export const plans = {
     },
   ],
   disclaimer: "Precios de referencia en USD, sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final. Todos los planes incluyen facturación electrónica.",
+  ctaLabel: "Definir mi plan",
 };
 
 export const launchPricing = {
@@ -371,6 +366,7 @@ export const results = {
     { num: "+70%", label: "Productividad", src: "Avon" },
     { num: "+16", label: "Campañas exitosas", src: "9+ años de trayectoria" },
   ],
+  ctaLabel: "Ver portafolio completo",
 };
 
 export const faq = {
@@ -459,6 +455,7 @@ export const footer = {
     { href: "https://www.linkedin.com/company/em-agency-latam", label: "LinkedIn", icon: "linkedin" },
   ],
   whatsappLink: "https://wa.me/50672445642",
+  whatsappAriaLabel: "Escribir por WhatsApp",
   copyright: `© ${new Date().getFullYear()} BOLD Agency. Todos los derechos reservados.`,
 };
 
@@ -470,10 +467,44 @@ export const diagnosticForm = {
   successTitle: "Recibimos tu solicitud.",
   successBody:
     "Nuestro equipo revisará la información y te contactará por WhatsApp o email en las próximas 24 horas hábiles para agendar tu Diagnóstico 360.",
+  resendLabel: "Enviar otra solicitud",
   errorTitle: "No pudimos enviar tu solicitud.",
   errorBody:
     "Tu información no se perdió. Intenta de nuevo en unos segundos o escríbenos directamente por WhatsApp.",
+  nameLabel: "Nombre completo",
+  companyLabel: "Nombre del negocio",
+  contactLabel: "WhatsApp o email",
+  contactHint: "Con código de país si es WhatsApp.",
+  businessTypeLabel: "Tipo de negocio",
+  businessTypePlaceholder: "Selecciona una opción",
+  budgetLabel: "Presupuesto mensual aproximado",
+  budgetPlaceholder: "Selecciona un rango",
+  challengeLabel: "¿Cuál es tu principal desafío hoy?",
+  consentLabel: "Autorizo a BOLD Agency a contactarme por WhatsApp o email para coordinar mi Diagnóstico 360.",
+  submitLabel: "Solicitar Diagnóstico 360",
+  submittingLabel: "Enviando…",
+  privacyNote: "No compartimos tu información. Solo la usamos para preparar tu diagnóstico.",
 };
+
+export const businessTypes = [
+  { value: "comercio", label: "Comercio / retail" },
+  { value: "servicios", label: "Servicios profesionales" },
+  { value: "salud", label: "Salud y bienestar" },
+  { value: "alimentos", label: "Alimentos y bebidas" },
+  { value: "construccion", label: "Construcción e inmobiliaria" },
+  { value: "manufactura", label: "Manufactura / industria" },
+  { value: "educacion", label: "Educación y formación" },
+  { value: "tecnologia", label: "Tecnología / software" },
+  { value: "otro", label: "Otro" },
+];
+
+export const budgetRanges = [
+  { value: "menos-1000", label: "Menos de USD 1,000/mes" },
+  { value: "1000-3000", label: "USD 1,000 – 3,000/mes" },
+  { value: "3000-6000", label: "USD 3,000 – 6,000/mes" },
+  { value: "6000-mas", label: "Más de USD 6,000/mes" },
+  { value: "no-seguro", label: "Aún no lo tengo claro" },
+];
 
 /**
  * Página independiente en /cotizacion — URL única y compartible para
@@ -481,6 +512,8 @@ export const diagnosticForm = {
  * sin depender de un ancla dentro del home.
  */
 export const cotizacionPage = {
+  metaTitle: "Cotización — Diagnóstico 360",
+  metaDescription: "Solicita tu Diagnóstico 360 con BOLD Agency: contanos de tu negocio y te contactamos por WhatsApp o email con tu cotización, sin costo y sin compromiso.",
   eyebrow: "Cotización BOLD Agency",
   headline: "Contanos tu negocio y arrancamos tu cotización.",
   intro:
@@ -490,4 +523,57 @@ export const cotizacionPage = {
     "Diagnóstico 360 sin costo y sin compromiso",
     "+9 años de experiencia en marketing digital y estratégico",
   ],
+};
+
+// UI de la calculadora (§8). Los nombres de servicios y categorías del
+// catálogo (pricing-config.ts) se mantienen en español en los 3 idiomas
+// por ahora — vienen literal del Excel del cliente y traducirlos con
+// precisión de negocio queda pendiente de una revisión aparte.
+export const calculator = {
+  eyebrow: "Calcula tu servicio o proyecto",
+  headline: "¿Cuánto cuesta crecer a tu manera?",
+  intro: "Precios reales, en colones. Elegí un paquete mensual, sumá servicios puntuales, o ambos.",
+  packageTitle: "Paquete mensual",
+  packageSubtitle: "Selección única — no se combinan entre sí.",
+  pointTitle: "Servicios puntuales",
+  pointSubtitle: "Sumá los que necesitás. Los marcados “a cotizar” abren un formulario aparte.",
+  quoteLabel: "A cotizar",
+  fromLabel: "desde",
+  quoteButton: "Cotizar",
+  quotedButton: "Solicitado ✓",
+  growYourWayNote: "Grow Your Way incluye una comisión ajustable sobre el presupuesto de pauta, acordada según el proyecto — no está incluida en el total de esta calculadora.",
+  summaryTitle: "Tu estimado",
+  emptyState: "Elegí un paquete o un servicio puntual para ver el total.",
+  subtotalLabel: "Subtotal",
+  discountLabel: "Descuento por combinar",
+  vatLabel: "IVA",
+  totalLabel: "Total estimado",
+  totalFromLabel: "Total estimado desde",
+  totalUnit: "/mes, impuestos incluidos",
+  quotedNote: "Incluye servicios a cotizar por separado — te contactamos con el monto exacto.",
+  ctaLabel: "Agendar Diagnóstico 360",
+  decreaseAria: "Restar",
+  increaseAria: "Sumar",
+};
+
+export const quoteModal = {
+  eyebrow: "Cotizar",
+  intro: "Este servicio se cotiza a la medida. Dejanos tus datos y un breve alcance.",
+  namePlaceholder: "Nombre completo",
+  companyPlaceholder: "Nombre del negocio",
+  contactPlaceholder: "WhatsApp o email",
+  briefPlaceholder: "Contanos brevemente el alcance del proyecto",
+  submitLabel: "Enviar solicitud",
+  submittingLabel: "Enviando…",
+  whatsappLabel: "o escribinos directo por WhatsApp",
+  closeLabel: "Cerrar",
+  successTitle: "¡Listo!",
+  successBody: (service: string) => `Recibimos tu solicitud de cotización para ${service}. Te contactamos pronto.`,
+  ariaLabel: (service: string) => `Cotizar ${service}`,
+  genericError: "Revisa los campos.",
+  submitError: "No se pudo enviar la solicitud.",
+  unexpectedError: "Error inesperado.",
+  whatsappMessage: (service: string) => `Hola BOLD, quiero cotizar: ${service}.`,
+  challengePrefix: "Servicio de interés",
+  noDetailNote: "sin detalle adicional",
 };

@@ -1,10 +1,12 @@
-import { plans, launchPricing } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/cn";
 
-export function Plans() {
+export async function Plans() {
+  const { plans, launchPricing } = await getServerContent();
+
   return (
     <section id="planes" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -139,7 +141,7 @@ export function Plans() {
         <div className="mt-16 flex flex-col items-start gap-6 bg-grey-light/40 p-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-relaxed text-grey">{plans.disclaimer}</p>
           <MagneticButton href="#diagnostico" variant="ink" strength={10}>
-            Definir mi plan
+            {plans.ctaLabel}
           </MagneticButton>
         </div>
       </div>

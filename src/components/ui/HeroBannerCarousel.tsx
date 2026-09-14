@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import { heroBannersConfig } from "@/lib/hero-banners-config";
 import { usePrefersReducedMotion } from "@/lib/motion";

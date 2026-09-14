@@ -1,9 +1,11 @@
-import { results } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-export function Results() {
+export async function Results() {
+  const { results } = await getServerContent();
+
   return (
     <section id="resultados" className="relative bg-ink py-28 text-paper lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -30,7 +32,7 @@ export function Results() {
 
         <Reveal delay={0.2} className="mt-14 flex justify-center">
           <MagneticButton href="/portafolio" variant="volt">
-            Ver portafolio completo
+            {results.ctaLabel}
           </MagneticButton>
         </Reveal>
       </div>

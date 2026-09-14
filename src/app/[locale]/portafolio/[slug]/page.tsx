@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { portfolioConfig } from "@/lib/portfolio-config";
-import { portfolioPage } from "@/lib/content";
+import { routing } from "@/i18n/routing";
+import { getContent } from "@/lib/content";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function generateStaticParams() {
-  return portfolioConfig.map((item) => ({ slug: item.slug }));
+  return routing.locales.flatMap((locale) =>
+    portfolioConfig.map((item) => ({ locale, slug: item.slug })),
+  );
 }
 
 export async function generateMetadata({
@@ -29,9 +34,13 @@ export async function generateMetadata({
 export default async function PortfolioDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  const activeLocale = hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
+  setRequestLocale(activeLocale);
+  const { portfolioPage } = getContent(activeLocale);
+
   const item = portfolioConfig.find((p) => p.slug === slug);
   if (!item) notFound();
 
@@ -111,7 +120,7 @@ export default async function PortfolioDetailPage({
 
           <div className="mt-16 flex justify-center">
             <MagneticButton href="/cotizacion" variant="volt">
-              Agendar Diagnóstico 360
+              {portfolioPage.detailCtaLabel}
             </MagneticButton>
           </div>
         </div>

@@ -1,15 +1,20 @@
 "use client";
 
-import Link from "next/link";
+import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { nav } from "@/lib/content";
+import { useContent } from "@/lib/useContent";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { routing, type AppLocale } from "@/i18n/routing";
 import { Monogram } from "@/components/ui/Monogram";
 import { LogoLockup } from "@/components/ui/LogoLockup";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/cn";
 
+const LOCALE_LABELS: Record<AppLocale, string> = { es: "ES", en: "EN", pt: "PT" };
+
 export function Nav() {
+  const { nav } = useContent();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
@@ -60,7 +65,8 @@ export function Nav() {
           ))}
         </ul>
 
-        <div className="hidden xl:block">
+        <div className="hidden items-center gap-4 xl:flex">
+          <LanguageSwitcher />
           <MagneticButton href={nav.cta.href} variant="ink" strength={10}>
             {nav.cta.label}
           </MagneticButton>
@@ -96,7 +102,10 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          <div className="mt-8">
+          <div className="mt-6">
+            <LanguageSwitcher onSelect={() => setOpen(false)} tone="paper" />
+          </div>
+          <div className="mt-6">
             <MagneticButton href={nav.cta.href} onClick={() => setOpen(false)} variant="volt">
               {nav.cta.label}
             </MagneticButton>
@@ -104,6 +113,51 @@ export function Nav() {
         </motion.div>
       ) : null}
     </motion.header>
+  );
+}
+
+function LanguageSwitcher({
+  onSelect,
+  tone = "ink",
+}: {
+  onSelect?: () => void;
+  tone?: "ink" | "paper";
+}) {
+  const activeLocale = useLocale() as AppLocale;
+  const pathname = usePathname();
+  const router = useRouter();
+
+  return (
+    <div
+      className="flex items-center gap-1"
+      role="group"
+      aria-label="Seleccionar idioma / Select language / Selecionar idioma"
+    >
+      {routing.locales.map((locale) => {
+        const active = locale === activeLocale;
+        return (
+          <button
+            key={locale}
+            type="button"
+            aria-current={active}
+            onClick={() => {
+              router.replace(pathname, { locale });
+              onSelect?.();
+            }}
+            className={cn(
+              "px-2 py-1 font-display text-xs font-bold uppercase tracking-wide transition-colors",
+              active
+                ? "text-volt"
+                : tone === "paper"
+                  ? "text-paper/60 hover:text-paper"
+                  : "text-ink/50 hover:text-ink",
+            )}
+          >
+            {LOCALE_LABELS[locale]}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 

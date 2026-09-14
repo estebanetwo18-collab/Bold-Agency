@@ -11,9 +11,11 @@ import { calculateTotal, formatCrc, type CalculatorState } from "@/lib/pricing-u
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { QuoteRequestModal } from "@/components/ui/QuoteRequestModal";
+import { useContent } from "@/lib/useContent";
 import { cn } from "@/lib/cn";
 
 export function Calculator() {
+  const { calculator: c } = useContent();
   const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [quoteModalFor, setQuoteModalFor] = useState<string | null>(null);
@@ -34,16 +36,16 @@ export function Calculator() {
     <section id="calculadora" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
-          eyebrow="Calcula tu servicio o proyecto"
-          headline="¿Cuánto cuesta crecer a tu manera?"
-          intro="Precios reales, en colones. Elegí un paquete mensual, sumá servicios puntuales, o ambos."
+          eyebrow={c.eyebrow}
+          headline={c.headline}
+          intro={c.intro}
         />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-start">
           <div className="flex flex-col gap-8">
             <div className="border border-grey-light bg-paper p-6 sm:p-8">
-              <h3 className="font-display text-lg font-bold text-ink">Paquete mensual</h3>
-              <p className="mt-1 text-sm text-grey">Selección única — no se combinan entre sí.</p>
+              <h3 className="font-display text-lg font-bold text-ink">{c.packageTitle}</h3>
+              <p className="mt-1 text-sm text-grey">{c.packageSubtitle}</p>
 
               <div className="mt-6 flex flex-col gap-3">
                 {packageOptions.map((pkg) => {
@@ -74,10 +76,8 @@ export function Calculator() {
             </div>
 
             <div className="border border-grey-light bg-paper p-6 sm:p-8">
-              <h3 className="font-display text-lg font-bold text-ink">Servicios puntuales</h3>
-              <p className="mt-1 text-sm text-grey">
-                Sumá los que necesitás. Los marcados &ldquo;a cotizar&rdquo; abren un formulario aparte.
-              </p>
+              <h3 className="font-display text-lg font-bold text-ink">{c.pointTitle}</h3>
+              <p className="mt-1 text-sm text-grey">{c.pointSubtitle}</p>
 
               <div className="mt-6 flex flex-col gap-8">
                 {pointServiceCategories.map((category) => (
@@ -97,9 +97,9 @@ export function Calculator() {
                               <p className="text-sm font-semibold text-ink">{item.label}</p>
                               <p className="font-data text-xs text-grey-data">
                                 {item.pricingType === "a_cotizar"
-                                  ? "A cotizar"
+                                  ? c.quoteLabel
                                   : item.pricingType === "rango"
-                                    ? `desde ${formatCrc(item.priceMin ?? 0)}`
+                                    ? `${c.fromLabel} ${formatCrc(item.priceMin ?? 0)}`
                                     : formatCrc(item.priceMin ?? 0)}
                               </p>
                             </div>
@@ -115,12 +115,14 @@ export function Calculator() {
                                     : "border-ink/20 text-ink hover:border-ink",
                                 )}
                               >
-                                {requestedQuotes.has(item.id) ? "Solicitado ✓" : "Cotizar"}
+                                {requestedQuotes.has(item.id) ? c.quotedButton : c.quoteButton}
                               </button>
                             ) : (
                               <Stepper
                                 value={quantities[item.id] ?? 0}
                                 onChange={(qty) => setQty(item.id, qty)}
+                                decreaseAria={c.decreaseAria}
+                                increaseAria={c.increaseAria}
                               />
                             )}
                           </div>
@@ -130,20 +132,15 @@ export function Calculator() {
                 ))}
               </div>
 
-              <p className="mt-6 text-xs leading-relaxed text-grey">
-                Grow Your Way incluye una comisión ajustable sobre el presupuesto de pauta,
-                acordada según el proyecto — no está incluida en el total de esta calculadora.
-              </p>
+              <p className="mt-6 text-xs leading-relaxed text-grey">{c.growYourWayNote}</p>
             </div>
           </div>
 
           <div className="sticky top-28 border border-ink bg-ink p-6 text-paper sm:p-8">
-            <h3 className="font-display text-lg font-bold">Tu estimado</h3>
+            <h3 className="font-display text-lg font-bold">{c.summaryTitle}</h3>
 
             {result.lines.length === 0 ? (
-              <p className="mt-6 text-sm text-paper/60">
-                Elegí un paquete o un servicio puntual para ver el total.
-              </p>
+              <p className="mt-6 text-sm text-paper/60">{c.emptyState}</p>
             ) : (
               <div className="mt-6 flex flex-col divide-y divide-paper/10 border-y border-paper/10">
                 {result.lines.map((line) => (
@@ -151,7 +148,7 @@ export function Calculator() {
                     <span className="text-sm text-paper/85">
                       {line.item.label}
                       {line.quantity > 1 ? ` × ${line.quantity}` : ""}
-                      {line.isEstimate ? " (desde)" : ""}
+                      {line.isEstimate ? ` (${c.fromLabel})` : ""}
                     </span>
                     <span className="font-data text-sm font-semibold">{formatCrc(line.lineTotal)}</span>
                   </div>
@@ -161,40 +158,40 @@ export function Calculator() {
 
             <div className="mt-4 flex flex-col gap-2 text-sm">
               <div className="flex justify-between text-paper/70">
-                <span>Subtotal</span>
+                <span>{c.subtotalLabel}</span>
                 <span className="font-data">{formatCrc(result.subtotal)}</span>
               </div>
               {result.comboDiscountApplies ? (
                 <div className="flex justify-between text-volt">
-                  <span>Descuento por combinar ({pricingConfig.comboDiscountRate * 100}%)</span>
+                  <span>{c.discountLabel} ({pricingConfig.comboDiscountRate * 100}%)</span>
                   <span className="font-data">−{formatCrc(result.discountAmount)}</span>
                 </div>
               ) : null}
               <div className="flex justify-between text-paper/70">
-                <span>IVA ({pricingConfig.vatRate * 100}%)</span>
+                <span>{c.vatLabel} ({pricingConfig.vatRate * 100}%)</span>
                 <span className="font-data">{formatCrc(result.vatAmount)}</span>
               </div>
             </div>
 
             <div className="mt-5 border-t border-paper/15 pt-5">
               <p className="text-xs uppercase tracking-[0.15em] text-paper/60">
-                {result.totalIsEstimate ? "Total estimado desde" : "Total estimado"}
+                {result.totalIsEstimate ? c.totalFromLabel : c.totalLabel}
               </p>
               <p className="mt-1 font-data text-4xl font-extrabold text-volt">
                 {formatCrc(result.total)}
               </p>
-              <p className="mt-1 text-xs text-paper/50">/mes, impuestos incluidos</p>
+              <p className="mt-1 text-xs text-paper/50">{c.totalUnit}</p>
             </div>
 
             {requestedQuotes.size > 0 ? (
               <p className="mt-5 border border-volt/40 bg-volt/10 p-3 text-xs leading-relaxed text-volt">
-                Incluye servicios a cotizar por separado — te contactamos con el monto exacto.
+                {c.quotedNote}
               </p>
             ) : null}
 
             <div className="mt-6">
               <MagneticButton href="/cotizacion" variant="volt" className="w-full justify-center">
-                Agendar Diagnóstico 360
+                {c.ctaLabel}
               </MagneticButton>
             </div>
           </div>
@@ -214,12 +211,22 @@ export function Calculator() {
   );
 }
 
-function Stepper({ value, onChange }: { value: number; onChange: (value: number) => void }) {
+function Stepper({
+  value,
+  onChange,
+  decreaseAria,
+  increaseAria,
+}: {
+  value: number;
+  onChange: (value: number) => void;
+  decreaseAria: string;
+  increaseAria: string;
+}) {
   return (
     <div className="flex items-center border border-grey-light">
       <button
         type="button"
-        aria-label="Restar"
+        aria-label={decreaseAria}
         onClick={() => onChange(value - 1)}
         disabled={value <= 0}
         className="flex h-9 w-9 items-center justify-center text-ink transition-colors hover:bg-grey-light disabled:opacity-30"
@@ -229,7 +236,7 @@ function Stepper({ value, onChange }: { value: number; onChange: (value: number)
       <span className="font-data w-8 text-center text-sm font-semibold text-ink">{value}</span>
       <button
         type="button"
-        aria-label="Sumar"
+        aria-label={increaseAria}
         onClick={() => onChange(value + 1)}
         className="flex h-9 w-9 items-center justify-center text-ink transition-colors hover:bg-grey-light"
       >

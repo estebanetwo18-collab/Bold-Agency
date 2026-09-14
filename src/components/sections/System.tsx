@@ -1,9 +1,11 @@
-import { system } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
-export function System() {
+export async function System() {
+  const { system } = await getServerContent();
+
   return (
     <section id="sistema" className="relative bg-ink py-28 text-paper lg:py-36">
       <div

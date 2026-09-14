@@ -1,12 +1,14 @@
-import { footer } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 
-export function WhatsAppButton() {
+export async function WhatsAppButton() {
+  const { footer } = await getServerContent();
+
   return (
     <a
       href={footer.whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Escribir por WhatsApp"
+      aria-label={footer.whatsappAriaLabel}
       className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_10px_30px_rgba(17,17,17,.25)] transition-transform hover:scale-105"
     >
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">

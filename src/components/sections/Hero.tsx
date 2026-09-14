@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef } from "react";
-import { hero } from "@/lib/content";
+import { useContent } from "@/lib/useContent";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Monogram } from "@/components/ui/Monogram";
 import { usePrefersReducedMotion } from "@/lib/motion";
@@ -21,6 +21,7 @@ const lineVariants: Variants = {
 };
 
 export function Hero() {
+  const { hero } = useContent();
   const reducedMotion = usePrefersReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({

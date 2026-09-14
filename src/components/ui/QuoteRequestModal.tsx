@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { leadFormSchema, type LeadFormValues } from "@/lib/lead-schema";
 import { usePrefersReducedMotion } from "@/lib/motion";
+import { useContent } from "@/lib/useContent";
 import { cn } from "@/lib/cn";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -18,6 +19,7 @@ export function QuoteRequestModal({
   serviceLabel: string;
   onClose: () => void;
 }) {
+  const { quoteModal: m } = useContent();
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [contact, setContact] = useState("");
@@ -52,14 +54,14 @@ export function QuoteRequestModal({
     e.preventDefault();
     if (status === "submitting") return;
 
-    const challenge = `Servicio de interés: ${serviceLabel}. ${brief}`.trim();
+    const challenge = `${m.challengePrefix}: ${serviceLabel}. ${brief}`.trim();
 
     const payload: LeadFormValues = {
       name,
       company,
       contact,
       businessType: "otro",
-      challenge: challenge.length >= 10 ? challenge : `${challenge} (sin detalle adicional)`,
+      challenge: challenge.length >= 10 ? challenge : `${challenge} (${m.noDetailNote})`,
       budget: "no-seguro",
       consent: true,
       website: "",
@@ -80,7 +82,7 @@ export function QuoteRequestModal({
 
     const parsed = leadFormSchema.safeParse(payload);
     if (!parsed.success) {
-      setError(parsed.error.issues[0]?.message ?? "Revisa los campos.");
+      setError(parsed.error.issues[0]?.message ?? m.genericError);
       return;
     }
 
@@ -92,16 +94,16 @@ export function QuoteRequestModal({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(parsed.data),
       });
-      if (!res.ok) throw new Error("No se pudo enviar la solicitud.");
+      if (!res.ok) throw new Error(m.submitError);
       setStatus("success");
     } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Error inesperado.");
+      setError(err instanceof Error ? err.message : m.unexpectedError);
     }
   }
 
   const whatsappHref = `https://wa.me/50672445642?text=${encodeURIComponent(
-    `Hola BOLD, quiero cotizar: ${serviceLabel}. ${brief}`.trim(),
+    `${m.whatsappMessage(serviceLabel)} ${brief}`.trim(),
   )}`;
 
   return (
@@ -109,7 +111,7 @@ export function QuoteRequestModal({
       className="fixed inset-0 z-[60] flex items-end justify-center bg-ink/70 p-0 backdrop-blur-sm sm:items-center sm:p-6"
       role="dialog"
       aria-modal="true"
-      aria-label={`Cotizar ${serviceLabel}`}
+      aria-label={m.ariaLabel(serviceLabel)}
       onClick={onClose}
     >
       <motion.div
@@ -122,7 +124,7 @@ export function QuoteRequestModal({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Cerrar"
+          aria-label={m.closeLabel}
           className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center text-ink/60 hover:text-ink"
         >
           ✕
@@ -136,45 +138,41 @@ export function QuoteRequestModal({
               animate={{ opacity: 1 }}
               className="py-6 text-center"
             >
-              <p className="font-display text-lg font-bold text-ink">¡Listo!</p>
-              <p className="mt-2 text-sm text-grey">
-                Recibimos tu solicitud de cotización para {serviceLabel}. Te contactamos pronto.
-              </p>
+              <p className="font-display text-lg font-bold text-ink">{m.successTitle}</p>
+              <p className="mt-2 text-sm text-grey">{m.successBody(serviceLabel)}</p>
               <button
                 type="button"
                 onClick={onClose}
                 className="mt-6 font-display text-sm font-bold uppercase tracking-wide text-ink underline underline-offset-4"
               >
-                Cerrar
+                {m.closeLabel}
               </button>
             </motion.div>
           ) : (
             <motion.form key="form" onSubmit={handleSubmit} className="flex flex-col gap-4">
               <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-ink/60">
-                Cotizar
+                {m.eyebrow}
               </p>
               <h3 className="font-display text-xl font-bold text-ink">{serviceLabel}</h3>
-              <p className="text-sm text-grey">
-                Este servicio se cotiza a la medida. Dejanos tus datos y un breve alcance.
-              </p>
+              <p className="text-sm text-grey">{m.intro}</p>
 
               <input
                 required
-                placeholder="Nombre completo"
+                placeholder={m.namePlaceholder}
                 className={inputClass}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
               <input
                 required
-                placeholder="Nombre del negocio"
+                placeholder={m.companyPlaceholder}
                 className={inputClass}
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
               />
               <input
                 required
-                placeholder="WhatsApp o email"
+                placeholder={m.contactPlaceholder}
                 className={inputClass}
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
@@ -182,7 +180,7 @@ export function QuoteRequestModal({
               <textarea
                 required
                 rows={3}
-                placeholder="Contanos brevemente el alcance del proyecto"
+                placeholder={m.briefPlaceholder}
                 className={cn(inputClass, "resize-none")}
                 value={brief}
                 onChange={(e) => setBrief(e.target.value)}
@@ -195,7 +193,7 @@ export function QuoteRequestModal({
                 disabled={status === "submitting"}
                 className="mt-1 inline-flex items-center justify-center gap-2 bg-ink px-6 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-paper transition-colors duration-300 hover:bg-volt hover:text-ink disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {status === "submitting" ? "Enviando…" : "Enviar solicitud"}
+                {status === "submitting" ? m.submittingLabel : m.submitLabel}
               </button>
 
               <a
@@ -204,7 +202,7 @@ export function QuoteRequestModal({
                 rel="noopener noreferrer"
                 className="text-center text-xs font-semibold uppercase tracking-wide text-grey underline underline-offset-4 hover:text-ink"
               >
-                o escribinos directo por WhatsApp
+                {m.whatsappLabel}
               </a>
             </motion.form>
           )}

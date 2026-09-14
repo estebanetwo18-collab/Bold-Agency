@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useRef, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { usePrefersReducedMotion } from "@/lib/motion";

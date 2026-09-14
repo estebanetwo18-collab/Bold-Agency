@@ -7,7 +7,6 @@ import { System } from "@/components/sections/System";
 import { PhotoBanner } from "@/components/sections/PhotoBanner";
 import { Differentiators } from "@/components/sections/Differentiators";
 import { Process } from "@/components/sections/Process";
-import { VideoFeature } from "@/components/sections/VideoFeature";
 import { Plans } from "@/components/sections/Plans";
 import { Calculator } from "@/components/sections/Calculator";
 import { Results } from "@/components/sections/Results";
@@ -15,9 +14,11 @@ import { Faq } from "@/components/sections/Faq";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
-import { midBanner, teamBanner, skylineBanner } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 
-export default function Home() {
+export default async function Home() {
+  const { midBanner, teamBanner, skylineBanner } = await getServerContent();
+
   return (
     <>
       <Nav />
@@ -43,7 +44,6 @@ export default function Home() {
         />
         <Differentiators />
         <Process />
-        <VideoFeature />
         <Plans />
         <Calculator />
         <DiagonalDivider from="paper" to="ink" />

@@ -1,17 +1,37 @@
 import type { Metadata } from "next";
+import { hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { DiagnosticForm } from "@/components/forms/DiagnosticForm";
 import { Reveal } from "@/components/ui/Reveal";
-import { cotizacionPage } from "@/lib/content";
+import { routing } from "@/i18n/routing";
+import { getContent } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Cotización — Diagnóstico 360",
-  description:
-    "Solicita tu Diagnóstico 360 con BOLD Agency: contanos de tu negocio y te contactamos por WhatsApp o email con tu cotización, sin costo y sin compromiso.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const activeLocale = hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
+  const { cotizacionPage } = getContent(activeLocale);
+  return {
+    title: cotizacionPage.metaTitle,
+    description: cotizacionPage.metaDescription,
+  };
+}
 
-export default function CotizacionPage() {
+export default async function CotizacionPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const activeLocale = hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
+  setRequestLocale(activeLocale);
+  const { cotizacionPage } = getContent(activeLocale);
+
   return (
     <>
       <Nav />

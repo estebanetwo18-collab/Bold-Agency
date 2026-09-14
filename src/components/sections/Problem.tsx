@@ -1,8 +1,10 @@
-import { problem } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function Problem() {
+export async function Problem() {
+  const { problem } = await getServerContent();
+
   return (
     <section id="enfoque" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">

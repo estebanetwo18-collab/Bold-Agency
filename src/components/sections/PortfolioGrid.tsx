@@ -2,14 +2,14 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import {
   portfolioConfig,
   portfolioBrands,
   portfolioCategories,
   type PortfolioCategory,
 } from "@/lib/portfolio-config";
-import { portfolioPage } from "@/lib/content";
+import { useContent } from "@/lib/useContent";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { ClientsMarquee } from "@/components/ui/ClientsMarquee";
@@ -18,6 +18,7 @@ import { cn } from "@/lib/cn";
 const ALL = "__all__";
 
 export function PortfolioGrid() {
+  const { portfolioPage } = useContent();
   const [brandFilter, setBrandFilter] = useState<string>(ALL);
   const [categoryFilter, setCategoryFilter] = useState<PortfolioCategory | typeof ALL>(ALL);
 
@@ -40,13 +41,15 @@ export function PortfolioGrid() {
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
           <FilterGroup
-            label="Marca"
+            label={portfolioPage.filterBrandLabel}
+            allLabel={portfolioPage.filterAllLabel}
             value={brandFilter}
             onChange={setBrandFilter}
             options={portfolioBrands}
           />
           <FilterGroup
-            label="Tipo de trabajo"
+            label={portfolioPage.filterTypeLabel}
+            allLabel={portfolioPage.filterAllLabel}
             value={categoryFilter}
             onChange={(v) => setCategoryFilter(v as PortfolioCategory | typeof ALL)}
             options={portfolioCategories}
@@ -62,7 +65,7 @@ export function PortfolioGrid() {
         </div>
 
         {filtered.length === 0 ? (
-          <p className="mt-10 text-center text-grey">No hay casos con ese filtro todavía.</p>
+          <p className="mt-10 text-center text-grey">{portfolioPage.emptyLabel}</p>
         ) : null}
 
         <div className="mt-24">
@@ -93,11 +96,13 @@ function ClientsMarqueeLight() {
 
 function FilterGroup<T extends string>({
   label,
+  allLabel,
   value,
   onChange,
   options,
 }: {
   label: string;
+  allLabel: string;
   value: T | typeof ALL;
   onChange: (value: T | typeof ALL) => void;
   options: readonly T[];
@@ -115,7 +120,7 @@ function FilterGroup<T extends string>({
           value === ALL ? "border-ink bg-ink text-paper" : "border-grey-light text-ink hover:border-ink",
         )}
       >
-        Todas
+        {allLabel}
       </button>
       {options.map((opt) => (
         <button

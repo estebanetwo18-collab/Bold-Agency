@@ -1,9 +1,11 @@
-import { finalCta } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { Monogram } from "@/components/ui/Monogram";
 
-export function FinalCta() {
+export async function FinalCta() {
+  const { finalCta } = await getServerContent();
+
   return (
     <section className="relative overflow-hidden bg-volt py-28 text-ink lg:py-36">
       <div

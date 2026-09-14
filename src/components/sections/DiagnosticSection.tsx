@@ -1,8 +1,10 @@
-import { diagnosticForm } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { Reveal } from "@/components/ui/Reveal";
 import { DiagnosticForm } from "@/components/forms/DiagnosticForm";
 
-export function DiagnosticSection() {
+export async function DiagnosticSection() {
+  const { diagnosticForm } = await getServerContent();
+
   return (
     <section id="diagnostico" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
