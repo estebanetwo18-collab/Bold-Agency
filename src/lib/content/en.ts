@@ -554,6 +554,7 @@ export const calculator = {
   totalFromLabel: "Estimated total from",
   totalUnit: "/month, taxes included",
   quotedNote: "Includes services to be quoted separately — we'll contact you with the exact amount.",
+  soloSurchargeNote: "This service is meant to be combined with others — chosen alone, the price includes an adjustment.",
   ctaLabel: "Book a 360 Diagnostic",
   decreaseAria: "Decrease",
   increaseAria: "Increase",

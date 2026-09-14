@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { portfolioConfig, portfolioBrands } from "@/lib/portfolio-config";
 import { useContent } from "@/lib/useContent";
@@ -126,15 +127,36 @@ function PortfolioCard({ slug }: { slug: string }) {
   if (!item) return null;
 
   return (
-    <Link href={`/portafolio/${item.slug}`} className="group block">
-      <div className="relative flex aspect-[16/9] flex-col items-center justify-center gap-2 overflow-hidden bg-ink px-6 text-center transition-colors duration-300 group-hover:bg-ink/90">
-        <p className="font-display text-lg font-black uppercase tracking-wide text-volt sm:text-xl">
-          {item.marca}
-        </p>
-        <p className="font-display text-xs font-semibold uppercase tracking-[0.15em] text-paper/50">
-          {item.categorias.join(" · ")}
-        </p>
-      </div>
+    <Link
+      href={`/portafolio/${item.slug}`}
+      className="group relative block aspect-[4/3] overflow-hidden border border-transparent transition-colors duration-300 hover:border-volt"
+    >
+      {item.cardBanner ? (
+        <>
+          <Image
+            src={item.cardBanner}
+            alt={item.marca}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/40 to-transparent pb-4 pt-10 transition-opacity duration-300 group-hover:opacity-90">
+            <p className="flex items-center gap-2 px-4 font-display text-xs font-bold uppercase tracking-[0.15em] text-paper/80">
+              <span className="h-1.5 w-1.5 shrink-0 bg-volt transition-transform duration-300 group-hover:scale-125" />
+              {item.categorias.join(" · ")}
+            </p>
+          </div>
+        </>
+      ) : (
+        <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-ink px-6 text-center">
+          <p className="font-display text-lg font-black uppercase tracking-wide text-volt sm:text-xl">
+            {item.marca}
+          </p>
+          <p className="font-display text-xs font-semibold uppercase tracking-[0.15em] text-paper/50">
+            {item.categorias.join(" · ")}
+          </p>
+        </div>
+      )}
     </Link>
   );
 }

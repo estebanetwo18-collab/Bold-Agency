@@ -127,13 +127,9 @@ export function Calculator() {
                           >
                             <div>
                               <p className="text-sm font-semibold text-ink">{item.label}</p>
-                              <p className="font-data text-xs text-grey-data">
-                                {item.pricingType === "a_cotizar"
-                                  ? c.quoteLabel
-                                  : item.pricingType === "rango"
-                                    ? `${c.fromLabel} ${formatCrc(item.priceMin ?? 0)}`
-                                    : formatCrc(item.priceMin ?? 0)}
-                              </p>
+                              {item.pricingType === "a_cotizar" ? (
+                                <p className="font-data text-xs text-grey-data">{c.quoteLabel}</p>
+                              ) : null}
                             </div>
 
                             {item.inputType === "quote" ? (
@@ -176,13 +172,12 @@ export function Calculator() {
             ) : (
               <div className="mt-6 flex flex-col divide-y divide-paper/10 border-y border-paper/10">
                 {result.lines.map((line) => (
-                  <div key={line.item.id} className="flex items-center justify-between gap-3 py-3">
+                  <div key={line.item.id} className="py-3">
                     <span className="text-sm text-paper/85">
                       {line.item.label}
                       {line.quantity > 1 ? ` × ${line.quantity}` : ""}
                       {line.isEstimate ? ` (${c.fromLabel})` : ""}
                     </span>
-                    <span className="font-data text-sm font-semibold">{formatCrc(line.lineTotal)}</span>
                   </div>
                 ))}
               </div>
@@ -218,6 +213,12 @@ export function Calculator() {
             {requestedQuotes.size > 0 ? (
               <p className="mt-5 border border-volt/40 bg-volt/10 p-3 text-xs leading-relaxed text-volt">
                 {c.quotedNote}
+              </p>
+            ) : null}
+
+            {result.soloSurchargeApplies ? (
+              <p className="mt-5 border border-paper/15 bg-paper/5 p-3 text-xs leading-relaxed text-paper/70">
+                {c.soloSurchargeNote}
               </p>
             ) : null}
 

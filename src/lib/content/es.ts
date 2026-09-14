@@ -556,6 +556,7 @@ export const calculator = {
   totalFromLabel: "Total estimado desde",
   totalUnit: "/mes, impuestos incluidos",
   quotedNote: "Incluye servicios a cotizar por separado — te contactamos con el monto exacto.",
+  soloSurchargeNote: "Este servicio está pensado para combinarse con otros — elegido solo, el precio incluye un ajuste.",
   ctaLabel: "Agendar Diagnóstico 360",
   decreaseAria: "Restar",
   increaseAria: "Sumar",

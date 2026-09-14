@@ -20,6 +20,12 @@ export type PortfolioItem = {
   descripcion: string;
   rol: string;
   cover: PortfolioMediaItem;
+  /**
+   * Foto de portada para la tarjeta del grid de /portafolio, con el
+   * nombre de la marca ya integrado al diseño (overlay oscuro + texto
+   * blanco). Si falta, la tarjeta cae de vuelta al bloque negro/Volt.
+   */
+  cardBanner?: string;
   /** Media adicional para el hover-cycle de la tarjeta y la vista de detalle. */
   gallery: PortfolioMediaItem[];
 };
@@ -31,6 +37,7 @@ export const portfolioConfig: PortfolioItem[] = [
     categorias: ["Estrategia", "Audiovisual"],
     descripcion: "Contenido de marca y especializado con el influencer AngelRafael.",
     rol: "Coordinación, fotografía, edición y producción de cada contenido.",
+    cardBanner: "/portfolio/avon/banner.jpg",
     cover: {
       type: "image",
       src: "/portfolio/avon/cover.jpg",
@@ -58,6 +65,7 @@ export const portfolioConfig: PortfolioItem[] = [
     descripcion:
       "Conceptualización y ejecución estratégica de contenido y acciones de marketing. Crédito de diseño: Juan Rodríguez.",
     rol: "Conceptualización y ejecución estratégica de contenido y acciones de marketing. Crédito de diseño: Juan Rodríguez.",
+    cardBanner: "/portfolio/euromobilia/banner.jpg",
     cover: {
       type: "image",
       src: "/portfolio/euromobilia/cover.jpg",
@@ -81,11 +89,32 @@ export const portfolioConfig: PortfolioItem[] = [
     ],
   },
   {
+    slug: "daoro",
+    marca: "DAORO",
+    categorias: ["Estrategia", "Diseño"],
+    descripcion: "Sesión y lanzamiento Showroom Omega en Daoro Costa Rica.",
+    rol: "Conceptualización completa de la sesión y moodboard; coordinación con casa matriz para el visual merchandising de la marca y el plan de comunicación con medios e influencers.",
+    cardBanner: "/portfolio/daoro/banner.jpg",
+    cover: {
+      type: "image",
+      src: "/portfolio/daoro/cover.jpg",
+      alt: "Boutique Daoro con exhibición de relojes Omega",
+    },
+    gallery: [
+      { type: "image", src: "/portfolio/daoro/01.jpg", alt: "Pieza de campaña Omega — colecciones especiales" },
+      { type: "image", src: "/portfolio/daoro/02.jpg", alt: "Pieza de campaña Omega Seamaster — regalo con estilo" },
+      { type: "image", src: "/portfolio/daoro/04.jpg", alt: "Pieza de campaña Omega Seamaster — regalo exquisito" },
+      { type: "image", src: "/portfolio/daoro/05.jpg", alt: "Repost de cliente con producto Omega Daoro" },
+      { type: "image", src: "/portfolio/daoro/06.jpg", alt: "Pieza de campaña Omega Seamaster Diver 300M" },
+    ],
+  },
+  {
     slug: "toyota-purdy-go",
     marca: "Toyota (Purdy Go)",
     categorias: ["Estrategia"],
     descripcion: "Lanzamiento de la app Purdy Go y posicionamiento físico.",
     rol: "Conceptualización estratégica y coordinación con diseño y proveedores.",
+    cardBanner: "/portfolio/purdy-go/banner.jpg",
     cover: {
       type: "image",
       src: "/portfolio/purdy-go/cover.jpg",
@@ -104,6 +133,7 @@ export const portfolioConfig: PortfolioItem[] = [
     descripcion:
       "Creación de contenido y manejo estratégico de marca personal y comercial junto al salón de belleza Adora.",
     rol: "Creación de contenido y manejo estratégico de marca personal y comercial junto al salón de belleza Adora.",
+    cardBanner: "/portfolio/daniela-portillo-adora/banner.jpg",
     cover: {
       type: "image",
       src: "/portfolio/daniela-portillo-adora/cover.jpg",
@@ -124,6 +154,7 @@ export const portfolioConfig: PortfolioItem[] = [
     descripcion:
       "Apertura de tienda en La Marina de Flamingo; conceptualización y ejecución estratégica de contenido y acciones de marketing, como estratega líder de la campaña de lanzamiento. Crédito de diseño: Juan Rodríguez y Pablo Aguilar.",
     rol: "Estratega líder de la campaña de lanzamiento: conceptualización y ejecución estratégica de contenido y acciones de marketing para la apertura de tienda en La Marina de Flamingo. Crédito de diseño: Juan Rodríguez y Pablo Aguilar.",
+    cardBanner: "/portfolio/nouvell/banner.jpg",
     cover: {
       type: "image",
       src: "/portfolio/nouvell/cover.jpg",
@@ -150,6 +181,7 @@ export const portfolioConfig: PortfolioItem[] = [
     categorias: ["Estrategia", "Audiovisual", "Diseño"],
     descripcion: "Conceptualización, diseño y ejecución estratégica de contenido y acciones de marketing.",
     rol: "Conceptualización, diseño y ejecución estratégica de contenido y acciones de marketing.",
+    cardBanner: "/portfolio/volt-tech/banner.jpg",
     cover: {
       type: "image",
       src: "/portfolio/volt-tech/cover.jpg",
