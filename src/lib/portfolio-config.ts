@@ -5,7 +5,8 @@
 export type PortfolioCategory = "Estrategia" | "Diseño" | "Audiovisual";
 
 export type PortfolioMediaItem = {
-  type: "image" | "video";
+  type: "image" | "video" | "youtube";
+  /** Para "youtube": el video ID (ej. "dQw4w9WgXcQ"), no la URL completa. */
   src: string;
   alt: string;
   /** Frame propio del video para el poster. Si falta, la vista de detalle usa el cover de la marca. */
@@ -77,8 +78,18 @@ export const portfolioConfig: PortfolioItem[] = [
     },
     gallery: [
       { type: "image", src: "/portfolio/avon/cover.jpg", alt: "Frame de contenido de maquillaje para Avon Costa Rica" },
-      { type: "video", src: "/portfolio/avon/reel.mp4", poster: "/portfolio/avon/reel-poster.jpg", alt: "Reel de maquillaje para Avon Costa Rica" },
-      { type: "video", src: "/portfolio/avon/labios.mp4", poster: "/portfolio/avon/labios-poster.jpg", alt: "Reel de labiales — Labios de Impacto Avon Costa Rica" },
+      // Prueba piloto: shorts alojados en YouTube en vez de mp4 local
+      // (subidos por el cliente). Si funciona bien, se replica al resto
+      // de las marcas.
+      { type: "youtube", src: "54i5u6646LA", alt: "Short de maquillaje Avon Costa Rica (1)" },
+      { type: "youtube", src: "sks5nriOGwg", alt: "Short de maquillaje Avon Costa Rica (2)" },
+      { type: "youtube", src: "Jcl-cq2Rhnw", alt: "Short de maquillaje Avon Costa Rica (3)" },
+      { type: "youtube", src: "fUKV6vHbeVA", alt: "Short de maquillaje Avon Costa Rica (4)" },
+      { type: "youtube", src: "3pklO6DdfhA", alt: "Short de maquillaje Avon Costa Rica (5)" },
+      { type: "youtube", src: "fPKvFJ0eKQw", alt: "Short de maquillaje Avon Costa Rica (6)" },
+      { type: "youtube", src: "fW-nVaOm27M", alt: "Short de maquillaje Avon Costa Rica (7)" },
+      { type: "youtube", src: "eG66xhpKaMc", alt: "Short de maquillaje Avon Costa Rica (8)" },
+      { type: "youtube", src: "iDV2JMwAkKY", alt: "Short de maquillaje Avon Costa Rica (9)" },
     ],
   },
   {

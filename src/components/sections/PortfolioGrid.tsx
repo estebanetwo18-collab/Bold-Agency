@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import {
   portfolioConfig,
@@ -141,52 +140,18 @@ function FilterGroup<T extends string>({
 
 function PortfolioCard({ slug }: { slug: string }) {
   const item = portfolioConfig.find((p) => p.slug === slug);
-  const [hoverIndex, setHoverIndex] = useState(0);
   if (!item) return null;
 
-  const hasImage = item.cover.src.length > 0;
-  const gallery = item.gallery.length > 0 ? item.gallery : [item.cover];
-  const activeMedia = gallery[hoverIndex % gallery.length];
-
   return (
-    <Link
-      href={`/portafolio/${item.slug}`}
-      className="group block"
-      onMouseEnter={() => setHoverIndex(1 % gallery.length)}
-      onMouseLeave={() => setHoverIndex(0)}
-    >
-      <div className="relative aspect-[3/4] overflow-hidden bg-surface">
-        {hasImage ? (
-          activeMedia.type === "video" ? (
-            <video
-              src={activeMedia.src}
-              className="h-full w-full object-cover"
-              muted
-              loop
-              autoPlay
-              playsInline
-              preload="none"
-            />
-          ) : (
-            <Image
-              src={activeMedia.src}
-              alt={activeMedia.alt}
-              fill
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-            />
-          )
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center bg-ink">
-            <span className="font-display text-xl font-black tracking-tight text-paper">
-              {item.marca}
-            </span>
-          </div>
-        )}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    <Link href={`/portafolio/${item.slug}`} className="group block">
+      <div className="relative flex aspect-[16/9] flex-col items-center justify-center gap-2 overflow-hidden bg-ink px-6 text-center transition-colors duration-300 group-hover:bg-ink/90">
+        <p className="font-display text-lg font-black uppercase tracking-wide text-volt sm:text-xl">
+          {item.marca}
+        </p>
+        <p className="font-display text-xs font-semibold uppercase tracking-[0.15em] text-paper/50">
+          {item.categorias.join(" · ")}
+        </p>
       </div>
-      <p className="mt-3 font-display text-sm font-bold text-ink">{item.marca}</p>
-      <p className="text-xs text-grey">{item.categorias.join(" · ")}</p>
     </Link>
   );
 }

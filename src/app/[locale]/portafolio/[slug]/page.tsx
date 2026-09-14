@@ -10,6 +10,7 @@ import { portfolioConfig } from "@/lib/portfolio-config";
 import { routing } from "@/i18n/routing";
 import { getContent } from "@/lib/content";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { cn } from "@/lib/cn";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -87,7 +88,10 @@ export default async function PortfolioDetailPage({
               gallery.map((media, i) => (
                 <div
                   key={media.src + i}
-                  className="relative aspect-[4/3] overflow-hidden bg-surface sm:first:col-span-2"
+                  className={cn(
+                    "relative overflow-hidden bg-surface",
+                    media.type === "youtube" ? "aspect-[9/16]" : "aspect-[4/3] sm:first:col-span-2",
+                  )}
                 >
                   {media.type === "video" ? (
                     <video
@@ -97,6 +101,14 @@ export default async function PortfolioDetailPage({
                       controls
                       playsInline
                       preload="metadata"
+                    />
+                  ) : media.type === "youtube" ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${media.src}`}
+                      title={media.alt}
+                      className="h-full w-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
                     />
                   ) : (
                     <Image
