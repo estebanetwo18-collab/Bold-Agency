@@ -14,10 +14,9 @@ export const nav = {
     { href: "/#enfoque", label: "Enfoque" },
     { href: "/#sistema", label: "Servicios" },
     { href: "/#diferenciales", label: "Por qué BOLD" },
-    { href: "/#fundador", label: "Fundador" },
     { href: "/#como-trabajamos", label: "Cómo trabajamos" },
     { href: "/#planes", label: "Planes" },
-    { href: "/#casos", label: "Casos" },
+    { href: "/portafolio", label: "Portafolio" },
     { href: "/#preguntas", label: "FAQ" },
   ],
   cta: { href: "/cotizacion", label: "Diagnóstico 360" },
@@ -208,6 +207,33 @@ export const founder = {
   },
 };
 
+// Copy borrador del hero de /portafolio (§5.4a), tal cual la dio el
+// usuario en el brief — pendiente de su revisión antes de publicar.
+export const portfolioHero = {
+  eyebrow: "MARKETING STRATEGY & GROWTH",
+  headlinePre: "Estratega construyendo marcas con",
+  headlineItalic: "dirección",
+  headlinePost: "y resultados reales.",
+  subhead:
+    "Ayudo a negocios ambiciosos a crecer con estrategia clara y ejecución real. Con base en Costa Rica, alcance en LATAM, USA y Europa.",
+  cta: { label: "Ver portafolio →", targetId: "grid" },
+  photo: "/images/founder-about-me.jpg",
+};
+
+export const portfolioPage = {
+  metaTitle: "Portafolio",
+  metaDescription: "Portafolio y trayectoria de Esteban Muñoz Malavé — BOLD Agency.",
+  aboutEyebrow: "Sobre mí",
+  gridEyebrow: "Portafolio",
+  gridHeadline: "Marcas con las que he construido, de cerca.",
+  gridIntro: "Filtrá por marca o por tipo de trabajo. Cada caso muestra mi rol real en el proyecto.",
+  filterAllLabel: "Todas",
+  roleLabel: "Mi rol",
+  backLabel: "← Volver al portafolio",
+  clientsEyebrow: "Clientes y partners",
+  clientsHeadline: "Marcas que eligieron ser bold.",
+};
+
 export const process = {
   eyebrow: "Cómo trabajamos",
   headline: "Un proceso, no una lista de entregables.",
@@ -347,50 +373,6 @@ export const results = {
   ],
 };
 
-export const caseStudies = {
-  eyebrow: "Piezas reales",
-  headline: "Trabajo ejecutado, no mockups.",
-  items: [
-    {
-      image: "/images/case-rentcars.jpg",
-      alt: "Pieza publicitaria de campaña para Rentcars",
-      client: "RentCars",
-      market: "Brasil",
-    },
-    {
-      image: "/images/case-herramientas.jpg",
-      alt: "Pieza publicitaria de campaña de masterclass con Rossanna",
-      client: "Rossanna",
-      market: "Influencer · Argentina",
-    },
-    {
-      image: "/images/case-nouvell.jpg",
-      video: "/videos/mosaic-reel.mp4",
-      alt: "Reel del showroom de cocinas Nouvell",
-      client: "Nouvell",
-      market: "Costa Rica",
-    },
-  ],
-};
-
-export const clients = {
-  eyebrow: "Clientes y partners",
-  headline: "Marcas que eligieron ser bold.",
-  intro: "Portafolio de marcas con las que hemos trabajado en 9+ años. Logos originales disponibles bajo solicitud.",
-  names: [
-    "TOYOTA",
-    "FORD",
-    "LEXUS",
-    "AVON",
-    "SWAROVSKI",
-    "GRUPO PURDY",
-    "EUROMOBILIA",
-    "NOUVELL",
-    "RENTCARS",
-    "CUSHMAN & WAKEFIELD",
-  ],
-};
-
 export const faq = {
   eyebrow: "Preguntas frecuentes",
   headline: "Antes de que preguntes.",
@@ -456,10 +438,9 @@ export const footer = {
         { href: "/#enfoque", label: "Enfoque" },
         { href: "/#sistema", label: "Servicios" },
         { href: "/#diferenciales", label: "Por qué BOLD" },
-        { href: "/#fundador", label: "Fundador" },
         { href: "/#como-trabajamos", label: "Cómo trabajamos" },
         { href: "/#planes", label: "Planes" },
-        { href: "/#casos", label: "Casos" },
+        { href: "/portafolio", label: "Portafolio" },
         { href: "/#preguntas", label: "FAQ" },
         { href: "/#diagnostico", label: "Diagnóstico 360" },
       ],

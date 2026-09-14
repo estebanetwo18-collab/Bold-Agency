@@ -1,13 +1,11 @@
-import { results, clients, caseStudies } from "@/lib/content";
+import { results } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import { PortfolioCarousel } from "@/components/ui/PortfolioCarousel";
-import { ClientsMarquee } from "@/components/ui/ClientsMarquee";
 
 export function Results() {
   return (
-    <section id="casos" className="relative bg-ink py-28 text-paper lg:py-36">
+    <section id="resultados" className="relative bg-ink py-28 text-paper lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
           eyebrow={results.eyebrow}
@@ -30,34 +28,9 @@ export function Results() {
           ))}
         </div>
 
-        <Reveal delay={0.12} className="mt-20">
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
-            <span className="h-1.5 w-1.5 rounded-full bg-volt" />
-            {caseStudies.eyebrow}
-          </span>
-          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight sm:text-[1.7rem]">
-            {caseStudies.headline}
-          </h3>
-        </Reveal>
-
-        <PortfolioCarousel />
-
-        <Reveal delay={0.1} className="mt-20">
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
-            <span className="h-1.5 w-1.5 rounded-full bg-volt" />
-            {clients.eyebrow}
-          </span>
-          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight sm:text-[1.7rem]">
-            {clients.headline}
-          </h3>
-          <p className="mt-3 max-w-2xl text-grey-light">{clients.intro}</p>
-        </Reveal>
-
-        <ClientsMarquee />
-
         <Reveal delay={0.2} className="mt-14 flex justify-center">
-          <MagneticButton href="#diagnostico" variant="volt">
-            Quiero ser el próximo caso
+          <MagneticButton href="/portafolio" variant="volt">
+            Ver portafolio completo
           </MagneticButton>
         </Reveal>
       </div>

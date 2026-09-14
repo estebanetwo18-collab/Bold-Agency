@@ -6,7 +6,6 @@ import { Problem } from "@/components/sections/Problem";
 import { System } from "@/components/sections/System";
 import { PhotoBanner } from "@/components/sections/PhotoBanner";
 import { Differentiators } from "@/components/sections/Differentiators";
-import { Founder } from "@/components/sections/Founder";
 import { Process } from "@/components/sections/Process";
 import { VideoFeature } from "@/components/sections/VideoFeature";
 import { Plans } from "@/components/sections/Plans";
@@ -43,7 +42,6 @@ export default function Home() {
           align="end"
         />
         <Differentiators />
-        <Founder />
         <Process />
         <VideoFeature />
         <Plans />

@@ -1,13 +1,16 @@
 import Image from "next/image";
-import { founder } from "@/lib/content";
+import { founder, portfolioPage } from "@/lib/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function Founder() {
+// Migrado tal cual del antiguo Founder.tsx del home (§5.4b) — mismo
+// copy, mismo layout, solo sin el <section id="fundador"> que ya no
+// existe como ancla independiente.
+export function AboutMe() {
   return (
-    <section id="fundador" className="relative bg-paper py-28 lg:py-36">
+    <section id="sobre-mi" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <SectionHeading eyebrow={founder.eyebrow} headline={founder.headline} />
+        <SectionHeading eyebrow={portfolioPage.aboutEyebrow} headline={founder.headline} />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <Reveal className="relative aspect-[4/5] max-w-sm overflow-hidden">
