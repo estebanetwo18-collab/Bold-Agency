@@ -90,7 +90,7 @@ export default async function PortfolioDetailPage({
                   key={media.src + i}
                   className={cn(
                     "relative overflow-hidden bg-surface",
-                    media.type === "youtube" ? "aspect-[9/16]" : "aspect-[4/3] sm:first:col-span-2",
+                    media.type === "youtube" ? "aspect-[9/16]" : "aspect-[4/3]",
                   )}
                 >
                   {media.type === "video" ? (
