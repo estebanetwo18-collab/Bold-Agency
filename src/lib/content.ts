@@ -240,6 +240,19 @@ export const process = {
   ],
 };
 
+// REVISAR COPY: el brief (punto 7) no trajo texto definido para esta
+// sección, solo la estructura (video + texto). Borrador a revisar antes
+// de publicar — video reutilizado de mosaic-reel.mp4 por decisión del
+// usuario, ya que no hay un video corporativo genérico entre los assets.
+export const videoFeature = {
+  eyebrow: "Cómo trabajamos, en video",
+  title: "El mismo equipo que planea, ejecuta.",
+  body: "No entregamos un documento de estrategia y desaparecemos. Nos sentamos con tu equipo, coordinamos con tus proveedores y nos involucramos hasta que la pieza está en producción — como con Nouvell, de la conceptualización a la apertura de tienda.",
+  cta: { href: "/cotizacion", label: "Agendar Diagnóstico 360" },
+  video: "/videos/mosaic-reel.mp4",
+  poster: "/images/case-nouvell.jpg",
+};
+
 export const plans = {
   eyebrow: "Cómo trabajar con BOLD",
   headline: "Dos caminos. Un mismo compromiso.",

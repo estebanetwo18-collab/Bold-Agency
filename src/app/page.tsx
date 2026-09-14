@@ -8,6 +8,7 @@ import { PhotoBanner } from "@/components/sections/PhotoBanner";
 import { Differentiators } from "@/components/sections/Differentiators";
 import { Founder } from "@/components/sections/Founder";
 import { Process } from "@/components/sections/Process";
+import { VideoFeature } from "@/components/sections/VideoFeature";
 import { Plans } from "@/components/sections/Plans";
 import { Results } from "@/components/sections/Results";
 import { Faq } from "@/components/sections/Faq";
@@ -43,6 +44,7 @@ export default function Home() {
         <Differentiators />
         <Founder />
         <Process />
+        <VideoFeature />
         <Plans />
         <DiagonalDivider from="paper" to="ink" />
         <Results />
