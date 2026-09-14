@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 import { useContent } from "@/lib/useContent";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type AppLocale } from "@/i18n/routing";
@@ -15,13 +15,7 @@ const LOCALE_LABELS: Record<AppLocale, string> = { es: "ES", en: "EN", pt: "PT" 
 
 export function Nav() {
   const { nav } = useContent();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 24);
-  });
 
   useEffect(() => {
     if (open) {
@@ -37,10 +31,7 @@ export function Nav() {
   return (
     <motion.header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,padding] duration-500 ease-out",
-        scrolled
-          ? "bg-paper/90 py-3 shadow-[0_1px_0_0_var(--color-grey-light)] backdrop-blur"
-          : "bg-transparent py-6",
+        "fixed inset-x-0 top-0 z-50 border-b border-grey-light bg-paper/95 py-3 shadow-[0_1px_0_0_var(--color-grey-light)] backdrop-blur",
       )}
     >
       <nav

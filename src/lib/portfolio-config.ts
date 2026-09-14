@@ -26,44 +26,6 @@ export type PortfolioItem = {
 
 export const portfolioConfig: PortfolioItem[] = [
   {
-    slug: "daoro",
-    marca: "DAORO",
-    categorias: ["Estrategia", "Diseño"],
-    descripcion: "Sesión y lanzamiento Showroom Omega en Daoro Costa Rica.",
-    rol: "Conceptualización completa de la sesión y moodboard; coordinación con casa matriz para el visual merchandising de la marca y el plan de comunicación con medios e influencers.",
-    cover: {
-      type: "image",
-      src: "/portfolio/daoro/cover.jpg",
-      alt: "Boutique Daoro con exhibición de relojes Omega",
-    },
-    gallery: [
-      { type: "image", src: "/portfolio/daoro/01.jpg", alt: "Pieza de campaña Omega — colecciones especiales" },
-      { type: "image", src: "/portfolio/daoro/02.jpg", alt: "Pieza de campaña Omega Seamaster — regalo con estilo" },
-      { type: "image", src: "/portfolio/daoro/04.jpg", alt: "Pieza de campaña Omega Seamaster — regalo exquisito" },
-      { type: "image", src: "/portfolio/daoro/05.jpg", alt: "Repost de cliente con producto Omega Daoro" },
-      { type: "image", src: "/portfolio/daoro/06.jpg", alt: "Pieza de campaña Omega Seamaster Diver 300M" },
-    ],
-  },
-  {
-    slug: "ingo",
-    marca: "INGO",
-    categorias: ["Estrategia", "Audiovisual"],
-    descripcion: "Campañas Plastigel y Plastiwax.",
-    rol: "Coordinación, fotografía, edición y producción de cada contenido.",
-    cover: {
-      type: "image",
-      src: "/portfolio/ingo/cover.jpg",
-      alt: "Pieza de campaña de redes sociales para Plastigel / Plastiwax",
-    },
-    gallery: [
-      { type: "video", src: "/portfolio/ingo/reel.mp4", poster: "/portfolio/ingo/reel-poster.jpg", alt: "Tutorial en video de uso de Plastiwax" },
-      { type: "image", src: "/portfolio/ingo/01.jpg", alt: "Pieza de campaña Plastiwax — amor propio" },
-      { type: "image", src: "/portfolio/ingo/02.jpg", alt: "Pieza de campaña Plastigel — humor de marca" },
-      { type: "image", src: "/portfolio/ingo/03.jpg", alt: "Pieza de campaña Plastiwax Verde" },
-      { type: "image", src: "/portfolio/ingo/04.jpg", alt: "Pieza de campaña Plastiwax Azul" },
-    ],
-  },
-  {
     slug: "avon-costa-rica",
     marca: "Avon Costa Rica",
     categorias: ["Estrategia", "Audiovisual"],
@@ -87,6 +49,35 @@ export const portfolioConfig: PortfolioItem[] = [
       { type: "youtube", src: "fW-nVaOm27M", alt: "Short de maquillaje Avon Costa Rica (7)" },
       { type: "youtube", src: "eG66xhpKaMc", alt: "Short de maquillaje Avon Costa Rica (8)" },
       { type: "youtube", src: "iDV2JMwAkKY", alt: "Short de maquillaje Avon Costa Rica (9)" },
+    ],
+  },
+  {
+    slug: "euromobilia",
+    marca: "Euromobilia",
+    categorias: ["Estrategia", "Audiovisual"],
+    descripcion:
+      "Conceptualización y ejecución estratégica de contenido y acciones de marketing. Crédito de diseño: Juan Rodríguez.",
+    rol: "Conceptualización y ejecución estratégica de contenido y acciones de marketing. Crédito de diseño: Juan Rodríguez.",
+    cover: {
+      type: "image",
+      src: "/portfolio/euromobilia/cover.jpg",
+      alt: "Proyecto de cocina de diseño para Euromobilia",
+    },
+    gallery: [
+      // Shorts alojados en YouTube (subidos por el cliente), mismo
+      // patrón que Avon Costa Rica.
+      { type: "youtube", src: "dPJwonxtAzY", alt: "Short de proyecto Euromobilia (1)" },
+      { type: "youtube", src: "YBaM1d8NPi8", alt: "Short de proyecto Euromobilia (2)" },
+      { type: "youtube", src: "pU3Kul1IZhs", alt: "Short de proyecto Euromobilia (3)" },
+      { type: "youtube", src: "r1te_l5j8mI", alt: "Short de proyecto Euromobilia (4)" },
+      { type: "youtube", src: "FeDOZyT7-EA", alt: "Short de proyecto Euromobilia (5)" },
+      { type: "youtube", src: "umphCifytPw", alt: "Short de proyecto Euromobilia (6)" },
+      { type: "youtube", src: "PAWavx27EbI", alt: "Short de proyecto Euromobilia (7)" },
+      { type: "youtube", src: "EC9NJ-7wfFs", alt: "Short de proyecto Euromobilia (8)" },
+      { type: "youtube", src: "b8EQdWsd4Ek", alt: "Short de proyecto Euromobilia (9)" },
+      { type: "youtube", src: "pqmkOJ17rFs", alt: "Short de proyecto Euromobilia (10)" },
+      { type: "youtube", src: "BXSWALpj1iQ", alt: "Short de proyecto Euromobilia (11)" },
+      { type: "youtube", src: "CxI7G_0DFHo", alt: "Short de proyecto Euromobilia (12)" },
     ],
   },
   {
@@ -151,29 +142,6 @@ export const portfolioConfig: PortfolioItem[] = [
       { type: "video", src: "/portfolio/nouvell/04.mp4", poster: "/portfolio/nouvell/04-poster.jpg", alt: "Nouvell Flamingo — simplicidad frente al mar" },
       { type: "video", src: "/portfolio/nouvell/05.mp4", poster: "/portfolio/nouvell/05-poster.jpg", alt: "Expansión de Nouvell a La Marina Flamingo" },
       { type: "video", src: "/portfolio/nouvell/06.mp4", poster: "/portfolio/nouvell/06-poster.jpg", alt: "Electrodomésticos de alta gama Nouvell" },
-    ],
-  },
-  {
-    slug: "euromobilia",
-    marca: "Euromobilia",
-    categorias: ["Estrategia", "Audiovisual"],
-    descripcion:
-      "Conceptualización y ejecución estratégica de contenido y acciones de marketing. Crédito de diseño: Juan Rodríguez.",
-    rol: "Conceptualización y ejecución estratégica de contenido y acciones de marketing. Crédito de diseño: Juan Rodríguez.",
-    cover: {
-      type: "image",
-      src: "/portfolio/euromobilia/cover.jpg",
-      alt: "Proyecto de cocina de diseño para Euromobilia",
-    },
-    gallery: [
-      { type: "video", src: "/portfolio/euromobilia/reel.mp4", poster: "/portfolio/euromobilia/reel-poster.jpg", alt: "Reel de proyecto de cocina para Euromobilia" },
-      { type: "video", src: "/portfolio/euromobilia/01.mp4", poster: "/portfolio/euromobilia/01-poster.jpg", alt: "Open House New Collection — evento Euromobilia" },
-      { type: "video", src: "/portfolio/euromobilia/02.mp4", poster: "/portfolio/euromobilia/02-poster.jpg", alt: "Future Design by Ara Group — evento exclusivo" },
-      { type: "video", src: "/portfolio/euromobilia/03.mp4", poster: "/portfolio/euromobilia/03-poster.jpg", alt: "Arquitecta Angélica Castro sobre un proyecto de cocina" },
-      { type: "video", src: "/portfolio/euromobilia/04.mp4", poster: "/portfolio/euromobilia/04-poster.jpg", alt: "Parrillas de sistema GravityFed Euromobilia" },
-      { type: "video", src: "/portfolio/euromobilia/05.mp4", poster: "/portfolio/euromobilia/05-poster.jpg", alt: "Diseño de clósets a medida Euromobilia" },
-      { type: "video", src: "/portfolio/euromobilia/06.mp4", poster: "/portfolio/euromobilia/06-poster.jpg", alt: "Euromobilia — mucho más que cocinas" },
-      { type: "video", src: "/portfolio/euromobilia/07.mp4", poster: "/portfolio/euromobilia/07-poster.jpg", alt: "De texturas al espacio real — proyectos Euromobilia Hogar" },
     ],
   },
   {

@@ -11,14 +11,13 @@ export const nav = {
   logoWord: "BOLD",
   logoSub: "AGENCY",
   links: [
+    { href: "/", label: "Inicio" },
     { href: "/#enfoque", label: "Enfoque" },
     { href: "/#sistema", label: "Servicios" },
-    { href: "/#diferenciales", label: "Por qué BOLD" },
     { href: "/#como-trabajamos", label: "Cómo trabajamos" },
     { href: "/#planes", label: "Planes" },
-    { href: "/calculadora", label: "Calculadora" },
     { href: "/portafolio", label: "Portafolio" },
-    { href: "/#preguntas", label: "FAQ" },
+    { href: "/calculadora", label: "Calculadora" },
   ],
   cta: { href: "/cotizacion", label: "Diagnóstico 360" },
 };

@@ -6,6 +6,9 @@ import { Reveal } from "@/components/ui/Reveal";
 // Migrado tal cual del antiguo Founder.tsx del home (§5.4b) — mismo
 // copy, mismo layout, solo sin el <section id="fundador"> que ya no
 // existe como ancla independiente.
+//
+// La foto de Esteban NO se repite acá: ya aparece en PortfolioHero
+// justo arriba de esta sección, en la misma página.
 export async function AboutMe() {
   const { founder, portfolioPage } = await getServerContent();
 
@@ -14,17 +17,7 @@ export async function AboutMe() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading eyebrow={portfolioPage.aboutEyebrow} headline={founder.headline} />
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <Reveal className="relative aspect-[4/5] max-w-sm overflow-hidden">
-            <Image
-              src="/images/founder-about-me.jpg"
-              alt={`${founder.name}, founder de BOLD Agency`}
-              fill
-              sizes="(min-width: 1024px) 30vw, 80vw"
-              className="object-cover"
-            />
-          </Reveal>
-
+        <div className="mt-14 max-w-3xl">
           <Reveal delay={0.1}>
             <div className="flex flex-wrap items-center gap-3">
               <h3 className="font-display text-3xl font-extrabold text-ink">{founder.name}</h3>

@@ -2,12 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import {
-  portfolioConfig,
-  portfolioBrands,
-  portfolioCategories,
-  type PortfolioCategory,
-} from "@/lib/portfolio-config";
+import { portfolioConfig, portfolioBrands } from "@/lib/portfolio-config";
 import { useContent } from "@/lib/useContent";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -19,15 +14,10 @@ const ALL = "__all__";
 export function PortfolioGrid() {
   const { portfolioPage } = useContent();
   const [brandFilter, setBrandFilter] = useState<string>(ALL);
-  const [categoryFilter, setCategoryFilter] = useState<PortfolioCategory | typeof ALL>(ALL);
 
   const filtered = useMemo(() => {
-    return portfolioConfig.filter((item) => {
-      const matchesBrand = brandFilter === ALL || item.marca === brandFilter;
-      const matchesCategory = categoryFilter === ALL || item.categorias.includes(categoryFilter);
-      return matchesBrand && matchesCategory;
-    });
-  }, [brandFilter, categoryFilter]);
+    return portfolioConfig.filter((item) => brandFilter === ALL || item.marca === brandFilter);
+  }, [brandFilter]);
 
   return (
     <section id="grid" className="relative bg-paper py-28 lg:py-36">
@@ -45,13 +35,6 @@ export function PortfolioGrid() {
             value={brandFilter}
             onChange={setBrandFilter}
             options={portfolioBrands}
-          />
-          <FilterGroup
-            label={portfolioPage.filterTypeLabel}
-            allLabel={portfolioPage.filterAllLabel}
-            value={categoryFilter}
-            onChange={(v) => setCategoryFilter(v as PortfolioCategory | typeof ALL)}
-            options={portfolioCategories}
           />
         </div>
 

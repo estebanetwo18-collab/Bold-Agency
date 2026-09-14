@@ -13,7 +13,6 @@ export const clientesConfig: ClienteItem[] = [
   { nombre: "Toyota", logo: null },
   { nombre: "Ford", logo: null },
   { nombre: "Lexus", logo: null },
-  { nombre: "Avon", logo: null },
   { nombre: "Swarovski", logo: null },
   { nombre: "Grupo Purdy", logo: null },
   { nombre: "Euromobilia", logo: null },
