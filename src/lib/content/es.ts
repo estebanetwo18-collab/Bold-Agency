@@ -41,7 +41,7 @@ export const problem = {
   eyebrow: "El problema real",
   headline: "Contratar por partes no arregla un negocio completo.",
   intro:
-    "Tienes un buen negocio. Llevas años operando, tu producto funciona y tus clientes te recomiendan. Pero también manejas cinco conversaciones de WhatsApp distintas con cinco proveedores distintos, y ninguno ve el negocio completo.",
+    "Tenés un buen negocio. Llevás años operando, tu producto funciona y tus clientes te recomiendan. Pero también manejás cinco conversaciones de WhatsApp distintas con cinco proveedores distintos, y ninguno ve el negocio completo.",
   points: [
     {
       title: "El diseñador no vende",
@@ -56,7 +56,7 @@ export const problem = {
       body: "Optimiza clics y alcance sin entender qué hace diferente a tu negocio.",
     },
     {
-      title: "Tú terminas coordinando todo",
+      title: "Vos terminás coordinando todo",
       body: "El dueño se convierte en el único punto que conecta piezas que deberían estar conectadas desde el inicio.",
     },
   ],
@@ -142,7 +142,7 @@ export const differentiators = {
     {
       icon: "resources",
       title: "Optimización de recursos",
-      body: "Aprovechas un equipo completo ya formado, en lugar de contratar y entrenar una estructura interna desde cero.",
+      body: "Aprovechás un equipo completo ya formado, en lugar de contratar y entrenar una estructura interna desde cero.",
     },
   ],
 };
@@ -171,7 +171,7 @@ export const founder = {
     },
     {
       role: "Digital Marketing Manager",
-      company: "AVON Costa Rica",
+      company: "Avon Costa Rica",
       period: "2022 – 2023",
     },
   ],
@@ -381,7 +381,7 @@ export const faq = {
     {
       question: "¿Cuánto cuesta trabajar con BOLD?",
       answer:
-        "Depende de la modalidad: paquetes desde $200 usd/mes en Grow Your Way, o fee base + performance share si trabajamos como implant de tu equipo (The Bold Way). El Diagnóstico 360 —el primer paso— no tiene costo.",
+        "Depende de la modalidad: paquetes desde $200 usd/mes en Grow Your Way, o fee base + performance share si trabajamos como implant de tu equipo (The Bold Way). El Diagnóstico 360 — el primer paso — no tiene costo.",
     },
     {
       question: "¿Trabajan fuera de Costa Rica?",
@@ -391,7 +391,7 @@ export const faq = {
     {
       question: "Mi negocio es pequeño, ¿igual aplica?",
       answer:
-        "Trabajamos con negocios que ya tienen un producto validado y entre 3 y 25 empleados. Si vendes principalmente por WhatsApp y sientes que tu presencia no refleja lo que realmente vale tu negocio, aplicas.",
+        "Trabajamos con negocios que ya tienen un producto validado y entre 3 y 25 empleados. Si vendés principalmente por WhatsApp y sentís que tu presencia no refleja lo que realmente vale tu negocio, aplicás.",
     },
     {
       question: "¿Cómo es el proceso desde que agendo el diagnóstico?",
@@ -401,7 +401,7 @@ export const faq = {
     {
       question: "¿Qué pasa si no veo resultados de inmediato?",
       answer:
-        "Cualquiera que te prometa resultados garantizados en semanas no está siendo honesto contigo. Lo que sí puedes esperar es dirección clara desde el primer mes y una medición constante de qué está funcionando y qué no.",
+        "Cualquiera que te prometa resultados garantizados en semanas no está siendo honesto contigo. Lo que sí podés esperar es dirección clara desde el primer mes y una medición constante de qué está funcionando y qué no.",
     },
     {
       question: "Ya tuve una mala experiencia con otra agencia, ¿qué cambia con ustedes?",
@@ -461,7 +461,7 @@ export const footer = {
 
 export const diagnosticForm = {
   eyebrow: "Diagnóstico 360",
-  headline: "Cuéntanos de tu negocio.",
+  headline: "Contanos de tu negocio.",
   body:
     "Toma menos de dos minutos. Con esta información preparamos una primera lectura de tu negocio antes de la conversación.",
   successTitle: "Recibimos tu solicitud.",

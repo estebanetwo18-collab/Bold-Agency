@@ -169,7 +169,7 @@ export const founder = {
     },
     {
       role: "Digital Marketing Manager",
-      company: "AVON Costa Rica",
+      company: "Avon Costa Rica",
       period: "2022 – 2023",
     },
   ],

@@ -54,7 +54,7 @@ export const portfolioConfig: PortfolioItem[] = [
   },
   {
     slug: "avon-costa-rica",
-    marca: "AVON Costa Rica",
+    marca: "Avon Costa Rica",
     categorias: ["Estrategia", "Audiovisual"],
     descripcion: "Contenido de marca y especializado con el influencer AngelRafael.",
     rol: "Coordinación, fotografía, edición y producción de cada contenido.",
@@ -89,15 +89,23 @@ export const portfolioConfig: PortfolioItem[] = [
     descripcion:
       "Creación de contenido y manejo estratégico de marca personal y comercial junto al salón de belleza Adora.",
     rol: "Creación de contenido y manejo estratégico de marca personal y comercial junto al salón de belleza Adora.",
-    // REVISAR ASSET: la descarga de Drive falló dos veces en esta sesión
-    // (sesión de Google Drive expirada). Placeholder de marca mientras se
-    // reintenta — no se inventó ninguna imagen.
     cover: {
       type: "image",
-      src: "",
-      alt: "Daniela Portillo + Adora",
+      src: "/portfolio/daniela-portillo-adora/cover.jpg",
+      alt: "Frame de contenido de marca personal para Daniela Portillo y Adora",
     },
-    gallery: [],
+    gallery: [
+      {
+        type: "image",
+        src: "/portfolio/daniela-portillo-adora/cover.jpg",
+        alt: "Frame de contenido de marca personal para Daniela Portillo y Adora",
+      },
+      {
+        type: "video",
+        src: "/portfolio/daniela-portillo-adora/reel.mp4",
+        alt: "Reel de contenido para Daniela Portillo y Adora",
+      },
+    ],
   },
   {
     slug: "nouvell",
