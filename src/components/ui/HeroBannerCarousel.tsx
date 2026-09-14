@@ -61,7 +61,7 @@ export function HeroBannerCarousel() {
         className="pointer-events-none absolute -right-10 top-1/2 hidden -translate-y-1/2 opacity-[0.08] sm:block lg:right-10"
       />
 
-      <div className="relative min-h-[480px] w-full sm:min-h-[460px]">
+      <div className="relative min-h-[500px] w-full sm:min-h-[480px]">
         <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={active.id}
@@ -75,7 +75,7 @@ export function HeroBannerCarousel() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 flex cursor-grab active:cursor-grabbing"
           >
-            <div className="mx-auto flex h-full w-full max-w-7xl flex-col justify-center gap-4 px-6 pb-16 pt-28 sm:gap-6 sm:px-10 sm:pb-14 sm:pt-28 lg:gap-7">
+            <div className="mx-auto flex h-full w-full max-w-7xl flex-col justify-center gap-4 px-6 pb-20 pt-28 sm:gap-6 sm:px-10 sm:pb-20 sm:pt-28 lg:gap-7">
               <span className="inline-flex w-fit items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
                 <span className="h-1.5 w-1.5 bg-volt" />
                 {active.eyebrow}
@@ -117,7 +117,7 @@ export function HeroBannerCarousel() {
       </div>
 
       {banners.length > 1 ? (
-        <div className="absolute inset-x-0 bottom-4 z-10 flex items-center justify-center gap-4 sm:bottom-6">
+        <div className="absolute bottom-4 right-6 z-10 flex items-center gap-4 sm:bottom-6 sm:right-10">
           <button
             type="button"
             aria-label="Banner anterior"
