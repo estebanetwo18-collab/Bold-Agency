@@ -28,7 +28,7 @@ export function PhotoPanel({
   children?: ReactNode;
 }) {
   return (
-    <div className={cn("relative overflow-hidden rounded-[1.75rem] bg-surface", className)}>
+    <div className={cn("relative overflow-hidden bg-surface", className)}>
       <Image
         src={src}
         alt={alt}

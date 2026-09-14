@@ -1,25 +1,23 @@
 import Image from "next/image";
-import { founder } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function Founder() {
+// Migrado tal cual del antiguo Founder.tsx del home (§5.4b) — mismo
+// copy, mismo layout, solo sin el <section id="fundador"> que ya no
+// existe como ancla independiente.
+//
+// La foto de Esteban NO se repite acá: ya aparece en PortfolioHero
+// justo arriba de esta sección, en la misma página.
+export async function AboutMe() {
+  const { founder, portfolioPage } = await getServerContent();
+
   return (
-    <section id="fundador" className="relative bg-paper py-28 lg:py-36">
+    <section id="sobre-mi" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <SectionHeading eyebrow={founder.eyebrow} headline={founder.headline} />
+        <SectionHeading eyebrow={portfolioPage.aboutEyebrow} headline={founder.headline} />
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <Reveal className="relative aspect-[4/5] max-w-sm overflow-hidden rounded-[1.5rem]">
-            <Image
-              src="/images/founder-about-me.jpg"
-              alt={`${founder.name}, founder de BOLD Agency`}
-              fill
-              sizes="(min-width: 1024px) 30vw, 80vw"
-              className="object-cover"
-            />
-          </Reveal>
-
+        <div className="mt-14 max-w-3xl">
           <Reveal delay={0.1}>
             <div className="flex flex-wrap items-center gap-3">
               <h3 className="font-display text-3xl font-extrabold text-ink">{founder.name}</h3>
@@ -46,7 +44,7 @@ export function Founder() {
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {founder.cards.map((card) => (
-                <div key={card.tag} className="rounded-2xl border border-grey-light p-5">
+                <div key={card.tag} className="border border-grey-light p-5">
                   <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
                     {card.tag}
                   </span>
@@ -60,7 +58,7 @@ export function Founder() {
 
             <div className="mt-10">
               <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
-                Experiencia reciente
+                {founder.experienceLabel}
               </span>
               <ul className="mt-4 flex flex-col divide-y divide-grey-light border-t border-grey-light">
                 {founder.experience.map((role) => (
@@ -79,10 +77,10 @@ export function Founder() {
 
             <div className="mt-10">
               <span className="font-display text-xs font-bold uppercase tracking-[0.15em] text-grey">
-                Certificación
+                {founder.certificationLabel}
               </span>
               <div className="mt-4 flex items-center gap-4">
-                <div className="relative aspect-[4/3] w-40 shrink-0 overflow-hidden rounded-xl border border-grey-light sm:w-48">
+                <div className="relative aspect-[4/3] w-40 shrink-0 overflow-hidden border border-grey-light sm:w-48">
                   <Image
                     src="/images/founder-certificate.jpg"
                     alt={`Certificado de ${founder.certificate.institution} — ${founder.certificate.program}, a nombre de ${founder.certificate.honoree}`}

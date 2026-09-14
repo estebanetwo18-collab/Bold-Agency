@@ -11,14 +11,13 @@ export const nav = {
   logoWord: "BOLD",
   logoSub: "AGENCY",
   links: [
+    { href: "/", label: "Inicio" },
     { href: "/#enfoque", label: "Enfoque" },
     { href: "/#sistema", label: "Servicios" },
-    { href: "/#diferenciales", label: "Por qué BOLD" },
-    { href: "/#fundador", label: "Fundador" },
     { href: "/#como-trabajamos", label: "Cómo trabajamos" },
     { href: "/#planes", label: "Planes" },
-    { href: "/#casos", label: "Casos" },
-    { href: "/#preguntas", label: "FAQ" },
+    { href: "/portafolio", label: "Portafolio" },
+    { href: "/calculadora", label: "Calculadora" },
   ],
   cta: { href: "/cotizacion", label: "Diagnóstico 360" },
 };
@@ -42,7 +41,7 @@ export const problem = {
   eyebrow: "El problema real",
   headline: "Contratar por partes no arregla un negocio completo.",
   intro:
-    "Tienes un buen negocio. Llevas años operando, tu producto funciona y tus clientes te recomiendan. Pero también manejas cinco conversaciones de WhatsApp distintas con cinco proveedores distintos, y ninguno ve el negocio completo.",
+    "Tenés un buen negocio. Llevás años operando, tu producto funciona y tus clientes te recomiendan. Pero también manejás cinco conversaciones de WhatsApp distintas con cinco proveedores distintos, y ninguno ve el negocio completo.",
   points: [
     {
       title: "El diseñador no vende",
@@ -57,7 +56,7 @@ export const problem = {
       body: "Optimiza clics y alcance sin entender qué hace diferente a tu negocio.",
     },
     {
-      title: "Tú terminas coordinando todo",
+      title: "Vos terminás coordinando todo",
       body: "El dueño se convierte en el único punto que conecta piezas que deberían estar conectadas desde el inicio.",
     },
   ],
@@ -143,7 +142,7 @@ export const differentiators = {
     {
       icon: "resources",
       title: "Optimización de recursos",
-      body: "Aprovechas un equipo completo ya formado, en lugar de contratar y entrenar una estructura interna desde cero.",
+      body: "Aprovechás un equipo completo ya formado, en lugar de contratar y entrenar una estructura interna desde cero.",
     },
   ],
 };
@@ -172,7 +171,7 @@ export const founder = {
     },
     {
       role: "Digital Marketing Manager",
-      company: "AVON Costa Rica",
+      company: "Avon Costa Rica",
       period: "2022 – 2023",
     },
   ],
@@ -199,6 +198,8 @@ export const founder = {
     },
   ],
   linkedIn: "https://linkedin.com/in/estebanjm",
+  experienceLabel: "Experiencia reciente",
+  certificationLabel: "Certificación",
   certificate: {
     institution: "The George Washington University",
     school: "School of Business",
@@ -208,9 +209,42 @@ export const founder = {
   },
 };
 
+// Copy borrador del hero de /portafolio (§5.4a), tal cual la dio el
+// usuario en el brief — pendiente de su revisión antes de publicar.
+export const portfolioHero = {
+  eyebrow: "MARKETING STRATEGY & GROWTH",
+  headlinePre: "Estratega construyendo marcas con",
+  headlineItalic: "dirección",
+  headlinePost: "y resultados reales.",
+  subhead:
+    "Ayudo a negocios ambiciosos a crecer con estrategia clara y ejecución real. Con base en Costa Rica, alcance en LATAM, USA y Europa.",
+  cta: { label: "Ver portafolio →", targetId: "grid" },
+  photo: "/images/founder-about-me.jpg",
+};
+
+export const portfolioPage = {
+  metaTitle: "Portafolio",
+  metaDescription: "Portafolio y trayectoria de Esteban Muñoz Malavé — BOLD Agency.",
+  aboutEyebrow: "Sobre mí",
+  gridEyebrow: "Portafolio",
+  gridHeadline: "Marcas con las que he construido, de cerca.",
+  gridIntro: "Filtrá por marca o por tipo de trabajo. Cada caso muestra mi rol real en el proyecto.",
+  filterAllLabel: "Todas",
+  filterBrandLabel: "Marca",
+  filterTypeLabel: "Tipo de trabajo",
+  emptyLabel: "No hay casos con ese filtro todavía.",
+  inProgressLabel: "En actualización",
+  roleLabel: "Mi rol",
+  backLabel: "← Volver al portafolio",
+  clientsEyebrow: "Clientes y partners",
+  clientsHeadline: "Marcas que eligieron ser bold.",
+  detailCtaLabel: "Agendar Diagnóstico 360",
+};
+
 export const process = {
   eyebrow: "Cómo trabajamos",
   headline: "Un proceso, no una lista de entregables.",
+  subhead: "Cada etapa se apoya en la anterior. No saltamos a ejecución sin diagnóstico, ni medimos sin haber ejecutado con intención.",
   steps: [
     {
       index: "01",
@@ -273,20 +307,8 @@ export const plans = {
     },
   ],
   disclaimer: "Precios de referencia en USD, sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final. Todos los planes incluyen facturación electrónica.",
-};
-
-export const pointPricing = {
-  eyebrow: "Servicios puntuales",
-  headline: "Cuando no querés paquete: contratás por unidad o pieza.",
-  items: [
-    { tag: "Social Media Management", amount: "$150", unit: "/mes", desc: "Gestión integral de redes" },
-    { tag: "Paid Media · Ads", amount: "$60", unit: "/campaña", desc: "Pauta Meta, Google, TikTok" },
-    { tag: "Copywriting & Contenido", amount: "$5", unit: "/pieza", desc: "Textos publicitarios y editoriales" },
-    { tag: "Diseño Gráfico", amount: "$8", unit: "/pieza", desc: "Piezas para redes y campañas" },
-    { tag: "Estrategia de Marketing", amount: "$50", unit: "/sesión", desc: "Asesoría estratégica puntual" },
-    { tag: "Branding & Rotulación", amount: "A cotizar", unit: "", desc: "Proyecto integral personalizado" },
-  ],
-  promo: "★ Promo de lanzamiento — 10% OFF en paquetes personalizados · Social · Paid · Diseño · Estrategia",
+  ctaLabel: "Definir mi plan",
+  calculatorCtaLabel: "Ver calculadora de precios",
 };
 
 export const launchPricing = {
@@ -346,50 +368,7 @@ export const results = {
     { num: "+70%", label: "Productividad", src: "Avon" },
     { num: "+16", label: "Campañas exitosas", src: "9+ años de trayectoria" },
   ],
-};
-
-export const caseStudies = {
-  eyebrow: "Piezas reales",
-  headline: "Trabajo ejecutado, no mockups.",
-  items: [
-    {
-      image: "/images/case-rentcars.jpg",
-      alt: "Pieza publicitaria de campaña para Rentcars",
-      client: "RentCars",
-      market: "Brasil",
-    },
-    {
-      image: "/images/case-herramientas.jpg",
-      alt: "Pieza publicitaria de campaña de masterclass con Rossanna",
-      client: "Rossanna",
-      market: "Influencer · Argentina",
-    },
-    {
-      image: "/images/case-nouvell.jpg",
-      video: "/videos/mosaic-reel.mp4",
-      alt: "Reel del showroom de cocinas Nouvell",
-      client: "Nouvell",
-      market: "Costa Rica",
-    },
-  ],
-};
-
-export const clients = {
-  eyebrow: "Clientes y partners",
-  headline: "Marcas que eligieron ser bold.",
-  intro: "Portafolio de marcas con las que hemos trabajado en 9+ años. Logos originales disponibles bajo solicitud.",
-  names: [
-    "TOYOTA",
-    "FORD",
-    "LEXUS",
-    "AVON",
-    "SWAROVSKI",
-    "GRUPO PURDY",
-    "EUROMOBILIA",
-    "NOUVELL",
-    "RENTCARS",
-    "CUSHMAN & WAKEFIELD",
-  ],
+  ctaLabel: "Ver portafolio completo",
 };
 
 export const faq = {
@@ -404,7 +383,7 @@ export const faq = {
     {
       question: "¿Cuánto cuesta trabajar con BOLD?",
       answer:
-        "Depende de la modalidad: paquetes desde $200 usd/mes en Grow Your Way, o fee base + performance share si trabajamos como implant de tu equipo (The Bold Way). El Diagnóstico 360 —el primer paso— no tiene costo.",
+        "Depende de la modalidad: paquetes desde $200 usd/mes en Grow Your Way, o fee base + performance share si trabajamos como implant de tu equipo (The Bold Way). El Diagnóstico 360 — el primer paso — no tiene costo.",
     },
     {
       question: "¿Trabajan fuera de Costa Rica?",
@@ -414,7 +393,7 @@ export const faq = {
     {
       question: "Mi negocio es pequeño, ¿igual aplica?",
       answer:
-        "Trabajamos con negocios que ya tienen un producto validado y entre 3 y 25 empleados. Si vendes principalmente por WhatsApp y sientes que tu presencia no refleja lo que realmente vale tu negocio, aplicas.",
+        "Trabajamos con negocios que ya tienen un producto validado y entre 3 y 25 empleados. Si vendés principalmente por WhatsApp y sentís que tu presencia no refleja lo que realmente vale tu negocio, aplicás.",
     },
     {
       question: "¿Cómo es el proceso desde que agendo el diagnóstico?",
@@ -424,7 +403,7 @@ export const faq = {
     {
       question: "¿Qué pasa si no veo resultados de inmediato?",
       answer:
-        "Cualquiera que te prometa resultados garantizados en semanas no está siendo honesto contigo. Lo que sí puedes esperar es dirección clara desde el primer mes y una medición constante de qué está funcionando y qué no.",
+        "Cualquiera que te prometa resultados garantizados en semanas no está siendo honesto contigo. Lo que sí podés esperar es dirección clara desde el primer mes y una medición constante de qué está funcionando y qué no.",
     },
     {
       question: "Ya tuve una mala experiencia con otra agencia, ¿qué cambia con ustedes?",
@@ -457,10 +436,10 @@ export const footer = {
         { href: "/#enfoque", label: "Enfoque" },
         { href: "/#sistema", label: "Servicios" },
         { href: "/#diferenciales", label: "Por qué BOLD" },
-        { href: "/#fundador", label: "Fundador" },
         { href: "/#como-trabajamos", label: "Cómo trabajamos" },
         { href: "/#planes", label: "Planes" },
-        { href: "/#casos", label: "Casos" },
+        { href: "/calculadora", label: "Calculadora" },
+        { href: "/portafolio", label: "Portafolio" },
         { href: "/#preguntas", label: "FAQ" },
         { href: "/#diagnostico", label: "Diagnóstico 360" },
       ],
@@ -479,21 +458,56 @@ export const footer = {
     { href: "https://www.linkedin.com/company/em-agency-latam", label: "LinkedIn", icon: "linkedin" },
   ],
   whatsappLink: "https://wa.me/50672445642",
+  whatsappAriaLabel: "Escribir por WhatsApp",
   copyright: `© ${new Date().getFullYear()} BOLD Agency. Todos los derechos reservados.`,
 };
 
 export const diagnosticForm = {
   eyebrow: "Diagnóstico 360",
-  headline: "Cuéntanos de tu negocio.",
+  headline: "Contanos de tu negocio.",
   body:
     "Toma menos de dos minutos. Con esta información preparamos una primera lectura de tu negocio antes de la conversación.",
   successTitle: "Recibimos tu solicitud.",
   successBody:
     "Nuestro equipo revisará la información y te contactará por WhatsApp o email en las próximas 24 horas hábiles para agendar tu Diagnóstico 360.",
+  resendLabel: "Enviar otra solicitud",
   errorTitle: "No pudimos enviar tu solicitud.",
   errorBody:
     "Tu información no se perdió. Intenta de nuevo en unos segundos o escríbenos directamente por WhatsApp.",
+  nameLabel: "Nombre completo",
+  companyLabel: "Nombre del negocio",
+  contactLabel: "WhatsApp o email",
+  contactHint: "Con código de país si es WhatsApp.",
+  businessTypeLabel: "Tipo de negocio",
+  businessTypePlaceholder: "Selecciona una opción",
+  budgetLabel: "Presupuesto mensual aproximado",
+  budgetPlaceholder: "Selecciona un rango",
+  challengeLabel: "¿Cuál es tu principal desafío hoy?",
+  consentLabel: "Autorizo a BOLD Agency a contactarme por WhatsApp o email para coordinar mi Diagnóstico 360.",
+  submitLabel: "Solicitar Diagnóstico 360",
+  submittingLabel: "Enviando…",
+  privacyNote: "No compartimos tu información. Solo la usamos para preparar tu diagnóstico.",
 };
+
+export const businessTypes = [
+  { value: "comercio", label: "Comercio / retail" },
+  { value: "servicios", label: "Servicios profesionales" },
+  { value: "salud", label: "Salud y bienestar" },
+  { value: "alimentos", label: "Alimentos y bebidas" },
+  { value: "construccion", label: "Construcción e inmobiliaria" },
+  { value: "manufactura", label: "Manufactura / industria" },
+  { value: "educacion", label: "Educación y formación" },
+  { value: "tecnologia", label: "Tecnología / software" },
+  { value: "otro", label: "Otro" },
+];
+
+export const budgetRanges = [
+  { value: "menos-1000", label: "Menos de USD 1,000/mes" },
+  { value: "1000-3000", label: "USD 1,000 – 3,000/mes" },
+  { value: "3000-6000", label: "USD 3,000 – 6,000/mes" },
+  { value: "6000-mas", label: "Más de USD 6,000/mes" },
+  { value: "no-seguro", label: "Aún no lo tengo claro" },
+];
 
 /**
  * Página independiente en /cotizacion — URL única y compartible para
@@ -501,6 +515,8 @@ export const diagnosticForm = {
  * sin depender de un ancla dentro del home.
  */
 export const cotizacionPage = {
+  metaTitle: "Cotización — Diagnóstico 360",
+  metaDescription: "Solicita tu Diagnóstico 360 con BOLD Agency: contanos de tu negocio y te contactamos por WhatsApp o email con tu cotización, sin costo y sin compromiso.",
   eyebrow: "Cotización BOLD Agency",
   headline: "Contanos tu negocio y arrancamos tu cotización.",
   intro:
@@ -510,4 +526,61 @@ export const cotizacionPage = {
     "Diagnóstico 360 sin costo y sin compromiso",
     "+9 años de experiencia en marketing digital y estratégico",
   ],
+};
+
+// UI de la calculadora (§8). Los nombres de servicios y categorías del
+// catálogo (pricing-config.ts) se mantienen en español en los 3 idiomas
+// por ahora — vienen literal del Excel del cliente y traducirlos con
+// precisión de negocio queda pendiente de una revisión aparte.
+export const calculator = {
+  eyebrow: "Calcula tu servicio o proyecto",
+  headline: "¿Cuánto cuesta crecer a tu manera?",
+  intro: "Precios reales, en colones. Elegí un paquete mensual o armá tu propia combinación de servicios puntuales.",
+  exclusiveNote: "Un paquete o servicios puntuales — no se combinan en este cálculo. ¿Necesitás paquete + servicios adicionales? Esa es una cotización especializada.",
+  specializedCtaLabel: "Solicitar cotización especializada",
+  packageTitle: "Paquete mensual",
+  packageSubtitle: "Selección única — no se combinan entre sí.",
+  removePackageLabel: "Quitar paquete",
+  pointTitle: "Servicios puntuales",
+  pointSubtitle: "Sumá los que necesitás. Los marcados “a cotizar” abren un formulario aparte.",
+  quoteLabel: "A cotizar",
+  fromLabel: "desde",
+  quoteButton: "Cotizar",
+  quotedButton: "Solicitado ✓",
+  growYourWayNote: "Grow Your Way incluye una comisión ajustable sobre el presupuesto de pauta, acordada según el proyecto — no está incluida en el total de esta calculadora.",
+  summaryTitle: "Tu estimado",
+  emptyState: "Elegí un paquete o un servicio puntual para ver el total.",
+  subtotalLabel: "Subtotal",
+  discountLabel: "Descuento por combinar",
+  vatLabel: "IVA",
+  totalLabel: "Total estimado",
+  totalFromLabel: "Total estimado desde",
+  totalUnit: "/mes, impuestos incluidos",
+  quotedNote: "Incluye servicios a cotizar por separado — te contactamos con el monto exacto.",
+  soloSurchargeNote: "Este servicio está pensado para combinarse con otros — elegido solo, el precio incluye un ajuste.",
+  ctaLabel: "Agendar Diagnóstico 360",
+  decreaseAria: "Restar",
+  increaseAria: "Sumar",
+};
+
+export const quoteModal = {
+  eyebrow: "Cotizar",
+  intro: "Este servicio se cotiza a la medida. Dejanos tus datos y un breve alcance.",
+  namePlaceholder: "Nombre completo",
+  companyPlaceholder: "Nombre del negocio",
+  contactPlaceholder: "WhatsApp o email",
+  briefPlaceholder: "Contanos brevemente el alcance del proyecto",
+  submitLabel: "Enviar solicitud",
+  submittingLabel: "Enviando…",
+  whatsappLabel: "o escribinos directo por WhatsApp",
+  closeLabel: "Cerrar",
+  successTitle: "¡Listo!",
+  successBody: (service: string) => `Recibimos tu solicitud de cotización para ${service}. Te contactamos pronto.`,
+  ariaLabel: (service: string) => `Cotizar ${service}`,
+  genericError: "Revisa los campos.",
+  submitError: "No se pudo enviar la solicitud.",
+  unexpectedError: "Error inesperado.",
+  whatsappMessage: (service: string) => `Hola BOLD, quiero cotizar: ${service}.`,
+  challengePrefix: "Servicio de interés",
+  noDetailNote: "sin detalle adicional",
 };

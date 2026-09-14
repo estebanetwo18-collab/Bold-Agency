@@ -1,12 +1,13 @@
-import Image from "next/image";
-import { results, clients, caseStudies } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-export function Results() {
+export async function Results() {
+  const { results } = await getServerContent();
+
   return (
-    <section id="casos" className="relative bg-ink py-28 text-paper lg:py-36">
+    <section id="resultados" className="relative bg-ink py-28 text-paper lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
           eyebrow={results.eyebrow}
@@ -20,85 +21,18 @@ export function Results() {
             <Reveal
               key={stat.label}
               delay={i * 0.06}
-              className="rounded-2xl border border-paper/10 bg-surface p-7"
+              className="border border-paper/10 bg-surface p-7"
             >
-              <p className="font-display text-4xl font-extrabold tracking-tight">{stat.num}</p>
+              <p className="font-data text-4xl font-extrabold tracking-tight">{stat.num}</p>
               <p className="mt-1.5 font-semibold">{stat.label}</p>
-              <p className="mt-0.5 text-sm text-grey-light">{stat.src}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.12} className="mt-20">
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
-            <span className="h-1.5 w-1.5 rounded-full bg-volt" />
-            {caseStudies.eyebrow}
-          </span>
-          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight sm:text-[1.7rem]">
-            {caseStudies.headline}
-          </h3>
-        </Reveal>
-
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {caseStudies.items.map((item, i) => (
-            <Reveal key={item.client} delay={i * 0.08}>
-              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
-                {item.video ? (
-                  <video
-                    src={item.video}
-                    poster={item.image}
-                    className="h-full w-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    aria-label={item.alt}
-                  />
-                ) : (
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                    className="object-cover"
-                  />
-                )}
-              </div>
-              <p className="mt-3 font-display text-sm font-bold text-paper">
-                {item.client}
-                <span className="font-normal text-grey-light"> · {item.market}</span>
-              </p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.1} className="mt-20">
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
-            <span className="h-1.5 w-1.5 rounded-full bg-volt" />
-            {clients.eyebrow}
-          </span>
-          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight sm:text-[1.7rem]">
-            {clients.headline}
-          </h3>
-          <p className="mt-3 max-w-2xl text-grey-light">{clients.intro}</p>
-        </Reveal>
-
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {clients.names.map((name, i) => (
-            <Reveal
-              key={name}
-              delay={i * 0.03}
-              className="rounded-xl border border-paper/10 bg-surface px-4 py-6 text-center font-display text-sm font-bold tracking-tight"
-            >
-              {name}
+              <p className="mt-0.5 text-sm text-grey-data">{stat.src}</p>
             </Reveal>
           ))}
         </div>
 
         <Reveal delay={0.2} className="mt-14 flex justify-center">
-          <MagneticButton href="#diagnostico" variant="volt">
-            Quiero ser el próximo caso
+          <MagneticButton href="/portafolio" variant="volt">
+            {results.ctaLabel}
           </MagneticButton>
         </Reveal>
       </div>

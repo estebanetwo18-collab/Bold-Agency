@@ -6,10 +6,13 @@
   --color-surface: #161615;
   --color-volt: #f2e64d;
   --color-paper: #ffffff;
-  /* Ajustado de #8A8A86 (brandbook) a #6B6B66 para texto de cuerpo:
-     el tono original no alcanza 4.5:1 sobre blanco (WCAG AA). El grey
-     claro de superficies/bordes se mantiene sin cambios. */
+  /* Ajustado de #8A8A86 (brandbook, "Gris dato") a #6B6B66 solo para texto
+     de cuerpo/párrafo sobre Paper: el tono original no alcanza 4.5:1 sobre
+     blanco (WCAG AA). El "Gris dato" oficial se conserva sin modificar en
+     --color-grey-data para labels/KPIs/cifras (uso principal: sobre Ink,
+     donde sí cumple contraste, o en texto grande/UI donde basta 3:1). */
   --color-grey: #6b6b66;
+  --color-grey-data: #8a8a86;
   --color-grey-light: #d6d6d0;
 
   --ease-bold: cubic-bezier(0.16, 1, 0.3, 1);
@@ -25,10 +28,15 @@
   --color-volt: var(--color-volt);
   --color-paper: var(--color-paper);
   --color-grey: var(--color-grey);
+  --color-grey-data: var(--color-grey-data);
   --color-grey-light: var(--color-grey-light);
 
+  /* Creato Display (guía de marca) es una fuente comercial sin archivos
+     disponibles en el repo: se usa Archivo como reemplazo visual (grotesca
+     geométrica de peso similar) hasta que se provean los .woff2 licenciados. */
   --font-display: var(--font-archivo), "Creato Display", "Arial Black", sans-serif;
   --font-body: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-data: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
 
   --animate-marquee: marquee 32s linear infinite;
 }

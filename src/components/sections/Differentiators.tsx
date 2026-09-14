@@ -1,4 +1,4 @@
-import { differentiators } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -55,7 +55,9 @@ function Icon({ name }: { name: string }) {
   }
 }
 
-export function Differentiators() {
+export async function Differentiators() {
+  const { differentiators } = await getServerContent();
+
   return (
     <section id="diferenciales" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -71,7 +73,7 @@ export function Differentiators() {
             <Reveal
               key={item.title}
               delay={i * 0.08}
-              className="flex flex-col rounded-[1.5rem] border border-grey-light/70 p-7"
+              className="flex flex-col border border-grey-light/70 p-7"
             >
               <span
                 className={`flex h-12 w-12 items-center justify-center rounded-full text-ink ${tints[item.icon] ?? "bg-grey-light/50"}`}

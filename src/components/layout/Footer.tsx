@@ -1,9 +1,11 @@
-import Link from "next/link";
-import { footer } from "@/lib/content";
+import { Link } from "@/i18n/navigation";
+import { getServerContent } from "@/lib/getContentServer";
 import { Monogram } from "@/components/ui/Monogram";
 import { LogoLockup } from "@/components/ui/LogoLockup";
 
-export function Footer() {
+export async function Footer() {
+  const { footer } = await getServerContent();
+
   return (
     <footer className="bg-ink px-6 pb-28 pt-20 text-paper lg:px-10">
       <div className="mx-auto max-w-7xl">

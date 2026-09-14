@@ -1,11 +1,11 @@
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
+import { HeroBannerCarousel } from "@/components/ui/HeroBannerCarousel";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
 import { System } from "@/components/sections/System";
 import { PhotoBanner } from "@/components/sections/PhotoBanner";
 import { Differentiators } from "@/components/sections/Differentiators";
-import { Founder } from "@/components/sections/Founder";
 import { Process } from "@/components/sections/Process";
 import { Plans } from "@/components/sections/Plans";
 import { Results } from "@/components/sections/Results";
@@ -13,13 +13,16 @@ import { Faq } from "@/components/sections/Faq";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { DiagonalDivider } from "@/components/ui/DiagonalDivider";
-import { midBanner, teamBanner, skylineBanner } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 
-export default function Home() {
+export default async function Home() {
+  const { midBanner, teamBanner, skylineBanner } = await getServerContent();
+
   return (
     <>
       <Nav />
       <main id="main">
+        <HeroBannerCarousel />
         <Hero />
         <Problem />
         <DiagonalDivider from="paper" to="ink" />
@@ -39,7 +42,6 @@ export default function Home() {
           align="end"
         />
         <Differentiators />
-        <Founder />
         <Process />
         <Plans />
         <DiagonalDivider from="paper" to="ink" />

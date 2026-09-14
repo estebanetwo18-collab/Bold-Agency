@@ -2,10 +2,11 @@
 
 import { useRef } from "react";
 import { motion, useScroll } from "framer-motion";
-import { process } from "@/lib/content";
+import { useContent } from "@/lib/useContent";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function Process() {
+  const { process } = useContent();
   const trackRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: trackRef,
@@ -24,10 +25,7 @@ export function Process() {
             <h2 className="text-balance mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
               {process.headline}
             </h2>
-            <p className="mt-6 max-w-md leading-relaxed text-grey">
-              Cada etapa se apoya en la anterior. No saltamos a ejecución sin
-              diagnóstico, ni medimos sin haber ejecutado con intención.
-            </p>
+            <p className="mt-6 max-w-md leading-relaxed text-grey">{process.subhead}</p>
 
             <div className="relative mt-10 hidden h-48 w-1 overflow-hidden rounded-full bg-grey-light lg:block">
               <motion.div
@@ -42,7 +40,7 @@ export function Process() {
               <Reveal
                 key={step.index}
                 delay={i * 0.05}
-                className="relative flex gap-6 rounded-2xl border border-grey-light bg-paper p-8 shadow-[0_1px_0_0_rgba(17,17,17,0.04)]"
+                className="relative flex gap-6 border border-grey-light bg-paper p-8 shadow-[0_1px_0_0_rgba(17,17,17,0.04)]"
               >
                 <span className="font-display text-3xl font-extrabold text-grey-light">
                   {step.index}

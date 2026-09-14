@@ -1,8 +1,10 @@
-import { problem } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function Problem() {
+export async function Problem() {
+  const { problem } = await getServerContent();
+
   return (
     <section id="enfoque" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -12,7 +14,7 @@ export function Problem() {
           intro={problem.intro}
         />
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-[2rem] border border-grey-light bg-grey-light sm:grid-cols-2">
+        <div className="mt-16 grid gap-px overflow-hidden border border-grey-light bg-grey-light sm:grid-cols-2">
           {problem.points.map((point, i) => (
             <Reveal key={point.title} delay={i * 0.08} className="bg-paper p-8 sm:p-10">
               <span className="font-display text-xs font-bold uppercase tracking-[0.2em] text-grey">

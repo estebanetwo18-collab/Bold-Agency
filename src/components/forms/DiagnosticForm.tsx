@@ -2,13 +2,8 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  BUDGET_RANGES,
-  BUSINESS_TYPES,
-  leadFormSchema,
-  type LeadFormValues,
-} from "@/lib/lead-schema";
-import { diagnosticForm } from "@/lib/content";
+import { leadFormSchema, type LeadFormValues } from "@/lib/lead-schema";
+import { useContent } from "@/lib/useContent";
 import { usePrefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/cn";
 
@@ -60,6 +55,7 @@ function createSubmissionId() {
 }
 
 export function DiagnosticForm() {
+  const { diagnosticForm, businessTypes, budgetRanges } = useContent();
   const [values, setValues] = useState(rawDefaults);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<Status>("idle");
@@ -74,7 +70,7 @@ export function DiagnosticForm() {
   }, []);
 
   const inputClass =
-    "w-full rounded-xl border border-grey-light bg-paper px-4 py-3.5 text-ink placeholder:text-grey/70 transition-colors focus:border-ink focus:outline-none";
+    "w-full border border-grey-light bg-paper px-4 py-3.5 text-ink placeholder:text-grey/70 transition-colors focus:border-ink focus:outline-none";
 
   function updateField<K extends keyof typeof rawDefaults>(
     field: K,
@@ -150,7 +146,7 @@ export function DiagnosticForm() {
   }
 
   return (
-    <div className="relative rounded-[2rem] border border-grey-light bg-paper p-6 sm:p-10">
+    <div className="relative border border-grey-light bg-paper p-6 sm:p-10">
       <AnimatePresence mode="wait">
         {status === "success" ? (
           <motion.div
@@ -174,7 +170,7 @@ export function DiagnosticForm() {
               onClick={handleReset}
               className="mt-8 font-display text-sm font-bold uppercase tracking-wide text-ink underline underline-offset-4"
             >
-              Enviar otra solicitud
+              {diagnosticForm.resendLabel}
             </button>
           </motion.div>
         ) : (
@@ -203,7 +199,7 @@ export function DiagnosticForm() {
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2">
-              <Field label="Nombre completo" htmlFor="name" error={errors.name}>
+              <Field label={diagnosticForm.nameLabel} htmlFor="name" error={errors.name}>
                 <input
                   id="name"
                   name="name"
@@ -216,7 +212,7 @@ export function DiagnosticForm() {
                 />
               </Field>
 
-              <Field label="Nombre del negocio" htmlFor="company" error={errors.company}>
+              <Field label={diagnosticForm.companyLabel} htmlFor="company" error={errors.company}>
                 <input
                   id="company"
                   name="company"
@@ -231,10 +227,10 @@ export function DiagnosticForm() {
             </div>
 
             <Field
-              label="WhatsApp o email"
+              label={diagnosticForm.contactLabel}
               htmlFor="contact"
               error={errors.contact}
-              hint="Con código de país si es WhatsApp."
+              hint={diagnosticForm.contactHint}
             >
               <input
                 id="contact"
@@ -249,7 +245,7 @@ export function DiagnosticForm() {
             </Field>
 
             <div className="grid gap-6 sm:grid-cols-2">
-              <Field label="Tipo de negocio" htmlFor="businessType" error={errors.businessType}>
+              <Field label={diagnosticForm.businessTypeLabel} htmlFor="businessType" error={errors.businessType}>
                 <select
                   id="businessType"
                   name="businessType"
@@ -259,9 +255,9 @@ export function DiagnosticForm() {
                   aria-invalid={Boolean(errors.businessType)}
                 >
                   <option value="" disabled>
-                    Selecciona una opción
+                    {diagnosticForm.businessTypePlaceholder}
                   </option>
-                  {BUSINESS_TYPES.map((opt) => (
+                  {businessTypes.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
                     </option>
@@ -270,7 +266,7 @@ export function DiagnosticForm() {
               </Field>
 
               <Field
-                label="Presupuesto mensual aproximado"
+                label={diagnosticForm.budgetLabel}
                 htmlFor="budget"
                 error={errors.budget}
               >
@@ -283,9 +279,9 @@ export function DiagnosticForm() {
                   aria-invalid={Boolean(errors.budget)}
                 >
                   <option value="" disabled>
-                    Selecciona un rango
+                    {diagnosticForm.budgetPlaceholder}
                   </option>
-                  {BUDGET_RANGES.map((opt) => (
+                  {budgetRanges.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
                     </option>
@@ -295,7 +291,7 @@ export function DiagnosticForm() {
             </div>
 
             <Field
-              label="¿Cuál es tu principal desafío hoy?"
+              label={diagnosticForm.challengeLabel}
               htmlFor="challenge"
               error={errors.challenge}
             >
@@ -318,15 +314,12 @@ export function DiagnosticForm() {
                 className="mt-1 h-4 w-4 shrink-0 accent-ink"
                 aria-invalid={Boolean(errors.consent)}
               />
-              <span>
-                Autorizo a BOLD Agency a contactarme por WhatsApp o email para
-                coordinar mi Diagnóstico 360.
-              </span>
+              <span>{diagnosticForm.consentLabel}</span>
             </label>
             {errors.consent ? <ErrorText>{errors.consent}</ErrorText> : null}
 
             {status === "error" ? (
-              <div className="rounded-xl border border-ink/15 bg-grey-light/30 p-4 text-sm">
+              <div className="border border-ink/15 bg-grey-light/30 p-4 text-sm">
                 <p className="font-display font-bold text-ink">
                   {diagnosticForm.errorTitle}
                 </p>
@@ -341,11 +334,9 @@ export function DiagnosticForm() {
               disabled={status === "submitting"}
               className="mt-2 inline-flex items-center justify-center gap-3 rounded-full bg-ink px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-paper transition-colors duration-300 hover:bg-volt hover:text-ink disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === "submitting" ? "Enviando…" : "Solicitar Diagnóstico 360"}
+              {status === "submitting" ? diagnosticForm.submittingLabel : diagnosticForm.submitLabel}
             </button>
-            <p className="text-center text-xs text-grey">
-              No compartimos tu información. Solo la usamos para preparar tu diagnóstico.
-            </p>
+            <p className="text-center text-xs text-grey">{diagnosticForm.privacyNote}</p>
           </motion.form>
         )}
       </AnimatePresence>

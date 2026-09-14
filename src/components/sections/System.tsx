@@ -1,9 +1,11 @@
-import { system } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
-export function System() {
+export async function System() {
+  const { system } = await getServerContent();
+
   return (
     <section id="sistema" className="relative bg-ink py-28 text-paper lg:py-36">
       <div
@@ -24,7 +26,7 @@ export function System() {
               key={pillar.title}
               delay={i * 0.06}
               className={cn(
-                "group relative overflow-hidden rounded-2xl border border-paper/10 bg-surface p-8 transition-colors duration-300 hover:border-volt/60",
+                "group relative overflow-hidden border border-paper/10 bg-surface p-8 transition-colors duration-300 hover:border-volt/60",
                 pillar.wide && "sm:col-span-2 lg:col-span-3",
               )}
             >

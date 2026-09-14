@@ -1,10 +1,12 @@
-import { plans, pointPricing, launchPricing } from "@/lib/content";
+import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/cn";
 
-export function Plans() {
+export async function Plans() {
+  const { plans, launchPricing } = await getServerContent();
+
   return (
     <section id="planes" className="relative bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -20,7 +22,7 @@ export function Plans() {
               key={modality.name}
               delay={i * 0.08}
               className={cn(
-                "flex flex-col rounded-[1.75rem] border p-9",
+                "flex flex-col border p-9",
                 modality.featured
                   ? "border-ink bg-ink text-paper"
                   : "border-grey-light bg-paper text-ink",
@@ -69,7 +71,7 @@ export function Plans() {
           ))}
         </div>
 
-        <Reveal delay={0.14} className="mt-14 overflow-hidden rounded-[1.75rem] bg-ink p-8 text-paper sm:p-10">
+        <Reveal delay={0.14} className="mt-14 overflow-hidden bg-ink p-8 text-paper sm:p-10">
           <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-volt">
             <span className="h-1.5 w-1.5 rounded-full bg-volt" />
             {launchPricing.eyebrow}
@@ -86,7 +88,7 @@ export function Plans() {
               <div
                 key={tier.name}
                 className={cn(
-                  "flex flex-col rounded-2xl border p-6",
+                  "flex flex-col border p-6",
                   tier.featured
                     ? "border-volt/50 bg-gradient-to-b from-surface to-ink"
                     : "border-paper/10 bg-surface",
@@ -131,63 +133,21 @@ export function Plans() {
             ))}
           </div>
 
-          <div className="mt-6 rounded-2xl bg-volt px-6 py-4 text-center">
+          <div className="mt-6 bg-volt px-6 py-4 text-center">
             <p className="text-sm font-semibold text-ink">{launchPricing.promo}</p>
           </div>
         </Reveal>
 
-        <Reveal delay={0.16} className="mt-16">
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-grey">
-            <span className="h-1.5 w-1.5 rounded-full bg-ink" />
-            {pointPricing.eyebrow}
-          </span>
-          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight text-ink sm:text-[1.7rem]">
-            {pointPricing.headline}
-          </h3>
-        </Reveal>
-
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {pointPricing.items.map((item, i) => (
-            <Reveal
-              key={item.tag}
-              delay={i * 0.05}
-              className="rounded-2xl border border-grey-light p-6"
-            >
-              <span className="font-display text-xs font-bold uppercase tracking-[0.1em] text-grey">
-                {item.tag}
-              </span>
-              <p className="mt-2.5 font-display text-xl font-extrabold text-ink">
-                {item.amount}
-                {item.unit ? (
-                  <span className="ml-1 font-display text-sm font-semibold text-grey">
-                    {item.unit}
-                  </span>
-                ) : null}
-              </p>
-              <p className="mt-1 text-sm text-grey">{item.desc}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.1} className="mt-5 rounded-2xl bg-ink px-6 py-4 text-center">
-          <p className="text-sm text-paper">
-            {pointPricing.promo.split("—").map((part, i) =>
-              i === 0 ? (
-                <span key={i} className="font-display font-bold text-volt">
-                  {part}—
-                </span>
-              ) : (
-                <span key={i}>{part}</span>
-              ),
-            )}
-          </p>
-        </Reveal>
-
-        <div className="mt-8 flex flex-col items-start gap-6 rounded-2xl bg-grey-light/40 p-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col items-start gap-6 bg-grey-light/40 p-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-relaxed text-grey">{plans.disclaimer}</p>
-          <MagneticButton href="#diagnostico" variant="ink" strength={10}>
-            Definir mi plan
-          </MagneticButton>
+          <div className="flex flex-wrap gap-3">
+            <MagneticButton href="/calculadora" variant="volt" strength={10}>
+              {plans.calculatorCtaLabel}
+            </MagneticButton>
+            <MagneticButton href="#diagnostico" variant="ink" strength={10}>
+              {plans.ctaLabel}
+            </MagneticButton>
+          </div>
         </div>
       </div>
     </section>
