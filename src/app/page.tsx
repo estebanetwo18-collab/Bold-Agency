@@ -1,5 +1,6 @@
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
+import { HeroBannerCarousel } from "@/components/ui/HeroBannerCarousel";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
 import { System } from "@/components/sections/System";
@@ -20,6 +21,7 @@ export default function Home() {
     <>
       <Nav />
       <main id="main">
+        <HeroBannerCarousel />
         <Hero />
         <Problem />
         <DiagonalDivider from="paper" to="ink" />
