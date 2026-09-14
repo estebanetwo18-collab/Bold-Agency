@@ -140,9 +140,14 @@ export async function Plans() {
 
         <div className="mt-16 flex flex-col items-start gap-6 bg-grey-light/40 p-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-relaxed text-grey">{plans.disclaimer}</p>
-          <MagneticButton href="#diagnostico" variant="ink" strength={10}>
-            {plans.ctaLabel}
-          </MagneticButton>
+          <div className="flex flex-wrap gap-3">
+            <MagneticButton href="/calculadora" variant="volt" strength={10}>
+              {plans.calculatorCtaLabel}
+            </MagneticButton>
+            <MagneticButton href="#diagnostico" variant="ink" strength={10}>
+              {plans.ctaLabel}
+            </MagneticButton>
+          </div>
         </div>
       </div>
     </section>

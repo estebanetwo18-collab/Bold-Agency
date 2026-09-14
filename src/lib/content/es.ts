@@ -16,6 +16,7 @@ export const nav = {
     { href: "/#diferenciales", label: "Por qué BOLD" },
     { href: "/#como-trabajamos", label: "Cómo trabajamos" },
     { href: "/#planes", label: "Planes" },
+    { href: "/calculadora", label: "Calculadora" },
     { href: "/portafolio", label: "Portafolio" },
     { href: "/#preguntas", label: "FAQ" },
   ],
@@ -307,6 +308,7 @@ export const plans = {
   ],
   disclaimer: "Precios de referencia en USD, sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final. Todos los planes incluyen facturación electrónica.",
   ctaLabel: "Definir mi plan",
+  calculatorCtaLabel: "Ver calculadora de precios",
 };
 
 export const launchPricing = {
@@ -436,6 +438,7 @@ export const footer = {
         { href: "/#diferenciales", label: "Por qué BOLD" },
         { href: "/#como-trabajamos", label: "Cómo trabajamos" },
         { href: "/#planes", label: "Planes" },
+        { href: "/calculadora", label: "Calculadora" },
         { href: "/portafolio", label: "Portafolio" },
         { href: "/#preguntas", label: "FAQ" },
         { href: "/#diagnostico", label: "Diagnóstico 360" },
@@ -532,9 +535,12 @@ export const cotizacionPage = {
 export const calculator = {
   eyebrow: "Calcula tu servicio o proyecto",
   headline: "¿Cuánto cuesta crecer a tu manera?",
-  intro: "Precios reales, en colones. Elegí un paquete mensual, sumá servicios puntuales, o ambos.",
+  intro: "Precios reales, en colones. Elegí un paquete mensual o armá tu propia combinación de servicios puntuales.",
+  exclusiveNote: "Un paquete o servicios puntuales — no se combinan en este cálculo. ¿Necesitás paquete + servicios adicionales? Esa es una cotización especializada.",
+  specializedCtaLabel: "Solicitar cotización especializada",
   packageTitle: "Paquete mensual",
   packageSubtitle: "Selección única — no se combinan entre sí.",
+  removePackageLabel: "Quitar paquete",
   pointTitle: "Servicios puntuales",
   pointSubtitle: "Sumá los que necesitás. Los marcados “a cotizar” abren un formulario aparte.",
   quoteLabel: "A cotizar",

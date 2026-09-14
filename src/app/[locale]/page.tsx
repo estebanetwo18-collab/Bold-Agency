@@ -8,7 +8,6 @@ import { PhotoBanner } from "@/components/sections/PhotoBanner";
 import { Differentiators } from "@/components/sections/Differentiators";
 import { Process } from "@/components/sections/Process";
 import { Plans } from "@/components/sections/Plans";
-import { Calculator } from "@/components/sections/Calculator";
 import { Results } from "@/components/sections/Results";
 import { Faq } from "@/components/sections/Faq";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
@@ -45,7 +44,6 @@ export default async function Home() {
         <Differentiators />
         <Process />
         <Plans />
-        <Calculator />
         <DiagonalDivider from="paper" to="ink" />
         <Results />
         <DiagonalDivider from="ink" to="paper" flip />

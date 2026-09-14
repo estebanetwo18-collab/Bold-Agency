@@ -46,17 +46,19 @@ export function calculateTotal(state: CalculatorState): CalculatorResult {
     }
   }
 
-  for (const item of pricingCatalog) {
-    if (item.inputType !== "stepper") continue;
-    const qty = state.quantities[item.id] ?? 0;
-    if (qty <= 0 || item.priceMin === null) continue;
-    lines.push({
-      item,
-      quantity: qty,
-      unitPrice: item.priceMin,
-      lineTotal: item.priceMin * qty,
-      isEstimate: item.pricingType === "rango",
-    });
+  if (!state.selectedPackageId) {
+    for (const item of pricingCatalog) {
+      if (item.inputType !== "stepper") continue;
+      const qty = state.quantities[item.id] ?? 0;
+      if (qty <= 0 || item.priceMin === null) continue;
+      lines.push({
+        item,
+        quantity: qty,
+        unitPrice: item.priceMin,
+        lineTotal: item.priceMin * qty,
+        isEstimate: item.pricingType === "rango",
+      });
+    }
   }
 
   const subtotal = lines.reduce((sum, line) => sum + line.lineTotal, 0);

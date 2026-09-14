@@ -14,6 +14,7 @@ export const nav = {
     { href: "/#diferenciales", label: "Why BOLD" },
     { href: "/#como-trabajamos", label: "How we work" },
     { href: "/#planes", label: "Plans" },
+    { href: "/calculadora", label: "Calculator" },
     { href: "/portafolio", label: "Portfolio" },
     { href: "/#preguntas", label: "FAQ" },
   ],
@@ -305,6 +306,7 @@ export const plans = {
   ],
   disclaimer: "Reference prices in USD, subject to scope and volume. The 360 Diagnostic is free — the final quote comes out of it. All plans include electronic invoicing.",
   ctaLabel: "Define my plan",
+  calculatorCtaLabel: "See pricing calculator",
 };
 
 export const launchPricing = {
@@ -434,6 +436,7 @@ export const footer = {
         { href: "/#diferenciales", label: "Why BOLD" },
         { href: "/#como-trabajamos", label: "How we work" },
         { href: "/#planes", label: "Plans" },
+        { href: "/calculadora", label: "Calculator" },
         { href: "/portafolio", label: "Portfolio" },
         { href: "/#preguntas", label: "FAQ" },
         { href: "/#diagnostico", label: "360 Diagnostic" },
@@ -530,9 +533,12 @@ export const cotizacionPage = {
 export const calculator = {
   eyebrow: "Calculate your service or project",
   headline: "How much does it cost to grow your way?",
-  intro: "Real prices, in colones. Pick a monthly package, add point services, or both.",
+  intro: "Real prices, in colones. Pick a monthly package, or build your own combination of point services.",
+  exclusiveNote: "A package or point services — they don't combine in this calculator. Need a package plus extra services? That's a specialized quote.",
+  specializedCtaLabel: "Request a specialized quote",
   packageTitle: "Monthly package",
   packageSubtitle: "Single selection — these don't combine with each other.",
+  removePackageLabel: "Remove package",
   pointTitle: "Point services",
   pointSubtitle: "Add the ones you need. Items marked “quote” open a separate form.",
   quoteLabel: "Quote on request",

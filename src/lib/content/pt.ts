@@ -15,6 +15,7 @@ export const nav = {
     { href: "/#diferenciales", label: "Por que a BOLD" },
     { href: "/#como-trabajamos", label: "Como trabalhamos" },
     { href: "/#planes", label: "Planos" },
+    { href: "/calculadora", label: "Calculadora" },
     { href: "/portafolio", label: "Portfólio" },
     { href: "/#preguntas", label: "FAQ" },
   ],
@@ -306,6 +307,7 @@ export const plans = {
   ],
   disclaimer: "Preços de referência em USD, sujeitos a escopo e volume. O Diagnóstico 360 não tem custo — é dele que sai a cotação final. Todos os planos incluem nota fiscal eletrônica.",
   ctaLabel: "Definir meu plano",
+  calculatorCtaLabel: "Ver calculadora de preços",
 };
 
 export const launchPricing = {
@@ -435,6 +437,7 @@ export const footer = {
         { href: "/#diferenciales", label: "Por que a BOLD" },
         { href: "/#como-trabajamos", label: "Como trabalhamos" },
         { href: "/#planes", label: "Planos" },
+        { href: "/calculadora", label: "Calculadora" },
         { href: "/portafolio", label: "Portfólio" },
         { href: "/#preguntas", label: "FAQ" },
         { href: "/#diagnostico", label: "Diagnóstico 360" },
@@ -531,9 +534,12 @@ export const cotizacionPage = {
 export const calculator = {
   eyebrow: "Calcule seu serviço ou projeto",
   headline: "Quanto custa crescer do seu jeito?",
-  intro: "Preços reais, em colones. Escolha um pacote mensal, some serviços pontuais, ou ambos.",
+  intro: "Preços reais, em colones. Escolha um pacote mensal ou monte sua própria combinação de serviços pontuais.",
+  exclusiveNote: "Um pacote ou serviços pontuais — eles não se combinam neste cálculo. Precisa de pacote + serviços adicionais? Isso é uma cotação especializada.",
+  specializedCtaLabel: "Solicitar cotação especializada",
   packageTitle: "Pacote mensal",
   packageSubtitle: "Seleção única — não se combinam entre si.",
+  removePackageLabel: "Remover pacote",
   pointTitle: "Serviços pontuais",
   pointSubtitle: "Some os que você precisa. Os marcados “sob consulta” abrem um formulário à parte.",
   quoteLabel: "Sob consulta",

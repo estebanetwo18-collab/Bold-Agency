@@ -25,7 +25,13 @@ export function Calculator() {
   const result = useMemo(() => calculateTotal(state), [selectedPackageId, quantities]);
 
   function setQty(id: string, qty: number) {
+    if (selectedPackageId) return;
     setQuantities((prev) => ({ ...prev, [id]: Math.max(0, qty) }));
+  }
+
+  function selectPackage(id: string | null) {
+    setSelectedPackageId(id);
+    if (id) setQuantities({});
   }
 
   const quoteModalItem = quoteModalFor
@@ -33,7 +39,7 @@ export function Calculator() {
     : null;
 
   return (
-    <section id="calculadora" className="relative bg-paper py-28 lg:py-36">
+    <section id="calculadora" className="relative bg-paper pb-28 pt-40 sm:pt-48 lg:pb-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
           eyebrow={c.eyebrow}
@@ -41,11 +47,31 @@ export function Calculator() {
           intro={c.intro}
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-start">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border border-grey-light bg-surface px-5 py-4">
+          <p className="max-w-2xl text-sm leading-relaxed text-grey">{c.exclusiveNote}</p>
+          <MagneticButton href="/cotizacion" variant="ink" strength={8}>
+            {c.specializedCtaLabel}
+          </MagneticButton>
+        </div>
+
+        <div className="mt-8 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-start">
           <div className="flex flex-col gap-8">
             <div className="border border-grey-light bg-paper p-6 sm:p-8">
-              <h3 className="font-display text-lg font-bold text-ink">{c.packageTitle}</h3>
-              <p className="mt-1 text-sm text-grey">{c.packageSubtitle}</p>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h3 className="font-display text-lg font-bold text-ink">{c.packageTitle}</h3>
+                  <p className="mt-1 text-sm text-grey">{c.packageSubtitle}</p>
+                </div>
+                {selectedPackageId ? (
+                  <button
+                    type="button"
+                    onClick={() => selectPackage(null)}
+                    className="font-display text-xs font-bold uppercase tracking-wide text-grey underline underline-offset-4 hover:text-ink"
+                  >
+                    {c.removePackageLabel}
+                  </button>
+                ) : null}
+              </div>
 
               <div className="mt-6 flex flex-col gap-3">
                 {packageOptions.map((pkg) => {
@@ -63,7 +89,7 @@ export function Calculator() {
                           type="radio"
                           name="paquete"
                           checked={active}
-                          onChange={() => setSelectedPackageId(active ? null : pkg.id)}
+                          onChange={() => selectPackage(pkg.id)}
                           className="h-4 w-4 accent-volt"
                         />
                         <span className="font-display text-sm font-bold">{pkg.label}</span>
@@ -75,7 +101,13 @@ export function Calculator() {
               </div>
             </div>
 
-            <div className="border border-grey-light bg-paper p-6 sm:p-8">
+            <div
+              className={cn(
+                "border border-grey-light bg-paper p-6 transition-opacity sm:p-8",
+                selectedPackageId ? "pointer-events-none opacity-40" : "opacity-100",
+              )}
+              aria-disabled={Boolean(selectedPackageId)}
+            >
               <h3 className="font-display text-lg font-bold text-ink">{c.pointTitle}</h3>
               <p className="mt-1 text-sm text-grey">{c.pointSubtitle}</p>
 
