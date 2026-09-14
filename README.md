@@ -115,9 +115,10 @@ La hoja en uso: [BOLD Agency — Leads Diagnóstico
 con columnas que calzan 1:1 con `LeadRecord` (`src/lib/lead-record.ts`).
 
 1. Abre la hoja → **Extensiones → Apps Script**.
-2. Pega el script de `doPost` que agrega cada lead como fila nueva
-   (deduplicado por `submissionId`) — el código completo vive en el
-   historial de este proyecto; pídelo si se pierde.
+2. Pega el contenido de [`scripts/apps-script-leads.gs`](scripts/apps-script-leads.gs)
+   — agrega cada lead como fila nueva (deduplicado por `submissionId`) y
+   además envía un correo de aviso a `NOTIFY_EMAIL` (definida arriba del
+   archivo, hoy `esteban.munoz@boldagencycr.com`) con los datos del lead.
 3. **Deploy → New deployment → Web app**, Execute as: *Me*, Who has
    access: *Anyone*. Copia la URL `/exec`.
 4. Colócala en `LEAD_WEBHOOK_URL` (en Vercel: Settings → Environment
@@ -126,6 +127,13 @@ con columnas que calzan 1:1 con `LeadRecord` (`src/lib/lead-record.ts`).
 La URL del deployment es en sí misma el secreto (es un ID largo e
 impredecible) — no hace falta `LEAD_WEBHOOK_TOKEN` con esta opción, porque
 Apps Script no procesa headers `Authorization` de forma confiable.
+
+**Para cambiar el correo de aviso o actualizar un deployment ya
+existente:** editá `NOTIFY_EMAIL` en `scripts/apps-script-leads.gs`, pegá
+el archivo actualizado en el editor de Apps Script (Extensiones → Apps
+Script → reemplazar `Code.gs`), y en **Deploy → Manage deployments → ✏️
+→ New version → Deploy**. Reusar el mismo deployment mantiene la misma
+URL `/exec`, así que no hace falta tocar `LEAD_WEBHOOK_URL` en Vercel.
 
 ### Opción A — Power Automate (para Excel Online, sin código)
 
