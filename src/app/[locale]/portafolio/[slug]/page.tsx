@@ -92,7 +92,7 @@ export default async function PortfolioDetailPage({
                   {media.type === "video" ? (
                     <video
                       src={media.src}
-                      poster={item.cover.src}
+                      poster={media.poster ?? item.cover.src}
                       className="h-full w-full object-cover"
                       controls
                       playsInline

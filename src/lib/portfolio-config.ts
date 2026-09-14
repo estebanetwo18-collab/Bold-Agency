@@ -8,6 +8,8 @@ export type PortfolioMediaItem = {
   type: "image" | "video";
   src: string;
   alt: string;
+  /** Frame propio del video para el poster. Si falta, la vista de detalle usa el cover de la marca. */
+  poster?: string;
 };
 
 export type PortfolioItem = {
@@ -35,6 +37,11 @@ export const portfolioConfig: PortfolioItem[] = [
     },
     gallery: [
       { type: "image", src: "/portfolio/daoro/cover.jpg", alt: "Boutique Daoro con exhibición de relojes Omega" },
+      { type: "image", src: "/portfolio/daoro/01.jpg", alt: "Pieza de campaña Omega — colecciones especiales" },
+      { type: "image", src: "/portfolio/daoro/02.jpg", alt: "Pieza de campaña Omega Seamaster — regalo con estilo" },
+      { type: "image", src: "/portfolio/daoro/04.jpg", alt: "Pieza de campaña Omega Seamaster — regalo exquisito" },
+      { type: "image", src: "/portfolio/daoro/05.jpg", alt: "Repost de cliente con producto Omega Daoro" },
+      { type: "image", src: "/portfolio/daoro/06.jpg", alt: "Pieza de campaña Omega Seamaster Diver 300M" },
     ],
   },
   {
@@ -50,6 +57,11 @@ export const portfolioConfig: PortfolioItem[] = [
     },
     gallery: [
       { type: "image", src: "/portfolio/ingo/cover.jpg", alt: "Pieza de campaña de redes sociales para Plastigel / Plastiwax" },
+      { type: "video", src: "/portfolio/ingo/reel.mp4", poster: "/portfolio/ingo/reel-poster.jpg", alt: "Tutorial en video de uso de Plastiwax" },
+      { type: "image", src: "/portfolio/ingo/01.jpg", alt: "Pieza de campaña Plastiwax — amor propio" },
+      { type: "image", src: "/portfolio/ingo/02.jpg", alt: "Pieza de campaña Plastigel — humor de marca" },
+      { type: "image", src: "/portfolio/ingo/03.jpg", alt: "Pieza de campaña Plastiwax Verde" },
+      { type: "image", src: "/portfolio/ingo/04.jpg", alt: "Pieza de campaña Plastiwax Azul" },
     ],
   },
   {
@@ -64,7 +76,9 @@ export const portfolioConfig: PortfolioItem[] = [
       alt: "Frame de contenido de maquillaje para Avon Costa Rica",
     },
     gallery: [
-      { type: "video", src: "/portfolio/avon/reel.mp4", alt: "Reel de maquillaje para Avon Costa Rica" },
+      { type: "image", src: "/portfolio/avon/cover.jpg", alt: "Frame de contenido de maquillaje para Avon Costa Rica" },
+      { type: "video", src: "/portfolio/avon/reel.mp4", poster: "/portfolio/avon/reel-poster.jpg", alt: "Reel de maquillaje para Avon Costa Rica" },
+      { type: "video", src: "/portfolio/avon/labios.mp4", poster: "/portfolio/avon/labios-poster.jpg", alt: "Reel de labiales — Labios de Impacto Avon Costa Rica" },
     ],
   },
   {
@@ -80,6 +94,9 @@ export const portfolioConfig: PortfolioItem[] = [
     },
     gallery: [
       { type: "image", src: "/portfolio/purdy-go/cover.jpg", alt: "Captura de la app Purdy Go de Toyota" },
+      { type: "image", src: "/portfolio/purdy-go/screenshot1.jpg", alt: "Captura de pantalla de la estrategia digital Purdy Go" },
+      { type: "image", src: "/portfolio/purdy-go/screenshot2.jpg", alt: "Captura de pantalla de la landing page Purdy Go" },
+      { type: "image", src: "/portfolio/purdy-go/screenshot3.jpg", alt: "Captura de pantalla del posicionamiento digital Purdy Go" },
     ],
   },
   {
@@ -121,7 +138,18 @@ export const portfolioConfig: PortfolioItem[] = [
     },
     gallery: [
       { type: "image", src: "/portfolio/nouvell/cover.jpg", alt: "Showroom de cocinas Nouvell en La Marina de Flamingo" },
-      { type: "video", src: "/videos/mosaic-reel.mp4", alt: "Reel del showroom de cocinas Nouvell" },
+      { type: "video", src: "/videos/mosaic-reel.mp4", poster: "/portfolio/nouvell/mosaic-poster.jpg", alt: "Reel del showroom de cocinas Nouvell" },
+      { type: "image", src: "/portfolio/nouvell/img1.jpg", alt: "Apertura de Nouvell Flamingo — velada de lanzamiento" },
+      { type: "image", src: "/portfolio/nouvell/img2.jpg", alt: "Apertura de Nouvell Flamingo — velada de lanzamiento (2)" },
+      { type: "image", src: "/portfolio/nouvell/img3.jpg", alt: "Apertura de Nouvell Flamingo — velada de lanzamiento (3)" },
+      { type: "image", src: "/portfolio/nouvell/img4.jpg", alt: "Apertura de Nouvell Flamingo — velada de lanzamiento (4)" },
+      { type: "image", src: "/portfolio/nouvell/img5.jpg", alt: "Apertura de Nouvell Flamingo — velada de lanzamiento (5)" },
+      { type: "video", src: "/portfolio/nouvell/01.mp4", poster: "/portfolio/nouvell/01-poster.jpg", alt: "DesignLab by Nouvell — experiencia con arquitectos e interioristas" },
+      { type: "video", src: "/portfolio/nouvell/02.mp4", poster: "/portfolio/nouvell/02-poster.jpg", alt: "Showroom Nouvell en Oficentro Habitat, Escazú" },
+      { type: "video", src: "/portfolio/nouvell/03.mp4", poster: "/portfolio/nouvell/03-poster.jpg", alt: "Evelia, diseñadora Nouvell, sobre el proceso de diseño" },
+      { type: "video", src: "/portfolio/nouvell/04.mp4", poster: "/portfolio/nouvell/04-poster.jpg", alt: "Nouvell Flamingo — simplicidad frente al mar" },
+      { type: "video", src: "/portfolio/nouvell/05.mp4", poster: "/portfolio/nouvell/05-poster.jpg", alt: "Expansión de Nouvell a La Marina Flamingo" },
+      { type: "video", src: "/portfolio/nouvell/06.mp4", poster: "/portfolio/nouvell/06-poster.jpg", alt: "Electrodomésticos de alta gama Nouvell" },
     ],
   },
   {
@@ -138,7 +166,14 @@ export const portfolioConfig: PortfolioItem[] = [
     },
     gallery: [
       { type: "image", src: "/portfolio/euromobilia/cover.jpg", alt: "Proyecto de cocina de diseño para Euromobilia" },
-      { type: "video", src: "/portfolio/euromobilia/reel.mp4", alt: "Reel de proyecto de cocina para Euromobilia" },
+      { type: "video", src: "/portfolio/euromobilia/reel.mp4", poster: "/portfolio/euromobilia/reel-poster.jpg", alt: "Reel de proyecto de cocina para Euromobilia" },
+      { type: "video", src: "/portfolio/euromobilia/01.mp4", poster: "/portfolio/euromobilia/01-poster.jpg", alt: "Open House New Collection — evento Euromobilia" },
+      { type: "video", src: "/portfolio/euromobilia/02.mp4", poster: "/portfolio/euromobilia/02-poster.jpg", alt: "Future Design by Ara Group — evento exclusivo" },
+      { type: "video", src: "/portfolio/euromobilia/03.mp4", poster: "/portfolio/euromobilia/03-poster.jpg", alt: "Arquitecta Angélica Castro sobre un proyecto de cocina" },
+      { type: "video", src: "/portfolio/euromobilia/04.mp4", poster: "/portfolio/euromobilia/04-poster.jpg", alt: "Parrillas de sistema GravityFed Euromobilia" },
+      { type: "video", src: "/portfolio/euromobilia/05.mp4", poster: "/portfolio/euromobilia/05-poster.jpg", alt: "Diseño de clósets a medida Euromobilia" },
+      { type: "video", src: "/portfolio/euromobilia/06.mp4", poster: "/portfolio/euromobilia/06-poster.jpg", alt: "Euromobilia — mucho más que cocinas" },
+      { type: "video", src: "/portfolio/euromobilia/07.mp4", poster: "/portfolio/euromobilia/07-poster.jpg", alt: "De texturas al espacio real — proyectos Euromobilia Hogar" },
     ],
   },
   {
@@ -154,6 +189,9 @@ export const portfolioConfig: PortfolioItem[] = [
     },
     gallery: [
       { type: "image", src: "/portfolio/volt-tech/cover.jpg", alt: "Pieza gráfica de campaña para Volt Tech" },
+      { type: "image", src: "/portfolio/volt-tech/piece1.jpg", alt: "Pieza de contenido de campaña Volt Tech — agosto" },
+      { type: "image", src: "/portfolio/volt-tech/piece2.jpg", alt: "Pieza gráfica de campaña Volt Tech — parrillas" },
+      { type: "image", src: "/portfolio/volt-tech/piece3.jpg", alt: "Pieza gráfica de campaña Volt Tech — productos variados" },
     ],
   },
 ];
