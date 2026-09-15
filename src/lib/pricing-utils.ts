@@ -8,7 +8,10 @@ const SOLO_LOW_PRICE_THRESHOLD = 10000;
 const SOLO_LOW_PRICE_SURCHARGE_RATE = 0.5;
 
 export function formatCrc(amount: number) {
-  return `₡${Math.round(amount).toLocaleString("es-CR")}`;
+  // "en-US" grouping (comma) to match the comma-separated prices used
+  // elsewhere on the site (Plans, banners) — "es-CR" renders a thin space
+  // as the thousands separator, which reads inconsistently side by side.
+  return `₡${Math.round(amount).toLocaleString("en-US")}`;
 }
 
 export function itemById(id: string): PricingItem | undefined {

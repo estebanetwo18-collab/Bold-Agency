@@ -306,7 +306,7 @@ export const plans = {
       price: "Fee base + performance share · a cotizar",
     },
   ],
-  disclaimer: "Precios de referencia en USD, sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final. Todos los planes incluyen facturación electrónica.",
+  disclaimer: "Precios de referencia en colones (₡), sujetos a alcance y volumen. El Diagnóstico 360 no tiene costo — de ahí sale la cotización final. Todos los planes incluyen facturación electrónica.",
   ctaLabel: "Definir mi plan",
   calculatorCtaLabel: "Ver calculadora de precios",
 };

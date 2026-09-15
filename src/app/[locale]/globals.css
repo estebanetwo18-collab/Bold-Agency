@@ -18,7 +18,9 @@
   --ease-bold: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-snap: cubic-bezier(0.65, 0, 0.35, 1);
 
-  --nav-height: 5.5rem;
+  /* Alto real del header colapsado (mobile/tablet, <xl): medido, no de diseño.
+     Si el header cambia de tamaño hay que volver a medir este valor. */
+  --nav-height: 69px;
 }
 
 @theme inline {

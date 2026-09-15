@@ -304,7 +304,7 @@ export const plans = {
       price: "Base fee + performance share · quote on request",
     },
   ],
-  disclaimer: "Reference prices in USD, subject to scope and volume. The 360 Diagnostic is free — the final quote comes out of it. All plans include electronic invoicing.",
+  disclaimer: "Reference prices in Costa Rican colones (₡), subject to scope and volume. The 360 Diagnostic is free — the final quote comes out of it. All plans include electronic invoicing.",
   ctaLabel: "Define my plan",
   calculatorCtaLabel: "See pricing calculator",
 };

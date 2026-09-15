@@ -29,51 +29,53 @@ export function Nav() {
   }, [open]);
 
   return (
-    <motion.header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b border-grey-light bg-paper/95 py-3 shadow-[0_1px_0_0_var(--color-grey-light)] backdrop-blur",
-      )}
-    >
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10"
-        aria-label="Navegación principal"
+    <>
+      <motion.header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 border-b border-grey-light bg-paper/95 py-3 shadow-[0_1px_0_0_var(--color-grey-light)] backdrop-blur",
+        )}
       >
-        <Link href="/" className="flex items-center gap-2.5 text-ink" aria-label="BOLD Agency, inicio">
-          <Monogram size={30} state="solid" />
-          <LogoLockup />
-        </Link>
-
-        <ul className="hidden items-center gap-5 xl:flex">
-          {nav.links.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="whitespace-nowrap font-display text-sm font-semibold text-ink/80 transition-colors hover:text-ink"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="hidden items-center gap-4 xl:flex">
-          <LanguageSwitcher />
-          <MagneticButton href={nav.cta.href} variant="ink" strength={10}>
-            {nav.cta.label}
-          </MagneticButton>
-        </div>
-
-        <button
-          type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 xl:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          onClick={() => setOpen((v) => !v)}
+        <nav
+          className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10"
+          aria-label="Navegación principal"
         >
-          <BurgerIcon open={open} />
-        </button>
-      </nav>
+          <Link href="/" className="flex items-center gap-2.5 text-ink" aria-label="BOLD Agency, inicio">
+            <Monogram size={30} state="solid" />
+            <LogoLockup />
+          </Link>
+
+          <ul className="hidden items-center gap-5 xl:flex">
+            {nav.links.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="whitespace-nowrap font-display text-sm font-semibold text-ink/80 transition-colors hover:text-ink"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="hidden items-center gap-4 xl:flex">
+            <LanguageSwitcher />
+            <MagneticButton href={nav.cta.href} variant="ink" strength={10}>
+              {nav.cta.label}
+            </MagneticButton>
+          </div>
+
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 xl:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <BurgerIcon open={open} />
+          </button>
+        </nav>
+      </motion.header>
 
       {open ? (
         <motion.div
@@ -103,7 +105,7 @@ export function Nav() {
           </div>
         </motion.div>
       ) : null}
-    </motion.header>
+    </>
   );
 }
 

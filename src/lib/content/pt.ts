@@ -305,7 +305,7 @@ export const plans = {
       price: "Fee base + performance share · sob consulta",
     },
   ],
-  disclaimer: "Preços de referência em USD, sujeitos a escopo e volume. O Diagnóstico 360 não tem custo — é dele que sai a cotação final. Todos os planos incluem nota fiscal eletrônica.",
+  disclaimer: "Preços de referência em colones costarriquenhos (₡), sujeitos a escopo e volume. O Diagnóstico 360 não tem custo — é dele que sai a cotação final. Todos os planos incluem nota fiscal eletrônica.",
   ctaLabel: "Definir meu plano",
   calculatorCtaLabel: "Ver calculadora de preços",
 };
