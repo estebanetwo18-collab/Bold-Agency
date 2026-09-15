@@ -1,7 +1,11 @@
 import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  locales: ["es", "en", "pt"],
+  // Multilenguaje deshabilitado temporalmente a pedido del cliente — solo
+  // español por ahora. El contenido EN/PT sigue completo en
+  // src/lib/content/{en,pt}.ts, listo para reactivar: basta con volver a
+  // poner ["es", "en", "pt"] acá.
+  locales: ["es"],
   defaultLocale: "es",
   // Español sin prefijo (comportamiento actual, no rompe URLs existentes);
   // inglés y portugués con prefijo /en, /pt — como pide el punto 4.

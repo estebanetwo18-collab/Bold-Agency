@@ -11,7 +11,7 @@ import { LogoLockup } from "@/components/ui/LogoLockup";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/cn";
 
-const LOCALE_LABELS: Record<AppLocale, string> = { es: "ES", en: "EN", pt: "PT" };
+const LOCALE_LABELS = { es: "ES", en: "EN", pt: "PT" } satisfies Record<string, string>;
 
 export function Nav() {
   const { nav } = useContent();
@@ -119,6 +119,10 @@ function LanguageSwitcher({
   const activeLocale = useLocale() as AppLocale;
   const pathname = usePathname();
   const router = useRouter();
+
+  // Con un solo locale activo no hay nada que elegir — el switcher
+  // reaparece solo cuando routing.locales vuelva a tener más de uno.
+  if (routing.locales.length <= 1) return null;
 
   return (
     <div

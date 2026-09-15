@@ -66,7 +66,9 @@ export const problem = {
 export const system = {
   eyebrow: "Nossos serviços",
   headline: "Tudo o que uma marca precisa, em um único time.",
-  intro: "Seis frentes, um mesmo time por trás de todas.",
+  intro: "Sete frentes, um mesmo time por trás de todas.",
+  prevAriaLabel: "Serviço anterior",
+  nextAriaLabel: "Próximo serviço",
   pillars: [
     {
       index: "01",
@@ -102,7 +104,6 @@ export const system = {
       index: "07",
       title: "Desenvolvimento de sites e apps",
       body: "Sites, e-commerce e aplicações sob medida — como este mesmo site.",
-      wide: true,
     },
   ],
 };

@@ -13,7 +13,12 @@ const _typeCheckPt: SiteContent = pt;
 void _typeCheckEn;
 void _typeCheckPt;
 
-const dictionaries: Record<AppLocale, SiteContent> = { es, en, pt };
+// "satisfies" en vez de anotar el tipo directo: con el multilenguaje
+// deshabilitado (routing.locales = ["es"]), AppLocale es solo "es" y una
+// anotación Record<AppLocale, SiteContent> marcaría en/pt como propiedades
+// no permitidas. Este objeto sigue teniendo los tres para que reactivar
+// el multilenguaje sea solo tocar routing.ts.
+const dictionaries = { es, en, pt } satisfies Record<string, SiteContent>;
 
 export function getContent(locale: AppLocale): SiteContent {
   return dictionaries[locale] ?? dictionaries.es;

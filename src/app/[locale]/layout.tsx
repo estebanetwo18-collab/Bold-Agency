@@ -26,13 +26,17 @@ const inter = Inter({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.boldagencycr.com";
 
-const OG_LOCALE: Record<AppLocale, string> = { es: "es_CR", en: "en_US", pt: "pt_BR" };
+// "satisfies" en vez de Record<AppLocale, ...>: con el multilenguaje
+// deshabilitado (routing.locales = ["es"]) estos mapas siguen guardando
+// en/pt para cuando se reactive, sin que el tipo más angosto de AppLocale
+// los marque como propiedades inválidas.
+const OG_LOCALE = { es: "es_CR", en: "en_US", pt: "pt_BR" } satisfies Record<string, string>;
 
-const SKIP_LINK_LABEL: Record<AppLocale, string> = {
+const SKIP_LINK_LABEL = {
   es: "Saltar al contenido principal",
   en: "Skip to main content",
   pt: "Pular para o conteúdo principal",
-};
+} satisfies Record<string, string>;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
