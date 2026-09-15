@@ -185,6 +185,42 @@ Si `LEAD_WEBHOOK_URL` queda vacío, el sitio sigue funcionando normalmente
 en modo de prueba local (ver sección anterior) — útil para desarrollar y
 para QA sin depender de credenciales reales.
 
+## Aviso de leads por WhatsApp
+
+Además de (no en vez de) Sheets/Excel y el correo, el sitio puede avisar
+por WhatsApp apenas entra un lead — directo al número del dueño del
+negocio, sin cuenta de WhatsApp Business ni credenciales de Meta. Usa
+[CallMeBot](https://www.callmebot.com/blog/free-api-whatsapp-messages/),
+un servicio gratuito que solo puede escribirle al número que se registró
+con él (perfecto para este caso: es un aviso a vos mismo, no mensajería
+con clientes).
+
+**Setup (una sola vez, 2 minutos):**
+
+1. Agenda el número **+34 644 59 71 67** en tu WhatsApp.
+2. Envíale el mensaje exacto: `I allow callmebot to send me messages`.
+3. CallMeBot responde con tu **apikey** personal (un número).
+4. En Vercel → tu proyecto → **Settings → Environment Variables**, agrega:
+   - `CALLMEBOT_PHONE` — tu número con código de país, sin `+` ni
+     espacios (ej. `50672445642`).
+   - `CALLMEBOT_APIKEY` — el apikey que te devolvió CallMeBot.
+5. Vuelve a desplegar (Vercel → Deployments → ⋯ → Redeploy).
+
+Listo — desde el próximo lead, te llega un WhatsApp con nombre, negocio,
+contacto y desafío, en paralelo al correo y la hoja de cálculo. Si
+`CALLMEBOT_PHONE`/`CALLMEBOT_APIKEY` quedan vacías, este aviso
+simplemente no se envía y el resto del flujo sigue igual.
+
+**Nota:** CallMeBot es un servicio gratuito de terceros, no la API
+oficial de WhatsApp Business — ideal para un aviso a un solo número como
+este, pero no pensado para volumen alto ni para escribirle a clientes.
+Si más adelante hace falta algo de nivel empresarial (varios números,
+plantillas aprobadas, soporte), la alternativa es la API oficial de
+WhatsApp Business vía [Meta Cloud
+API](https://developers.facebook.com/docs/whatsapp/cloud-api) o
+[Twilio](https://www.twilio.com/whatsapp) — ambas requieren verificación
+de negocio y tienen costo por mensaje.
+
 ## Desplegar en Vercel con dominio propio
 
 1. En [vercel.com](https://vercel.com), "Add New… → Project" e importa este

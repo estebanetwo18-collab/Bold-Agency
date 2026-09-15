@@ -3,6 +3,7 @@ import { leadFormSchema } from "@/lib/lead-schema";
 import { toLeadRecord } from "@/lib/lead-record";
 import { persistLeadLocally } from "@/lib/lead-storage";
 import { forwardLeadToWebhook } from "@/lib/lead-webhook";
+import { notifyLeadByWhatsApp } from "@/lib/lead-whatsapp";
 import { isDuplicateSubmission, isRateLimited } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
@@ -67,7 +68,12 @@ export async function POST(request: NextRequest) {
   const lead = toLeadRecord(values);
   const webhookConfigured = Boolean(process.env.LEAD_WEBHOOK_URL);
 
-  const webhookResult = await forwardLeadToWebhook(lead);
+  // El aviso por WhatsApp corre en paralelo, no encadenado al webhook de
+  // Sheets/Excel — así llega aunque ese otro canal esté mal configurado.
+  const [webhookResult] = await Promise.all([
+    forwardLeadToWebhook(lead),
+    notifyLeadByWhatsApp(lead),
+  ]);
 
   if (!webhookConfigured) {
     console.warn(
