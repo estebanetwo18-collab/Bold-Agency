@@ -7,7 +7,6 @@ import { portfolioConfig, portfolioBrands } from "@/lib/portfolio-config";
 import { useContent } from "@/lib/useContent";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { ClientsMarquee } from "@/components/ui/ClientsMarquee";
 import { cn } from "@/lib/cn";
 
 const ALL = "__all__";
@@ -50,30 +49,8 @@ export function PortfolioGrid() {
         {filtered.length === 0 ? (
           <p className="mt-10 text-center text-grey">{portfolioPage.emptyLabel}</p>
         ) : null}
-
-        <div className="mt-24">
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.2em] text-grey">
-            <span className="h-1.5 w-1.5 bg-ink" />
-            {portfolioPage.clientsEyebrow}
-          </span>
-          <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight text-ink sm:text-[1.7rem]">
-            {portfolioPage.clientsHeadline}
-          </h3>
-          <ClientsMarqueeLight />
-        </div>
       </div>
     </section>
-  );
-}
-
-function ClientsMarqueeLight() {
-  // ClientsMarquee está pensado para fondo Ink (Resultados); acá el fondo
-  // es Paper, así que se envuelve en una franja Ink propia para conservar
-  // el mismo contraste sin duplicar el componente.
-  return (
-    <div className="mt-6 bg-ink py-10">
-      <ClientsMarquee />
-    </div>
   );
 }
 
