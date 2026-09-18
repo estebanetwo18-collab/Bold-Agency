@@ -322,7 +322,7 @@ export const launchPricing = {
       unit: "/month",
       priceNote: "launch price",
       features: [
-        { label: "12 pieces a month", detail: "10 static + 2 video" },
+        { label: "5 pieces a month", detail: "Mix of static, reels and animated" },
         { label: "100% involvement", detail: "during the trial month" },
       ],
     },
@@ -333,7 +333,7 @@ export const launchPricing = {
       unit: "/month",
       priceNote: "launch price",
       features: [
-        { label: "18 pieces a month", detail: "12 static + 6 video" },
+        { label: "8 pieces a month", detail: "Mix of static, reels and animated" },
         { label: "100% involvement", detail: "during the trial month" },
       ],
     },
@@ -345,8 +345,8 @@ export const launchPricing = {
       unit: "/month",
       priceNote: "launch price",
       features: [
-        { label: "24 pieces a month", detail: "100% your choice" },
-        { label: "Flexible format", detail: "all reels · all static · or a mix" },
+        { label: "30 pieces a month", detail: "Mix of static, reels and animated" },
+        { label: "Flexible format", detail: "you decide the balance between the three" },
         { label: "100% involvement", detail: "during the trial month" },
       ],
     },

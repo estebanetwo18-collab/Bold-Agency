@@ -324,7 +324,7 @@ export const launchPricing = {
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
-        { label: "12 piezas al mes", detail: "10 estático + 2 en video" },
+        { label: "5 artes al mes", detail: "Mix entre estático, reel y animado" },
         { label: "Involucramiento 100%", detail: "durante el mes de prueba" },
       ],
     },
@@ -335,7 +335,7 @@ export const launchPricing = {
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
-        { label: "18 piezas al mes", detail: "12 estático + 6 en video" },
+        { label: "8 artes al mes", detail: "Mix entre estático, reel y animado" },
         { label: "Involucramiento 100%", detail: "durante el mes de prueba" },
       ],
     },
@@ -347,8 +347,8 @@ export const launchPricing = {
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
-        { label: "24 piezas al mes", detail: "100% a tu elección" },
-        { label: "Formato flexible", detail: "todo reels · todo estático · o balance" },
+        { label: "30 artes al mes", detail: "Mix entre estático, reel y animado" },
+        { label: "Formato flexible", detail: "vos decidís el balance entre los tres formatos" },
         { label: "Involucramiento 100%", detail: "durante el mes de prueba" },
       ],
     },
