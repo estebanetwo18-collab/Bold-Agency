@@ -315,10 +315,18 @@ export const launchPricing = {
   headline: "This is how The Bold Way starts.",
   intro:
     "Three packages, one same commitment: the level of involvement is equal across all three — what changes is how much content you get and its static–video balance.",
+  countdownPrefix: "Ends in",
+  countdownDayLabel: "d",
+  countdownHourLabel: "h",
+  countdownMinuteLabel: "m",
+  countdownExpiredLabel: "Promo ended",
   tiers: [
     {
       name: "Bronze Package",
-      price: "From ₡75,000",
+      price: "From ₡65,000",
+      oldPrice: "₡75,000",
+      discountLabel: "-13%",
+      promoEndsAt: "2026-10-03T23:59:59-06:00",
       unit: "/month",
       priceNote: "launch price",
       features: [

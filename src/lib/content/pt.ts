@@ -316,10 +316,18 @@ export const launchPricing = {
   headline: "É assim que o The Bold Way começa.",
   intro:
     "Três pacotes, um mesmo compromisso: o nível de envolvimento é igual nos três — o que muda é quanto conteúdo você recebe e o equilíbrio entre estático e vídeo.",
+  countdownPrefix: "Termina em",
+  countdownDayLabel: "d",
+  countdownHourLabel: "h",
+  countdownMinuteLabel: "m",
+  countdownExpiredLabel: "Promoção encerrada",
   tiers: [
     {
       name: "Pacote Bronze",
-      price: "A partir de ₡75.000",
+      price: "A partir de ₡65.000",
+      oldPrice: "₡75.000",
+      discountLabel: "-13%",
+      promoEndsAt: "2026-10-03T23:59:59-06:00",
       unit: "/mês",
       priceNote: "preço de lançamento",
       features: [

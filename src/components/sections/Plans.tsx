@@ -2,6 +2,7 @@ import { getServerContent } from "@/lib/getContentServer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { PromoCountdown } from "@/components/ui/PromoCountdown";
 import { cn } from "@/lib/cn";
 
 export async function Plans() {
@@ -98,25 +99,50 @@ export async function Plans() {
                   <h4 className="font-display text-sm font-bold uppercase tracking-wide text-grey-light">
                     {tier.name}
                   </h4>
-                  {tier.badge ? (
-                    <span
-                      className={cn(
-                        "shrink-0 rounded-full px-2.5 py-1 font-display text-[0.65rem] font-bold uppercase tracking-wide",
-                        tier.featured ? "bg-volt text-ink" : "bg-paper/10 text-paper",
-                      )}
-                    >
-                      {tier.badge}
-                    </span>
-                  ) : null}
+                  <div className="flex shrink-0 flex-col items-end gap-1.5">
+                    {tier.badge ? (
+                      <span
+                        className={cn(
+                          "rounded-full px-2.5 py-1 font-display text-[0.65rem] font-bold uppercase tracking-wide",
+                          tier.featured ? "bg-volt text-ink" : "bg-paper/10 text-paper",
+                        )}
+                      >
+                        {tier.badge}
+                      </span>
+                    ) : null}
+                    {tier.discountLabel ? (
+                      <span className="rounded-full border border-volt px-2.5 py-1 font-display text-[0.65rem] font-bold uppercase tracking-wide text-volt">
+                        {tier.discountLabel}
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
 
-                <p className="mt-3 flex items-baseline gap-1.5 font-display text-3xl font-extrabold">
-                  {tier.price}
-                  <span className="font-display text-sm font-semibold text-grey-light">
-                    {tier.unit}
-                  </span>
-                </p>
+                <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                  {tier.oldPrice ? (
+                    <span className="font-data text-lg text-grey-light/50 line-through">
+                      {tier.oldPrice}
+                    </span>
+                  ) : null}
+                  <p className="flex items-baseline gap-1.5 font-display text-3xl font-extrabold">
+                    {tier.price}
+                    <span className="font-display text-sm font-semibold text-grey-light">
+                      {tier.unit}
+                    </span>
+                  </p>
+                </div>
                 <p className="mt-1 text-xs text-grey-light">{tier.priceNote}</p>
+                {tier.promoEndsAt ? (
+                  <PromoCountdown
+                    endsAt={tier.promoEndsAt}
+                    prefix={launchPricing.countdownPrefix}
+                    dayLabel={launchPricing.countdownDayLabel}
+                    hourLabel={launchPricing.countdownHourLabel}
+                    minuteLabel={launchPricing.countdownMinuteLabel}
+                    expiredLabel={launchPricing.countdownExpiredLabel}
+                    className="mt-3 inline-flex w-fit items-center gap-1.5 border border-volt/30 bg-volt/10 px-2.5 py-1 font-data text-xs font-semibold text-volt"
+                  />
+                ) : null}
 
                 <ul className="mt-6 flex flex-1 flex-col gap-4 border-t border-paper/10 pt-5">
                   {tier.features.map((feature) => (
