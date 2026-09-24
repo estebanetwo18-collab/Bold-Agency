@@ -1,3 +1,4 @@
 media/
 salida/
 .cache/
+__pycache__/
