@@ -1,0 +1,323 @@
+{
+  "_ayuda": "Edita este archivo y corre: python3 build.py. Tiempos en segundos del video final. 'activar' en intro/outro los enciende o apaga. Cada tarjeta acepta 'y' para su altura. Ver README.md.",
+  "salida": {
+    "archivo": "salida/VolTech_Recap_Atenas_9x16.mp4",
+    "ancho": 1080,
+    "alto": 1920,
+    "fps": 30,
+    "bitrate_video": "12M",
+    "loudness_lufs": -14
+  },
+  "marca": {
+    "bosque": "#0B2A1E",
+    "bosque_2": "#123D2B",
+    "verde": "#2E9E4F",
+    "mint": "#4ECB71",
+    "blanco": "#FFFFFF",
+    "fuente_titulo": "assets/fonts/Poppins-ExtraBold.ttf",
+    "fuente_texto": "assets/fonts/Poppins-SemiBold.ttf",
+    "fuente_label": "assets/fonts/Poppins-Medium.ttf",
+    "logo": "assets/logo_voltech.png",
+    "logo_esquina": true
+  },
+  "audio": {
+    "locucion": "media/audio/locucion.opus",
+    "locucion_inicio": 7.6,
+    "clips_con_audio": [
+      "german"
+    ]
+  },
+  "transicion_duracion": 0.5,
+  "intro": {
+    "fin": 2.8,
+    "texto": "PROYECTO SOLAR · ATENAS",
+    "activar": false
+  },
+  "outro": {
+    "duracion": 5.5,
+    "pregunta": "¿Quieres saber cuánto podrías ahorrar?",
+    "cta": "Escríbanos",
+    "telefono": "8559-3214",
+    "activar": false
+  },
+  "planos": [
+    {
+      "id": "german",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_092955.mp4",
+      "entrada": 1.3,
+      "inicio": 0.0,
+      "fin": 7.5,
+      "transicion": "fade"
+    },
+    {
+      "id": "porton",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_093708.mp4",
+      "entrada": 0.3,
+      "inicio": 7.5,
+      "fin": 12.3,
+      "transicion": "smoothleft"
+    },
+    {
+      "id": "panel_techo",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260916_121309.jpg",
+      "movimiento": "acercar",
+      "inicio": 12.3,
+      "fin": 14.8,
+      "transicion": "fade"
+    },
+    {
+      "id": "paneles_1",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_093751.mp4",
+      "entrada": 1.0,
+      "inicio": 14.8,
+      "fin": 18.2,
+      "transicion": "smoothup"
+    },
+    {
+      "id": "inversor_1",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_094020.mp4",
+      "entrada": 3.0,
+      "inicio": 18.2,
+      "fin": 20.8,
+      "transicion": "fade"
+    },
+    {
+      "id": "bateria",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_093303.mp4",
+      "entrada": 1.2,
+      "inicio": 20.8,
+      "fin": 23.5,
+      "transicion": "smoothleft"
+    },
+    {
+      "id": "techo_1",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260918_093132.jpg",
+      "movimiento": "derecha",
+      "inicio": 23.5,
+      "fin": 26.2,
+      "transicion": "fade"
+    },
+    {
+      "id": "paneles_2",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_093126.mp4",
+      "entrada": 2.0,
+      "inicio": 26.2,
+      "fin": 28.8,
+      "transicion": "smoothleft"
+    },
+    {
+      "id": "piscina",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260918_093522.jpg",
+      "movimiento": "alejar",
+      "inicio": 28.8,
+      "fin": 33.0,
+      "transicion": "fade"
+    },
+    {
+      "id": "inversor_bateria",
+      "tipo": "foto",
+      "src": "media/fotos/IMG-20260918-WA0089.jpg",
+      "movimiento": "bajar",
+      "inicio": 33.0,
+      "fin": 37.0,
+      "transicion": "smoothup"
+    },
+    {
+      "id": "inversor_2",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_094053.mp4",
+      "entrada": 13.0,
+      "inicio": 37.0,
+      "fin": 40.9,
+      "transicion": "fade"
+    },
+    {
+      "id": "tablero",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_093339.mp4",
+      "entrada": 7.0,
+      "inicio": 40.9,
+      "fin": 45.4,
+      "transicion": "smoothleft"
+    },
+    {
+      "id": "cableado_h",
+      "tipo": "foto_marco",
+      "src": "media/fotos/IMG_20260917_133918.jpg",
+      "movimiento": "derecha",
+      "inicio": 45.4,
+      "fin": 48.4,
+      "transicion": "fade"
+    },
+    {
+      "id": "caja_conexion",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260917_112059.jpg",
+      "movimiento": "acercar",
+      "inicio": 48.4,
+      "fin": 51.2,
+      "transicion": "fade"
+    },
+    {
+      "id": "inversor_3",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_094053.mp4",
+      "entrada": 4.0,
+      "inicio": 51.2,
+      "fin": 56.2,
+      "transicion": "smoothup"
+    },
+    {
+      "id": "tecnico_inversor",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260918_093418.jpg",
+      "movimiento": "alejar",
+      "inicio": 56.2,
+      "fin": 60.6,
+      "transicion": "fade"
+    },
+    {
+      "id": "montaje_1",
+      "tipo": "video",
+      "src": "media/videos/VID_20260916_122339.mp4",
+      "entrada": 3.5,
+      "inicio": 60.6,
+      "fin": 65.2,
+      "transicion": "smoothleft"
+    },
+    {
+      "id": "conexiones",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260917_112216.jpg",
+      "movimiento": "acercar",
+      "inicio": 65.2,
+      "fin": 66.9,
+      "transicion": "fade"
+    },
+    {
+      "id": "instalando",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260917_112240.jpg",
+      "movimiento": "subir",
+      "inicio": 66.9,
+      "fin": 68.9,
+      "transicion": "fade"
+    },
+    {
+      "id": "tecnico_h",
+      "tipo": "foto_marco",
+      "src": "media/fotos/IMG_20260917_112133.jpg",
+      "movimiento": "izquierda",
+      "inicio": 68.9,
+      "fin": 71.0,
+      "transicion": "fade"
+    },
+    {
+      "id": "montaje_2",
+      "tipo": "video",
+      "src": "media/videos/VID_20260916_122339.mp4",
+      "entrada": 14.0,
+      "inicio": 71.0,
+      "fin": 74.2,
+      "transicion": "smoothleft"
+    },
+    {
+      "id": "paneles_final",
+      "tipo": "video",
+      "src": "media/videos/VID_20260918_093126.mp4",
+      "entrada": 12.0,
+      "inicio": 74.2,
+      "fin": 80.0,
+      "transicion": "fade"
+    },
+    {
+      "id": "equipo",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260918_093139.jpg",
+      "movimiento": "alejar",
+      "inicio": 80.0,
+      "fin": 83.6,
+      "transicion": "smoothup"
+    },
+    {
+      "id": "techo_final",
+      "tipo": "foto",
+      "src": "media/fotos/IMG_20260918_093747_1.jpg",
+      "movimiento": "derecha",
+      "inicio": 83.6,
+      "fin": 87.6,
+      "transicion": "fade"
+    }
+  ],
+  "tarjetas": [
+    {
+      "label": "GERMÁN VARGAS",
+      "valor": "VolTech Soluciones",
+      "inicio": 0.5,
+      "fin": 5.6,
+      "y": 1150
+    },
+    {
+      "label": "PROYECTO",
+      "valor": "Atenas",
+      "inicio": 8.0,
+      "fin": 12.0
+    },
+    {
+      "label": "PANELES SOLARES",
+      "valor": "10 · Trina Solar",
+      "inicio": 15.8,
+      "fin": 18.2
+    },
+    {
+      "label": "INVERSOR",
+      "valor": "LuxPower 15 kW",
+      "inicio": 18.5,
+      "fin": 20.8
+    },
+    {
+      "label": "BATERÍA",
+      "valor": "16 kWh",
+      "inicio": 21.1,
+      "fin": 23.5
+    },
+    {
+      "label": "TRANSFERENCIA AUTOMÁTICA",
+      "valor": "Solar · Batería · Red",
+      "inicio": 52.2,
+      "fin": 59.0
+    },
+    {
+      "label": "INSTALACIÓN",
+      "valor": "Segura · Confiable · Eficiente",
+      "inicio": 71.8,
+      "fin": 74.2
+    },
+    {
+      "label": "AHORRO PROYECTADO",
+      "valor": "≈ ₡85 000",
+      "sub": "al mes",
+      "grande": true,
+      "inicio": 76.7,
+      "fin": 80.0
+    }
+  ],
+  "subtitulos": {
+    "activar": true,
+    "correcciones": {
+      "Voltage": "VolTech"
+    },
+    "max_palabras": 6,
+    "max_segundos": 2.6
+  },
+  "fundido_final": 0.6
+}
