@@ -540,7 +540,7 @@ def main():
               "-loop", "1", "-framerate", str(FPS), "-t", f"{total}", "-i", acc]
     fl = [f"[2:v]format=rgba,fade=t=in:st={body0}:d=0.4:alpha=1,fade=t=out:st={body1-0.4}:d=0.4:alpha=1[bug]",
           f"[3:v]format=rgba,fade=t=in:st={body0}:d=0.4:alpha=1,fade=t=out:st={body1-0.4}:d=0.4:alpha=1[acc]",
-          f"[0:v][bug]overlay=60:250:enable='between(t,{body0},{body1})'[v0]",
+          f"[0:v][bug]overlay=(W-w)/2:170:enable='between(t,{body0},{body1})'[v0]",
           f"[v0][acc]overlay={W-300}:{H-330}:enable='between(t,{body0},{body1})'[v1]"]
     prev, idx = "v1", 4
     for j, c in enumerate(CFG["tarjetas"]):
