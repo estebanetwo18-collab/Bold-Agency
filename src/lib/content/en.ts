@@ -238,6 +238,9 @@ export const portfolioPage = {
   clientsEyebrow: "Clients & partners",
   clientsHeadline: "Brands that chose to be bold.",
   detailCtaLabel: "Book a 360 Diagnostic",
+  behanceEyebrow: "Full visual portfolio",
+  behanceHeadline: "Every piece, in more detail on Behance.",
+  behanceCtaLabel: "View on Behance",
 };
 
 export const process = {

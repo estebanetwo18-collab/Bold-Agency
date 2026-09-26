@@ -5,6 +5,7 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { PortfolioHero } from "@/components/sections/PortfolioHero";
 import { AboutMe } from "@/components/sections/AboutMe";
+import { BehanceBanner } from "@/components/sections/BehanceBanner";
 import { PortfolioGrid } from "@/components/sections/PortfolioGrid";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -40,6 +41,7 @@ export default async function PortafolioPage({
       <main id="main">
         <PortfolioHero />
         <AboutMe />
+        <BehanceBanner />
         <PortfolioGrid />
         <DiagnosticSection />
         <DiagonalDivider from="paper" to="volt" />

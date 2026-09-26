@@ -240,6 +240,9 @@ export const portfolioPage = {
   clientsEyebrow: "Clientes y partners",
   clientsHeadline: "Marcas que eligieron ser bold.",
   detailCtaLabel: "Agendar Diagnóstico 360",
+  behanceEyebrow: "Portafolio visual completo",
+  behanceHeadline: "Cada pieza, con más detalle en Behance.",
+  behanceCtaLabel: "Ver en Behance",
 };
 
 export const process = {
