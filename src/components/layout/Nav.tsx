@@ -83,7 +83,7 @@ export function Nav() {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-x-0 top-[var(--nav-height)] bottom-0 z-40 flex flex-col gap-1 overflow-y-auto bg-ink px-6 pt-6 xl:hidden"
+          className="fixed inset-x-0 top-[var(--nav-height)] bottom-0 z-[45] flex flex-col gap-1 overflow-y-auto bg-ink px-6 pt-6 xl:hidden"
         >
           {nav.links.map((link) => (
             <Link

@@ -122,7 +122,7 @@ export function HeroBannerCarousel() {
             type="button"
             aria-label="Banner anterior"
             onClick={() => goTo(index - 1)}
-            className="hidden h-8 w-8 items-center justify-center border border-paper/25 bg-ink/40 text-paper backdrop-blur-sm transition-colors hover:border-paper sm:flex"
+            className="hidden h-11 w-11 items-center justify-center border border-paper/25 bg-ink/40 text-paper backdrop-blur-sm transition-colors hover:border-paper sm:flex"
           >
             <ArrowIcon direction="left" />
           </button>
@@ -147,7 +147,7 @@ export function HeroBannerCarousel() {
             type="button"
             aria-label="Banner siguiente"
             onClick={() => goTo(index + 1)}
-            className="hidden h-8 w-8 items-center justify-center border border-paper/25 bg-ink/40 text-paper backdrop-blur-sm transition-colors hover:border-paper sm:flex"
+            className="hidden h-11 w-11 items-center justify-center border border-paper/25 bg-ink/40 text-paper backdrop-blur-sm transition-colors hover:border-paper sm:flex"
           >
             <ArrowIcon direction="right" />
           </button>

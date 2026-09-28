@@ -74,7 +74,7 @@ export function PillarsCarousel({
             type="button"
             aria-label={prevAriaLabel}
             onClick={() => scrollByCard(-1)}
-            className="flex h-10 w-10 items-center justify-center border border-paper/25 text-paper transition-colors hover:border-volt hover:text-volt"
+            className="flex h-11 w-11 items-center justify-center border border-paper/25 text-paper transition-colors hover:border-volt hover:text-volt"
           >
             <ArrowIcon direction="left" />
           </button>
@@ -82,7 +82,7 @@ export function PillarsCarousel({
             type="button"
             aria-label={nextAriaLabel}
             onClick={() => scrollByCard(1)}
-            className="flex h-10 w-10 items-center justify-center border border-paper/25 text-paper transition-colors hover:border-volt hover:text-volt"
+            className="flex h-11 w-11 items-center justify-center border border-paper/25 text-paper transition-colors hover:border-volt hover:text-volt"
           >
             <ArrowIcon direction="right" />
           </button>

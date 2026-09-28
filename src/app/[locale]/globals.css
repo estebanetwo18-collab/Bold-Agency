@@ -43,8 +43,15 @@
   --animate-marquee: marquee 32s linear infinite;
 }
 
-* {
-  border-color: var(--color-grey-light);
+/* En @layer base para que las utilidades border-* (hover/focus/aria-invalid/
+   seleccionado) puedan sobreescribirlo: fuera de una layer, esta regla le
+   gana a cualquier utilidad de Tailwind (que vive en @layer utilities) sin
+   importar su especificidad, dejando esos estados visualmente "pegados"
+   al gris por defecto. */
+@layer base {
+  * {
+    border-color: var(--color-grey-light);
+  }
 }
 
 html {
@@ -110,6 +117,14 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Framer Motion anima vía Web Animations API, fuera del alcance de las
+     reglas de arriba. Este selector cubre el breve instante de hidratación
+     en el que Reveal aún no sabe que el usuario prefiere sin movimiento. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

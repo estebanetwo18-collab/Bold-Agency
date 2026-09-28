@@ -262,7 +262,7 @@ function Stepper({
         aria-label={decreaseAria}
         onClick={() => onChange(value - 1)}
         disabled={value <= 0}
-        className="flex h-9 w-9 items-center justify-center text-ink transition-colors hover:bg-grey-light disabled:opacity-30"
+        className="flex h-11 w-11 items-center justify-center text-ink transition-colors hover:bg-grey-light disabled:opacity-30"
       >
         −
       </button>
@@ -271,7 +271,7 @@ function Stepper({
         type="button"
         aria-label={increaseAria}
         onClick={() => onChange(value + 1)}
-        className="flex h-9 w-9 items-center justify-center text-ink transition-colors hover:bg-grey-light"
+        className="flex h-11 w-11 items-center justify-center text-ink transition-colors hover:bg-grey-light"
       >
         +
       </button>

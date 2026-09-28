@@ -10,7 +10,7 @@ import { cn } from "@/lib/cn";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-  "w-full border border-grey-light bg-paper px-4 py-3 text-sm text-ink placeholder:text-grey/70 transition-colors focus:border-ink focus:outline-none";
+  "w-full border border-grey-light bg-paper px-4 py-3 text-ink placeholder:text-grey/70 transition-colors focus:border-ink focus:outline-none";
 
 export function QuoteRequestModal({
   serviceLabel,
@@ -125,7 +125,7 @@ export function QuoteRequestModal({
           type="button"
           onClick={onClose}
           aria-label={m.closeLabel}
-          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center text-ink/60 hover:text-ink"
+          className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center text-ink/60 hover:text-ink"
         >
           ✕
         </button>

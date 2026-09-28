@@ -31,6 +31,7 @@ export function Reveal({
 
   return (
     <Comp
+      data-reveal
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}

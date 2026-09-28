@@ -70,7 +70,7 @@ export function DiagnosticForm() {
   }, []);
 
   const inputClass =
-    "w-full border border-grey-light bg-paper px-4 py-3.5 text-ink placeholder:text-grey/70 transition-colors focus:border-ink focus:outline-none";
+    "w-full border border-grey-light bg-paper px-4 py-3.5 text-ink placeholder:text-grey/70 transition-colors focus:border-ink focus:outline-none aria-invalid:border-[#B3261E]";
 
   function updateField<K extends keyof typeof rawDefaults>(
     field: K,
