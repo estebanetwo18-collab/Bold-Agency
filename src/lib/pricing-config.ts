@@ -40,8 +40,10 @@ export const pricingCatalog: PricingItem[] = [
     pricingType: "fijo",
     inputType: "radio",
     radioGroup: "paquete",
-    priceMin: 75000,
-    priceMax: 75000,
+    // Precio de lanzamiento (antes ₡75,000): alineado con la promo de
+    // Planes en el home, que muestra el mismo paquete a ₡65,000.
+    priceMin: 65000,
+    priceMax: 65000,
   },
   {
     id: "pkg_silver",
