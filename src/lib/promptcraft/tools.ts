@@ -2,7 +2,8 @@ import type { ToolId } from "./types";
 
 export type ToolDef = {
   id: ToolId;
-  number: string;
+  /** Texto del selector. */
+  label: string;
   name: string;
   scope: string;
   /** Rol base que asume el prompt generado. */
@@ -17,8 +18,8 @@ export type ToolDef = {
 export const TOOLS: ToolDef[] = [
   {
     id: "code",
-    number: "01",
-    name: "Claude Code",
+    label: "Claude Code",
+        name: "Claude Code",
     scope: "Código, debugging, QA, automatización y desarrollo.",
     role: "Ingeniero de software senior que trabaja dentro de un repositorio real, con criterio de revisión de código.",
     format:
@@ -37,8 +38,8 @@ export const TOOLS: ToolDef[] = [
   },
   {
     id: "design",
-    number: "02",
-    name: "Claude Design",
+    label: "Claude Design",
+        name: "Claude Design",
     scope: "Interfaces, branding, presentaciones y dirección visual.",
     role: "Director de arte y diseñador de producto con criterio editorial y dominio de sistemas visuales.",
     format:
@@ -57,8 +58,8 @@ export const TOOLS: ToolDef[] = [
   },
   {
     id: "cowork",
-    number: "03",
-    name: "Claude Cowork",
+    label: "Claude Cowork",
+        name: "Claude Cowork",
     scope: "Documentos, archivos, análisis y flujos de trabajo.",
     role: "Analista y asistente operativo que trabaja sobre documentos y archivos del usuario, con rigor y trazabilidad.",
     format:
@@ -77,8 +78,28 @@ export const TOOLS: ToolDef[] = [
   },
   {
     id: "general",
-    number: "04",
-    name: "Prompt general",
+    label: "Prompt general",
+        name: "Prompt general",
+    scope: "Redacción, análisis, planificación y creatividad.",
+    role: "Consultor estratégico y redactor experto en el tema de la solicitud.",
+    format:
+      "Respuesta estructurada con títulos cortos, lenguaje directo y una recomendación clara al final.",
+    tasks: [
+      "Resume en una frase cómo entendiste la solicitud.",
+      "Desarrolla la respuesta por partes, de lo más importante a lo accesorio.",
+      "Da ejemplos concretos en lugar de generalidades.",
+      "Cierra con una recomendación y el siguiente paso.",
+    ],
+    quality: [
+      "Responde exactamente lo pedido, sin relleno.",
+      "Ejemplos específicos y accionables.",
+      "Tono y nivel de detalle acordes al público indicado.",
+    ],
+  },
+  {
+    id: "auto",
+    label: "No estoy seguro",
+        name: "Prompt general",
     scope: "Redacción, análisis, planificación y creatividad.",
     role: "Consultor estratégico y redactor experto en el tema de la solicitud.",
     format:

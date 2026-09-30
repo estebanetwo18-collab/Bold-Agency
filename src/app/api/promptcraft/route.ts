@@ -6,7 +6,7 @@ import { ANSWER_MAX, IDEA_MAX, IDEA_MIN } from "@/lib/promptcraft/types";
 
 export const runtime = "nodejs";
 
-const tool = z.enum(["code", "design", "cowork", "general"]);
+const tool = z.enum(["code", "design", "cowork", "general", "auto"]);
 const idea = z.string().trim().min(IDEA_MIN).max(IDEA_MAX);
 const question = z.object({
   id: z.string().max(40),
@@ -25,7 +25,7 @@ const body = z.discriminatedUnion("action", [
     action: z.literal("build"),
     idea,
     tool,
-    questions: z.array(question).max(5),
+    questions: z.array(question).max(3),
     answers: z
       .array(
         z.object({
@@ -34,7 +34,7 @@ const body = z.discriminatedUnion("action", [
           skipped: z.boolean(),
         }),
       )
-      .max(5),
+      .max(3),
   }),
 ]);
 

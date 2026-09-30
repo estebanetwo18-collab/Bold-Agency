@@ -1,4 +1,4 @@
-export type ToolId = "code" | "design" | "cowork" | "general";
+export type ToolId = "code" | "design" | "cowork" | "general" | "auto";
 
 export type Dimension =
   | "objetivo"
@@ -19,7 +19,7 @@ export type Question = {
   label: string;
   question: string;
   hint?: string;
-  /** false = obligatoria (sin ella el prompt no tiene sentido). */
+  /** Siempre true en la UI conversacional: nunca se bloquea al usuario. */
   skippable: boolean;
 };
 
@@ -48,6 +48,7 @@ export type EngineMode = "demo" | "live";
 export type QuestionsResponse = { mode: EngineMode; questions: Question[] };
 export type BuildResponse = { mode: EngineMode; result: PromptResult };
 
-export const IDEA_MIN = 15;
+export const IDEA_MIN = 10;
 export const IDEA_MAX = 2000;
 export const ANSWER_MAX = 600;
+export const MAX_QUESTIONS = 3;

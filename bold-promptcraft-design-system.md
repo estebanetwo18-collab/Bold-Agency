@@ -62,3 +62,13 @@ Solo cuando hacen falta. Fondo translúcido, **radio 0**, borde 1px (`.pc-card` 
 
 ## Prohibido
 Radios (salvo 0), blobs, burbujas, ilustraciones infantiles, degradados, morados/azules u otros colores fuera de paleta, sombras de interfaz genéricas, tipografías redondeadas o geométricas excesivas, tres tarjetas redondeadas idénticas, tarjetas gigantes vacías, frases vacías de marketing ("desbloquea tu potencial", "la herramienta definitiva"), simular una conexión de IA sin declararla.
+
+## Experiencia conversacional (rediseño v2)
+PromptCraft es **una sola pantalla de trabajo**, no una landing con secciones. Reglas para cualquier cambio futuro:
+- Un solo espacio central (`max-w-3xl`) que cambia de momento: idea → una pregunta a la vez (máx. 3) → prompt listo. Nada de páginas ni pasos separados.
+- Primera pantalla: nombre, «¿Qué quieres lograr?», apoyo de una línea, campo grande, destino opcional (5 chips, por defecto «No estoy seguro») y un botón. Sin listas de funciones ni métricas.
+- Ayuda mínima: tres ejemplos clicables bajo el compositor y «Cómo funciona» como franja Volt plegable en la barra superior.
+- Las preguntas son humanas y nunca bloquean: «No estoy seguro», «Prefiero que tú lo decidas» y «Omitir» avanzan siempre; Enter envía la respuesta.
+- Tono: cercano, claro y tranquilo. Prohibido: «Input requerido», «Configuración avanzada», «Parámetros», «Estructura del prompt», «Completa todos los campos».
+- Chevron y diagonales son orientación sutil (eyebrow, botones, esquina superior), nunca protagonistas. Sin tarjetas: solo línea Volt lateral, bordes rectos de 2px y el bloque Ink del prompt.
+- Modo demo siempre visible de forma discreta en el pie («Modo demo · sin IA»).

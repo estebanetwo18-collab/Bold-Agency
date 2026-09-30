@@ -67,13 +67,14 @@ const BASE = `Eres PromptCraft, un optimizador de prompts. No traduces idiomas: 
 export async function liveQuestions(idea: string, tool: ToolId): Promise<Question[]> {
   const def = getTool(tool);
   const out = await callModel(
-    `${BASE}\nDetecta qué información falta para escribir un excelente prompt para "${def.name}" (${def.scope}). Dimensiones posibles: objetivo, publico, contexto, resultado, tono, restricciones, plataforma, archivos, formato, criterios. Pregunta SOLO lo imprescindible: entre 0 y 5 preguntas, ordenadas por importancia, cortas y concretas. Si la idea ya es suficiente devuelve una lista vacía. Marca skippable=false solo si sin esa respuesta el prompt no tendría sentido. Formato: {"questions":[{"dimension":"...","label":"MAYÚSCULAS CORTAS","question":"...","hint":"ejemplo breve","skippable":true}]}`,
+    `${BASE}\nDetecta qué información falta para escribir un excelente prompt para "${def.name}" (${def.scope}). Dimensiones posibles: objetivo, publico, contexto, resultado, tono, restricciones, plataforma, archivos, formato, criterios. Pregunta SOLO lo imprescindible: entre 0 y 3 preguntas (una sola idea por pregunta), ordenadas por importancia, cortas, humanas y fáciles de responder, con tono cercano (ej.: «¿Para quién es esto?»). Si la idea ya es suficiente devuelve una lista vacía. Siempre skippable=true. Formato: {"questions":[{"dimension":"...","label":"MAYÚSCULAS CORTAS","question":"...","hint":"ejemplo breve","skippable":true}]}`,
     `<idea>${idea}</idea>`,
   );
   const parsed = questionsSchema.parse(out);
   const seen = new Set<string>();
   return parsed.questions
     .filter((q) => !seen.has(q.dimension) && seen.add(q.dimension))
+    .slice(0, 3)
     .map((q) => ({ ...q, id: q.dimension }));
 }
 
