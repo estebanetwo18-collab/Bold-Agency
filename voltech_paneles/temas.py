@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFont
 import build as B
 from build import (W, H, FPS, FOREST, FOREST2, CARD, GREEN, MINT, WHITE, SOFT, F, P, ease_out, ease_io,
                    back_out, prog, ss, put, rrect_sprite, logo_pill, sun_icon, panel_icon, arrow_icon,
-                   check_icon, make_background, lines_layer, band, draw_bg, bg_weights, particles, comp, FOTOS)
+                   check_icon, make_background, lines_layer, band, draw_bg, bg_weights, particles, comp, FOTOS, shadowed)
 
 FALLBACK = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 NO_GLYPH = set("₡")
@@ -149,9 +149,9 @@ class El:
             self.sp = rrect_sprite(lab.width + 48, 58, 29, MINT + (255,))
             self.sp.alpha_composite(lab, (24, (58 - lab.height) // 2))
         elif k == "title":
-            self.lines = [text_sprite(parts, kw.get("size", 108), maxw=kw.get("maxw", 960)) for parts in kw["lineas"]]
+            self.lines = [shadowed(text_sprite(parts, kw.get("size", 108), maxw=kw.get("maxw", 960))) for parts in kw["lineas"]]
         elif k == "text":
-            self.sp = text_sprite(kw["partes"], kw.get("size", 44), kw.get("peso", "Medium"), maxw=kw.get("maxw", 940))
+            self.sp = shadowed(text_sprite(kw["partes"], kw.get("size", 44), kw.get("peso", "Medium"), maxw=kw.get("maxw", 940)))
         elif k == "card":
             h = kw.get("h", 190)
             c = rrect_sprite(920, h, 32, (kw.get("fondo", CARD)) + (255,), *(
@@ -326,8 +326,8 @@ def extent(el):
 
 
 class Escena:
-    def __init__(self, t0, t1, elementos, logo=True, fondo=None, centro=1010):
-        self.t0, self.t1, self.els, self.logo, self.fondo = t0, t1, elementos, logo, fondo
+    def __init__(self, t0, t1, elementos, logo=True, fondo=None, centro=1010, oscuro=0.66):
+        self.t0, self.t1, self.els, self.logo, self.fondo, self.oscuro = t0, t1, elementos, logo, fondo, oscuro
         ext = [extent(e) for e in elementos]
         top, bot = min(a for a, _ in ext), max(b for _, b in ext)
         self.dy = centro - (top + bot) / 2
@@ -339,7 +339,7 @@ def render_tema(tema, t, BG, LINES, BANDS, LOGO_SMALL):
     ws = bg_weights(t, [(sc.t0, sc.t1) for sc in escenas])
     for sc, w in sorted(zip(escenas, ws), key=lambda x: x[1], reverse=True):
         if sc.fondo and w > 0.01:
-            draw_bg(fr, sc.fondo, prog(t, sc.t0 - 0.5, sc.t1 - sc.t0 + 1.0), w if w < 0.999 else 1.0)
+            draw_bg(fr, sc.fondo, prog(t, sc.t0 - 0.5, sc.t1 - sc.t0 + 1.0), w if w < 0.999 else 1.0, sc.oscuro)
     off = int((t * 18) % 60)
     fr.alpha_composite(LINES.crop((off, 0, off + W, H)))
     particles(fr, t)
@@ -374,7 +374,7 @@ TEMAS = {
             El("chip", 0.3, 380, texto="CASO REAL · ATENAS"),
             El("title", 0.5, 600, lineas=[T([("¿CUÁNTO PUEDES", WHITE)]), T([("AHORRAR", MINT)]),
                                           T([("CON ENERGÍA SOLAR?", WHITE)])]),
-            El("text", 2.0, 1010, partes=[("Te mostramos un proyecto real", SOFT)])], fondo="techo1"),
+            El("text", 2.0, 1010, partes=[("Te mostramos un proyecto real", SOFT)])], fondo="portada_casa", oscuro=0.42),
         Escena(5.6, 11.0, [
             El("chip", 5.8, 380, texto="EL PROYECTO"),
             El("foto", 6.1, 800, src="piscina", w=440, h=640, x=W / 2 - 236, desde="izq", vida=5.0),
@@ -407,14 +407,14 @@ TEMAS = {
                size=100),
             El("cta", 32.4, 830, l1="Escríbenos", l2="y te decimos qué sistema se adapta a tu hogar o negocio"),
             El("arrow", 33.0, 1040),
-            El("logo", 33.6, 1230)], logo=False, fondo="techo2")]},
+            El("logo", 33.6, 1230)], logo=False, fondo="portada_atardecer")]},
 
     "apagon": lambda: {"archivo": "VolTech_SiSeVaLaLuz_9x16.mp4", "dur": 34.0, "escenas": [
         Escena(0.0, 5.6, [
             El("chip", 0.3, 380, texto="CORTES DE ELECTRICIDAD"),
             El("title", 0.5, 600, lineas=[T([("¿QUÉ PASA", WHITE)]), T([("CUANDO SE VA", WHITE)]),
                                           T([("LA LUZ?", MINT)])], size=116),
-            El("text", 2.0, 1010, partes=[("Con un sistema solar con batería", SOFT)])], fondo="inversor"),
+            El("text", 2.0, 1010, partes=[("Con un sistema solar con batería", SOFT)])], fondo="portada_campo", oscuro=0.42),
         Escena(5.6, 11.2, [
             El("chip", 5.8, 380, texto="DE DÍA"),
             El("card", 6.4, 640, icono="sol", grande="Los paneles", chico="alimentan la casa", h=200),
@@ -444,29 +444,29 @@ TEMAS = {
             El("title", 29.0, 470, lineas=[T([("¿QUIERES UN", WHITE)]), T([("SISTEMA ASÍ?", MINT)])], size=104),
             El("cta", 29.8, 830, l1="Escríbenos", l2="y te decimos qué sistema se adapta a tu hogar o negocio"),
             El("arrow", 30.4, 1040),
-            El("logo", 31.0, 1230)], logo=False, fondo="techo2")]},
+            El("logo", 31.0, 1230)], logo=False, fondo="portada_techo")]},
 
     "duracion": lambda: {"archivo": "VolTech_CuantoDuraUnPanel_9x16.mp4", "dur": 24.0, "escenas": [
         Escena(0.0, 6.0, [
             El("chip", 0.3, 380, texto="¿SABÍAS QUE…?"),
             El("title", 0.5, 560, lineas=[T([("¿CUÁNTO DURA", WHITE)]), T([("UN PANEL SOLAR?", MINT)])], size=110),
-            El("foto", 1.8, 1080, src="panel_teja", w=820, h=500, vida=4.5)], fondo="techo1"),
+            El("foto", 1.8, 1080, src="panel_teja", w=820, h=500, vida=4.5)], fondo="portada_limpieza", oscuro=0.42),
         Escena(6.0, 14.6, [
             El("text", 6.3, 480, partes=[("UN PANEL SOLAR PUEDE DURAR", SOFT)], size=40, peso="SemiBold"),
             El("count", 6.6, 700, valor=25, dec=0, unidad="AÑOS", size=260, usize=90, cuenta=2.2),
             El("text", 9.0, 880, partes=[("o más", MINT)], size=80, peso="ExtraBold"),
-            El("timeline", 7.0, 1080, marcas=["0", "5", "10", "15", "20", "25+"], cuenta=2.2)], fondo="techo2"),
+            El("timeline", 7.0, 1080, marcas=["0", "5", "10", "15", "20", "25+"], cuenta=2.2)], fondo="portada_campo"),
         Escena(14.6, 24.0, [
             El("title", 14.8, 470, lineas=[T([("UNA INVERSIÓN", WHITE)]), T([("QUE DURA", WHITE)])], size=104),
             El("cta", 15.8, 830, l1="Cotiza tu proyecto", l2="y empieza a ahorrar"),
             El("arrow", 16.4, 1040),
-            El("logo", 17.0, 1230)], logo=False, fondo="techo_final")]},
+            El("logo", 17.0, 1230)], logo=False, fondo="portada_atardecer")]},
 
     "electricas": lambda: {"archivo": "VolTech_SolucionesElectricas_9x16.mp4", "dur": 24.0, "escenas": [
         Escena(0.0, 5.4, [
             El("title", 0.4, 520, lineas=[T([("SOLUCIONES", WHITE)]), T([("ELÉCTRICAS", MINT)])], size=124, lh=140),
             El("chip", 1.6, 760, texto="DESDE AVERÍAS HASTA INSTALACIONES"),
-            El("foto", 2.4, 1120, src="cableado", w=820, h=500, vida=3.6)], fondo="conexiones"),
+            El("foto", 2.4, 1120, src="cableado", w=820, h=500, vida=3.6)], fondo="portada_techo", oscuro=0.42),
         Escena(5.4, 11.0, [
             El("card", 5.7, 700, icono="llave", grande="Averías", chico="Te ayudamos a resolverlas", desde="izq"),
             El("arrow", 6.9, 870),
@@ -477,7 +477,7 @@ TEMAS = {
                size=110, lh=124),
             El("phone", 12.6, 900, numero="8559-3214"),
             El("arrow", 13.2, 1060),
-            El("logo", 13.8, 1230)], logo=False, fondo="techo2")]},
+            El("logo", 13.8, 1230)], logo=False, fondo="portada_casa")]},
 }
 
 

@@ -116,6 +116,18 @@ def text_sprite(parts, size, kind="ExtraBold", spacing=0, pad=6, maxw=960):
     return ss(draw, w, h)
 
 
+def shadowed(sp, blur=10, strength=0.75, pad=22):
+    """Agrega una sombra suave detrás de un sprite de texto para que se lea sobre fotos."""
+    out = Image.new("RGBA", (sp.width + pad * 2, sp.height + pad * 2), (0, 0, 0, 0))
+    sh = Image.new("RGBA", out.size, (4, 20, 12, 0))
+    a = Image.new("L", out.size, 0)
+    a.paste(sp.getchannel("A").point(lambda v: int(v * strength)), (pad, pad + 4))
+    sh.putalpha(a.filter(ImageFilter.GaussianBlur(blur)))
+    out.alpha_composite(sh)
+    out.alpha_composite(sp, (pad, pad))
+    return out
+
+
 def rrect_sprite(w, h, r, fill, outline=None, ow=0, glow=None):
     def draw(d, im, k):
         d.rounded_rectangle([0, 0, w * k - 1, h * k - 1], radius=r * k, fill=fill,
@@ -272,18 +284,61 @@ def bg_weights(t, ranges, x=0.9):
     return ws
 
 
-_PART = [((i * 0.6180339) % 1, (i * 0.38196) % 1, 2 + (i * 7) % 5, 0.03 + ((i * 13) % 7) / 220) for i in range(46)]
+DARK_GREEN = (30, 122, 60)
+# rombos redondeados como los del logo: (x 0..1, fase, tamaño, velocidad, color, alfa, relleno)
+_SHAPES = [(0.06, 0.00, 160, 0.022, MINT, 110, True), (0.94, 0.35, 130, 0.018, GREEN, 150, True),
+           (0.88, 0.70, 80, 0.030, MINT, 170, False), (0.12, 0.55, 90, 0.026, DARK_GREEN, 190, True),
+           (0.97, 0.10, 54, 0.034, MINT, 170, True), (0.03, 0.82, 60, 0.032, MINT, 160, False),
+           (0.80, 0.92, 110, 0.020, DARK_GREEN, 180, True), (0.20, 0.25, 46, 0.036, GREEN, 170, True)]
+_SPR = {}
+
+
+def diamond(size, color, alpha, filled):
+    k = (size, color, alpha, filled)
+    if k not in _SPR:
+        def draw(d, im, kk):
+            s = size * kk
+            sq = Image.new("RGBA", (int(s * 0.72), int(s * 0.72)), (0, 0, 0, 0))
+            sd = ImageDraw.Draw(sq)
+            r = int(s * 0.14)
+            if filled:
+                sd.rounded_rectangle([0, 0, sq.width - 1, sq.height - 1], radius=r, fill=color + (alpha,))
+            else:
+                sd.rounded_rectangle([0, 0, sq.width - 1, sq.height - 1], radius=r, outline=color + (alpha,),
+                                     width=int(5 * kk))
+            sq = sq.rotate(45, expand=True, resample=Image.BICUBIC)
+            im.alpha_composite(sq, (int((s - sq.width) / 2), int((s - sq.height) / 2)))
+        _SPR[k] = ss(draw, size, size)
+    return _SPR[k]
+
+
+def streak(length, alpha):
+    k = ("streak", length, alpha)
+    if k not in _SPR:
+        sp = Image.new("RGBA", (length, 14), (0, 0, 0, 0))
+        ImageDraw.Draw(sp).rounded_rectangle([0, 0, length - 1, 13], radius=7, fill=MINT + (alpha,))
+        _SPR[k] = sp.rotate(32, expand=True, resample=Image.BICUBIC)
+    return _SPR[k]
 
 
 def particles(fr, t):
-    """Partículas de energía que suben lentamente."""
-    d = ImageDraw.Draw(fr)
-    for fx, ph, r, sp in _PART:
+    """Formas de la marca en movimiento: rombos redondeados del logo que flotan y destellos diagonales."""
+    for fx, ph, size, sp, col, a, filled in _SHAPES:
         u = (ph + t * sp) % 1
-        y = H * 1.05 - u * H * 1.1
-        x = fx * W + 18 * math.sin(t * 0.8 + ph * 6)
-        a = int(110 * math.sin(math.pi * u))
-        d.ellipse([x - r, y - r, x + r, y + r], fill=MINT + (a,))
+        y = H * 1.1 - u * H * 1.25
+        x = fx * W + 26 * math.sin(t * 0.6 + ph * 7) + u * 60
+        fade = math.sin(math.pi * u)
+        dm = diamond(size, col, a, filled)
+        put(fr, dm, x, y, fade)
+    # destellos diagonales (como las bandas de la marca) que cruzan cada pocos segundos
+    for i, (per, off, ln) in enumerate(((7.0, 0.0, 520), (9.0, 3.5, 380))):
+        u = ((t + off) % per) / per
+        if u < 0.45:
+            e = u / 0.45
+            sk = streak(ln, 120 if i == 0 else 90)
+            x = -400 + e * (W + 800)
+            y = H * (0.82 if i == 0 else 0.22) - e * 500
+            put(fr, sk, x, y, math.sin(math.pi * e))
 
 
 def comp(fr, L, dy):
@@ -308,22 +363,22 @@ def build_sprites():
     S["logo"] = logo_pill(300)
     S["logo_big"] = logo_pill(520)
     g = GUION
-    S["hook_t"] = [text_sprite([(s, c)], 120, maxw=980) for s, c in g["hook"]["titulo"]]
-    S["hook_sub"] = text_sprite([(g["hook"]["sub"][0], SOFT)], 44, "Medium")
+    S["hook_t"] = [shadowed(text_sprite([(s, c)], 120, maxw=980)) for s, c in g["hook"]["titulo"]]
+    S["hook_sub"] = shadowed(text_sprite([(g["hook"]["sub"][0], WHITE)], 44, "SemiBold"))
     a = g["hook"]["alerta"]
     al = text_sprite([(a[0] + " ", WHITE), (a[1], WARN)], 50, "Bold")
     card = rrect_sprite(al.width + 150, 120, 28, (70, 32, 26, 235), WARN + (200,), 3)
     card.alpha_composite(warn_icon(52), (40, 34))
     card.alpha_composite(al, (110, (120 - al.height) // 2))
     S["hook_alerta"] = card
-    S["hook_nota"] = text_sprite([(g["hook"]["nota"][0], MINT)], 40, "SemiBold")
+    S["hook_nota"] = shadowed(text_sprite([(g["hook"]["nota"][0], MINT)], 40, "SemiBold"))
     S["arrow"] = arrow_icon(70)
     for k in ("paso1", "paso2", "paso3"):
         lab = text_sprite([(g[k]["paso"], FOREST)], 30, "SemiBold", spacing=4)
         chip = rrect_sprite(lab.width + 48, 56, 28, MINT + (255,))
         chip.alpha_composite(lab, (24, (56 - lab.height) // 2))
         S[k + "_chip"] = chip
-    S["p1_t"] = text_sprite([(g["paso1"]["titulo"], WHITE)], 84, maxw=940)
+    S["p1_t"] = shadowed(text_sprite([(g["paso1"]["titulo"], WHITE)], 84, maxw=940))
     S["rows"] = []
     for name, val, _ in g["paso1"]["filas"]:
         row = rrect_sprite(920, 104, 26, CARD + (255,))
@@ -333,7 +388,7 @@ def build_sprites():
         row.alpha_composite(tv, (920 - 36 - tv.width, (104 - tv.height) // 2))
         S["rows"].append(row)
     S["total_lab"] = text_sprite([(g["paso1"]["total"][2], SOFT)], 34, "SemiBold", spacing=5)
-    S["p2_t"] = text_sprite([(g["paso2"]["titulo"], WHITE)], 84, maxw=940)
+    S["p2_t"] = shadowed(text_sprite([(g["paso2"]["titulo"], WHITE)], 84, maxw=940))
     so = g["paso2"]["sol"]
     sc = rrect_sprite(920, 190, 32, CARD + (255,))
     sc.alpha_composite(text_sprite([(so[0], MINT)], 74, "ExtraBold"), (200, 22))
@@ -347,7 +402,7 @@ def build_sprites():
     S["panel_card"] = pc
     S["p3_t"] = None
     eq = g["paso3"]["ecuacion"][0]
-    S["eq"] = [text_sprite([(tok.replace(".", ","), MINT if tok in "÷=" else WHITE)], 128) for tok in eq]
+    S["eq"] = [shadowed(text_sprite([(tok.replace(".", ","), MINT if tok in "÷=" else WHITE)], 128)) for tok in eq]
     mn = g["paso3"]["minimo"][0]
     mc = rrect_sprite(920, 230, 34, CARD + (255,))
     mc.alpha_composite(text_sprite([("MÍNIMO", SOFT)], 34, "SemiBold", spacing=5), (48, 34))
@@ -363,7 +418,7 @@ def build_sprites():
     S["pan_m"] = panel_icon(170, MINT, 120)
     S["pan_dim"] = panel_icon(170, (120, 160, 135), 25)
     ct = g["cta"]["titulo"]
-    S["cta_t"] = [text_sprite([(ct[0][0], ct[0][1])], 104, maxw=940), text_sprite([(ct[1][0], ct[1][1]), (ct[1][2], ct[1][3])], 104, maxw=940)]
+    S["cta_t"] = [shadowed(text_sprite([(ct[0][0], ct[0][1])], 104, maxw=940)), shadowed(text_sprite([(ct[1][0], ct[1][1]), (ct[1][2], ct[1][3])], 104, maxw=940))]
     c1, c2, _ = g["cta"]["card"]
     cc = rrect_sprite(920, 220, 36, MINT + (255,), glow=MINT + (70,))
     t1 = text_sprite([(c1, FOREST)], 56, "Bold")
@@ -387,7 +442,8 @@ def draw_number(frame, v, unit, cx, cy, size, unit_size, a, color=WHITE, prefix=
     put(frame, u, cx - w / 2 + n.width, cy + size * 0.22, a, anchor="l")
 
 
-SCENE_BG = {"hook": "techo1", "paso1": "piscina", "paso2": "panel_teja", "paso3": "techo2", "cta": "techo_final"}
+SCENE_BG = {"hook": "portada_atardecer", "paso1": "piscina", "paso2": "panel_teja", "paso3": "techo2", "cta": "portada_casa"}
+SCENE_DARK = {"hook": 0.42}
 # desplazamiento vertical por escena para centrar el contenido en pantalla
 SCENE_DY = {"hook": 40, "paso1": 40, "paso2": 150, "paso3": 110, "cta": 70}
 
@@ -404,7 +460,7 @@ def render(t, S, BG, LINES, BANDS):
     ws = bg_weights(t, [g[k]["t"] for k in keys])
     for k, w in sorted(zip(keys, ws), key=lambda kw: kw[1], reverse=True):
         t0, t1 = g[k]["t"]
-        draw_bg(fr, SCENE_BG[k], prog(t, t0 - 0.5, t1 - t0 + 1.0), w if w < 0.999 else 1.0)
+        draw_bg(fr, SCENE_BG[k], prog(t, t0 - 0.5, t1 - t0 + 1.0), w if w < 0.999 else 1.0, SCENE_DARK.get(k, 0.66))
     off = int((t * 18) % 60)
     fr.alpha_composite(LINES.crop((off, 0, off + W, H)))
     particles(fr, t)
@@ -491,7 +547,7 @@ def render(t, S, BG, LINES, BANDS):
         p = prog(t, t0 + 0.1, 0.45)
         put(L, S["paso3_chip"], W / 2, 360, ease_out(p) * v, back_out(p) * 0.6 + 0.4)
         toks, te = g["paso3"]["ecuacion"]
-        gap = 26
+        gap = 26 - 44
         widths = [sp.width + gap for sp in S["eq"]]
         x = W / 2 - sum(widths) / 2
         for i, sp in enumerate(S["eq"]):
