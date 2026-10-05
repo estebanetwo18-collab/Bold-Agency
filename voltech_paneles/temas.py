@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFont
 import build as B
 from build import (W, H, FPS, FOREST, FOREST2, CARD, GREEN, MINT, WHITE, SOFT, F, P, ease_out, ease_io,
                    back_out, prog, ss, put, rrect_sprite, logo_pill, sun_icon, panel_icon, arrow_icon,
-                   check_icon, make_background, lines_layer, band)
+                   check_icon, make_background, lines_layer, band, draw_bg, bg_weights, particles, comp, FOTOS)
 
 FALLBACK = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 NO_GLYPH = set("₡")
@@ -195,6 +195,17 @@ class El:
             pill.alpha_composite(phone_icon(90), (50, 30))
             pill.alpha_composite(num, (140, (150 - num.height) // 2))
             self.sp = pill
+        elif k == "foto":
+            w, h = kw.get("w", 920), kw.get("h", 560)
+            im = Image.open(os.path.join(FOTOS, kw["src"] + ".jpg")).convert("RGB")
+            sc = max(w * 1.18 / im.width, h * 1.18 / im.height)
+            self.big = im.resize((int(im.width * sc), int(im.height * sc)), Image.LANCZOS).convert("RGBA")
+            m = Image.new("L", (w * 2, h * 2), 0)
+            ImageDraw.Draw(m).rounded_rectangle([0, 0, w * 2 - 1, h * 2 - 1], radius=72, fill=255)
+            self.mask = m.resize((w, h), Image.LANCZOS)
+            self.frame = rrect_sprite(w + 28, h + 28, 46, (0, 0, 0, 0), MINT + (255,), 4)
+            self.lab = text_sprite([(kw["etiqueta"], FOREST)], 30, "SemiBold", spacing=4) if kw.get("etiqueta") else None
+            self.wh = (w, h)
         elif k == "timeline":
             self.labs = [(text_sprite([(m, WHITE)], 34, "SemiBold"), text_sprite([(m, SOFT)], 34, "SemiBold"))
                          for m in kw["marcas"]]
@@ -263,6 +274,23 @@ class El:
             put(fr, self.sub, cx, y + 130, ease_out(prog(t, self.t + 0.3, 0.5)) * v)
         elif k == "phone":
             put(fr, self.sp, cx, y, e * v, back_out(p) * 0.4 + 0.6)
+        elif k == "foto":
+            w, h = self.wh
+            pk = prog(t, self.t, kw.get("vida", 6.0))
+            bw, bh = self.big.size
+            x = int((bw - w) * (0.2 + 0.6 * ease_io(pk)))
+            yy = int((bh - h) * (0.6 - 0.3 * ease_io(pk)))
+            card = self.big.crop((x, yy, x + w, yy + h))
+            card.putalpha(self.mask)
+            sp = Image.new("RGBA", (w + 40, h + 40), (0, 0, 0, 0))
+            sp.alpha_composite(self.frame, (20, 26))
+            sp.alpha_composite(card, (20, 12))
+            if self.lab:
+                chip = rrect_sprite(self.lab.width + 40, 54, 27, MINT + (255,))
+                chip.alpha_composite(self.lab, (20, (54 - self.lab.height) // 2))
+                sp.alpha_composite(chip, (48, h - 60))
+            dx = {"izq": -200, "der": 200}.get(kw.get("desde", ""), 0)
+            put(fr, sp, kw.get("x", cx) + dx * (1 - e), y + (0 if dx else 80 * (1 - e)), e * v, 0.88 + 0.12 * back_out(p))
         elif k == "timeline":
             # barra 0 → 25+ años con marcas
             x0, x1 = 120, W - 120
@@ -276,23 +304,56 @@ class El:
                 put(fr, self.labs[j][0 if u <= pl else 1], x0 + (x1 - x0) * u, y + 54, a)
 
 
+def extent(el):
+    k, kw, y = el.kind, el.kw, el.y
+    if k == "title":
+        n = len(el.lines)
+        return y - el.lines[0].height / 2, y + (n - 1) * kw.get("lh", 128) + el.lines[-1].height / 2
+    if k == "count":
+        return y - kw.get("size", 180) * 0.62, y + kw.get("size", 180) * 0.62
+    if k == "icons":
+        return y - kw.get("size", 150) * 0.4, y + kw.get("size", 150) * 0.4
+    if k == "flow":
+        return y - 85, y + 165
+    if k == "logo":
+        return y - el.sp.height / 2, y + 150
+    if k == "timeline":
+        return y - 12, y + 80
+    if k == "foto":
+        return y - el.wh[1] / 2, y + el.wh[1] / 2
+    h = el.sp.height if el.sp is not None else 80
+    return y - h / 2, y + h / 2
+
+
 class Escena:
-    def __init__(self, t0, t1, elementos, logo=True):
-        self.t0, self.t1, self.els, self.logo = t0, t1, elementos, logo
+    def __init__(self, t0, t1, elementos, logo=True, fondo=None, centro=1010):
+        self.t0, self.t1, self.els, self.logo, self.fondo = t0, t1, elementos, logo, fondo
+        ext = [extent(e) for e in elementos]
+        top, bot = min(a for a, _ in ext), max(b for _, b in ext)
+        self.dy = centro - (top + bot) / 2
 
 
 def render_tema(tema, t, BG, LINES, BANDS, LOGO_SMALL):
     fr = BG.copy()
+    escenas = tema["escenas"]
+    ws = bg_weights(t, [(sc.t0, sc.t1) for sc in escenas])
+    for sc, w in sorted(zip(escenas, ws), key=lambda x: x[1], reverse=True):
+        if sc.fondo and w > 0.01:
+            draw_bg(fr, sc.fondo, prog(t, sc.t0 - 0.5, sc.t1 - sc.t0 + 1.0), w if w < 0.999 else 1.0)
     off = int((t * 18) % 60)
     fr.alpha_composite(LINES.crop((off, 0, off + W, H)))
-    for sc in tema["escenas"]:
+    particles(fr, t)
+    for sc in escenas:
         if sc.t0 - 0.1 < t < sc.t1:
-            v = 1 - ease_io(prog(t, sc.t1 - 0.35, 0.35)) if sc is not tema["escenas"][-1] else 1
+            last = sc is escenas[-1]
+            v = 1 if last else 1 - ease_io(prog(t, sc.t1 - 0.35, 0.35))
             if sc.logo:
-                put(fr, LOGO_SMALL, W / 2, 250, v * (ease_out(prog(t, 0, 0.5)) if sc is tema["escenas"][0] else 1))
+                put(fr, LOGO_SMALL, W / 2, 250, v * (ease_out(prog(t, 0, 0.5)) if sc is escenas[0] else 1))
+            L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
             for el in sc.els:
-                el.draw(fr, t, v)
-    for sc in tema["escenas"][1:]:
+                el.draw(L, t, v)
+            comp(fr, L, sc.dy - (0 if last else 70 * ease_io(prog(t, sc.t1 - 0.4, 0.4))))
+    for sc in escenas[1:]:
         p = prog(t, sc.t0 - 0.45, 0.9)
         if 0 < p < 1:
             e = ease_io(p)
@@ -308,102 +369,115 @@ def T(parts):
 
 
 TEMAS = {
-    "ahorro": lambda: {"archivo": "VolTech_CuantoPuedesAhorrar_9x16.mp4", "dur": 31.0, "escenas": [
+    "ahorro": lambda: {"archivo": "VolTech_CuantoPuedesAhorrar_9x16.mp4", "dur": 36.0, "escenas": [
         Escena(0.0, 5.6, [
             El("chip", 0.3, 380, texto="CASO REAL · ATENAS"),
             El("title", 0.5, 600, lineas=[T([("¿CUÁNTO PUEDES", WHITE)]), T([("AHORRAR", MINT)]),
                                           T([("CON ENERGÍA SOLAR?", WHITE)])]),
-            El("text", 2.0, 1010, partes=[("Te mostramos un proyecto real", SOFT)])]),
-        Escena(5.6, 13.6, [
-            El("chip", 5.8, 380, texto="EL SISTEMA"),
-            El("title", 6.0, 500, lineas=[T([("LO QUE INSTALAMOS", WHITE)])], size=84),
-            El("card", 6.8, 700, icono="panel", grande="10 paneles solares", chico="Marca Trina Solar"),
-            El("card", 8.4, 920, icono="rayo", grande="Inversor de 15 kW", chico="Marca LuxPower", desde="izq"),
-            El("card", 10.0, 1140, icono="bateria", grande="Batería de 16 kWh", chico="Respaldo de energía")]),
-        Escena(13.6, 20.6, [
-            El("chip", 13.8, 380, texto="DURANTE EL DÍA"),
-            El("title", 14.0, 500, lineas=[T([("ALIMENTA", WHITE)])], size=84),
-            El("row", 14.8, 680, texto="Aires acondicionados"),
-            El("row", 15.6, 800, texto="La piscina"),
-            El("row", 16.4, 920, texto="Los principales equipos del hogar"),
-            El("card", 17.8, 1120, icono="luna", grande="De noche", chico="la batería da respaldo", desde="abajo")]),
-        Escena(20.6, 26.2, [
-            El("chip", 20.8, 420, texto="AHORRO PROYECTADO"),
-            El("count", 21.2, 680, valor=85000, dec=0, prefijo="≈ ₡", size=190, cuenta=2.0),
-            El("text", 22.4, 860, partes=[("al mes", MINT)], size=64, peso="Bold"),
-            El("text", 23.4, 960, partes=[("aproximadamente, en este proyecto", SOFT)], size=38)]),
-        Escena(26.2, 31.0, [
-            El("title", 26.4, 470, lineas=[T([("¿CUÁNTO PODRÍAS", WHITE)]), T([("AHORRAR ", WHITE), ("TÚ?", MINT)])],
+            El("text", 2.0, 1010, partes=[("Te mostramos un proyecto real", SOFT)])], fondo="techo1"),
+        Escena(5.6, 11.0, [
+            El("chip", 5.8, 380, texto="EL PROYECTO"),
+            El("foto", 6.1, 800, src="piscina", w=440, h=640, x=W / 2 - 236, desde="izq", vida=5.0),
+            El("foto", 6.5, 800, src="techo2", w=440, h=640, x=W / 2 + 236, desde="der", vida=5.0),
+            El("text", 7.6, 1190, partes=[("Un sistema solar para la ", WHITE), ("casa completa", MINT)], size=48,
+               peso="SemiBold")], fondo="piscina"),
+        Escena(11.0, 19.0, [
+            El("chip", 11.2, 380, texto="EL SISTEMA"),
+            El("title", 11.4, 500, lineas=[T([("LO QUE INSTALAMOS", WHITE)])], size=84),
+            El("card", 12.2, 700, icono="panel", grande="10 paneles solares", chico="Marca Trina Solar"),
+            El("card", 13.8, 920, icono="rayo", grande="Inversor de 15 kW", chico="Marca LuxPower", desde="izq"),
+            El("card", 15.4, 1140, icono="bateria", grande="Batería de 16 kWh", chico="Respaldo de energía")],
+            fondo="inversor"),
+        Escena(19.0, 26.0, [
+            El("chip", 19.2, 380, texto="DURANTE EL DÍA"),
+            El("title", 19.4, 500, lineas=[T([("ALIMENTA", WHITE)])], size=84),
+            El("row", 20.2, 680, texto="Aires acondicionados"),
+            El("row", 21.0, 800, texto="La piscina"),
+            El("row", 21.8, 920, texto="Los principales equipos del hogar"),
+            El("card", 23.2, 1120, icono="luna", grande="De noche", chico="la batería da respaldo", desde="abajo")],
+            fondo="techo1"),
+        Escena(26.0, 31.4, [
+            El("chip", 26.2, 420, texto="AHORRO PROYECTADO"),
+            El("count", 26.6, 680, valor=85000, dec=0, prefijo="≈ ₡", size=190, cuenta=2.0),
+            El("text", 27.8, 860, partes=[("al mes", MINT)], size=64, peso="Bold"),
+            El("text", 28.8, 960, partes=[("aproximadamente, en este proyecto", SOFT)], size=38)],
+            fondo="techo_final"),
+        Escena(31.4, 36.0, [
+            El("title", 31.6, 470, lineas=[T([("¿CUÁNTO PODRÍAS", WHITE)]), T([("AHORRAR ", WHITE), ("TÚ?", MINT)])],
                size=100),
-            El("cta", 27.2, 830, l1="Escríbenos", l2="y te decimos qué sistema se adapta a tu hogar o negocio"),
-            El("arrow", 27.8, 1040),
-            El("logo", 28.4, 1230)], logo=False)]},
+            El("cta", 32.4, 830, l1="Escríbenos", l2="y te decimos qué sistema se adapta a tu hogar o negocio"),
+            El("arrow", 33.0, 1040),
+            El("logo", 33.6, 1230)], logo=False, fondo="techo2")]},
 
     "apagon": lambda: {"archivo": "VolTech_SiSeVaLaLuz_9x16.mp4", "dur": 34.0, "escenas": [
         Escena(0.0, 5.6, [
             El("chip", 0.3, 380, texto="CORTES DE ELECTRICIDAD"),
             El("title", 0.5, 600, lineas=[T([("¿QUÉ PASA", WHITE)]), T([("CUANDO SE VA", WHITE)]),
                                           T([("LA LUZ?", MINT)])], size=116),
-            El("text", 2.0, 1010, partes=[("Con un sistema solar con batería", SOFT)])]),
+            El("text", 2.0, 1010, partes=[("Con un sistema solar con batería", SOFT)])], fondo="inversor"),
         Escena(5.6, 11.2, [
             El("chip", 5.8, 380, texto="DE DÍA"),
             El("card", 6.4, 640, icono="sol", grande="Los paneles", chico="alimentan la casa", h=200),
             El("row", 7.8, 860, texto="Aires acondicionados"),
             El("row", 8.4, 980, texto="La piscina"),
-            El("row", 9.0, 1100, texto="Los principales equipos"),
-        ]),
+            El("row", 9.0, 1100, texto="Los principales equipos")], fondo="techo1"),
         Escena(11.2, 16.0, [
             El("chip", 11.4, 380, texto="DE NOCHE"),
             El("card", 12.0, 700, icono="luna", grande="La batería", chico="da respaldo de energía", h=200),
             El("arrow", 13.0, 880),
             El("card", 13.4, 1060, icono="bateria", grande="Energía almacenada", chico="cuando más se necesita",
-               desde="abajo", h=200)]),
+               desde="abajo", h=200)], fondo="inversor"),
         Escena(16.0, 23.4, [
             El("chip", 16.2, 380, texto="SI SE VA LA LUZ"),
             El("title", 16.4, 500, lineas=[T([("TRANSFERENCIA", WHITE)]), T([("AUTOMÁTICA", MINT)])], size=96, lh=112),
             El("flow", 17.6, 860, nodos=[("sol", "Solar"), ("bateria", "Batería"), ("red", "Red")]),
-            El("text", 19.8, 1130, partes=[("Sin que tengas que intervenir", WHITE)], size=48, peso="SemiBold")]),
+            El("text", 19.8, 1130, partes=[("Sin que tengas que intervenir", WHITE)], size=48, peso="SemiBold")],
+            fondo="cableado"),
         Escena(23.4, 28.8, [
             El("chip", 23.6, 380, texto="CONTINUIDAD"),
-            El("card", 24.2, 720, icono="escudo", grande="Energía sin interrupciones", h=170),
-            El("text", 25.4, 900, partes=[("Fundamental si en casa", WHITE)], size=48, peso="SemiBold"),
-            El("text", 25.8, 970, partes=[("dependes de ", WHITE), ("equipos médicos", MINT)], size=48, peso="SemiBold")]),
+            El("foto", 23.9, 640, src="tecnico_inversor", w=920, h=440, etiqueta="PROYECTO ATENAS", vida=5.0),
+            El("card", 24.6, 960, icono="escudo", grande="Energía sin interrupciones", h=170),
+            El("text", 25.6, 1110, partes=[("Fundamental si en casa", WHITE)], size=48, peso="SemiBold"),
+            El("text", 26.0, 1180, partes=[("dependes de ", WHITE), ("equipos médicos", MINT)], size=48,
+               peso="SemiBold")], fondo="conexiones"),
         Escena(28.8, 34.0, [
             El("title", 29.0, 470, lineas=[T([("¿QUIERES UN", WHITE)]), T([("SISTEMA ASÍ?", MINT)])], size=104),
             El("cta", 29.8, 830, l1="Escríbenos", l2="y te decimos qué sistema se adapta a tu hogar o negocio"),
             El("arrow", 30.4, 1040),
-            El("logo", 31.0, 1230)], logo=False)]},
+            El("logo", 31.0, 1230)], logo=False, fondo="techo2")]},
 
-    "duracion": lambda: {"archivo": "VolTech_CuantoDuraUnPanel_9x16.mp4", "dur": 22.0, "escenas": [
-        Escena(0.0, 5.0, [
+    "duracion": lambda: {"archivo": "VolTech_CuantoDuraUnPanel_9x16.mp4", "dur": 24.0, "escenas": [
+        Escena(0.0, 6.0, [
             El("chip", 0.3, 380, texto="¿SABÍAS QUE…?"),
-            El("title", 0.5, 620, lineas=[T([("¿CUÁNTO DURA", WHITE)]), T([("UN PANEL", MINT)]), T([("SOLAR?", MINT)])],
-               size=120),
-            El("icons", 2.0, 1080, icono="panel", n=1, size=230)]),
-        Escena(5.0, 13.0, [
-            El("text", 5.3, 480, partes=[("UN PANEL SOLAR PUEDE DURAR", SOFT)], size=40, peso="SemiBold"),
-            El("count", 5.6, 700, valor=25, dec=0, unidad="AÑOS", size=260, usize=90, cuenta=2.2),
-            El("text", 8.0, 880, partes=[("o más", MINT)], size=80, peso="ExtraBold"),
-            El("timeline", 6.0, 1080, marcas=["0", "5", "10", "15", "20", "25+"], cuenta=2.2)]),
-        Escena(13.0, 22.0, [
-            El("title", 13.2, 470, lineas=[T([("UNA INVERSIÓN", WHITE)]), T([("QUE DURA", WHITE)])], size=104),
-            El("cta", 14.2, 830, l1="Cotiza tu proyecto", l2="y empieza a ahorrar"),
-            El("arrow", 14.8, 1040),
-            El("logo", 15.4, 1230)], logo=False)]},
+            El("title", 0.5, 560, lineas=[T([("¿CUÁNTO DURA", WHITE)]), T([("UN PANEL SOLAR?", MINT)])], size=110),
+            El("foto", 1.8, 1080, src="panel_teja", w=820, h=500, vida=4.5)], fondo="techo1"),
+        Escena(6.0, 14.6, [
+            El("text", 6.3, 480, partes=[("UN PANEL SOLAR PUEDE DURAR", SOFT)], size=40, peso="SemiBold"),
+            El("count", 6.6, 700, valor=25, dec=0, unidad="AÑOS", size=260, usize=90, cuenta=2.2),
+            El("text", 9.0, 880, partes=[("o más", MINT)], size=80, peso="ExtraBold"),
+            El("timeline", 7.0, 1080, marcas=["0", "5", "10", "15", "20", "25+"], cuenta=2.2)], fondo="techo2"),
+        Escena(14.6, 24.0, [
+            El("title", 14.8, 470, lineas=[T([("UNA INVERSIÓN", WHITE)]), T([("QUE DURA", WHITE)])], size=104),
+            El("cta", 15.8, 830, l1="Cotiza tu proyecto", l2="y empieza a ahorrar"),
+            El("arrow", 16.4, 1040),
+            El("logo", 17.0, 1230)], logo=False, fondo="techo_final")]},
 
-    "electricas": lambda: {"archivo": "VolTech_SolucionesElectricas_9x16.mp4", "dur": 22.0, "escenas": [
-        Escena(0.0, 9.0, [
+    "electricas": lambda: {"archivo": "VolTech_SolucionesElectricas_9x16.mp4", "dur": 24.0, "escenas": [
+        Escena(0.0, 5.4, [
             El("title", 0.4, 520, lineas=[T([("SOLUCIONES", WHITE)]), T([("ELÉCTRICAS", MINT)])], size=124, lh=140),
             El("chip", 1.6, 760, texto="DESDE AVERÍAS HASTA INSTALACIONES"),
-            El("card", 2.8, 960, icono="llave", grande="Averías", chico="Te ayudamos a resolverlas", desde="izq"),
-            El("arrow", 4.0, 1130),
-            El("card", 4.6, 1300, icono="rayo", grande="Instalaciones", chico="Eléctricas y solares", desde="der")]),
-        Escena(9.0, 22.0, [
-            El("title", 9.2, 470, lineas=[T([("AGENDA TU", WHITE)]), T([("SERVICIO", MINT)]), T([("AHORA MISMO", WHITE)])],
+            El("foto", 2.4, 1120, src="cableado", w=820, h=500, vida=3.6)], fondo="conexiones"),
+        Escena(5.4, 11.0, [
+            El("card", 5.7, 700, icono="llave", grande="Averías", chico="Te ayudamos a resolverlas", desde="izq"),
+            El("arrow", 6.9, 870),
+            El("card", 7.5, 1040, icono="rayo", grande="Instalaciones", chico="Eléctricas y solares", desde="der")],
+            fondo="instalando"),
+        Escena(11.0, 24.0, [
+            El("title", 11.2, 470, lineas=[T([("AGENDA TU", WHITE)]), T([("SERVICIO", MINT)]), T([("AHORA MISMO", WHITE)])],
                size=110, lh=124),
-            El("phone", 10.6, 900, numero="8559-3214"),
-            El("arrow", 11.2, 1060),
-            El("logo", 11.8, 1230)], logo=False)]},
+            El("phone", 12.6, 900, numero="8559-3214"),
+            El("arrow", 13.2, 1060),
+            El("logo", 13.8, 1230)], logo=False, fondo="techo2")]},
 }
 
 

@@ -222,6 +222,77 @@ def band(w, h, color):
     return sp.rotate(32, expand=True, resample=Image.BICUBIC)
 
 
+
+# ------------------------------------------------------------------ fotos y movimiento
+FOTOS = P("assets", "fotos")
+_PLATES = {}
+
+
+def bg_plate(name, dark=0.66):
+    """Foto del proyecto con tinte verde bosque, lista para paneo (1242x2208)."""
+    key = (name, dark)
+    if key not in _PLATES:
+        im = Image.open(os.path.join(FOTOS, name + ".jpg")).convert("RGBA")
+        x0 = (im.width - 1242) // 2
+        im = im.crop((x0, 0, x0 + 1242, 2208))
+        tint = Image.new("RGBA", im.size, FOREST + (int(255 * dark),))
+        im.alpha_composite(tint)
+        grad = Image.new("L", (1, 256))
+        for i in range(256):
+            u = i / 255
+            grad.putpixel((0, i), int(255 * (0.45 * (1 - u) ** 2 + 0.6 * u ** 3)))
+        g = Image.new("RGBA", im.size, FOREST + (255,))
+        g.putalpha(grad.resize(im.size))
+        im.alpha_composite(g)
+        _PLATES[key] = im
+    return _PLATES[key]
+
+
+def draw_bg(fr, name, p, alpha=1.0, dark=0.66):
+    """Paneo lento (Ken Burns por desplazamiento) de la foto de fondo; p = 0..1 avance de la escena."""
+    if alpha <= 0.01:
+        return
+    pl = bg_plate(name, dark)
+    e = ease_io(p)
+    x = int((pl.width - W) * (0.15 + 0.7 * e))
+    y = int((pl.height - H) * (0.8 - 0.6 * e))
+    cr = pl.crop((x, y, x + W, y + H))
+    if alpha < 0.99:
+        cr.putalpha(cr.getchannel("A").point(lambda a: int(a * alpha)))
+    fr.alpha_composite(cr)
+
+
+def bg_weights(t, ranges, x=0.9):
+    """Peso de cada fondo con fundido cruzado de x segundos en cada cambio de escena."""
+    ws = []
+    for i, (t0, t1) in enumerate(ranges):
+        win = 1.0 if i == 0 else ease_io(prog(t, t0 - x / 2, x))
+        wout = 1.0 if i == len(ranges) - 1 else 1 - ease_io(prog(t, t1 - x / 2, x))
+        ws.append(win * wout)
+    return ws
+
+
+_PART = [((i * 0.6180339) % 1, (i * 0.38196) % 1, 2 + (i * 7) % 5, 0.03 + ((i * 13) % 7) / 220) for i in range(46)]
+
+
+def particles(fr, t):
+    """Partículas de energía que suben lentamente."""
+    d = ImageDraw.Draw(fr)
+    for fx, ph, r, sp in _PART:
+        u = (ph + t * sp) % 1
+        y = H * 1.05 - u * H * 1.1
+        x = fx * W + 18 * math.sin(t * 0.8 + ph * 6)
+        a = int(110 * math.sin(math.pi * u))
+        d.ellipse([x - r, y - r, x + r, y + r], fill=MINT + (a,))
+
+
+def comp(fr, L, dy):
+    dy = int(round(dy))
+    if dy >= 0:
+        fr.alpha_composite(L, (0, dy))
+    else:
+        fr.alpha_composite(L, (0, 0), (0, -dy))
+
 # ------------------------------------------------------------------ escenas
 class Scene:
     def __init__(self, t0, t1):
@@ -316,132 +387,155 @@ def draw_number(frame, v, unit, cx, cy, size, unit_size, a, color=WHITE, prefix=
     put(frame, u, cx - w / 2 + n.width, cy + size * 0.22, a, anchor="l")
 
 
+SCENE_BG = {"hook": "techo1", "paso1": "piscina", "paso2": "panel_teja", "paso3": "techo2", "cta": "techo_final"}
+# desplazamiento vertical por escena para centrar el contenido en pantalla
+SCENE_DY = {"hook": 40, "paso1": 40, "paso2": 150, "paso3": 110, "cta": 70}
+
+
+def exit_dy(t, sc):
+    return -70 * ease_io(prog(t, sc.t1 - 0.4, 0.4))
+
+
 def render(t, S, BG, LINES, BANDS):
     fr = BG.copy()
-    # líneas diagonales en deriva lenta
+    g = GUION
+    # fondo de foto según la escena (el barrido diagonal tapa el cambio)
+    keys = ("hook", "paso1", "paso2", "paso3", "cta")
+    ws = bg_weights(t, [g[k]["t"] for k in keys])
+    for k, w in sorted(zip(keys, ws), key=lambda kw: kw[1], reverse=True):
+        t0, t1 = g[k]["t"]
+        draw_bg(fr, SCENE_BG[k], prog(t, t0 - 0.5, t1 - t0 + 1.0), w if w < 0.999 else 1.0)
     off = int((t * 18) % 60)
     fr.alpha_composite(LINES.crop((off, 0, off + W, H)))
-    g = GUION
+    particles(fr, t)
 
     # ---- HOOK
     sc = Scene(*g["hook"]["t"])
     if t < sc.t1:
         v = sc.vis(t)
+        L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         put(fr, S["logo"], W / 2, 250, ease_out(prog(t, 0.0, 0.5)) * v, 0.9 + 0.1 * ease_out(prog(t, 0, 0.5)))
         for i, sp in enumerate(S["hook_t"]):
             p = prog(t, 0.15 + i * 0.22, 0.55)
-            put(fr, sp, W / 2, 560 + i * 140 + 50 * (1 - ease_out(p)), ease_out(p) * v)
+            put(L, sp, W / 2, 560 + i * 140 + 60 * (1 - ease_out(p)), ease_out(p) * v, 0.85 + 0.15 * back_out(p))
         p = prog(t, g["hook"]["sub"][1], 0.5)
-        put(fr, S["hook_sub"], W / 2, 990 + 20 * (1 - ease_out(p)), ease_out(p) * v)
+        put(L, S["hook_sub"], W / 2, 990 + 20 * (1 - ease_out(p)), ease_out(p) * v)
         p = prog(t, g["hook"]["alerta"][2], 0.55)
         if p > 0:
-            shake = math.sin((t - g["hook"]["alerta"][2]) * 40) * 10 * (1 - p) if p < 1 else 0
-            put(fr, S["hook_alerta"], W / 2 + shake, 1150, ease_out(p) * v, back_out(p) * 0.9 + 0.1)
+            shake = math.sin((t - g["hook"]["alerta"][2]) * 40) * 12 * (1 - p) if p < 1 else 0
+            put(L, S["hook_alerta"], W / 2 + shake, 1150, ease_out(p) * v, back_out(p) * 0.9 + 0.1)
         p = prog(t, g["hook"]["nota"][1], 0.5)
-        put(fr, S["hook_nota"], W / 2, 1300, ease_out(p) * v)
+        put(L, S["hook_nota"], W / 2, 1300, ease_out(p) * v)
         if p > 0:
-            bob = 12 * math.sin((t - g["hook"]["nota"][1]) * 6)
-            put(fr, S["arrow"], W / 2, 1400 + bob, ease_out(p) * v)
+            put(L, S["arrow"], W / 2, 1400 + 12 * math.sin((t - g["hook"]["nota"][1]) * 6), ease_out(p) * v)
+        comp(fr, L, SCENE_DY["hook"] + exit_dy(t, sc))
 
     # ---- PASO 1
     sc = Scene(*g["paso1"]["t"])
     if sc.t0 - 0.1 < t < sc.t1:
         v, t0 = sc.vis(t), sc.t0
+        L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         put(fr, S["logo"], W / 2, 250, v)
         p = prog(t, t0 + 0.2, 0.45)
-        put(fr, S["paso1_chip"], W / 2, 360, ease_out(p) * v, back_out(p) * 0.6 + 0.4)
+        put(L, S["paso1_chip"], W / 2, 360, ease_out(p) * v, back_out(p) * 0.6 + 0.4)
         p = prog(t, t0 + 0.35, 0.55)
-        put(fr, S["p1_t"], W / 2, 470 + 40 * (1 - ease_out(p)), ease_out(p) * v)
+        put(L, S["p1_t"], W / 2, 470 + 40 * (1 - ease_out(p)), ease_out(p) * v)
         for i, (row, (_, _, tr)) in enumerate(zip(S["rows"], g["paso1"]["filas"])):
             p = prog(t, tr - 0.1, 0.5)
-            put(fr, row, W / 2 + 160 * (1 - ease_out(p)), 620 + i * 122, ease_out(p) * v)
+            put(L, row, W / 2 + 180 * (1 - ease_out(p)) * (1 if i % 2 == 0 else -1), 620 + i * 122, ease_out(p) * v)
         tot, tt, _ = g["paso1"]["total"]
         p = prog(t, tt, 0.4)
         if p > 0:
             lw = 920 * ease_out(p)
-            d = ImageDraw.Draw(fr)
-            d.rounded_rectangle([W / 2 - lw / 2, 1240, W / 2 + lw / 2, 1246], radius=3, fill=MINT + (int(255 * v),))
-            put(fr, S["total_lab"], W / 2, 1300, ease_out(p) * v)
+            ImageDraw.Draw(L).rounded_rectangle([W / 2 - lw / 2, 1240, W / 2 + lw / 2, 1246], radius=3,
+                                                fill=MINT + (int(255 * v),))
+            put(L, S["total_lab"], W / 2, 1300, ease_out(p) * v)
             c = ease_out(prog(t, tt + 0.2, 1.6))
             pop = 1 + 0.08 * math.sin(math.pi * prog(t, tt + 1.8, 0.35))
-            draw_number(fr, tot * c, "kWh", W / 2, 1420, int(190 * pop), 64, ease_out(p) * v)
+            draw_number(L, tot * c, "kWh", W / 2, 1420, int(190 * pop), 64, ease_out(p) * v)
+        comp(fr, L, SCENE_DY["paso1"] + exit_dy(t, sc))
 
     # ---- PASO 2
     sc = Scene(*g["paso2"]["t"])
     if sc.t0 - 0.1 < t < sc.t1:
         v, t0 = sc.vis(t), sc.t0
+        L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         put(fr, S["logo"], W / 2, 250, v)
         p = prog(t, t0 + 0.2, 0.45)
-        put(fr, S["paso2_chip"], W / 2, 360, ease_out(p) * v, back_out(p) * 0.6 + 0.4)
+        put(L, S["paso2_chip"], W / 2, 360, ease_out(p) * v, back_out(p) * 0.6 + 0.4)
         p = prog(t, t0 + 0.35, 0.55)
-        put(fr, S["p2_t"], W / 2, 470 + 40 * (1 - ease_out(p)), ease_out(p) * v)
+        put(L, S["p2_t"], W / 2, 470 + 40 * (1 - ease_out(p)), ease_out(p) * v)
         ts = g["paso2"]["sol"][2]
         p = prog(t, ts, 0.55)
         if p > 0:
             card = S["sol_card"].copy()
             card.alpha_composite(sun_icon(130, (t - ts) * 0.8), (40, 30))
-            put(fr, card, W / 2 - 140 * (1 - ease_out(p)), 680, ease_out(p) * v)
+            put(L, card, W / 2 - 160 * (1 - ease_out(p)), 680, ease_out(p) * v, 0.92 + 0.08 * back_out(p))
         tp = g["paso2"]["panel"][2]
         p = prog(t, tp, 0.55)
-        put(fr, S["panel_card"], W / 2 + 140 * (1 - ease_out(p)), 900, ease_out(p) * v)
+        put(L, S["panel_card"], W / 2 + 160 * (1 - ease_out(p)), 900, ease_out(p) * v, 0.92 + 0.08 * back_out(p))
         val, unit, tr = g["paso2"]["resultado"]
         p = prog(t, tr, 0.45)
         if p > 0:
-            put(fr, S["arrow"], W / 2, 1070 + 10 * math.sin((t - tr) * 6), ease_out(p) * v)
+            put(L, S["arrow"], W / 2, 1070 + 10 * math.sin((t - tr) * 6), ease_out(p) * v)
             c = ease_out(prog(t, tr + 0.2, 1.4))
-            draw_number(fr, val * c, unit, W / 2, 1230, 170, 58, ease_out(p) * v, MINT, prefix="≈ ")
+            draw_number(L, val * c, unit, W / 2, 1230, 170, 58, ease_out(p) * v, MINT, prefix="≈ ")
+        comp(fr, L, SCENE_DY["paso2"] + exit_dy(t, sc))
 
     # ---- PASO 3
     sc = Scene(*g["paso3"]["t"])
     if sc.t0 - 0.1 < t < sc.t1:
         v, t0 = sc.vis(t), sc.t0
+        L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         put(fr, S["logo"], W / 2, 250, v)
         p = prog(t, t0 + 0.1, 0.45)
-        put(fr, S["paso3_chip"], W / 2, 360, ease_out(p) * v, back_out(p) * 0.6 + 0.4)
+        put(L, S["paso3_chip"], W / 2, 360, ease_out(p) * v, back_out(p) * 0.6 + 0.4)
         toks, te = g["paso3"]["ecuacion"]
         gap = 26
         widths = [sp.width + gap for sp in S["eq"]]
         x = W / 2 - sum(widths) / 2
         for i, sp in enumerate(S["eq"]):
             p = prog(t, te + i * 0.28 + (0.6 if i == 4 else 0), 0.45)
-            col = sp
-            put(fr, col, x + widths[i] / 2, 520 - 60 * (1 - ease_out(p)), ease_out(p) * v, back_out(p) * 0.5 + 0.5)
+            put(L, sp, x + widths[i] / 2, 520 - 70 * (1 - ease_out(p)), ease_out(p) * v, back_out(p) * 0.5 + 0.5)
             x += widths[i]
         mn, tm = g["paso3"]["minimo"]
         p = prog(t, tm, 0.5)
-        put(fr, S["min_card"], W / 2, 760 + 60 * (1 - ease_out(p)), ease_out(p) * v)
-        # paneles: 2 mínimos + 1 ideal
+        put(L, S["min_card"], W / 2, 760 + 60 * (1 - ease_out(p)), ease_out(p) * v)
         ideal_n, _, ti = g["paso3"]["ideal"]
         xs = [W / 2 - 230, W / 2, W / 2 + 230]
         for i in range(3):
             if i < mn:
                 p = prog(t, tm + 0.35 + i * 0.2, 0.45)
-                put(fr, S["pan_w"], xs[i], 980, ease_out(p) * v, back_out(p) * 0.7 + 0.3)
+                put(L, S["pan_w"], xs[i], 980, ease_out(p) * v, back_out(p) * 0.7 + 0.3)
             else:
                 p0 = prog(t, tm + 0.8, 0.4)
-                put(fr, S["pan_dim"], xs[i], 980, 0.6 * ease_out(p0) * v * (1 - prog(t, ti, 0.3)))
+                put(L, S["pan_dim"], xs[i], 980, 0.6 * ease_out(p0) * v * (1 - prog(t, ti, 0.3)))
                 p = prog(t, ti, 0.5)
-                put(fr, S["pan_m"], xs[i], 980, ease_out(p) * v, back_out(p, 2.4) * 0.7 + 0.3)
+                glow = 1 + 0.05 * math.sin(max(0, t - ti) * 5) if p >= 1 else back_out(p, 2.4) * 0.7 + 0.3
+                put(L, S["pan_m"], xs[i], 980, ease_out(p) * v, glow)
         p = prog(t, ti + 0.2, 0.55)
-        put(fr, S["ideal_card"], W / 2, 1230 + 70 * (1 - ease_out(p)), ease_out(p) * v, 0.92 + 0.08 * back_out(p))
+        put(L, S["ideal_card"], W / 2, 1230 + 70 * (1 - ease_out(p)), ease_out(p) * v, 0.92 + 0.08 * back_out(p))
+        comp(fr, L, SCENE_DY["paso3"] + exit_dy(t, sc))
 
     # ---- CTA
     sc = Scene(*g["cta"]["t"])
     if t > sc.t0 - 0.1:
         t0 = sc.t0
+        L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         for i, sp in enumerate(S["cta_t"]):
             p = prog(t, t0 + 0.2 + i * 0.2, 0.55)
-            put(fr, sp, W / 2, 470 + i * 125 + 40 * (1 - ease_out(p)), ease_out(p))
+            put(L, sp, W / 2, 470 + i * 125 + 50 * (1 - ease_out(p)), ease_out(p), 0.85 + 0.15 * back_out(p))
         tc = g["cta"]["card"][2]
         p = prog(t, tc, 0.55)
-        pulse = 1 + 0.02 * math.sin(max(0, t - tc - 0.6) * 4) if p >= 1 else back_out(p) * 0.3 + 0.7
-        put(fr, S["cta_card"], W / 2, 830, ease_out(p), pulse)
+        pulse = 1 + 0.025 * math.sin(max(0, t - tc - 0.6) * 4) if p >= 1 else back_out(p) * 0.3 + 0.7
+        put(L, S["cta_card"], W / 2, 830, ease_out(p), pulse)
         if p > 0:
-            put(fr, S["arrow"], W / 2, 1040 + 12 * math.sin((t - tc) * 6), ease_out(prog(t, tc + 0.4, 0.4)))
+            put(L, S["arrow"], W / 2, 1040 + 12 * math.sin((t - tc) * 6), ease_out(prog(t, tc + 0.4, 0.4)))
         tsg = g["cta"]["sigue"][1]
         p = prog(t, tsg, 0.6)
-        put(fr, S["logo_big"], W / 2, 1230, ease_out(p), back_out(p) * 0.4 + 0.6)
-        put(fr, S["sigue"], W / 2, 1360, ease_out(prog(t, tsg + 0.3, 0.5)))
+        put(L, S["logo_big"], W / 2, 1230, ease_out(p), back_out(p) * 0.4 + 0.6)
+        put(L, S["sigue"], W / 2, 1360, ease_out(prog(t, tsg + 0.3, 0.5)))
+        comp(fr, L, SCENE_DY["cta"])
 
     # ---- barridos diagonales de marca entre escenas
     for tb in (g["paso1"]["t"][0], g["paso2"]["t"][0], g["paso3"]["t"][0], g["cta"]["t"][0]):
