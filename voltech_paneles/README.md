@@ -19,6 +19,6 @@ python3 temas.py --preview      # fotogramas de control
 
 - **Textos, números y tiempos:** `GUION` en `build.py` y `TEMAS` en `temas.py`.
 - **Colores:** las constantes `FOREST`, `MINT`, `GREEN` y `WHITE` en `build.py`.
-- **Audio:** los videos salen sin locución ni música. Los tiempos de `build.py` siguen el guion de locución, así se puede grabar una voz encima.
+- **Audio:** `python3 audio.py` compone la música corporativa y los efectos por síntesis (sin derechos de terceros) y los mezcla en `salida/con_audio/` a -14 LUFS. Los efectos se sincronizan solos con los tiempos de cada escena.
 
 Requiere `ffmpeg` y Python 3 con Pillow.
