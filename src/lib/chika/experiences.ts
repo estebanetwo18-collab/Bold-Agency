@@ -1,0 +1,309 @@
+/**
+ * Fuente de verdad de las experiencias Chika (catálogo impreso, 2026).
+ * Editá precios, sesiones, vigencias y textos SOLO aquí.
+ * `pending` lista lo que sigue sin confirmar; se muestra en magenta solo en desarrollo.
+ */
+
+export type Photo = {
+  /** Archivo dentro de public/chika/. Si no existe se muestra un espacio reservado. */
+  file: string;
+  alt: string;
+  /** Indicación de fotografía tomada del catálogo (para el equipo de foto). */
+  brief: string;
+  /** object-position para conservar el foco principal. */
+  position?: string;
+};
+
+export type Tone = "ivory" | "stone" | "graphite";
+
+export type Step = { title: string; text: string };
+
+export type Experience = {
+  id: string;
+  number: string; // "01"
+  stage: string; // "Entender"
+  name: string;
+  /** Nombre corto para CTAs ("Agendá tu Detox") */
+  short: string;
+  tagline: string;
+  hook?: string;
+  idealFor: string;
+  includesLabel: string;
+  includes: string[];
+  /** Líneas del plan aún sin confirmar (se marcan como pendientes). */
+  pendingIncludes?: string[];
+  homeKit?: { label: string; items: string[]; note?: string };
+  sessions: string | null;
+  validity: string | null;
+  rhythm?: string;
+  /** amount en colones; null = por confirmar */
+  price: { amount: number | null; from?: boolean };
+  cta: string;
+  availabilityNote: string;
+  photo: Photo;
+  tone: Tone;
+  flip: boolean;
+  steps?: { label: string; items: Step[] };
+  visits?: { count: number; gap: string; note: string };
+  /** Datos pendientes de confirmar para esta experiencia. */
+  pending: string[];
+  /** Nombre / precio sin confirmar (Blow Club). */
+  provisionalName?: boolean;
+};
+
+const AVAILABILITY = "Citas sujetas a disponibilidad de horarios.";
+
+export const experiences: Experience[] = [
+  {
+    id: "chika-kit",
+    number: "01",
+    stage: "Entender",
+    name: "Chika Kit",
+    short: "diagnóstico",
+    tagline: "Diagnóstico & Experiencia",
+    hook: "Conocé lo que tu cabello realmente necesita antes de comenzar un tratamiento.",
+    idealFor:
+      "Quienes desean conocer el estado real de su hebra y cuero cabelludo antes de iniciar un cambio o tratamiento.",
+    includesLabel: "En salón",
+    includes: [
+      "Diagnóstico capilar con capilógrafo digital",
+      "Asesoría y receta capilar personalizada",
+      "Demostración de tratamiento adaptado a tu tipo de cabello",
+      "Corte y styling profesional",
+    ],
+    sessions: "1 sesión",
+    validity: null,
+    price: { amount: 50000, from: true },
+    cta: "Agendá tu diagnóstico",
+    availabilityNote: AVAILABILITY,
+    photo: {
+      file: "chika-diagnostico-capilografo.jpg",
+      alt: "Profesional usando un capilógrafo digital en la coronilla de una clienta de cabello largo y oscuro",
+      brief: "Manos profesionales usando el capilógrafo en la coronilla; recuadro con la vista real de la hebra.",
+      position: "60% 55%",
+    },
+    tone: "graphite",
+    flip: false,
+    pending: [
+      "Qué hace variar el «desde ₡50.000»",
+      "¿Promoción con fecha de cierre?",
+      "Detalle del kit para casa (la tabla lo marca por confirmar)",
+    ],
+  },
+  {
+    id: "chika-detox",
+    number: "02",
+    stage: "Preparar",
+    name: "Chika Detox",
+    short: "Detox",
+    tagline: "Purificación y preparación capilar",
+    hook: "Un cabello libre de residuos está listo para recibir lo que necesita.",
+    idealFor:
+      "Cabellos saturados de residuos cosméticos, cloro, impurezas o acumulación de metales pesados que pueden impedir que los tratamientos penetren correctamente.",
+    includesLabel: "En salón",
+    includes: [
+      "Diagnóstico con capilógrafo: revisión de folículo y hebra",
+      "Asesoría capilar personalizada",
+      "Protocolo profundo de desintoxicación y purificación capilar",
+      "Tratamiento hidratante según recomendación de la línea Essential Haircare",
+      "Lavado tratante y styling profesional",
+    ],
+    sessions: "1 sesión",
+    validity: null,
+    price: { amount: 70000 },
+    cta: "Agendá tu Detox",
+    availabilityNote: AVAILABILITY,
+    photo: {
+      file: "chika-detox-lavado.jpg",
+      alt: "Manos profesionales lavando el cabello de una clienta en el lavacabezas, con espuma y agua",
+      brief: "Lavado en el lavacabezas: manos, espuma y agua en movimiento. La luz más clara del catálogo.",
+      position: "45% 50%",
+    },
+    tone: "stone",
+    flip: true,
+    pending: ["¿Incluye corte?", "¿Promoción con fecha de cierre?", "Kit para casa: por confirmar"],
+  },
+  {
+    id: "chika-cirugia-capilar",
+    number: "03",
+    stage: "Reparar",
+    name: "Chika Cirugía Capilar",
+    short: "Cirugía Capilar",
+    tagline: "Programa intensivo de rescate capilar",
+    hook: "Tres sesiones para acompañar a un cabello que ha pasado por mucho.",
+    idealFor:
+      "Cabellos altamente procesados, decolorados o elásticos que necesitan un proceso intensivo de reconstrucción y nutrición profunda.",
+    includesLabel: "El programa",
+    includes: [
+      "Diagnóstico, asesoría y corte de salud",
+      "Programa intensivo de 3 sesiones",
+      "Sesiones Nourishing",
+      "Sesión Replumping",
+      "Shampoo y acondicionador Natural Tec para casa",
+    ],
+    homeKit: { label: "Para casa", items: ["Shampoo y acondicionador Natural Tec"] },
+    sessions: "3 sesiones",
+    validity: "22 días",
+    rhythm: "Recomendado: 1 sesión por semana",
+    price: { amount: 193000 },
+    cta: "Agendá tu diagnóstico para iniciar",
+    availabilityNote: AVAILABILITY,
+    photo: {
+      file: "chika-cirugia-capilar-tratamiento.jpg",
+      alt: "Manos aplicando tratamiento con brocha en medios y puntas decolorados",
+      brief: "Manos aplicando tratamiento con brocha en medios y puntas decolorados. Brillo real, sin dramatizar el daño.",
+    },
+    tone: "graphite",
+    flip: true,
+    steps: {
+      label: "Ruta del programa",
+      items: [
+        { title: "Diagnóstico", text: "Capilógrafo, asesoría y corte de salud" },
+        { title: "Nourishing", text: "Reestructuración y nutrición interna" },
+        { title: "Replumping", text: "Elasticidad, cuerpo y efecto relleno" },
+        { title: "En casa", text: "Shampoo y acondicionador Natural Tec" },
+      ],
+    },
+    pending: [
+      "¿Diagnóstico y corte en la 1.ª sesión? (fija el orden de la ruta)",
+      "Escritura oficial de «Natural Tec»",
+      "Textos de la ruta: propuestos, pendientes de aprobar",
+      "Vigencia: ¿desde la compra o desde la 1.ª cita?",
+    ],
+  },
+  {
+    id: "chika-wow",
+    number: "04",
+    stage: "Mantener",
+    name: "Chika Wow",
+    short: "plan Wow",
+    tagline: "Plan de mantenimiento",
+    hook: "El cuidado continúa después del color.",
+    idealFor: "Mantener el color, la hidratación y el brillo del cabello después de un procedimiento químico.",
+    includesLabel: "En salón",
+    includes: [
+      "Cuatro tratamientos por el precio de tres",
+      "Tratamientos capilares profundos de la línea Essential Haircare",
+      "Lavado sensorial y styling profesional en cada visita",
+    ],
+    sessions: "4 sesiones",
+    validity: "3 meses",
+    rhythm: "Una sesión cada 22 días",
+    price: { amount: 80000 },
+    cta: "Reservá tu plan Wow",
+    availabilityNote: AVAILABILITY,
+    photo: {
+      file: "chika-wow-color-movimiento.jpg",
+      alt: "Cabello con color en movimiento, de espalda, con luz lateral que muestra el brillo",
+      brief: "Cabello con color en movimiento, modelo de espalda o perfil. Luz lateral que muestre brillo real.",
+    },
+    tone: "ivory",
+    flip: false,
+    visits: { count: 4, gap: "22 días", note: "4 tratamientos por el precio de 3" },
+    pending: ["¿Incluye diagnóstico?", "¿Solo químicos hechos en Chika?", "Corte y kit para casa: por confirmar"],
+  },
+  {
+    id: "chika-melena",
+    number: "05",
+    stage: "Según tu textura · Natural o virgen",
+    name: "Chika Melena",
+    short: "Melena",
+    tagline: "Revitalización para cabello natural",
+    hook: "Brillo y movimiento para tu cabello natural.",
+    idealFor:
+      "Cabellos naturales o vírgenes que lucen opacos, deshidratados o con frizz y buscan revitalizar su brillo y movimiento natural.",
+    includesLabel: "En salón",
+    includes: [
+      "Diagnóstico con capilógrafo y asesoría personalizada",
+      "Corte de estilo y styling",
+      "Dos tratamientos Essential Haircare",
+    ],
+    homeKit: { label: "Para casa", items: ["Shampoo y acondicionador de mantenimiento profesional"] },
+    sessions: "2 tratamientos",
+    validity: "6 semanas",
+    price: { amount: 118000 },
+    cta: "Agendá tu Melena",
+    availabilityNote: AVAILABILITY,
+    photo: {
+      file: "chika-melena-cabello-natural.jpg",
+      alt: "Cabello natural sin color, con movimiento suave y luz de ventana",
+      brief: "Cabello natural sin color, con movimiento suave y luz de ventana. Textura real, sin alisar en postproducción.",
+    },
+    tone: "stone",
+    flip: true,
+    pending: ["¿2 tratamientos = 2 visitas?", "¿Qué kit para casa exactamente?"],
+  },
+  {
+    id: "chika-curl-love",
+    number: "06",
+    stage: "Según tu textura · Ondas y rizos",
+    name: "Chika Curl Love",
+    short: "Curl Love",
+    tagline: "Hidratación, definición y rutina curly",
+    hook: "Tus rizos, entendidos en salón y cuidados en casa.",
+    idealFor:
+      "Melenas onduladas y rizadas que buscan hidratación profunda, definición duradera, control del frizz y rebote natural.",
+    includesLabel: "En salón",
+    includes: [
+      "Diagnóstico capilar especializado con capilógrafo",
+      "Asesoría y educación en cuidado curly",
+      "Tratamiento de nutrición e hidratación profunda",
+      "Definición profesional de rizos con secado en difusor",
+    ],
+    homeKit: {
+      label: "Para casa · 3 pasos",
+      items: ["Shampoo", "Acondicionador", "Mousse o gel*"],
+      note: "*Según tu patrón de rizo.",
+    },
+    sessions: "1 sesión intensiva",
+    validity: null,
+    rhythm: "Incluye rutina para el hogar",
+    price: { amount: 138000 },
+    cta: "Agendá tu Curl Love",
+    availabilityNote: AVAILABILITY,
+    photo: {
+      file: "chika-curl-love-rizos.jpg",
+      alt: "Rizos definidos con una mano profesional y un difusor",
+      brief: "Rizos reales definidos; mano profesional con difusor. El patrón de rizo debe coincidir con las clientas de Chika.",
+    },
+    tone: "graphite",
+    flip: false,
+    pending: ["¿Incluye corte?"],
+  },
+  {
+    id: "chika-blow-club",
+    number: "07",
+    stage: "Club · Mantener",
+    name: "Chika Blow Club",
+    short: "Blow Club",
+    tagline: "Un plan recurrente para llegar lista a tu semana",
+    idealFor: "Quienes quieren mantener peinados o secados con un plan de visitas.",
+    includesLabel: "El plan",
+    includes: ["4 visitas en 2 meses", "Disponible de lunes a jueves"],
+    pendingIncludes: ["Peinados / secados: por confirmar"],
+    sessions: "4 visitas",
+    validity: "2 meses",
+    price: { amount: null },
+    cta: "Consultá disponibilidad",
+    availabilityNote: AVAILABILITY,
+    photo: {
+      file: "chika-blow-club-secado.jpg",
+      alt: "Secado con cepillo redondo y secadora, con movimiento y brillo",
+      brief: "Secado con cepillo redondo y secadora, movimiento y brillo. O el resultado final de espalda.",
+    },
+    tone: "ivory",
+    flip: true,
+    provisionalName: true,
+    pending: [
+      "Nombre definitivo de Blow Club",
+      "Precio de Blow Club",
+      "¿4 visitas, o 4 peinados + 4 secados?",
+      "Confirmar si incluye peinados, secados o ambos",
+    ],
+  },
+];
+
+export const experienceById = (id: string) => experiences.find((e) => e.id === id)!;
+
+/** ₡50.000 — separador de miles con punto, como en el catálogo. */
+export const formatColones = (n: number) => `₡${n.toLocaleString("de-DE")}`;

@@ -8,5 +8,5 @@ export const proxy = createMiddleware(routing);
 export const config = {
   // Excluye assets estáticos, API y archivos de metadata del negociado de
   // idioma; todo lo demás pasa por el proxy para resolver el locale.
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  matcher: ["/((?!api|_next|chika|.*\\..*).*)"],
 };

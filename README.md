@@ -253,3 +253,17 @@ de negocio y tienen costo por mensaje.
   sin cambios.
 - Metadata, Open Graph, `sitemap.xml` y `robots.txt` están listos; ajusta
   `NEXT_PUBLIC_SITE_URL` en producción.
+
+## Landing Chika (`/chika`)
+
+Landing tipo catálogo para Chika Beauty Center & Spa, independiente del sitio BOLD
+(layout raíz propio en `src/app/chika/`, CSS propio, Montserrat).
+
+- **Datos editables:** `src/lib/chika/experiences.ts` (precios, sesiones, vigencias, `pending[]`),
+  `src/lib/chika/content.ts` (textos, comparación, selector), `src/lib/chika/config.ts` (contacto, WhatsApp).
+- **WhatsApp / Instagram:** `NEXT_PUBLIC_CHIKA_WHATSAPP` (solo dígitos con código de país) y
+  `NEXT_PUBLIC_CHIKA_INSTAGRAM` (URL). Dirección y horario en `config.ts`.
+- **Fotos:** copiá el archivo con el nombre indicado en el espacio reservado a `public/chika/`
+  y se usa solo (sin tocar código). QR: `public/chika/chika-whatsapp-qr.png`.
+- **Pendientes en magenta:** solo en desarrollo; en producción se muestran en tono neutro.
+  Forzar con `NEXT_PUBLIC_CHIKA_SHOW_PENDING=true|false`.
