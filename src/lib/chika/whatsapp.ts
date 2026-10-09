@@ -6,9 +6,9 @@
 
 export const WA = {
   general: "Hola, quiero que me ayuden a elegir la experiencia ideal para mi cabello.",
-  hero: "Hola, quiero cotizar o agendar una valoración capilar en Chika.",
+  hero: "Hola, quiero cotizar o agendar una valoración capilar en Chika y conocer el descuento al adquirir un paquete.",
   compare: "Hola, estoy comparando las experiencias de Chika y quiero que me ayuden a elegir la indicada para mi cabello.",
-  final: "Hola, quiero agendar mi valoración capilar en Chika y conocer qué experiencia necesita mi cabello.",
+  final: "Hola, quiero agendar mi valoración capilar en Chika y conocer el descuento al adquirir un paquete.",
 } as const;
 
 /** Tipos de intención para segmentar los clics. */

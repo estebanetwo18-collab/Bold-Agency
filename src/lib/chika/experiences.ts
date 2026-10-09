@@ -44,7 +44,7 @@ export type Experience = {
   /** Mensaje prellenado de WhatsApp para esta experiencia. */
   waMessage: string;
   ctaType: "valoracion" | "cotizacion" | "paquete" | "disponibilidad";
-  /** Nota de valor/beneficio junto a la inversión (reemplaza la nota general). */
+  /** Nota de precio/descuento propia de la experiencia (reemplaza la nota general). */
   priceNote?: string;
   availabilityNote: string;
   photo: Photo;
@@ -82,9 +82,9 @@ export const experiences: Experience[] = [
     shape: "arch",
     price: { amount: 50000, from: true },
     cta: "Agendá tu valoración por WhatsApp",
-    waMessage: "Hola, quiero agendar una valoración capilar con Chika Kit.",
+    waMessage: "Hola, quiero agendar una valoración capilar con Chika Kit y conocer el descuento al adquirir un paquete.",
     ctaType: "valoracion",
-    priceNote: "Incluye tu valoración con capilógrafo digital. Si después elegís un paquete, consultá por el beneficio vigente.",
+    priceNote: "Incluye tu valoración con capilógrafo digital. Si después adquirís un paquete, obtenés un descuento.",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-diagnostico-capilografo.jpg",
@@ -96,6 +96,7 @@ export const experiences: Experience[] = [
     flip: false,
     pending: [
       "Qué hace variar el «desde ₡50.000»",
+      "Monto del descuento por paquete y a qué experiencias aplica",
       "¿Promoción con fecha de cierre?",
       "Detalle del kit para casa (la tabla lo marca por confirmar)",
     ],
@@ -122,7 +123,7 @@ export const experiences: Experience[] = [
     shape: "circle",
     price: { amount: 70000 },
     cta: "Cotizá tu Detox por WhatsApp",
-    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Detox.",
+    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Detox y conocer el descuento por paquete.",
     ctaType: "cotizacion",
     availabilityNote: AVAILABILITY,
     photo: {
@@ -160,7 +161,7 @@ export const experiences: Experience[] = [
     shape: "tall",
     price: { amount: 193000 },
     cta: "Consultá tu paquete por WhatsApp",
-    waMessage: "Hola, quiero cotizar el programa Chika Cirugía Capilar y agendar mi valoración.",
+    waMessage: "Hola, quiero cotizar el programa Chika Cirugía Capilar, agendar mi valoración y conocer el descuento por paquete.",
     ctaType: "paquete",
     availabilityNote: AVAILABILITY,
     photo: {
@@ -212,7 +213,7 @@ export const experiences: Experience[] = [
     cta: "Consultá tu plan Wow por WhatsApp",
     waMessage: "Hola, quiero cotizar el plan Chika Wow y agendar una valoración.",
     ctaType: "paquete",
-    priceNote: "Plan de 4 tratamientos por el precio de 3. El valor final se confirma después de tu valoración.",
+    priceNote: "El plan ya incluye 4 tratamientos por el precio de 3. En tu valoración te confirmamos si aplica un descuento adicional.",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-wow-color-movimiento.jpg",
@@ -223,7 +224,7 @@ export const experiences: Experience[] = [
     tone: "white",
     flip: false,
     visits: { count: 4, gap: "22 días", note: "4 tratamientos por el precio de 3" },
-    pending: ["¿Incluye diagnóstico?", "¿Solo químicos hechos en Chika?", "Corte y kit para casa: por confirmar", "Foto provisional (stock)"],
+    pending: ["¿El descuento por paquete aplica además del 4×3?", "¿Incluye diagnóstico?", "¿Solo químicos hechos en Chika?", "Corte y kit para casa: por confirmar", "Foto provisional (stock)"],
   },
   {
     id: "chika-melena",
@@ -249,7 +250,7 @@ export const experiences: Experience[] = [
     shape: "circle",
     price: { amount: 118000 },
     cta: "Cotizá tu Melena por WhatsApp",
-    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Melena.",
+    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Melena y conocer el descuento por paquete.",
     ctaType: "cotizacion",
     availabilityNote: AVAILABILITY,
     photo: {
@@ -291,7 +292,7 @@ export const experiences: Experience[] = [
     shape: "arch",
     price: { amount: 138000 },
     cta: "Cotizá Curl Love por WhatsApp",
-    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Curl Love.",
+    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Curl Love y conocer el descuento por paquete.",
     ctaType: "cotizacion",
     availabilityNote: AVAILABILITY,
     photo: {
@@ -325,7 +326,7 @@ export const experiences: Experience[] = [
     cta: "Consultá disponibilidad por WhatsApp",
     waMessage: "Hola, quiero consultar disponibilidad y precio de Chika Blow Club.",
     ctaType: "disponibilidad",
-    priceNote: "Te confirmamos el valor y los horarios disponibles por WhatsApp.",
+    priceNote: "Te confirmamos el precio, el descuento por paquete y los horarios disponibles por WhatsApp.",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-blow-club-secado.jpg",

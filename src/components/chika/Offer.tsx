@@ -3,7 +3,7 @@ import { pricing } from "@/lib/chika/content";
 import { WhatsAppCta } from "./Button";
 import { Pending } from "./Pending";
 
-/** Bloque de decisión: inversión de referencia + valoración/beneficio + CTA a WhatsApp. */
+/** Bloque de decisión: precio regular + valoración/descuento por paquete + CTA a WhatsApp. */
 export function Offer({ exp }: { exp: Experience }) {
   const { price } = exp;
   return (

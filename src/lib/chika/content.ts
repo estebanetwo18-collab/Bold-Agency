@@ -23,17 +23,17 @@ export const hero = {
   text: "Valoración con capilógrafo digital y un plan de cuidado según lo que tu cabello necesita hoy.",
   cta: "Cotizá o agendá por WhatsApp",
   secondary: "Ayudame a elegir",
-  note: "Escribinos, contanos sobre tu cabello y coordinamos tu valoración.",
+  note: "Agendá tu valoración y obtené un descuento al adquirir tu paquete.",
   trust: ["Valoración con capilógrafo digital", "Productos profesionales Davines", "Rutina para casa en experiencias seleccionadas", "Asesoría personalizada"],
   photoAlt: "Cabello castaño con reflejos dorados en ondas largas, visto de espalda",
 };
 
-/** Comunicación de inversión: precio de referencia + valoración + beneficio (sin cifras no confirmadas). */
+/** Comunicación de precio: precio regular (sin descuento) + valoración + descuento por paquete (sin porcentaje hasta confirmarlo). */
 export const pricing = {
-  label: "Inversión de referencia",
-  fromLabel: "Inversión de referencia desde",
-  note: "El valor final se confirma después de tu valoración. Consultá por el beneficio vigente al elegir un paquete.",
-  headline: "Agendá tu valoración y consultá por el beneficio disponible al adquirir un paquete.",
+  label: "Precio regular",
+  fromLabel: "Precio regular desde",
+  note: "Agendá tu valoración y obtené un descuento al adquirir tu paquete. Te confirmamos el valor final por WhatsApp.",
+  headline: "Los precios publicados son regulares. Agendá tu valoración y obtené un descuento al adquirir tu paquete.",
   tbc: "Precio por confirmar",
 };
 
@@ -82,7 +82,7 @@ export const intro = {
 export const experiencesIntro = {
   eyebrow: "Experiencias Chika",
   title: "Las experiencias",
-  text: "Siete propuestas con lo que incluye cada una, su vigencia y su inversión de referencia.",
+  text: "Siete propuestas con lo que incluye cada una, su vigencia y su precio regular.",
 };
 
 export const compare = {
@@ -144,7 +144,7 @@ export const howItWorks = {
   steps: [
     { title: "Escribinos por WhatsApp", text: "Contanos cómo está tu cabello y qué te gustaría lograr." },
     { title: "Hacemos tu valoración", text: "Con capilógrafo digital revisamos hebra y cuero cabelludo para recomendarte la experiencia indicada." },
-    { title: "Elegís tu experiencia", text: "Confirmamos el valor final, el horario y el beneficio vigente si elegís un paquete." },
+    { title: "Adquirís tu paquete con descuento", text: "Te confirmamos el valor final con tu descuento y coordinamos el horario." },
   ],
   cta: "Cotizá o agendá por WhatsApp",
 };
@@ -158,8 +158,8 @@ export const faq = {
       a: "Respondé el selector «¿Cuál es para vos?» o escribinos por WhatsApp. Si te identificás con varias, te recomendamos empezar por Chika Kit: la valoración con capilógrafo confirma qué necesita tu cabello.",
     },
     {
-      q: "¿El precio publicado es el final?",
-      a: "Es una inversión de referencia. El valor final se confirma después de tu valoración. Si elegís un paquete, consultá por el beneficio vigente.",
+      q: "¿Hay descuento?",
+      a: "Los precios publicados son regulares, sin descuento. Si después de tu valoración adquirís un paquete, obtenés un descuento; te confirmamos el valor final por WhatsApp.",
     },
     {
       q: "¿Hay una experiencia para mi tipo de cabello?",
@@ -182,7 +182,7 @@ export const faq = {
 
 export const finalCta = {
   title: "Agendá tu valoración y descubramos qué necesita tu cabello.",
-  text: "Escribinos y te ayudamos a elegir. Primero hacemos tu valoración; después confirmamos el valor final y el beneficio vigente si elegís un paquete.",
+  text: "Escribinos y te ayudamos a elegir. Primero hacemos tu valoración; si después adquirís un paquete, obtenés un descuento sobre el precio regular.",
   button: "Cotizá o agendá por WhatsApp",
   contactLabel: "Contacto",
   notes: [

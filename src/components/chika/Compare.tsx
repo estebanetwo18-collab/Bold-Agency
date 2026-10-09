@@ -47,11 +47,11 @@ export function Compare() {
 
         <div className="ck-cmp__table" tabIndex={0} role="region" aria-label="Tabla comparativa de experiencias (desplazable)">
           <table>
-            <caption className="ck-visually-hidden">Comparación de las experiencias Chika. Inversión de referencia en colones.</caption>
+            <caption className="ck-visually-hidden">Comparación de las experiencias Chika. Precios regulares en colones.</caption>
             <thead>
               <tr>
                 {compare.columns.map((c) => (
-                  <th key={c} scope="col">{c === "Inversión" ? "Inversión de referencia" : c}</th>
+                  <th key={c} scope="col">{c === "Inversión" ? "Precio regular" : c}</th>
                 ))}
               </tr>
             </thead>
@@ -91,7 +91,7 @@ export function Compare() {
                   {fields.map(([label, key]) => (
                     <div key={key}><dt>{label}</dt><dd><MarkCell m={r[key]} /> <span className="ck-cmp__word" aria-hidden="true">{TXT[r[key]]}</span></dd></div>
                   ))}
-                  <div className="ck-cmp__total"><dt>Inversión de referencia</dt><dd>{priceNode(r.id)}</dd></div>
+                  <div className="ck-cmp__total"><dt>Precio regular</dt><dd>{priceNode(r.id)}</dd></div>
                 </dl>
                 <a className="ck-cmp__more" href={`#${r.id}`}>Ver {e.name}</a>
               </details>
@@ -104,7 +104,7 @@ export function Compare() {
             <li key={l.label}><span aria-hidden="true">{l.sym}</span> {l.label}</li>
           ))}
         </ul>
-        <p className="ck-compare__fine">Precios de referencia en colones. El valor final se confirma después de tu valoración.</p>
+        <p className="ck-compare__fine">Precios regulares en colones, sin descuento. Al adquirir un paquete después de tu valoración obtenés un descuento.</p>
 
         <div className="ck-compare__cta">
           <p className="ck-nudge">{compare.nudge}</p>

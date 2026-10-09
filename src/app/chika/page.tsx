@@ -92,7 +92,7 @@ export default function ChikaPage() {
             <Image className="ck-footer__brand" src="/chika/davines-logo.png" alt="Davines" width={700} height={192} />
           </div>
           <p className="ck-footer__legal">
-            © {new Date().getFullYear()} Chika Beauty Center &amp; Spa. Precios de referencia en colones costarricenses; el valor final se confirma después de la valoración. Condiciones y vigencias según cada experiencia.
+            © {new Date().getFullYear()} Chika Beauty Center &amp; Spa. Precios regulares en colones costarricenses; descuento al adquirir un paquete después de la valoración. Condiciones y vigencias según cada experiencia.
           </p>
         </div>
       </footer>

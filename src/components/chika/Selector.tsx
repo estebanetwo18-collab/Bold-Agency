@@ -30,7 +30,7 @@ export function Selector() {
 
   // Mensaje contextual: recomendación + respuestas marcadas.
   const message = rec
-    ? `Hola, respondí «¿Cuál es para vos?» en la página de Chika y me recomendó ${rec.name}. Me identifico con: ${chosen.map((q) => q.answer).join("; ")}. Quiero cotizar y agendar una valoración.`
+    ? `Hola, respondí «¿Cuál es para vos?» en la página de Chika y me recomendó ${rec.name}. Me identifico con: ${chosen.map((q) => q.answer).join("; ")}. Quiero cotizar, agendar una valoración y conocer el descuento por paquete.`
     : "";
 
   return (
@@ -70,7 +70,7 @@ export function Selector() {
                   <Pending>Precio por confirmar</Pending>
                 ) : (
                   <>
-                    <span>Referencia {rec.price.from ? "desde " : ""}</span>
+                    <span>Precio regular {rec.price.from ? "desde " : ""}</span>
                     {formatColones(rec.price.amount)}
                   </>
                 )}
