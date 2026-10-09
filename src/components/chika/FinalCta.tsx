@@ -4,6 +4,7 @@ import Image from "next/image";
 import { contact, placeholders } from "@/lib/chika/config";
 import { finalCta } from "@/lib/chika/content";
 import { WhatsAppCta } from "./Button";
+import { WA } from "@/lib/chika/whatsapp";
 import { Pending } from "./Pending";
 import { Photo } from "./Photo";
 import { Reveal } from "./Reveal";
@@ -36,7 +37,7 @@ export function FinalCta() {
         <p className="ck-eyebrow">Reservas</p>
         <h2 id="ck-final-h" className="ck-final__title">{finalCta.title}</h2>
         <p className="ck-final__text">{finalCta.text}</p>
-        <WhatsAppCta label={finalCta.button} message={finalCta.message} variant="solid" />
+        <WhatsAppCta label={finalCta.button} message={WA.final} location="final" ctaType="valoracion" />
 
         <h3 className="ck-label ck-final__label">{finalCta.contactLabel}</h3>
         <dl className="ck-contact">

@@ -3,28 +3,38 @@
 export const nav = {
   links: [
     { href: "#experiencias", label: "Experiencias" },
+    { href: "#selector", label: "¿Cuál es para vos?" },
     { href: "#comparar", label: "Comparar" },
-    { href: "#chika-kit", label: "Diagnóstico" },
+    { href: "#preguntas", label: "Preguntas" },
   ],
-  cta: "Agendá tu cita",
-  ctaShort: "Reservar",
+  cta: "Cotizá o agendá",
+  ctaShort: "WhatsApp",
+  menuCta: "Cotizá o agendá por WhatsApp",
 };
 
 export const partner = {
   label: "Trabajamos con productos profesionales",
 };
 
-export const marquee = ["Diagnóstico capilar", "Detox", "Cirugía capilar", "Mantenimiento", "Melena natural", "Curl Love", "Blow Club"];
-
 export const hero = {
   eyebrow: "Colección de experiencias capilares",
   lead: "Tu cabello tiene una historia.",
   follow: "Empecemos por entenderla.",
-  cta: "Agendá tu diagnóstico",
-  secondary: "Ver experiencias",
-  text: "Diagnóstico con capilógrafo digital y tratamientos según lo que tu cabello necesita hoy.",
-  index: ["Diagnóstico", "Detox", "Reparación", "Mantenimiento"],
+  text: "Valoración con capilógrafo digital y un plan de cuidado según lo que tu cabello necesita hoy.",
+  cta: "Cotizá o agendá por WhatsApp",
+  secondary: "Ayudame a elegir",
+  note: "Escribinos, contanos sobre tu cabello y coordinamos tu valoración.",
+  trust: ["Valoración con capilógrafo digital", "Productos profesionales Davines", "Rutina para casa en experiencias seleccionadas", "Asesoría personalizada"],
   photoAlt: "Cabello castaño con reflejos dorados en ondas largas, visto de espalda",
+};
+
+/** Comunicación de inversión: precio de referencia + valoración + beneficio (sin cifras no confirmadas). */
+export const pricing = {
+  label: "Inversión de referencia",
+  fromLabel: "Inversión de referencia desde",
+  note: "El valor final se confirma después de tu valoración. Consultá por el beneficio vigente al elegir un paquete.",
+  headline: "Agendá tu valoración y consultá por el beneficio disponible al adquirir un paquete.",
+  tbc: "Precio por confirmar",
 };
 
 export const intro = {
@@ -65,27 +75,29 @@ export const intro = {
     { id: "chika-melena", label: "Natural o virgen" },
     { id: "chika-curl-love", label: "Ondas y rizos" },
   ],
-  nudge: "¿No sabés por dónde empezar? Empezá por el diagnóstico.",
+  nudge: "¿No sabés por dónde empezar?",
+  nudgeLink: "Respondé el selector en 10 segundos",
 };
 
 export const experiencesIntro = {
   eyebrow: "Experiencias Chika",
   title: "Las experiencias",
-  text: "Siete propuestas con lo que incluye cada una, su vigencia y su inversión.",
+  text: "Siete propuestas con lo que incluye cada una, su vigencia y su inversión de referencia.",
 };
 
 export const compare = {
-  eyebrow: "Inversión",
+  eyebrow: "Comparativa",
   title: "Compará las experiencias",
   subtitle: "Lo que incluye cada propuesta, en una sola vista.",
-  detailTitle: "Qué incluye cada una",
+
   columns: ["Experiencia", "Sesiones", "Vigencia", "Diagnóstico", "Corte", "Styling", "Kit para casa", "Inversión"],
   legend: [
     { sym: "●", label: "Incluye" },
     { sym: "—", label: "No aplica" },
     { sym: "○", label: "Por confirmar" },
   ],
-  nudge: "¿Dudás entre dos? Te ayudamos a elegir en tu diagnóstico.",
+  nudge: "¿Dudás entre dos? Te ayudamos a elegir en tu valoración.",
+  cta: "Hablemos por WhatsApp",
 };
 
 export type Mark = "yes" | "na" | "tbc";
@@ -114,23 +126,64 @@ export const selector = {
   subtitle: "Marcá lo que te identifica y te sugerimos por dónde empezar.",
   empty: "Marcá una o más opciones para ver tu recomendación.",
   multiple: "Te identificás con más de una. Empezá por Chika Kit.",
-  multipleSub: "En el diagnóstico confirmamos cuál es la indicada para vos.",
+  multipleSub: "En tu valoración confirmamos cuál es la indicada para vos.",
   questions: [
-    { id: "q1", text: "¿No sabés qué necesita tu cabello?", result: "chika-kit" },
-    { id: "q2", text: "¿Sentís acumulación o saturación?", result: "chika-detox" },
-    { id: "q3", text: "¿Está muy procesado, decolorado o elástico?", result: "chika-cirugia-capilar" },
-    { id: "q4", text: "¿Querés mantener los resultados de un químico?", result: "chika-wow" },
-    { id: "q5", text: "¿Tu cabello es natural y luce opaco o con frizz?", result: "chika-melena" },
-    { id: "q6", text: "¿Tenés ondas o rizos?", result: "chika-curl-love" },
-    { id: "q7", text: "¿Querés mantener peinados o secados?", result: "chika-blow-club" },
+    { id: "q1", text: "¿No sabés qué necesita tu cabello?", answer: "no sé qué necesita mi cabello", result: "chika-kit" },
+    { id: "q2", text: "¿Sentís acumulación o saturación?", answer: "siento acumulación o saturación", result: "chika-detox" },
+    { id: "q3", text: "¿Está muy procesado, decolorado o elástico?", answer: "mi cabello está muy procesado, decolorado o elástico", result: "chika-cirugia-capilar" },
+    { id: "q4", text: "¿Querés mantener los resultados de un químico?", answer: "quiero mantener los resultados de un químico", result: "chika-wow" },
+    { id: "q5", text: "¿Tu cabello es natural y luce opaco o con frizz?", answer: "mi cabello es natural y luce opaco o con frizz", result: "chika-melena" },
+    { id: "q6", text: "¿Tenés ondas o rizos?", answer: "tengo ondas o rizos", result: "chika-curl-love" },
+    { id: "q7", text: "¿Querés mantener peinados o secados?", answer: "quiero mantener peinados o secados", result: "chika-blow-club" },
+  ],
+};
+
+export const howItWorks = {
+  eyebrow: "Cómo reservar",
+  title: "Así empieza tu experiencia",
+  steps: [
+    { title: "Escribinos por WhatsApp", text: "Contanos cómo está tu cabello y qué te gustaría lograr." },
+    { title: "Hacemos tu valoración", text: "Con capilógrafo digital revisamos hebra y cuero cabelludo para recomendarte la experiencia indicada." },
+    { title: "Elegís tu experiencia", text: "Confirmamos el valor final, el horario y el beneficio vigente si elegís un paquete." },
+  ],
+  cta: "Cotizá o agendá por WhatsApp",
+};
+
+export const faq = {
+  eyebrow: "Preguntas frecuentes",
+  title: "Antes de escribirnos",
+  items: [
+    {
+      q: "¿Cómo sé qué experiencia necesito?",
+      a: "Respondé el selector «¿Cuál es para vos?» o escribinos por WhatsApp. Si te identificás con varias, te recomendamos empezar por Chika Kit: la valoración con capilógrafo confirma qué necesita tu cabello.",
+    },
+    {
+      q: "¿El precio publicado es el final?",
+      a: "Es una inversión de referencia. El valor final se confirma después de tu valoración. Si elegís un paquete, consultá por el beneficio vigente.",
+    },
+    {
+      q: "¿Hay una experiencia para mi tipo de cabello?",
+      a: "Sí. Chika Melena es para cabello natural o virgen, Chika Curl Love para ondas y rizos, y Chika Cirugía Capilar para cabellos decolorados, muy procesados o elásticos.",
+    },
+    {
+      q: "¿Qué pasa después de escribir por WhatsApp?",
+      a: "Te ayudamos a elegir la experiencia, coordinamos tu valoración y te confirmamos el horario y el valor final. Las citas están sujetas a disponibilidad de horarios.",
+    },
+    {
+      q: "¿Los planes tienen vigencia?",
+      a: "Sí. Chika Cirugía Capilar tiene vigencia de 22 días, Chika Wow de 3 meses, Chika Melena de 6 semanas y Chika Blow Club de 2 meses. Consultá las condiciones al reservar.",
+    },
+    {
+      q: "¿Qué productos usan?",
+      a: "Trabajamos con líneas profesionales de Davines, como Essential Haircare y Natural Tec. En varias experiencias te llevás productos para continuar el cuidado en casa.",
+    },
   ],
 };
 
 export const finalCta = {
-  title: "Agendá tu diagnóstico y descubramos qué necesita tu cabello.",
-  text: "Nuestro equipo te ayuda a confirmar en salón cuál es la experiencia indicada para tu cabello.",
-  button: "Reservar por WhatsApp",
-  message: "Hola, quiero agendar mi diagnóstico capilar en Chika.",
+  title: "Agendá tu valoración y descubramos qué necesita tu cabello.",
+  text: "Escribinos y te ayudamos a elegir. Primero hacemos tu valoración; después confirmamos el valor final y el beneficio vigente si elegís un paquete.",
+  button: "Cotizá o agendá por WhatsApp",
   contactLabel: "Contacto",
   notes: [
     "Citas sujetas a disponibilidad de horarios.",

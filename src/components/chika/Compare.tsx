@@ -1,7 +1,8 @@
 import { compare, compareRows, type Mark } from "@/lib/chika/content";
 import { experienceById, formatColones } from "@/lib/chika/experiences";
+import { WA } from "@/lib/chika/whatsapp";
+import { WhatsAppCta } from "./Button";
 import { Pending } from "./Pending";
-import { Photo } from "./Photo";
 import { Reveal } from "./Reveal";
 
 const SYM: Record<Mark, string> = { yes: "●", na: "—", tbc: "○" };
@@ -34,13 +35,6 @@ const fields = [
   ["Kit para casa", "kit"],
 ] as const;
 
-const comparePhoto = {
-  file: "chika-intro-color-movimiento.jpg",
-  alt: "Estilista dando forma a ondas en un cabello cobrizo",
-  brief: "Cabello con color en movimiento",
-  position: "62% 45%",
-};
-
 export function Compare() {
   return (
     <section id="comparar" className="ck-compare ck-tone-white" aria-labelledby="ck-cmp-h">
@@ -51,38 +45,13 @@ export function Compare() {
           <p className="ck-lede">{compare.subtitle}</p>
         </Reveal>
 
-        <div className="ck-menu-list">
-          <div className="ck-menu-list__media" aria-hidden="false">
-            <div className="ck-menu-list__arch">
-              <Photo photo={comparePhoto} sizes="(min-width: 900px) 30vw, 80vw" />
-            </div>
-          </div>
-          <ul className="ck-menu-list__rows">
-            {compareRows.map((r) => {
-              const e = experienceById(r.id);
-              return (
-                <li key={r.id}>
-                  <a href={`#${r.id}`}>
-                    <span className="ck-menu-list__name">{e.name}</span>
-                    <span className="ck-menu-list__desc">{e.tagline}</span>
-                    <span className="ck-menu-list__price">{priceNode(r.id)}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        <h3 className="ck-h3 ck-compare__detail-h">{compare.detailTitle}</h3>
-
-        {/* Escritorio / tablet: tabla editorial */}
         <div className="ck-cmp__table" tabIndex={0} role="region" aria-label="Tabla comparativa de experiencias (desplazable)">
           <table>
-            <caption className="ck-visually-hidden">Comparación de las experiencias Chika</caption>
+            <caption className="ck-visually-hidden">Comparación de las experiencias Chika. Inversión de referencia en colones.</caption>
             <thead>
               <tr>
                 {compare.columns.map((c) => (
-                  <th key={c} scope="col">{c}</th>
+                  <th key={c} scope="col">{c === "Inversión" ? "Inversión de referencia" : c}</th>
                 ))}
               </tr>
             </thead>
@@ -106,7 +75,6 @@ export function Compare() {
           </table>
         </div>
 
-        {/* Móvil: acordeones verticales */}
         <div className="ck-cmp__list">
           {compareRows.map((r) => {
             const e = experienceById(r.id);
@@ -114,6 +82,7 @@ export function Compare() {
               <details key={r.id} className="ck-cmp__item" name="ck-compare">
                 <summary>
                   <span className="ck-cmp__name">{e.name}</span>
+                  <span className="ck-cmp__sum">{priceNode(r.id)}</span>
                   <span className="ck-collapse__icon" aria-hidden="true" />
                 </summary>
                 <dl>
@@ -122,7 +91,7 @@ export function Compare() {
                   {fields.map(([label, key]) => (
                     <div key={key}><dt>{label}</dt><dd><MarkCell m={r[key]} /> <span className="ck-cmp__word" aria-hidden="true">{TXT[r[key]]}</span></dd></div>
                   ))}
-                  <div className="ck-cmp__total"><dt>Inversión</dt><dd>{priceNode(r.id)}</dd></div>
+                  <div className="ck-cmp__total"><dt>Inversión de referencia</dt><dd>{priceNode(r.id)}</dd></div>
                 </dl>
                 <a className="ck-cmp__more" href={`#${r.id}`}>Ver {e.name}</a>
               </details>
@@ -135,7 +104,12 @@ export function Compare() {
             <li key={l.label}><span aria-hidden="true">{l.sym}</span> {l.label}</li>
           ))}
         </ul>
-        <p className="ck-nudge">{compare.nudge}</p>
+        <p className="ck-compare__fine">Precios de referencia en colones. El valor final se confirma después de tu valoración.</p>
+
+        <div className="ck-compare__cta">
+          <p className="ck-nudge">{compare.nudge}</p>
+          <WhatsAppCta label={compare.cta} message={WA.compare} location="compare" ctaType="general" variant="line" />
+        </div>
       </div>
     </section>
   );

@@ -39,7 +39,13 @@ export type Experience = {
   shape: "arch" | "circle" | "tall";
   /** amount en colones; null = por confirmar */
   price: { amount: number | null; from?: boolean };
+  /** Texto del botón (siempre abre WhatsApp). */
   cta: string;
+  /** Mensaje prellenado de WhatsApp para esta experiencia. */
+  waMessage: string;
+  ctaType: "valoracion" | "cotizacion" | "paquete" | "disponibilidad";
+  /** Nota de valor/beneficio junto a la inversión (reemplaza la nota general). */
+  priceNote?: string;
   availabilityNote: string;
   photo: Photo;
   tone: Tone;
@@ -75,7 +81,10 @@ export const experiences: Experience[] = [
     facts: [{ k: "Sesiones", v: "1 sesión" }],
     shape: "arch",
     price: { amount: 50000, from: true },
-    cta: "Agendá tu diagnóstico",
+    cta: "Agendá tu valoración por WhatsApp",
+    waMessage: "Hola, quiero agendar una valoración capilar con Chika Kit.",
+    ctaType: "valoracion",
+    priceNote: "Incluye tu valoración con capilógrafo digital. Si después elegís un paquete, consultá por el beneficio vigente.",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-diagnostico-capilografo.jpg",
@@ -112,7 +121,9 @@ export const experiences: Experience[] = [
     facts: [{ k: "Sesiones", v: "1 sesión" }],
     shape: "circle",
     price: { amount: 70000 },
-    cta: "Agendá tu Detox",
+    cta: "Cotizá tu Detox por WhatsApp",
+    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Detox.",
+    ctaType: "cotizacion",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-detox-lavado.jpg",
@@ -148,13 +159,15 @@ export const experiences: Experience[] = [
     ],
     shape: "tall",
     price: { amount: 193000 },
-    cta: "Agendá tu diagnóstico para iniciar",
+    cta: "Consultá tu paquete por WhatsApp",
+    waMessage: "Hola, quiero cotizar el programa Chika Cirugía Capilar y agendar mi valoración.",
+    ctaType: "paquete",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-cirugia-capilar-tratamiento.jpg",
       alt: "Manos aplicando tratamiento con brocha en medios y puntas decolorados",
       brief: "Manos aplicando tratamiento con brocha en medios y puntas decolorados. Brillo real, sin dramatizar el daño.",
-      position: "55% 50%",
+      position: "50% 45%",
     },
     tone: "blush",
     flip: true,
@@ -196,7 +209,10 @@ export const experiences: Experience[] = [
     ],
     shape: "arch",
     price: { amount: 80000 },
-    cta: "Reservá tu plan Wow",
+    cta: "Consultá tu plan Wow por WhatsApp",
+    waMessage: "Hola, quiero cotizar el plan Chika Wow y agendar una valoración.",
+    ctaType: "paquete",
+    priceNote: "Plan de 4 tratamientos por el precio de 3. El valor final se confirma después de tu valoración.",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-wow-color-movimiento.jpg",
@@ -232,7 +248,9 @@ export const experiences: Experience[] = [
     ],
     shape: "circle",
     price: { amount: 118000 },
-    cta: "Agendá tu Melena",
+    cta: "Cotizá tu Melena por WhatsApp",
+    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Melena.",
+    ctaType: "cotizacion",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-melena-cabello-natural.jpg",
@@ -272,7 +290,9 @@ export const experiences: Experience[] = [
     ],
     shape: "arch",
     price: { amount: 138000 },
-    cta: "Agendá tu Curl Love",
+    cta: "Cotizá Curl Love por WhatsApp",
+    waMessage: "Hola, quiero cotizar y agendar una valoración para Chika Curl Love.",
+    ctaType: "cotizacion",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-curl-love-rizos.jpg",
@@ -302,7 +322,10 @@ export const experiences: Experience[] = [
     ],
     shape: "circle",
     price: { amount: null },
-    cta: "Consultá disponibilidad",
+    cta: "Consultá disponibilidad por WhatsApp",
+    waMessage: "Hola, quiero consultar disponibilidad y precio de Chika Blow Club.",
+    ctaType: "disponibilidad",
+    priceNote: "Te confirmamos el valor y los horarios disponibles por WhatsApp.",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-blow-club-secado.jpg",

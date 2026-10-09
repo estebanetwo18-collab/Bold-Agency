@@ -48,7 +48,9 @@ export function Intro() {
           </ul>
         </Reveal>
 
-        <p className="ck-nudge">{intro.nudge}</p>
+        <p className="ck-nudge">
+          {intro.nudge} <a href="#selector">{intro.nudgeLink}</a>
+        </p>
       </div>
     </section>
   );

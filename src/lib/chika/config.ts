@@ -15,7 +15,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_CHIKA_SITE_URL ?? "https://www.example.com/chika",
   title: "Chika · Colección de experiencias capilares",
   description:
-    "Diagnóstico capilar con capilógrafo, tratamientos según la necesidad de tu cabello y planes de mantenimiento. Conocé las experiencias Chika y agendá tu diagnóstico por WhatsApp.",
+    "Valoración capilar con capilógrafo digital y experiencias según lo que tu cabello necesita. Cotizá o agendá tu valoración en Chika por WhatsApp.",
 };
 
 /** Contacto. `null` = pendiente de confirmar (se renderiza el placeholder). */
@@ -30,20 +30,24 @@ export const contact = {
 };
 
 export const placeholders = {
-  whatsapp: "[WHATSAPP]",
+  whatsapp: "[NÚMERO DE WHATSAPP PENDIENTE DE CONFIRMAR]",
   instagram: "[INSTAGRAM]",
   address: "[DIRECCIÓN]",
   hours: "[HORARIO]",
   qr: "[QR]",
 } as const;
 
-/** Enlace de reserva. Sin número confirmado, lleva al bloque de contacto. */
+/**
+ * Enlace a WhatsApp con mensaje prellenado. Con número confirmado abre el chat
+ * de Chika; sin número abre WhatsApp con el mensaje listo para elegir contacto
+ * (el botón nunca queda sin acción). Configurar NEXT_PUBLIC_CHIKA_WHATSAPP.
+ */
 export function whatsappHref(message: string): string {
-  if (!contact.whatsapp) return "#contacto";
-  return `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(message)}`;
+  const text = encodeURIComponent(message);
+  return contact.whatsapp ? `https://wa.me/${contact.whatsapp}?text=${text}` : `https://wa.me/?text=${text}`;
 }
 
-export const isExternalWhatsapp = () => Boolean(contact.whatsapp);
+export const hasWhatsappNumber = () => Boolean(contact.whatsapp);
 
 /** JSON-LD de negocio local: solo se emite con datos suficientes (nombre, dirección y teléfono). */
 export function localBusinessJsonLd() {

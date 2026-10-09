@@ -267,3 +267,12 @@ Landing tipo catálogo para Chika Beauty Center & Spa, independiente del sitio B
   y se usa solo (sin tocar código). QR: `public/chika/chika-whatsapp-qr.png`.
 - **Pendientes en magenta:** solo en desarrollo; en producción se muestran en tono neutro.
   Forzar con `NEXT_PUBLIC_CHIKA_SHOW_PENDING=true|false`.
+
+### Conversión y analítica (Chika)
+
+- Todos los CTA abren WhatsApp con mensaje prellenado (`src/lib/chika/whatsapp.ts` y `waMessage`
+  en cada experiencia). Sin `NEXT_PUBLIC_CHIKA_WHATSAPP` el enlace abre WhatsApp con el mensaje
+  listo para elegir contacto; con el número abre directamente el chat de Chika.
+- Eventos (dataLayer / gtag / Meta Pixel si están instalados): `whatsapp_click`,
+  `experience_cta_click`, `curl_love_cta_click`, `selector_answer`, `selector_recommendation`,
+  `scroll_depth`, `nav_click`, `faq_open`. Parámetros: `location`, `experience`, `cta_type`.

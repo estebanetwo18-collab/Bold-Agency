@@ -1,4 +1,5 @@
 import { hero, partner } from "@/lib/chika/content";
+import { WA } from "@/lib/chika/whatsapp";
 import { LinkCta, WhatsAppCta } from "./Button";
 import { Photo } from "./Photo";
 
@@ -20,22 +21,21 @@ export function Hero() {
           </h1>
           <p className="ck-hero__text">{hero.text}</p>
           <div className="ck-hero__actions">
-            <WhatsAppCta label={hero.cta} message="Hola, quiero agendar mi diagnóstico capilar en Chika." />
-            <LinkCta href="#experiencias" label={hero.secondary} variant="text" />
+            <WhatsAppCta label={hero.cta} message={WA.hero} location="hero" ctaType="general" />
+            <LinkCta href="#selector" label={hero.secondary} variant="text" track="hero_selector" />
           </div>
-          <ol className="ck-hero__index" aria-label="Etapas del cuidado">
-            {hero.index.map((i, n) => (
-              <li key={i}>
-                <span>{String(n + 1).padStart(2, "0")}</span> {i}
-              </li>
+          <p className="ck-hero__note">{hero.note}</p>
+          <ul className="ck-hero__trust" aria-label="Por qué Chika">
+            {hero.trust.map((t) => (
+              <li key={t}>{t}</li>
             ))}
-          </ol>
+          </ul>
         </div>
 
         <div className="ck-hero__visual">
           <div className="ck-hero__disc" aria-hidden="true" />
           <div className="ck-hero__arch">
-            <Photo photo={heroPhoto} sizes="(min-width: 900px) 42vw, 92vw" priority />
+            <Photo photo={heroPhoto} sizes="(min-width: 900px) 42vw, 86vw" priority />
           </div>
           <svg className="ck-hero__seal" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
             <defs>
@@ -43,7 +43,7 @@ export function Hero() {
             </defs>
             <circle cx="60" cy="60" r="58" />
             <text>
-              <textPath href="#ck-seal-path">DIAGNÓSTICO CAPILAR · CHIKA BEAUTY CENTER ·</textPath>
+              <textPath href="#ck-seal-path">VALORACIÓN CAPILAR · CHIKA BEAUTY CENTER ·</textPath>
             </text>
             <path className="ck-hero__seal-star" d="M60 46 L63 57 L74 60 L63 63 L60 74 L57 63 L46 60 L57 57 Z" />
           </svg>

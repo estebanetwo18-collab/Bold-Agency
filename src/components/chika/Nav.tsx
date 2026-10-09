@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { nav } from "@/lib/chika/content";
 import { Logo } from "./Logo";
+import { EVENTS } from "@/lib/chika/whatsapp";
+import { WaIcon } from "./Button";
 
-export function Nav({ reserveHref, external }: { reserveHref: string; external: boolean }) {
+export function Nav({ reserveHref }: { reserveHref: string }) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -53,7 +55,7 @@ export function Nav({ reserveHref, external }: { reserveHref: string; external: 
 
         <nav className="ck-nav__links" aria-label="Principal">
           {nav.links.map((l) => (
-            <a key={l.href} href={l.href}>
+            <a key={l.href} href={l.href} data-track={EVENTS.nav} data-location={l.href.slice(1)}>
               {l.label}
             </a>
           ))}
@@ -62,16 +64,26 @@ export function Nav({ reserveHref, external }: { reserveHref: string; external: 
         <a
           className="ck-btn ck-btn--solid ck-nav__cta"
           href={reserveHref}
-          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-track={EVENTS.whatsapp}
+          data-location="nav"
+          data-cta-type="general"
         >
+          <WaIcon size={16} />
           {nav.cta}
         </a>
 
         <a
           className="ck-btn ck-btn--solid ck-nav__cta-m"
           href={reserveHref}
-          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-track={EVENTS.whatsapp}
+          data-location="nav"
+          data-cta-type="general"
         >
+          <WaIcon size={16} />
           {nav.ctaShort}
         </a>
 
@@ -105,9 +117,14 @@ export function Nav({ reserveHref, external }: { reserveHref: string; external: 
           className="ck-btn ck-btn--solid ck-menu__cta"
           href={reserveHref}
           onClick={close}
-          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-track={EVENTS.whatsapp}
+          data-location="nav"
+          data-cta-type="general"
         >
-          {nav.cta}
+          <WaIcon size={18} />
+          {nav.menuCta}
         </a>
       </div>
     </header>
