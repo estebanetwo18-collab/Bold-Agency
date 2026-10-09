@@ -431,3 +431,8 @@ html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--ck-nav-h); }
   .ck-exp__buy .ck-note { grid-column: 1 / -1; }
 }
 .ck-exp__btn { max-width: 100%; }
+
+.ck-hero__brand { display: block; width: 112px; height: auto; margin-top: 2rem; opacity: 0.95; }
+.ck-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+.ck-footer__brand { width: 84px; height: auto; }
+@media (min-width: 900px) { .ck-hero__brand { margin-top: 1.5rem; width: 128px; } .ck-hero__index { margin-top: 2.5rem; } }

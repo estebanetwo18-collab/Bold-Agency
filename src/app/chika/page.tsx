@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Nav } from "@/components/chika/Nav";
 import { Hero } from "@/components/chika/Hero";
 import { Intro } from "@/components/chika/Intro";
@@ -35,6 +36,7 @@ export default function ChikaPage() {
         <FinalCta />
       </main>
       <footer className="ck-footer">
+        <Image className="ck-footer__brand" src="/chika/davines-logo.png" alt="Davines" width={700} height={192} />
         <p>© {new Date().getFullYear()} Chika Beauty Center &amp; Spa. Precios en colones; condiciones y vigencias según cada experiencia.</p>
       </footer>
       {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />}

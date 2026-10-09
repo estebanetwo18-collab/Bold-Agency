@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { hero } from "@/lib/chika/content";
 import { WhatsAppCta } from "./Button";
 import { Photo } from "./Photo";
@@ -37,6 +38,7 @@ export function Hero() {
             </span>
           ))}
         </p>
+        <Image className="ck-hero__brand" src="/chika/davines-logo.png" alt="Davines" width={700} height={192} />
       </div>
     </section>
   );
