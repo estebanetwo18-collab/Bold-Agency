@@ -5,9 +5,10 @@ import { Reveal } from "./Reveal";
 
 export function Intro() {
   return (
-    <section id="que-necesita" className="ck-intro ck-tone-ivory" aria-labelledby="ck-intro-h">
+    <section id="que-necesita" className="ck-intro ck-tone-blush" aria-labelledby="ck-intro-h">
       <div className="ck-wrap">
         <Reveal className="ck-intro__head">
+          <p className="ck-eyebrow">Tu ruta de cuidado</p>
           <h2 id="ck-intro-h" className="ck-h2">{intro.title}</h2>
           <p className="ck-lede">{intro.subtitle}</p>
         </Reveal>
@@ -33,13 +34,14 @@ export function Intro() {
         </ol>
 
         <Reveal className="ck-texture">
-          <p className="ck-label">{intro.textureLabel}</p>
+          <p className="ck-texture__label">{intro.textureLabel}</p>
           <ul>
             {intro.textures.map((t) => (
               <li key={t.id}>
                 <a href={`#${t.id}`}>
-                  <span className="ck-texture__name">{experienceById(t.id).name}</span>
                   <span className="ck-texture__for">{t.label}</span>
+                  <span className="ck-texture__name">{experienceById(t.id).name}</span>
+                  <span className="ck-texture__arrow" aria-hidden="true">→</span>
                 </a>
               </li>
             ))}

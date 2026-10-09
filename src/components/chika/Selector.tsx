@@ -19,9 +19,10 @@ export function Selector() {
   const external = isExternalWhatsapp();
 
   return (
-    <section id="selector" className="ck-selector ck-tone-ivory" aria-labelledby="ck-sel-h">
+    <section id="selector" className="ck-selector ck-tone-petal" aria-labelledby="ck-sel-h">
       <div className="ck-wrap ck-selector__grid">
         <div className="ck-selector__head">
+          <p className="ck-eyebrow">Recomendador</p>
           <h2 id="ck-sel-h" className="ck-h2">{selector.title}</h2>
           <p className="ck-lede">{selector.subtitle}</p>
         </div>
@@ -40,7 +41,7 @@ export function Selector() {
               >
                 <span className="ck-q__n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                 <span className="ck-q__t">{q.text}</span>
-                <span className="ck-q__state" aria-hidden="true">{on ? "Sí" : ""}</span>
+                <span className="ck-q__state" aria-hidden="true" />
               </button>
             );
           })}

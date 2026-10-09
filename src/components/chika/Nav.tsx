@@ -67,6 +67,14 @@ export function Nav({ reserveHref, external }: { reserveHref: string; external: 
           {nav.cta}
         </a>
 
+        <a
+          className="ck-btn ck-btn--solid ck-nav__cta-m"
+          href={reserveHref}
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
+          {nav.ctaShort}
+        </a>
+
         <button
           ref={toggleRef}
           type="button"
@@ -86,7 +94,7 @@ export function Nav({ reserveHref, external }: { reserveHref: string; external: 
             {nav.links.map((l, i) => (
               <li key={l.href}>
                 <a href={l.href} onClick={close}>
-                  <span className="ck-menu__n">0{i + 1}</span>
+                  <span className="ck-menu__n" aria-hidden="true">0{i + 1}</span>
                   {l.label}
                 </a>
               </li>
@@ -99,7 +107,7 @@ export function Nav({ reserveHref, external }: { reserveHref: string; external: 
           onClick={close}
           {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >
-          {nav.cta} por WhatsApp
+          {nav.cta}
         </a>
       </div>
     </header>

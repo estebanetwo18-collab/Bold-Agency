@@ -4,7 +4,6 @@ import Image from "next/image";
 import { contact, placeholders } from "@/lib/chika/config";
 import { finalCta } from "@/lib/chika/content";
 import { WhatsAppCta } from "./Button";
-import { Logo } from "./Logo";
 import { Pending } from "./Pending";
 import { Photo } from "./Photo";
 import { Reveal } from "./Reveal";
@@ -27,11 +26,14 @@ function Row({ label, value, placeholder, href }: { label: string; value: string
 export function FinalCta() {
   const qr = fs.existsSync(path.join(process.cwd(), "public", "chika", contact.qrFile));
   return (
-    <section id="contacto" className="ck-final ck-tone-graphite" aria-labelledby="ck-final-h">
+    <section id="contacto" className="ck-final ck-tone-plum" aria-labelledby="ck-final-h">
       <div className="ck-final__media">
-        <Photo photo={finalCta.photo} sizes="(min-width: 900px) 42vw, 100vw" />
+        <div className="ck-final__arch">
+        <Photo photo={finalCta.photo} sizes="(min-width: 900px) 38vw, 88vw" />
+        </div>
       </div>
       <Reveal className="ck-final__body">
+        <p className="ck-eyebrow">Reservas</p>
         <h2 id="ck-final-h" className="ck-final__title">{finalCta.title}</h2>
         <p className="ck-final__text">{finalCta.text}</p>
         <WhatsAppCta label={finalCta.button} message={finalCta.message} variant="solid" />
@@ -64,7 +66,6 @@ export function FinalCta() {
             <p key={n} className="ck-note">{n}</p>
           ))}
         </div>
-        <p className="ck-final__brand"><Logo compact /></p>
       </Reveal>
     </section>
   );

@@ -1,6 +1,7 @@
 import { compare, compareRows, type Mark } from "@/lib/chika/content";
 import { experienceById, formatColones } from "@/lib/chika/experiences";
 import { Pending } from "./Pending";
+import { Photo } from "./Photo";
 import { Reveal } from "./Reveal";
 
 const SYM: Record<Mark, string> = { yes: "●", na: "—", tbc: "○" };
@@ -33,14 +34,46 @@ const fields = [
   ["Kit para casa", "kit"],
 ] as const;
 
+const comparePhoto = {
+  file: "chika-intro-color-movimiento.jpg",
+  alt: "Estilista dando forma a ondas en un cabello cobrizo",
+  brief: "Cabello con color en movimiento",
+  position: "62% 45%",
+};
+
 export function Compare() {
   return (
-    <section id="comparar" className="ck-compare ck-tone-stone" aria-labelledby="ck-cmp-h">
+    <section id="comparar" className="ck-compare ck-tone-white" aria-labelledby="ck-cmp-h">
       <div className="ck-wrap">
-        <Reveal className="ck-compare__head">
+        <Reveal className="ck-section-head ck-section-head--center">
+          <p className="ck-eyebrow">{compare.eyebrow}</p>
           <h2 id="ck-cmp-h" className="ck-h2">{compare.title}</h2>
           <p className="ck-lede">{compare.subtitle}</p>
         </Reveal>
+
+        <div className="ck-menu-list">
+          <div className="ck-menu-list__media" aria-hidden="false">
+            <div className="ck-menu-list__arch">
+              <Photo photo={comparePhoto} sizes="(min-width: 900px) 30vw, 80vw" />
+            </div>
+          </div>
+          <ul className="ck-menu-list__rows">
+            {compareRows.map((r) => {
+              const e = experienceById(r.id);
+              return (
+                <li key={r.id}>
+                  <a href={`#${r.id}`}>
+                    <span className="ck-menu-list__name">{e.name}</span>
+                    <span className="ck-menu-list__desc">{e.tagline}</span>
+                    <span className="ck-menu-list__price">{priceNode(r.id)}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <h3 className="ck-h3 ck-compare__detail-h">{compare.detailTitle}</h3>
 
         {/* Escritorio / tablet: tabla editorial */}
         <div className="ck-cmp__table" tabIndex={0} role="region" aria-label="Tabla comparativa de experiencias (desplazable)">
@@ -81,7 +114,6 @@ export function Compare() {
               <details key={r.id} className="ck-cmp__item" name="ck-compare">
                 <summary>
                   <span className="ck-cmp__name">{e.name}</span>
-                  <span className="ck-cmp__sum">{priceNode(r.id)}</span>
                   <span className="ck-collapse__icon" aria-hidden="true" />
                 </summary>
                 <dl>

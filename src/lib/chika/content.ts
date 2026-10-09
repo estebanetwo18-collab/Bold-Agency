@@ -6,14 +6,23 @@ export const nav = {
     { href: "#comparar", label: "Comparar" },
     { href: "#chika-kit", label: "Diagnóstico" },
   ],
-  cta: "Reservar",
+  cta: "Agendá tu cita",
+  ctaShort: "Reservar",
 };
+
+export const partner = {
+  label: "Trabajamos con productos profesionales",
+};
+
+export const marquee = ["Diagnóstico capilar", "Detox", "Cirugía capilar", "Mantenimiento", "Melena natural", "Curl Love", "Blow Club"];
 
 export const hero = {
   eyebrow: "Colección de experiencias capilares",
   lead: "Tu cabello tiene una historia.",
   follow: "Empecemos por entenderla.",
   cta: "Agendá tu diagnóstico",
+  secondary: "Ver experiencias",
+  text: "Diagnóstico con capilógrafo digital y tratamientos según lo que tu cabello necesita hoy.",
   index: ["Diagnóstico", "Detox", "Reparación", "Mantenimiento"],
   photoAlt: "Cabello castaño con reflejos dorados en ondas largas, visto de espalda",
 };
@@ -41,14 +50,14 @@ export const intro = {
       title: "Reparar",
       text: "Reconstruir y nutrir cabellos altamente procesados.",
       links: ["chika-cirugia-capilar"],
-      photo: { file: "chika-intro-puntas-brillo.jpg", alt: "Puntas de cabello con brillo", brief: "Puntas con brillo" },
+      photo: { file: "chika-intro-puntas-brillo.jpg", alt: "Cabello largo con brillo a contraluz", brief: "Puntas con brillo", position: "50% 40%" },
     },
     {
       n: "04",
       title: "Mantener",
       text: "Sostener color, hidratación, brillo y peinado.",
       links: ["chika-wow", "chika-blow-club"],
-      photo: { file: "chika-intro-color-movimiento.jpg", alt: "Cabello con color en movimiento", brief: "Color en movimiento" },
+      photo: { file: "chika-intro-color-movimiento.jpg", alt: "Cabello cobrizo con ondas definidas en el salón", brief: "Color en movimiento", position: "60% 40%" },
     },
   ],
   textureLabel: "Cuidado según tu textura",
@@ -60,13 +69,16 @@ export const intro = {
 };
 
 export const experiencesIntro = {
+  eyebrow: "Experiencias Chika",
   title: "Las experiencias",
-  text: "Siete propuestas, cada una con lo que incluye, cuánto dura y cuánto cuesta.",
+  text: "Siete propuestas con lo que incluye cada una, su vigencia y su inversión.",
 };
 
 export const compare = {
+  eyebrow: "Inversión",
   title: "Compará las experiencias",
   subtitle: "Lo que incluye cada propuesta, en una sola vista.",
+  detailTitle: "Qué incluye cada una",
   columns: ["Experiencia", "Sesiones", "Vigencia", "Diagnóstico", "Corte", "Styling", "Kit para casa", "Inversión"],
   legend: [
     { sym: "●", label: "Incluye" },
@@ -92,17 +104,17 @@ export const compareRows: {
   { id: "chika-detox", sessions: "1", validity: null, diagnosis: "yes", cut: "tbc", styling: "yes", kit: "tbc" },
   { id: "chika-cirugia-capilar", sessions: "3", validity: "22 días", diagnosis: "yes", cut: "yes", styling: "yes", kit: "yes" },
   { id: "chika-wow", sessions: "4", validity: "3 meses", diagnosis: "tbc", cut: "tbc", styling: "yes", kit: "tbc" },
-  { id: "chika-melena", sessions: "2 trat.", validity: "6 semanas", diagnosis: "yes", cut: "yes", styling: "yes", kit: "yes" },
+  { id: "chika-melena", sessions: "2 tratamientos", validity: "6 semanas", diagnosis: "yes", cut: "yes", styling: "yes", kit: "yes" },
   { id: "chika-curl-love", sessions: "1", validity: null, diagnosis: "yes", cut: "tbc", styling: "yes", kit: "yes" },
   { id: "chika-blow-club", sessions: "4", validity: "2 meses", diagnosis: "tbc", cut: "tbc", styling: "yes", kit: "tbc" },
 ];
 
 export const selector = {
   title: "¿Cuál es para vos?",
-  subtitle: "Marcá lo que sentís y encontrá tu experiencia.",
+  subtitle: "Marcá lo que te identifica y te sugerimos por dónde empezar.",
   empty: "Marcá una o más opciones para ver tu recomendación.",
   multiple: "Te identificás con más de una. Empezá por Chika Kit.",
-  multipleSub: "En el diagnóstico confirmamos juntas cuál es la indicada.",
+  multipleSub: "En el diagnóstico confirmamos cuál es la indicada para vos.",
   questions: [
     { id: "q1", text: "¿No sabés qué necesita tu cabello?", result: "chika-kit" },
     { id: "q2", text: "¿Sentís acumulación o saturación?", result: "chika-detox" },
@@ -126,7 +138,7 @@ export const finalCta = {
   ],
   photo: {
     file: "chika-salon-ambiente.jpg",
-    alt: "Interior del salón Chika con luz cálida",
+    alt: "Interior de un salón de belleza luminoso (foto provisional)",
     brief: "Interior del salón con luz cálida, o manos profesionales peinando. Tono sereno, sin modelo mirando a cámara.",
   },
 };

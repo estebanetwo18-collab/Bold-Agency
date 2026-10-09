@@ -14,7 +14,7 @@ export type Photo = {
   position?: string;
 };
 
-export type Tone = "ivory" | "stone" | "graphite";
+export type Tone = "blush" | "white" | "petal";
 
 export type Step = { title: string; text: string };
 
@@ -33,9 +33,10 @@ export type Experience = {
   /** Líneas del plan aún sin confirmar (se marcan como pendientes). */
   pendingIncludes?: string[];
   homeKit?: { label: string; items: string[]; note?: string };
-  sessions: string | null;
-  validity: string | null;
-  rhythm?: string;
+  /** Datos clave visibles (sesiones, vigencia, frecuencia…). */
+  facts: { k: string; v: string }[];
+  /** Forma de la foto en la composición editorial. */
+  shape: "arch" | "circle" | "tall";
   /** amount en colones; null = por confirmar */
   price: { amount: number | null; from?: boolean };
   cta: string;
@@ -71,8 +72,8 @@ export const experiences: Experience[] = [
       "Demostración de tratamiento adaptado a tu tipo de cabello",
       "Corte y styling profesional",
     ],
-    sessions: "1 sesión",
-    validity: null,
+    facts: [{ k: "Sesiones", v: "1 sesión" }],
+    shape: "arch",
     price: { amount: 50000, from: true },
     cta: "Agendá tu diagnóstico",
     availabilityNote: AVAILABILITY,
@@ -82,7 +83,7 @@ export const experiences: Experience[] = [
       brief: "Manos profesionales usando el capilógrafo en la coronilla; recuadro con la vista real de la hebra.",
       position: "60% 55%",
     },
-    tone: "graphite",
+    tone: "white",
     flip: false,
     pending: [
       "Qué hace variar el «desde ₡50.000»",
@@ -108,8 +109,8 @@ export const experiences: Experience[] = [
       "Tratamiento hidratante según recomendación de la línea Essential Haircare",
       "Lavado tratante y styling profesional",
     ],
-    sessions: "1 sesión",
-    validity: null,
+    facts: [{ k: "Sesiones", v: "1 sesión" }],
+    shape: "circle",
     price: { amount: 70000 },
     cta: "Agendá tu Detox",
     availabilityNote: AVAILABILITY,
@@ -119,7 +120,7 @@ export const experiences: Experience[] = [
       brief: "Lavado en el lavacabezas: manos, espuma y agua en movimiento. La luz más clara del catálogo.",
       position: "45% 50%",
     },
-    tone: "stone",
+    tone: "petal",
     flip: true,
     pending: ["¿Incluye corte?", "¿Promoción con fecha de cierre?", "Kit para casa: por confirmar"],
   },
@@ -136,15 +137,16 @@ export const experiences: Experience[] = [
     includesLabel: "El programa",
     includes: [
       "Diagnóstico, asesoría y corte de salud",
-      "Programa intensivo de 3 sesiones",
       "Sesiones Nourishing",
       "Sesión Replumping",
-      "Shampoo y acondicionador Natural Tec para casa",
     ],
     homeKit: { label: "Para casa", items: ["Shampoo y acondicionador Natural Tec"] },
-    sessions: "3 sesiones",
-    validity: "22 días",
-    rhythm: "Recomendado: 1 sesión por semana",
+    facts: [
+      { k: "Sesiones", v: "3 sesiones" },
+      { k: "Vigencia", v: "22 días" },
+      { k: "Frecuencia", v: "1 por semana" },
+    ],
+    shape: "tall",
     price: { amount: 193000 },
     cta: "Agendá tu diagnóstico para iniciar",
     availabilityNote: AVAILABILITY,
@@ -152,8 +154,9 @@ export const experiences: Experience[] = [
       file: "chika-cirugia-capilar-tratamiento.jpg",
       alt: "Manos aplicando tratamiento con brocha en medios y puntas decolorados",
       brief: "Manos aplicando tratamiento con brocha en medios y puntas decolorados. Brillo real, sin dramatizar el daño.",
+      position: "55% 50%",
     },
-    tone: "graphite",
+    tone: "blush",
     flip: true,
     steps: {
       label: "Ruta del programa",
@@ -169,6 +172,7 @@ export const experiences: Experience[] = [
       "Escritura oficial de «Natural Tec»",
       "Textos de la ruta: propuestos, pendientes de aprobar",
       "Vigencia: ¿desde la compra o desde la 1.ª cita?",
+      "Foto provisional (stock)",
     ],
   },
   {
@@ -182,25 +186,28 @@ export const experiences: Experience[] = [
     idealFor: "Mantener el color, la hidratación y el brillo del cabello después de un procedimiento químico.",
     includesLabel: "En salón",
     includes: [
-      "Cuatro tratamientos por el precio de tres",
-      "Tratamientos capilares profundos de la línea Essential Haircare",
+      "Cuatro tratamientos capilares profundos de la línea Essential Haircare",
       "Lavado sensorial y styling profesional en cada visita",
     ],
-    sessions: "4 sesiones",
-    validity: "3 meses",
-    rhythm: "Una sesión cada 22 días",
+    facts: [
+      { k: "Tratamientos", v: "4 por el precio de 3" },
+      { k: "Vigencia", v: "3 meses" },
+      { k: "Frecuencia", v: "Cada 22 días" },
+    ],
+    shape: "arch",
     price: { amount: 80000 },
     cta: "Reservá tu plan Wow",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-wow-color-movimiento.jpg",
-      alt: "Cabello con color en movimiento, de espalda, con luz lateral que muestra el brillo",
+      alt: "Mujer con cabello castaño iluminado en ondas, con brillo",
       brief: "Cabello con color en movimiento, modelo de espalda o perfil. Luz lateral que muestre brillo real.",
+      position: "50% 30%",
     },
-    tone: "ivory",
+    tone: "white",
     flip: false,
     visits: { count: 4, gap: "22 días", note: "4 tratamientos por el precio de 3" },
-    pending: ["¿Incluye diagnóstico?", "¿Solo químicos hechos en Chika?", "Corte y kit para casa: por confirmar"],
+    pending: ["¿Incluye diagnóstico?", "¿Solo químicos hechos en Chika?", "Corte y kit para casa: por confirmar", "Foto provisional (stock)"],
   },
   {
     id: "chika-melena",
@@ -219,19 +226,23 @@ export const experiences: Experience[] = [
       "Dos tratamientos Essential Haircare",
     ],
     homeKit: { label: "Para casa", items: ["Shampoo y acondicionador de mantenimiento profesional"] },
-    sessions: "2 tratamientos",
-    validity: "6 semanas",
+    facts: [
+      { k: "Tratamientos", v: "2 Essential Haircare" },
+      { k: "Vigencia", v: "6 semanas" },
+    ],
+    shape: "circle",
     price: { amount: 118000 },
     cta: "Agendá tu Melena",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-melena-cabello-natural.jpg",
-      alt: "Cabello natural sin color, con movimiento suave y luz de ventana",
+      alt: "Mujer de cabello natural castaño junto a una ventana con luz suave",
       brief: "Cabello natural sin color, con movimiento suave y luz de ventana. Textura real, sin alisar en postproducción.",
+      position: "50% 30%",
     },
-    tone: "stone",
+    tone: "petal",
     flip: true,
-    pending: ["¿2 tratamientos = 2 visitas?", "¿Qué kit para casa exactamente?"],
+    pending: ["¿2 tratamientos = 2 visitas?", "¿Qué kit para casa exactamente?", "Foto provisional (stock)"],
   },
   {
     id: "chika-curl-love",
@@ -255,20 +266,23 @@ export const experiences: Experience[] = [
       items: ["Shampoo", "Acondicionador", "Mousse o gel*"],
       note: "*Según tu patrón de rizo.",
     },
-    sessions: "1 sesión intensiva",
-    validity: null,
-    rhythm: "Incluye rutina para el hogar",
+    facts: [
+      { k: "Sesiones", v: "1 sesión intensiva" },
+      { k: "Para casa", v: "Rutina de 3 pasos" },
+    ],
+    shape: "arch",
     price: { amount: 138000 },
     cta: "Agendá tu Curl Love",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-curl-love-rizos.jpg",
-      alt: "Rizos definidos con una mano profesional y un difusor",
+      alt: "Mujer sonriente con rizos definidos y voluminosos",
       brief: "Rizos reales definidos; mano profesional con difusor. El patrón de rizo debe coincidir con las clientas de Chika.",
+      position: "50% 25%",
     },
-    tone: "graphite",
+    tone: "blush",
     flip: false,
-    pending: ["¿Incluye corte?"],
+    pending: ["¿Incluye corte?", "Foto provisional (stock): reemplazar por rizos de clientas reales"],
   },
   {
     id: "chika-blow-club",
@@ -281,17 +295,22 @@ export const experiences: Experience[] = [
     includesLabel: "El plan",
     includes: ["4 visitas en 2 meses", "Disponible de lunes a jueves"],
     pendingIncludes: ["Peinados / secados: por confirmar"],
-    sessions: "4 visitas",
-    validity: "2 meses",
+    facts: [
+      { k: "Visitas", v: "4 visitas" },
+      { k: "Vigencia", v: "2 meses" },
+      { k: "Días", v: "Lunes a jueves" },
+    ],
+    shape: "circle",
     price: { amount: null },
     cta: "Consultá disponibilidad",
     availabilityNote: AVAILABILITY,
     photo: {
       file: "chika-blow-club-secado.jpg",
-      alt: "Secado con cepillo redondo y secadora, con movimiento y brillo",
+      alt: "Secado profesional con cepillo redondo y secadora",
       brief: "Secado con cepillo redondo y secadora, movimiento y brillo. O el resultado final de espalda.",
+      position: "45% 50%",
     },
-    tone: "ivory",
+    tone: "white",
     flip: true,
     provisionalName: true,
     pending: [
@@ -299,6 +318,7 @@ export const experiences: Experience[] = [
       "Precio de Blow Club",
       "¿4 visitas, o 4 peinados + 4 secados?",
       "Confirmar si incluye peinados, secados o ambos",
+      "Foto provisional (stock)",
     ],
   },
 ];

@@ -15,7 +15,7 @@ export function WhatsAppCta({
 }: {
   label: string;
   message: string;
-  variant?: "solid" | "line";
+  variant?: "solid" | "line" | "text";
   className?: string;
 }) {
   const external = isExternalWhatsapp();
@@ -32,7 +32,7 @@ export function WhatsAppCta({
   );
 }
 
-export function LinkCta({ href, label, variant = "line" }: { href: string; label: string; variant?: "solid" | "line" }) {
+export function LinkCta({ href, label, variant = "line" }: { href: string; label: string; variant?: "solid" | "line" | "text" }) {
   return (
     <a className={`ck-btn ck-btn--${variant}`} href={href}>
       <span>{label}</span>
