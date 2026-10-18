@@ -40,10 +40,9 @@ export const pricingCatalog: PricingItem[] = [
     pricingType: "fijo",
     inputType: "radio",
     radioGroup: "paquete",
-    // Precio de lanzamiento (antes ₡75,000): alineado con la promo de
-    // Planes en el home, que muestra el mismo paquete a ₡65,000.
-    priceMin: 65000,
-    priceMax: 65000,
+    // Alineado con el precio de Planes en el home.
+    priceMin: 150000,
+    priceMax: 150000,
   },
   {
     id: "pkg_silver",
@@ -52,8 +51,8 @@ export const pricingCatalog: PricingItem[] = [
     pricingType: "fijo",
     inputType: "radio",
     radioGroup: "paquete",
-    priceMin: 150000,
-    priceMax: 150000,
+    priceMin: 200000,
+    priceMax: 200000,
   },
   {
     id: "pkg_bgold",
@@ -62,8 +61,8 @@ export const pricingCatalog: PricingItem[] = [
     pricingType: "fijo",
     inputType: "radio",
     radioGroup: "paquete",
-    priceMin: 220000,
-    priceMax: 220000,
+    priceMin: 350000,
+    priceMax: 350000,
   },
 
   // Social & Contenido

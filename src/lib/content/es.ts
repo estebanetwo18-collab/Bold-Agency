@@ -315,6 +315,21 @@ export const plans = {
   calculatorCtaLabel: "Ver calculadora de precios",
 };
 
+// Campos de promoción (oldPrice/discountLabel/promoEndsAt) son opcionales:
+// se usan cuando un tier tiene descuento por tiempo limitado, no siempre.
+export type LaunchPricingTier = {
+  name: string;
+  badge?: string;
+  featured?: boolean;
+  price: string;
+  oldPrice?: string;
+  discountLabel?: string;
+  promoEndsAt?: string;
+  unit: string;
+  priceNote: string;
+  features: { label: string; detail: string }[];
+};
+
 export const launchPricing = {
   eyebrow: "Precios de lanzamiento · The Bold Way",
   headline: "Así arranca The Bold Way.",
@@ -328,12 +343,9 @@ export const launchPricing = {
   tiers: [
     {
       name: "Paquete Bronce",
-      price: "Desde ₡65,000",
-      oldPrice: "₡75,000",
-      discountLabel: "-13%",
-      // 15 días desde que se activó esta promo (18 sep 2026) — actualizar
-      // a mano si se vuelve a extender.
-      promoEndsAt: "2026-10-03T23:59:59-06:00",
+      // oldPrice/discountLabel/promoEndsAt quedan disponibles para activar
+      // una futura promo en este tier; hoy no tiene ninguna.
+      price: "Desde ₡150,000",
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
@@ -344,7 +356,7 @@ export const launchPricing = {
     {
       name: "Paquete Silver",
       badge: "Más elegido",
-      price: "Desde ₡150,000",
+      price: "Desde ₡200,000",
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
@@ -356,7 +368,7 @@ export const launchPricing = {
       name: "Paquete B-Gold",
       badge: "★ Top Tier",
       featured: true,
-      price: "Desde ₡220,000",
+      price: "Desde ₡350,000",
       unit: "/mes",
       priceNote: "precio de lanzamiento",
       features: [
@@ -365,7 +377,7 @@ export const launchPricing = {
         { label: "Involucramiento 100%", detail: "durante el mes de prueba" },
       ],
     },
-  ],
+  ] as LaunchPricingTier[],
   promo:
     "★ Precios de lanzamiento — Cotización personalizada para necesidades especiales · Social · Paid · Diseño · Estrategia",
 };

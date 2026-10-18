@@ -327,10 +327,7 @@ export const launchPricing = {
   tiers: [
     {
       name: "Pacote Bronze",
-      price: "A partir de ₡65.000",
-      oldPrice: "₡75.000",
-      discountLabel: "-13%",
-      promoEndsAt: "2026-10-03T23:59:59-06:00",
+      price: "A partir de ₡150.000",
       unit: "/mês",
       priceNote: "preço de lançamento",
       features: [
@@ -341,7 +338,7 @@ export const launchPricing = {
     {
       name: "Pacote Silver",
       badge: "Mais escolhido",
-      price: "A partir de ₡150.000",
+      price: "A partir de ₡200.000",
       unit: "/mês",
       priceNote: "preço de lançamento",
       features: [
@@ -353,7 +350,7 @@ export const launchPricing = {
       name: "Pacote B-Gold",
       badge: "★ Top Tier",
       featured: true,
-      price: "A partir de ₡220.000",
+      price: "A partir de ₡350.000",
       unit: "/mês",
       priceNote: "preço de lançamento",
       features: [

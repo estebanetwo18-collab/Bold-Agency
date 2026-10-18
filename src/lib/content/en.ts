@@ -326,10 +326,7 @@ export const launchPricing = {
   tiers: [
     {
       name: "Bronze Package",
-      price: "From ₡65,000",
-      oldPrice: "₡75,000",
-      discountLabel: "-13%",
-      promoEndsAt: "2026-10-03T23:59:59-06:00",
+      price: "From ₡150,000",
       unit: "/month",
       priceNote: "launch price",
       features: [
@@ -340,7 +337,7 @@ export const launchPricing = {
     {
       name: "Silver Package",
       badge: "Most chosen",
-      price: "From ₡150,000",
+      price: "From ₡200,000",
       unit: "/month",
       priceNote: "launch price",
       features: [
@@ -352,7 +349,7 @@ export const launchPricing = {
       name: "B-Gold Package",
       badge: "★ Top Tier",
       featured: true,
-      price: "From ₡220,000",
+      price: "From ₡350,000",
       unit: "/month",
       priceNote: "launch price",
       features: [
