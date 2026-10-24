@@ -1,0 +1,512 @@
+{
+  "_ayuda": "Todo lo editable del reel. Tiempos en segundos de la línea de tiempo final. Corre: python3 build.py [--preview].",
+  "salida": {
+    "ancho": 1080,
+    "alto": 1920,
+    "fps": 30,
+    "crf": 18,
+    "preset": "medium",
+    "final": "salida/adora_cejas_reel_final.mp4",
+    "preview": "salida/adora_cejas_reel_preview.mp4"
+  },
+  "rutas": {
+    "clips": "~/adora/src",
+    "logo": "assets/adora_logo_negro.png",
+    "fuentes": {
+      "serif": "assets/fonts/PlayfairDisplay[wght].ttf",
+      "serif_italica": "assets/fonts/PlayfairDisplay-Italic[wght].ttf",
+      "sans": "assets/fonts/Poppins-Medium.ttf",
+      "sans_bold": "assets/fonts/Poppins-SemiBold.ttf",
+      "emoji": "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+    }
+  },
+  "colores": {
+    "chocolate": "#3B2622",
+    "rosa": "#F4B9C8",
+    "crema": "#F6EEE4",
+    "beige": "#E8DCCB",
+    "blanco_calido": "#FFF8F1"
+  },
+  "ritmo": {
+    "bpm": 100,
+    "nota": "Un pulso cada 0,6 s. Los cortes caen en pulsos o medios pulsos (0,3 s)."
+  },
+  "grade": {
+    "exposicion_objetivo": 0.5,
+    "calidez": 0.035,
+    "rosa_altas_luces": 0.03,
+    "contraste": 1.06,
+    "negros_mate": 0.025,
+    "saturacion": 0.94,
+    "grano": 2.2
+  },
+  "planos": [
+    {
+      "clip": "IMG_2383",
+      "entrada": 0.6,
+      "dur": 0.6,
+      "mov": "zoom",
+      "seccion": "gancho",
+      "nota": "ANTES"
+    },
+    {
+      "clip": "IMG_2451",
+      "entrada": 2.4,
+      "dur": 1.2,
+      "mov": "zoom",
+      "seccion": "gancho",
+      "trans": "slider",
+      "nota": "DESPUÉS"
+    },
+    {
+      "tipo": "split",
+      "izq": {
+        "clip": "IMG_2383",
+        "entrada": 1.4
+      },
+      "der": {
+        "clip": "IMG_2451",
+        "entrada": 3.6
+      },
+      "dur": 0.9,
+      "seccion": "gancho"
+    },
+    {
+      "clip": "IMG_2450",
+      "entrada": 0.8,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "gancho"
+    },
+    {
+      "clip": "IMG_2381",
+      "entrada": 1.6,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "limpieza",
+      "trans": "disolver"
+    },
+    {
+      "clip": "IMG_2380",
+      "entrada": 1.2,
+      "dur": 0.6,
+      "mov": "pan_der",
+      "seccion": "limpieza"
+    },
+    {
+      "clip": "IMG_2388",
+      "entrada": 0.2,
+      "dur": 0.6,
+      "mov": "zoom",
+      "seccion": "laminado",
+      "trans": "zoom_punch"
+    },
+    {
+      "clip": "IMG_2390",
+      "entrada": 0.3,
+      "dur": 0.9,
+      "mov": "zoom",
+      "rampa": true,
+      "seccion": "laminado"
+    },
+    {
+      "clip": "IMG_2385",
+      "entrada": 3.0,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "laminado"
+    },
+    {
+      "clip": "IMG_2401",
+      "entrada": 1.0,
+      "dur": 1.2,
+      "mov": "zoom",
+      "rampa": true,
+      "seccion": "laminado"
+    },
+    {
+      "clip": "IMG_2397",
+      "entrada": 0.6,
+      "dur": 0.6,
+      "mov": "pan_izq",
+      "seccion": "fijacion",
+      "trans": "disolver"
+    },
+    {
+      "clip": "IMG_2398",
+      "entrada": 0.3,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "fijacion"
+    },
+    {
+      "clip": "IMG_2405",
+      "entrada": 0.2,
+      "dur": 0.6,
+      "mov": "pan_der",
+      "seccion": "fijacion"
+    },
+    {
+      "clip": "IMG_2408",
+      "entrada": 2.0,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "fijacion"
+    },
+    {
+      "clip": "IMG_2415",
+      "entrada": 0.3,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "fijacion"
+    },
+    {
+      "clip": "IMG_2421",
+      "entrada": 1.5,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "diseno",
+      "trans": "whip"
+    },
+    {
+      "clip": "IMG_2422",
+      "entrada": 2.2,
+      "dur": 0.9,
+      "mov": "pan_izq",
+      "seccion": "diseno"
+    },
+    {
+      "clip": "IMG_2435",
+      "entrada": 1.0,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "diseno"
+    },
+    {
+      "clip": "IMG_2436",
+      "entrada": 1.0,
+      "dur": 1.2,
+      "mov": "zoom",
+      "rampa": true,
+      "seccion": "color",
+      "trans": "flash"
+    },
+    {
+      "clip": "IMG_2438",
+      "entrada": 0.5,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "color"
+    },
+    {
+      "clip": "IMG_2439",
+      "entrada": 1.0,
+      "dur": 0.6,
+      "mov": "zoom",
+      "seccion": "color"
+    },
+    {
+      "clip": "IMG_2446",
+      "entrada": 1.5,
+      "dur": 0.9,
+      "mov": "zoom",
+      "seccion": "resultado",
+      "trans": "light_leak"
+    },
+    {
+      "clip": "IMG_2448",
+      "entrada": 2.0,
+      "dur": 1.5,
+      "mov": "zoom",
+      "seccion": "resultado"
+    },
+    {
+      "clip": "IMG_2450",
+      "entrada": 0.5,
+      "dur": 1.5,
+      "mov": "zoom",
+      "seccion": "resultado"
+    },
+    {
+      "clip": "IMG_2451",
+      "entrada": 2.0,
+      "dur": 3.0,
+      "mov": "push",
+      "seccion": "cierre",
+      "trans": "disolver"
+    }
+  ],
+  "textos": [
+    {
+      "id": "pill_antes",
+      "tipo": "pill",
+      "texto": "Antes",
+      "inicio": 0.05,
+      "fin": 0.6,
+      "x": "izq",
+      "y": 1460
+    },
+    {
+      "id": "pill_despues",
+      "tipo": "pill",
+      "texto": "Después",
+      "inicio": 0.75,
+      "fin": 1.8,
+      "x": "izq",
+      "y": 1460
+    },
+    {
+      "id": "split_antes",
+      "tipo": "pill",
+      "texto": "Antes",
+      "inicio": 1.85,
+      "fin": 2.65,
+      "x": 270,
+      "y": 1460,
+      "centrado": true
+    },
+    {
+      "id": "split_despues",
+      "tipo": "pill",
+      "texto": "Después",
+      "inicio": 1.85,
+      "fin": 2.65,
+      "x": 810,
+      "y": 1460,
+      "centrado": true
+    },
+    {
+      "id": "titulo_cejas",
+      "tipo": "titulo",
+      "partes": [
+        [
+          "Cejas ",
+          "r"
+        ],
+        [
+          "Perfe",
+          "r"
+        ],
+        [
+          "ctas",
+          "i"
+        ]
+      ],
+      "inicio": 1.9,
+      "fin": 3.55,
+      "y": 330,
+      "tam": 132
+    },
+    {
+      "id": "pill_hook",
+      "tipo": "pill",
+      "texto": "Levantá tu mirada ✨",
+      "inicio": 2.2,
+      "fin": 3.55,
+      "y": 585
+    },
+    {
+      "id": "t_limpieza",
+      "tipo": "titulo",
+      "partes": [
+        [
+          "Limpie",
+          "r"
+        ],
+        [
+          "za",
+          "i"
+        ]
+      ],
+      "inicio": 3.7,
+      "fin": 5.05,
+      "y": 330
+    },
+    {
+      "id": "p_limpieza",
+      "tipo": "pill",
+      "texto": "preparamos la piel 🤍",
+      "inicio": 3.85,
+      "fin": 5.05,
+      "y": 585
+    },
+    {
+      "id": "t_laminado",
+      "tipo": "titulo",
+      "partes": [
+        [
+          "Lami",
+          "r"
+        ],
+        [
+          "nado",
+          "i"
+        ]
+      ],
+      "inicio": 5.2,
+      "fin": 8.65,
+      "y": 330
+    },
+    {
+      "id": "p_laminado",
+      "tipo": "pill",
+      "texto": "peinamos hacia arriba",
+      "inicio": 5.35,
+      "fin": 8.65,
+      "y": 585
+    },
+    {
+      "id": "t_fijacion",
+      "tipo": "titulo",
+      "partes": [
+        [
+          "Fija",
+          "r"
+        ],
+        [
+          "ción",
+          "i"
+        ]
+      ],
+      "inicio": 8.8,
+      "fin": 12.55,
+      "y": 330
+    },
+    {
+      "id": "p_fijacion",
+      "tipo": "pill",
+      "texto": "fijamos la forma",
+      "inicio": 8.95,
+      "fin": 12.55,
+      "y": 585
+    },
+    {
+      "id": "humor_miedo",
+      "tipo": "pill",
+      "texto": "Me da miedo el cambio…",
+      "inicio": 10.2,
+      "fin": 12.45,
+      "x": "der",
+      "y": 1380,
+      "grande": true
+    },
+    {
+      "id": "t_diseno",
+      "tipo": "titulo",
+      "partes": [
+        [
+          "Dise",
+          "r"
+        ],
+        [
+          "ño",
+          "i"
+        ]
+      ],
+      "inicio": 12.7,
+      "fin": 15.25,
+      "y": 330
+    },
+    {
+      "id": "p_diseno",
+      "tipo": "pill",
+      "texto": "dibujamos tu forma",
+      "inicio": 12.85,
+      "fin": 15.25,
+      "y": 585
+    },
+    {
+      "id": "t_color",
+      "tipo": "titulo",
+      "partes": [
+        [
+          "Co",
+          "r"
+        ],
+        [
+          "lor",
+          "i"
+        ]
+      ],
+      "inicio": 15.4,
+      "fin": 17.95,
+      "y": 330
+    },
+    {
+      "id": "p_color",
+      "tipo": "pill",
+      "texto": "color a tu medida",
+      "inicio": 15.55,
+      "fin": 17.95,
+      "y": 585
+    },
+    {
+      "id": "t_resultado",
+      "tipo": "titulo",
+      "partes": [
+        [
+          "Resul",
+          "r"
+        ],
+        [
+          "tado",
+          "i"
+        ]
+      ],
+      "inicio": 18.1,
+      "fin": 19.4,
+      "y": 330
+    },
+    {
+      "id": "humor_spoiler",
+      "tipo": "pill",
+      "texto": "Spoiler: te va a encantar 🩷",
+      "inicio": 19.25,
+      "fin": 20.55,
+      "x": "der",
+      "y": 1380,
+      "grande": true
+    },
+    {
+      "id": "p_definidas",
+      "tipo": "pill",
+      "texto": "cejas definidas ✨",
+      "inicio": 20.5,
+      "fin": 21.85,
+      "y": 1250
+    },
+    {
+      "id": "p_semanas",
+      "tipo": "pill",
+      "texto": "resultados hasta 6 semanas",
+      "inicio": 20.65,
+      "fin": 21.85,
+      "y": 1350
+    },
+    {
+      "id": "logo",
+      "tipo": "logo",
+      "inicio": 22.1,
+      "fin": 24.9,
+      "y": 430,
+      "diametro": 340
+    },
+    {
+      "id": "cta",
+      "tipo": "pill",
+      "texto": "Agendá tu cita 📲 7130-8422",
+      "inicio": 22.6,
+      "fin": 24.9,
+      "y": 1470,
+      "grande": true
+    },
+    {
+      "id": "firma",
+      "tipo": "firma",
+      "texto": "Con todo el corazón 🤎",
+      "inicio": 23.0,
+      "fin": 24.9,
+      "y": 1565
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+archivo,duracion,tipo_de_plano,paso_del_proceso,calidad,mejor_segmento,notas
+IMG_2375.MOV,2.50,amplio modelo,Antes,"buena, luz plana",0.0-2.0,"Clienta recostada sonriendo, cejas sin trabajar, de 3/4"
+IMG_2376.MOV,2.07,amplio modelo,Antes,buena,0.0-1.8,"Igual a 2375, la técnica se pone guantes rosados"
+IMG_2377.MOV,1.83,amplio modelo,Antes,buena,0.0-1.8,Igual a 2375
+IMG_2378.MOV,4.47,macro ceja,Antes,"buena, algo de movimiento",1.0-3.0,"Rostro de cerca desde arriba, ceja natural"
+IMG_2379.MOV,6.61,amplio modelo,Antes,buena,2.0-5.0,"Clienta relajada, la técnica prepara los guantes"
+IMG_2380.MOV,6.37,amplio modelo,Limpieza,buena,1.0-4.0,Limpieza de la ceja con toallita
+IMG_2381.MOV,6.43,macro ceja,Limpieza,"muy buena, foco nítido",1.5-4.0,Macro de la toallita sobre la ceja
+IMG_2382.MOV,5.40,macro ceja,Limpieza,"regular, temblor y manos tapan",2.0-3.5,"Segunda ceja, solo como respaldo"
+IMG_2383.MOV,4.47,macro ceja,Antes,muy buena,0.0-2.5,Perfil de cerca con la ceja limpia y sin trabajar: mejor ANTES (coincide con 2451)
+IMG_2384.MOV,9.60,amplio modelo,Laminado,buena,5.0-9.0,Aplicación de la crema desde el tubo sobre la ceja
+IMG_2385.MOV,15.47,amplio modelo,Laminado,"muy buena, plano cenital estable",2.0-9.0,"Cejas cubiertas de crema blanca, peinado hacia arriba"
+IMG_2386.MOV,5.03,amplio modelo,Laminado,"regular, técnica con mascarilla y cámara se mueve",1.0-3.0,Peinado con aplicador; respaldo
+IMG_2387.MOV,6.50,amplio modelo,Laminado,buena,0.0-3.0,Aplicación entre cejas
+IMG_2388.MOV,5.03,producto,Laminado,"buena, B-roll de producto",0.0-2.5,Tubo blanco y rojo en manos con guantes
+IMG_2389.MOV,3.00,producto,Laminado,buena,1.5-2.8,"Tubo al aire, apertura"
+IMG_2390.MOV,3.87,macro ceja,Laminado,muy buena,0.0-2.5,Aplicación directa del tubo sobre la ceja
+IMG_2391.MOV,9.54,amplio modelo,Laminado,buena,3.5-7.5,Aplicación frontal desde el tubo
+IMG_2392.MOV,1.67,macro ceja,Laminado,"buena, corto",0.0-1.2,Ceja peinada con producto
+IMG_2393.MOV,6.40,amplio modelo,Laminado,buena,1.0-4.0,Peinado de la ceja con aplicador
+IMG_2394.MOV,2.93,producto,Laminado,"regular, foco suave",1.5-2.8,Tubo con marca visible
+IMG_2395.MOV,2.33,producto,Laminado,buena,0.0-2.0,Tubo de cerca en mano sin guante
+IMG_2396.MOV,2.43,producto,Fijación,"regular, desenfocado",—,Descartar: fondo desenfocado y tubo tapa el plano
+IMG_2397.MOV,3.53,manos,Fijación,buena,0.5-2.5,La técnica prepara el film plástico
+IMG_2398.MOV,3.50,amplio modelo,Fijación,muy buena,0.0-3.0,"Film colocado sobre las cejas, plano cenital"
+IMG_2399.MOV,5.03,amplio modelo,Fijación,muy buena,0.5-4.0,Cejas cubiertas con film
+IMG_2400.MOV,3.83,amplio modelo,Fijación,buena,0.0-3.0,Retiro del film [REVISAR]
+IMG_2401.MOV,6.80,macro ceja,Laminado,"muy buena, macro estético",0.5-4.5,Cepillo peinando la ceja hacia arriba: el mejor macro del proceso
+IMG_2402.MOV,13.84,macro ceja,Laminado,muy buena,0.0-1.6,"Cepillo hacia arriba, ceja ya alineada"
+IMG_2403.MOV,18.70,macro ceja,Laminado,"buena, corto",0.0-1.0,Cepillo
+IMG_2404.MOV,2.17,macro ceja,Laminado,"descartar, 1 fotograma útil",—,Descartar: demasiado corto
+IMG_2405.MOV,2.70,producto,Fijación,buena,0.0-2.0,Segundo tubo (banda gris) en mano
+IMG_2406.MOV,2.27,producto,Fijación,buena,0.0-2.0,Igual a 2405
+IMG_2407.MOV,5.67,macro ceja,Fijación,buena,0.5-4.0,Aplicación del segundo producto con cepillo
+IMG_2408.MOV,9.67,amplio modelo,Fijación,muy buena,1.0-6.0,"Cejas cubiertas con el segundo producto, frontal"
+IMG_2409.MOV,3.97,amplio modelo,Fijación,"regular, encuadre raro",—,Descartar: el respaldo de la camilla tapa medio cuadro
+IMG_2410.MOV,6.77,macro ceja,Fijación,buena,1.0-4.0,Peinado con aplicador de lado
+IMG_2411.MOV,4.93,macro ceja,Fijación,buena,2.5-4.5,Aplicador sobre la ceja de lado
+IMG_2412.mov,3.48,macro ceja,Fijación,buena,0.0-3.0,"Cejas cubiertas, la clienta descansa"
+IMG_2414.MOV,5.90,amplio modelo,Retiro,buena,0.5-3.5,Retiro del producto con pad
+IMG_2415.MOV,2.83,macro ceja,Retiro,muy buena,0.0-2.5,"Retiro con pad, ceja laminada visible"
+IMG_2416.MOV,5.77,macro ceja,Retiro,buena,1.5-4.5,Retiro con pad del otro lado
+IMG_2417.MOV,10.50,amplio modelo,Diseño,buena,1.0-5.0,"Trazado del diseño, frontal"
+IMG_2418.MOV,4.00,amplio modelo,Diseño,buena,0.0-3.5,Trazado con lápiz en la ceja
+IMG_2419.MOV,6.97,amplio modelo,Diseño,"descartar, 0,8 s y cabeza de la técnica tapa",—,Descartar
+IMG_2420.MOV,3.60,estudio,Diseño,"buena, plano abierto del estudio",0.0-3.0,Plano amplio con espejo y camilla del estudio
+IMG_2421.MOV,13.00,amplio modelo,Diseño,muy buena,1.0-6.0,"Contorno con pasta blanca, frontal"
+IMG_2422.MOV,5.77,macro ceja,Diseño,"muy buena, cenital",2.0-4.0,Cejas con contorno de pasta blanca
+IMG_2423.MOV,3.93,macro ceja,Diseño,buena,0.0-2.0,Contorno de pasta de lado
+IMG_2424.MOV,4.60,macro ceja,Diseño,buena,0.0-3.0,Hisopo limpiando bordes dentro del contorno [REVISAR]
+IMG_2425.MOV,11.63,amplio modelo,Diseño,buena,2.0-6.0,"Contorno terminado, frontal"
+IMG_2426.MOV,4.53,macro ceja,Diseño,buena,1.5-4.0,Hisopo entre cejas
+IMG_2427.MOV,9.80,macro ceja,Diseño,buena,0.0-4.0,Hisopo sobre el borde del contorno [REVISAR]
+IMG_2428.MOV,13.67,macro ceja,Diseño,buena,0.0-3.0,Hisopo a lo largo de la ceja [REVISAR]
+IMG_2429.MOV,3.60,macro ceja,Diseño,buena,0.0-3.0,Palito de madera sobre la ceja
+IMG_2430.MOV,8.00,macro ceja,Diseño,buena,0.0-3.0,"Palito de madera, macro de perfil"
+IMG_2431.MOV,5.07,macro ceja,Diseño,"regular, la mano tapa",0.0-1.5,Solo el inicio
+IMG_2432.MOV,4.93,macro ceja,Diseño,buena,0.0-3.0,Aplicación de pasta con palito
+IMG_2433.MOV,5.67,macro ceja,Diseño,buena,0.0-3.0,Palito con pasta
+IMG_2434.MOV,3.87,macro ceja,Diseño,"buena hasta 2,2 s, luego tapa la mano",0.0-2.2,Contorno de pasta de lado
+IMG_2435.MOV,7.13,macro ceja,Diseño,muy buena,0.5-4.0,Perfilado con pinzas dentro del contorno
+IMG_2436.MOV,7.17,macro ceja,Color,muy buena,0.5-5.0,Tinte café con pincel biselado dentro del contorno
+IMG_2437.MOV,2.27,macro ceja,Color,"buena hasta 1,2 s",0.0-1.2,Tinte con pincel
+IMG_2438.MOV,7.04,macro ceja,Color,muy buena,0.0-3.0,"Ceja teñida y definida, pincel"
+IMG_2439.MOV,4.93,macro ceja,Retiro,muy buena,0.5-3.5,Retiro del tinte con pad
+IMG_2445.MOV,1.43,amplio modelo,Resultado,"buena, corto",0.0-1.3,Peinado final con cepillo
+IMG_2446.MOV,3.87,amplio modelo,Resultado,buena,1.0-3.5,Peinado final con cepillo
+IMG_2447.MOV,1.53,amplio modelo,Resultado,"buena, corto",0.0-1.4,"Resultado de frente, ojos cerrados"
+IMG_2448.MOV,8.27,amplio modelo,Resultado,muy buena,1.5-5.5,La clienta se ve en el espejo rosado de estrella: reacción
+IMG_2449.MOV,2.57,amplio modelo,Resultado,buena,0.0-2.5,"Clienta sentada, resultado"
+IMG_2450.MOV,4.07,amplio modelo,Resultado,muy buena,0.5-4.0,Clienta sonriendo de frente: mejor DESPUÉS amplio
+IMG_2451.MOV,5.27,macro ceja,Resultado,muy buena,2.0-5.0,Perfil de cerca sonriendo: mejor DESPUÉS (coincide con 2383)

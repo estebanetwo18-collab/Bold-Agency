@@ -1,0 +1,28 @@
+ADORA · Reel Cejas Perfectas — ritmo sugerido para la música
+
+El video sale SIN audio (no hay música con licencia en los archivos).
+
+BPM recomendado: 100 (rango 96 a 104)
+Pulso: 0,6 s. Los cortes caen en pulsos o en medios pulsos (0,3 s).
+Duración del video: unos 25 s, o sea unos 42 pulsos.
+
+Mapa de pulsos (segundos de la línea de tiempo):
+  0,0  Antes (corte en el pulso 1)
+  0,6  Después, con barrido de línea crema
+  1,8  Pantalla dividida antes/después
+  2,7  Resultado sonriendo + título "Cejas Perfectas" (pulso 4 y medio)
+  3,6  Limpieza (inicio de frase musical sugerido)
+  5,4  Laminado
+  8,7  Fijación
+  12,6 Diseño
+  15,3 Color
+  18,0 Resultado
+  22,2 Cierre con logo
+
+Cómo elegir la canción:
+  - Pop suave, lofi o acústico moderno de 96 a 104 BPM, femenino y cálido.
+  - Que tenga un golpe o "drop" suave cerca del segundo 2,7 (aparece el título).
+  - Que baje de intensidad en el cierre (22 s) para dejar el CTA.
+  - Debe tener licencia: biblioteca de música de Instagram o TikTok, o una pista con licencia comercial.
+
+Al poner la música en CapCut o en Instagram: fade-in de 0,3 s, fade-out de 1 s y volumen a -14 LUFS.
