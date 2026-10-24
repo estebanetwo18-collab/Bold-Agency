@@ -36,7 +36,7 @@ El resto de los clips quedó como material de respaldo y no se usó por repetici
 
 ## Decisiones de edición
 - **Ritmo:** 100 BPM, cortes cada 0,6 s o 0,3 s. Planos de 0,6 a 1,5 s; el cierre dura 3 s.
-- **Hook:** Antes (0,6 s) → Después con barrido de línea crema (0,33 s) → pantalla dividida (0,9 s) → título "Cejas Perfectas". La otra variante, flash blanco con zoom, se renderiza con `build.py --hooks` para compararlas (ver más abajo).
+- **Hook:** Antes (0,6 s) → Después con barrido de línea crema (0,33 s) → pantalla dividida (0,9 s) → título "Cejas Perfectas". Se probaron dos variantes (`build.py --hooks`): barrido con línea crema y flash blanco con zoom. Gana el **barrido**: deja ver antes y después a la vez y se lee como comparación; el flash blanco borra el rostro unos 0,2 s y se siente más como un efecto.
 - **Transiciones:** 17 de 25 son cortes limpios; las otras 8 son 1 slider, 3 disoluciones de 5 fotogramas, 1 zoom punch, 1 whip, 1 flash y 1 light leak cálido. Nunca hay dos fuertes seguidas.
 - **Speed ramp** en la aplicación del tubo (2390), el peinado con cepillo (2401) y el tinte (2436): más rápido al entrar y al salir, más lento en el detalle.
 - **Color:** exposición igualada entre tomas, calidez, rosa en las altas luces, negros mate, saturación al 94 % y grano fino.
