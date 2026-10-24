@@ -43,8 +43,8 @@
   "planos": [
     {
       "clip": "IMG_2383",
-      "entrada": 0.6,
-      "dur": 0.6,
+      "entrada": 0.3,
+      "dur": 1.5,
       "mov": "zoom",
       "seccion": "gancho",
       "nota": "ANTES"
@@ -68,7 +68,7 @@
         "clip": "IMG_2451",
         "entrada": 3.6
       },
-      "dur": 0.9,
+      "dur": 1.2,
       "seccion": "gancho"
     },
     {
@@ -242,7 +242,7 @@
       "tipo": "pill",
       "texto": "Antes",
       "inicio": 0.05,
-      "fin": 0.6,
+      "fin": 1.5,
       "x": "izq",
       "y": 1460
     },
@@ -250,8 +250,8 @@
       "id": "pill_despues",
       "tipo": "pill",
       "texto": "Después",
-      "inicio": 0.75,
-      "fin": 1.8,
+      "inicio": 1.5,
+      "fin": 2.7,
       "x": "izq",
       "y": 1460
     },
@@ -259,8 +259,8 @@
       "id": "split_antes",
       "tipo": "pill",
       "texto": "Antes",
-      "inicio": 1.85,
-      "fin": 2.65,
+      "inicio": 2.7,
+      "fin": 3.9,
       "x": 270,
       "y": 1460,
       "centrado": true
@@ -269,8 +269,8 @@
       "id": "split_despues",
       "tipo": "pill",
       "texto": "Después",
-      "inicio": 1.85,
-      "fin": 2.65,
+      "inicio": 2.7,
+      "fin": 3.9,
       "x": 810,
       "y": 1460,
       "centrado": true
@@ -292,8 +292,8 @@
           "i"
         ]
       ],
-      "inicio": 1.9,
-      "fin": 3.55,
+      "inicio": 2.3,
+      "fin": 4.75,
       "y": 330,
       "tam": 132
     },
@@ -301,8 +301,8 @@
       "id": "pill_hook",
       "tipo": "pill",
       "texto": "Levantá tu mirada ✨",
-      "inicio": 2.2,
-      "fin": 3.55,
+      "inicio": 2.6,
+      "fin": 4.75,
       "y": 585
     },
     {
@@ -318,16 +318,16 @@
           "i"
         ]
       ],
-      "inicio": 3.7,
-      "fin": 5.05,
+      "inicio": 4.9,
+      "fin": 6.25,
       "y": 330
     },
     {
       "id": "p_limpieza",
       "tipo": "pill",
       "texto": "preparamos la piel 🤍",
-      "inicio": 3.85,
-      "fin": 5.05,
+      "inicio": 5.05,
+      "fin": 6.25,
       "y": 585
     },
     {
@@ -343,16 +343,16 @@
           "i"
         ]
       ],
-      "inicio": 5.2,
-      "fin": 8.65,
+      "inicio": 6.4,
+      "fin": 9.85,
       "y": 330
     },
     {
       "id": "p_laminado",
       "tipo": "pill",
       "texto": "peinamos hacia arriba",
-      "inicio": 5.35,
-      "fin": 8.65,
+      "inicio": 6.55,
+      "fin": 9.85,
       "y": 585
     },
     {
@@ -368,27 +368,17 @@
           "i"
         ]
       ],
-      "inicio": 8.8,
-      "fin": 12.55,
+      "inicio": 10.0,
+      "fin": 13.75,
       "y": 330
     },
     {
       "id": "p_fijacion",
       "tipo": "pill",
       "texto": "fijamos la forma",
-      "inicio": 8.95,
-      "fin": 12.55,
+      "inicio": 10.15,
+      "fin": 13.75,
       "y": 585
-    },
-    {
-      "id": "humor_miedo",
-      "tipo": "pill",
-      "texto": "Me da miedo el cambio…",
-      "inicio": 10.2,
-      "fin": 12.45,
-      "x": "der",
-      "y": 1380,
-      "grande": true
     },
     {
       "id": "t_diseno",
@@ -403,16 +393,16 @@
           "i"
         ]
       ],
-      "inicio": 12.7,
-      "fin": 15.25,
+      "inicio": 13.9,
+      "fin": 16.45,
       "y": 330
     },
     {
       "id": "p_diseno",
       "tipo": "pill",
       "texto": "dibujamos tu forma",
-      "inicio": 12.85,
-      "fin": 15.25,
+      "inicio": 14.05,
+      "fin": 16.45,
       "y": 585
     },
     {
@@ -428,16 +418,16 @@
           "i"
         ]
       ],
-      "inicio": 15.4,
-      "fin": 17.95,
+      "inicio": 16.6,
+      "fin": 19.15,
       "y": 330
     },
     {
       "id": "p_color",
       "tipo": "pill",
       "texto": "color a tu medida",
-      "inicio": 15.55,
-      "fin": 17.95,
+      "inicio": 16.75,
+      "fin": 19.15,
       "y": 585
     },
     {
@@ -453,16 +443,16 @@
           "i"
         ]
       ],
-      "inicio": 18.1,
-      "fin": 19.4,
+      "inicio": 19.3,
+      "fin": 20.6,
       "y": 330
     },
     {
       "id": "humor_spoiler",
       "tipo": "pill",
       "texto": "Spoiler: te va a encantar 🩷",
-      "inicio": 19.25,
-      "fin": 20.55,
+      "inicio": 20.45,
+      "fin": 21.75,
       "x": "der",
       "y": 1380,
       "grande": true
@@ -471,42 +461,17 @@
       "id": "p_definidas",
       "tipo": "pill",
       "texto": "cejas definidas ✨",
-      "inicio": 20.5,
-      "fin": 21.85,
+      "inicio": 21.7,
+      "fin": 23.05,
       "y": 1250
     },
     {
       "id": "p_semanas",
       "tipo": "pill",
       "texto": "resultados hasta 6 semanas",
-      "inicio": 20.65,
-      "fin": 21.85,
+      "inicio": 21.85,
+      "fin": 23.05,
       "y": 1350
-    },
-    {
-      "id": "logo",
-      "tipo": "logo",
-      "inicio": 22.1,
-      "fin": 24.9,
-      "y": 430,
-      "diametro": 340
-    },
-    {
-      "id": "cta",
-      "tipo": "pill",
-      "texto": "Agendá tu cita 📲 7130-8422",
-      "inicio": 22.6,
-      "fin": 24.9,
-      "y": 1470,
-      "grande": true
-    },
-    {
-      "id": "firma",
-      "tipo": "firma",
-      "texto": "Con todo el corazón 🤎",
-      "inicio": 23.0,
-      "fin": 24.9,
-      "y": 1565
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Adora · Reel Cejas Perfectas: resumen
 
-**Resultado:** reel vertical 1080×1920, 30 fps, de unos 25 s, sin audio. El brief pedía 20 a 30 s y la duración exacta quedó como [CONFIRMAR].
+**Resultado:** reel vertical 1080×1920, 30 fps, de 26,1 s, sin audio. El brief pedía 20 a 30 s y la duración exacta quedó como [CONFIRMAR].
 
 ## Pasos detectados (en el orden real de las tomas)
 1. **Limpieza:** limpieza de la ceja con toallita (IMG_2380 a 2382).
@@ -36,21 +36,21 @@ El resto de los clips quedó como material de respaldo y no se usó por repetici
 
 ## Decisiones de edición
 - **Ritmo:** 100 BPM, cortes cada 0,6 s o 0,3 s. Planos de 0,6 a 1,5 s; el cierre dura 3 s.
-- **Hook:** Antes (0,6 s) → Después con barrido de línea crema (0,33 s) → pantalla dividida (0,9 s) → título "Cejas Perfectas". Se probaron dos variantes (`build.py --hooks`): barrido con línea crema y flash blanco con zoom. Gana el **barrido**: deja ver antes y después a la vez y se lee como comparación; el flash blanco borra el rostro unos 0,2 s y se siente más como un efecto.
+- **Hook:** Antes (1,5 s) → Después con barrido de línea crema (0,33 s) → pantalla dividida (1,2 s) → título "Cejas Perfectas". Se probaron dos variantes (`build.py --hooks`): barrido con línea crema y flash blanco con zoom. Gana el **barrido**: deja ver antes y después a la vez y se lee como comparación; el flash blanco borra el rostro unos 0,2 s y se siente más como un efecto.
 - **Transiciones:** 17 de 25 son cortes limpios; las otras 8 son 1 slider, 3 disoluciones de 5 fotogramas, 1 zoom punch, 1 whip, 1 flash y 1 light leak cálido. Nunca hay dos fuertes seguidas.
 - **Speed ramp** en la aplicación del tubo (2390), el peinado con cepillo (2401) y el tinte (2436): más rápido al entrar y al salir, más lento en el detalle.
 - **Color:** exposición igualada entre tomas, calidez, rosa en las altas luces, negros mate, saturación al 94 % y grano fino.
 - **Fuentes:** Playfair Display (redonda más itálica) en crema para los títulos, Poppins para las burbujas, Noto Color Emoji para los emojis.
 - **Zona segura:** textos dentro del 10 % superior al 85 % inferior y con margen lateral de 80 px.
-- **Logo:** el oficial extraído de `ARTE_FINAL_FRENTE_ADORA.ai`, recortado sin redibujar, sobre un círculo crema. El brief hablaba de un círculo café chocolate; en el reel quedó crema para que el logo negro se lea. [CONFIRMAR] ¿Tienen el logo en rosa claro sobre café?
+- **Logo y CTA:** por pedido del cliente, el reel cierra limpio: sin logo, sin CTA y sin firma, solo el resultado. El teléfono y el llamado a agendar quedan en `caption.txt`. El logo oficial recortado de `ARTE_FINAL_FRENTE_ADORA.ai` sigue en `assets/` por si se quiere volver a usar.
 - **Audio:** sin música (no hay archivo con licencia). Se entrega `beats_sugeridos.txt`. Se descartó el audio original de los clips.
 
 ## Textos del reel [CONFIRMAR todo el copy]
 - Hook: "Antes", "Después", "Cejas Perfectas", "Levantá tu mirada ✨"
 - Pasos: "preparamos la piel 🤍", "peinamos hacia arriba", "fijamos la forma", "dibujamos tu forma", "color a tu medida"
-- Humor: "Me da miedo el cambio…" → "Spoiler: te va a encantar 🩷"
+- Humor: "Spoiler: te va a encantar 🩷" (se quitó "Me da miedo el cambio…" por pedido del cliente)
 - Beneficios aprobados: "cejas definidas ✨", "resultados hasta 6 semanas"
-- Cierre: "Agendá tu cita 📲 7130-8422", "Con todo el corazón 🤎"
+- Cierre: sin texto.
 
 ## No pude hacer
 - **Entrar a su Instagram.** Instagram bloqueó el acceso desde la sesión en la nube. Me guié por las capturas del perfil que me pasaste y por el arte del `.ai`. Si ves algo fuera de su estilo, avísame.
