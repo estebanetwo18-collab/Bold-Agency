@@ -1,0 +1,287 @@
+[
+ {
+  "word": "Mito:",
+  "start": 0.0,
+  "end": 0.52
+ },
+ {
+  "word": "si",
+  "start": 0.86,
+  "end": 1.02
+ },
+ {
+  "word": "tenés",
+  "start": 1.02,
+  "end": 1.3
+ },
+ {
+  "word": "paneles",
+  "start": 1.3,
+  "end": 1.74
+ },
+ {
+  "word": "solares,",
+  "start": 1.74,
+  "end": 2.18
+ },
+ {
+  "word": "nunca",
+  "start": 2.62,
+  "end": 2.76
+ },
+ {
+  "word": "te",
+  "start": 2.76,
+  "end": 3.0
+ },
+ {
+  "word": "quedás",
+  "start": 3.0,
+  "end": 3.24
+ },
+ {
+  "word": "sin",
+  "start": 3.24,
+  "end": 3.46
+ },
+ {
+  "word": "luz",
+  "start": 3.46,
+  "end": 3.6
+ },
+ {
+  "word": "en",
+  "start": 3.6,
+  "end": 3.76
+ },
+ {
+  "word": "un",
+  "start": 3.76,
+  "end": 3.92
+ },
+ {
+  "word": "apagón.",
+  "start": 3.92,
+  "end": 4.66
+ },
+ {
+  "word": "Dato:",
+  "start": 5.08,
+  "end": 5.28
+ },
+ {
+  "word": "un",
+  "start": 5.64,
+  "end": 5.76
+ },
+ {
+  "word": "sistema",
+  "start": 5.76,
+  "end": 6.1
+ },
+ {
+  "word": "conectado",
+  "start": 6.1,
+  "end": 6.64
+ },
+ {
+  "word": "a",
+  "start": 6.64,
+  "end": 6.74
+ },
+ {
+  "word": "la",
+  "start": 6.74,
+  "end": 6.88
+ },
+ {
+  "word": "red,",
+  "start": 6.88,
+  "end": 7.12
+ },
+ {
+  "word": "sin",
+  "start": 7.32,
+  "end": 7.5
+ },
+ {
+  "word": "batería,",
+  "start": 7.5,
+  "end": 8.06
+ },
+ {
+  "word": "se",
+  "start": 8.28,
+  "end": 8.48
+ },
+ {
+  "word": "apaga",
+  "start": 8.48,
+  "end": 8.82
+ },
+ {
+  "word": "cuando",
+  "start": 8.82,
+  "end": 9.1
+ },
+ {
+  "word": "se",
+  "start": 9.1,
+  "end": 9.3
+ },
+ {
+  "word": "va",
+  "start": 9.3,
+  "end": 9.44
+ },
+ {
+  "word": "la",
+  "start": 9.44,
+  "end": 9.6
+ },
+ {
+  "word": "luz.",
+  "start": 9.6,
+  "end": 9.8
+ },
+ {
+  "word": "Es",
+  "start": 10.1,
+  "end": 10.3
+ },
+ {
+  "word": "por",
+  "start": 10.3,
+  "end": 10.52
+ },
+ {
+  "word": "seguridad…",
+  "start": 10.52,
+  "end": 10.98
+ },
+ {
+  "word": "protege",
+  "start": 11.48,
+  "end": 11.78
+ },
+ {
+  "word": "a",
+  "start": 11.78,
+  "end": 11.92
+ },
+ {
+  "word": "quienes",
+  "start": 11.92,
+  "end": 12.12
+ },
+ {
+  "word": "reparan",
+  "start": 12.12,
+  "end": 12.64
+ },
+ {
+  "word": "el",
+  "start": 12.64,
+  "end": 12.82
+ },
+ {
+  "word": "tendido",
+  "start": 12.82,
+  "end": 13.14
+ },
+ {
+  "word": "eléctrico.",
+  "start": 13.14,
+  "end": 13.68
+ },
+ {
+  "word": "Con",
+  "start": 13.96,
+  "end": 14.1
+ },
+ {
+  "word": "batería,",
+  "start": 14.1,
+  "end": 14.68
+ },
+ {
+  "word": "lo",
+  "start": 14.78,
+  "end": 14.9
+ },
+ {
+  "word": "esencial",
+  "start": 14.9,
+  "end": 15.36
+ },
+ {
+  "word": "de",
+  "start": 15.36,
+  "end": 15.54
+ },
+ {
+  "word": "tu",
+  "start": 15.54,
+  "end": 15.66
+ },
+ {
+  "word": "casa",
+  "start": 15.66,
+  "end": 15.98
+ },
+ {
+  "word": "puede",
+  "start": 15.98,
+  "end": 16.36
+ },
+ {
+  "word": "seguir",
+  "start": 16.36,
+  "end": 16.72
+ },
+ {
+  "word": "encendido.",
+  "start": 16.72,
+  "end": 17.34
+ },
+ {
+  "word": "¿Querés",
+  "start": 17.64,
+  "end": 18.0
+ },
+ {
+  "word": "respaldo",
+  "start": 18.0,
+  "end": 18.4
+ },
+ {
+  "word": "de",
+  "start": 18.4,
+  "end": 18.62
+ },
+ {
+  "word": "verdad?",
+  "start": 18.62,
+  "end": 18.86
+ },
+ {
+  "word": "Preguntanos",
+  "start": 19.3,
+  "end": 19.78
+ },
+ {
+  "word": "por",
+  "start": 19.78,
+  "end": 20.0
+ },
+ {
+  "word": "la",
+  "start": 20.0,
+  "end": 20.18
+ },
+ {
+  "word": "batería.",
+  "start": 20.18,
+  "end": 20.6
+ }
+]

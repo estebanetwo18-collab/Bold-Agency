@@ -1,0 +1,7 @@
+node_modules/
+out/*.mp4
+out/qa/
+public/audio/
+data/raw_*.json
+data/raw_*.txt
+referencias/

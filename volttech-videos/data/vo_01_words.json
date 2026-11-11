@@ -1,0 +1,532 @@
+[
+ {
+  "word": "Encendés",
+  "start": 0.0,
+  "end": 0.64
+ },
+ {
+  "word": "una",
+  "start": 0.64,
+  "end": 0.84
+ },
+ {
+  "word": "luz…",
+  "start": 0.84,
+  "end": 1.18
+ },
+ {
+  "word": "pero,",
+  "start": 1.5,
+  "end": 1.96
+ },
+ {
+  "word": "¿de",
+  "start": 1.96,
+  "end": 2.36
+ },
+ {
+  "word": "dónde",
+  "start": 2.36,
+  "end": 2.64
+ },
+ {
+  "word": "sale",
+  "start": 2.64,
+  "end": 3.0
+ },
+ {
+  "word": "esa",
+  "start": 3.0,
+  "end": 3.18
+ },
+ {
+  "word": "energía?",
+  "start": 3.18,
+  "end": 3.62
+ },
+ {
+  "word": "Si",
+  "start": 4.0,
+  "end": 4.18
+ },
+ {
+  "word": "tenés",
+  "start": 4.18,
+  "end": 4.5
+ },
+ {
+  "word": "paneles",
+  "start": 4.5,
+  "end": 4.92
+ },
+ {
+  "word": "solares,",
+  "start": 4.92,
+  "end": 5.4
+ },
+ {
+  "word": "todo",
+  "start": 5.54,
+  "end": 5.88
+ },
+ {
+  "word": "empieza",
+  "start": 5.88,
+  "end": 6.3
+ },
+ {
+  "word": "en",
+  "start": 6.3,
+  "end": 6.48
+ },
+ {
+  "word": "el",
+  "start": 6.48,
+  "end": 6.68
+ },
+ {
+  "word": "techo.",
+  "start": 6.68,
+  "end": 7.14
+ },
+ {
+  "word": "Cada",
+  "start": 7.28,
+  "end": 7.52
+ },
+ {
+  "word": "panel",
+  "start": 7.52,
+  "end": 7.92
+ },
+ {
+  "word": "está",
+  "start": 7.92,
+  "end": 8.26
+ },
+ {
+  "word": "hecho",
+  "start": 8.26,
+  "end": 8.5
+ },
+ {
+  "word": "de",
+  "start": 8.5,
+  "end": 8.78
+ },
+ {
+  "word": "celdas",
+  "start": 8.78,
+  "end": 9.12
+ },
+ {
+  "word": "fotovoltaicas.",
+  "start": 9.12,
+  "end": 10.1
+ },
+ {
+  "word": "Foto:",
+  "start": 10.58,
+  "end": 10.82
+ },
+ {
+  "word": "luz.",
+  "start": 11.08,
+  "end": 11.5
+ },
+ {
+  "word": "Voltaico:",
+  "start": 11.96,
+  "end": 12.58
+ },
+ {
+  "word": "electricidad.",
+  "start": 12.98,
+  "end": 13.56
+ },
+ {
+  "word": "Cuando",
+  "start": 13.82,
+  "end": 14.06
+ },
+ {
+  "word": "el",
+  "start": 14.06,
+  "end": 14.22
+ },
+ {
+  "word": "sol",
+  "start": 14.22,
+  "end": 14.34
+ },
+ {
+  "word": "pega,",
+  "start": 14.34,
+  "end": 14.72
+ },
+ {
+  "word": "la",
+  "start": 15.0,
+  "end": 15.16
+ },
+ {
+  "word": "celda",
+  "start": 15.16,
+  "end": 15.46
+ },
+ {
+  "word": "mueve",
+  "start": 15.46,
+  "end": 15.86
+ },
+ {
+  "word": "electrones…",
+  "start": 15.86,
+  "end": 16.62
+ },
+ {
+  "word": "y",
+  "start": 16.62,
+  "end": 16.82
+ },
+ {
+  "word": "genera",
+  "start": 16.82,
+  "end": 17.32
+ },
+ {
+  "word": "corriente",
+  "start": 17.32,
+  "end": 17.82
+ },
+ {
+  "word": "continua.",
+  "start": 17.82,
+  "end": 18.22
+ },
+ {
+  "word": "Pero",
+  "start": 18.54,
+  "end": 18.72
+ },
+ {
+  "word": "tu",
+  "start": 18.72,
+  "end": 18.9
+ },
+ {
+  "word": "casa",
+  "start": 18.9,
+  "end": 19.2
+ },
+ {
+  "word": "no",
+  "start": 19.2,
+  "end": 19.5
+ },
+ {
+  "word": "usa",
+  "start": 19.5,
+  "end": 19.74
+ },
+ {
+  "word": "esa",
+  "start": 19.74,
+  "end": 19.98
+ },
+ {
+  "word": "corriente.",
+  "start": 19.98,
+  "end": 20.58
+ },
+ {
+  "word": "Por",
+  "start": 20.78,
+  "end": 20.98
+ },
+ {
+  "word": "eso",
+  "start": 20.98,
+  "end": 21.38
+ },
+ {
+  "word": "entra",
+  "start": 21.38,
+  "end": 21.64
+ },
+ {
+  "word": "el",
+  "start": 21.64,
+  "end": 21.84
+ },
+ {
+  "word": "inversor:",
+  "start": 21.84,
+  "end": 22.44
+ },
+ {
+  "word": "la",
+  "start": 22.62,
+  "end": 22.86
+ },
+ {
+  "word": "convierte",
+  "start": 22.86,
+  "end": 23.28
+ },
+ {
+  "word": "en",
+  "start": 23.28,
+  "end": 23.48
+ },
+ {
+  "word": "la",
+  "start": 23.48,
+  "end": 23.62
+ },
+ {
+  "word": "que",
+  "start": 23.62,
+  "end": 23.76
+ },
+ {
+  "word": "usan",
+  "start": 23.76,
+  "end": 24.04
+ },
+ {
+  "word": "tus",
+  "start": 24.04,
+  "end": 24.24
+ },
+ {
+  "word": "electrodomésticos.",
+  "start": 24.24,
+  "end": 25.26
+ },
+ {
+  "word": "Lo",
+  "start": 25.56,
+  "end": 25.72
+ },
+ {
+  "word": "que",
+  "start": 25.72,
+  "end": 25.82
+ },
+ {
+  "word": "no",
+  "start": 25.82,
+  "end": 26.06
+ },
+ {
+  "word": "consumís",
+  "start": 26.06,
+  "end": 26.44
+ },
+ {
+  "word": "en",
+  "start": 26.44,
+  "end": 26.58
+ },
+ {
+  "word": "el",
+  "start": 26.58,
+  "end": 26.76
+ },
+ {
+  "word": "momento",
+  "start": 26.76,
+  "end": 27.08
+ },
+ {
+  "word": "puede",
+  "start": 27.08,
+  "end": 27.46
+ },
+ {
+  "word": "guardarse",
+  "start": 27.46,
+  "end": 28.0
+ },
+ {
+  "word": "en",
+  "start": 28.0,
+  "end": 28.16
+ },
+ {
+  "word": "una",
+  "start": 28.16,
+  "end": 28.34
+ },
+ {
+  "word": "batería…",
+  "start": 28.34,
+  "end": 28.88
+ },
+ {
+  "word": "o",
+  "start": 28.88,
+  "end": 29.28
+ },
+ {
+  "word": "salir",
+  "start": 29.28,
+  "end": 29.6
+ },
+ {
+  "word": "a",
+  "start": 29.6,
+  "end": 29.76
+ },
+ {
+  "word": "la",
+  "start": 29.76,
+  "end": 29.9
+ },
+ {
+  "word": "red",
+  "start": 29.9,
+  "end": 30.02
+ },
+ {
+  "word": "de",
+  "start": 30.02,
+  "end": 30.2
+ },
+ {
+  "word": "tu",
+  "start": 30.2,
+  "end": 30.38
+ },
+ {
+  "word": "distribuidora.",
+  "start": 30.38,
+  "end": 31.04
+ },
+ {
+  "word": "De",
+  "start": 31.26,
+  "end": 31.5
+ },
+ {
+  "word": "día,",
+  "start": 31.5,
+  "end": 31.74
+ },
+ {
+  "word": "tu",
+  "start": 32.0,
+  "end": 32.16
+ },
+ {
+  "word": "techo",
+  "start": 32.16,
+  "end": 32.5
+ },
+ {
+  "word": "produce.",
+  "start": 32.5,
+  "end": 32.94
+ },
+ {
+  "word": "Y",
+  "start": 32.94,
+  "end": 33.4
+ },
+ {
+  "word": "vos",
+  "start": 33.4,
+  "end": 33.8
+ },
+ {
+  "word": "dependés",
+  "start": 33.8,
+  "end": 34.32
+ },
+ {
+  "word": "menos",
+  "start": 34.32,
+  "end": 34.64
+ },
+ {
+  "word": "de",
+  "start": 34.64,
+  "end": 34.8
+ },
+ {
+  "word": "la",
+  "start": 34.8,
+  "end": 34.94
+ },
+ {
+  "word": "tarifa.",
+  "start": 34.94,
+  "end": 35.34
+ },
+ {
+  "word": "¿Querés",
+  "start": 35.66,
+  "end": 35.9
+ },
+ {
+  "word": "saber",
+  "start": 35.9,
+  "end": 36.16
+ },
+ {
+  "word": "qué",
+  "start": 36.16,
+  "end": 36.36
+ },
+ {
+  "word": "podría",
+  "start": 36.36,
+  "end": 36.76
+ },
+ {
+  "word": "producir",
+  "start": 36.76,
+  "end": 37.18
+ },
+ {
+  "word": "el",
+  "start": 37.18,
+  "end": 37.4
+ },
+ {
+  "word": "tuyo?",
+  "start": 37.4,
+  "end": 37.64
+ },
+ {
+  "word": "Escribinos",
+  "start": 38.08,
+  "end": 38.5
+ },
+ {
+  "word": "con",
+  "start": 38.5,
+  "end": 38.72
+ },
+ {
+  "word": "tu",
+  "start": 38.72,
+  "end": 38.86
+ },
+ {
+  "word": "factura.",
+  "start": 38.86,
+  "end": 39.38
+ },
+ {
+  "word": "VoltTech",
+  "start": 39.78,
+  "end": 40.22
+ },
+ {
+  "word": "Soluciones.",
+  "start": 40.22,
+  "end": 40.7
+ }
+]

@@ -1,0 +1,138 @@
+[
+ {
+  "id": "encendes",
+  "word": "Encendés",
+  "sfx": "click"
+ },
+ {
+  "id": "dedonde",
+  "word": "de",
+  "occ": 1,
+  "sfx": "pop"
+ },
+ {
+  "id": "paneles",
+  "word": "paneles",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "techo",
+  "word": "techo",
+  "sfx": "drop"
+ },
+ {
+  "id": "cada",
+  "word": "Cada"
+ },
+ {
+  "id": "fotovoltaicas",
+  "word": "fotovoltaicas",
+  "sfx": "pop"
+ },
+ {
+  "id": "foto",
+  "word": "Foto",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "voltaico",
+  "word": "Voltaico",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "sol",
+  "word": "sol",
+  "sfx": "rise"
+ },
+ {
+  "id": "electrones",
+  "word": "electrones",
+  "sfx": "tick"
+ },
+ {
+  "id": "continua",
+  "word": "continua",
+  "sfx": "pop"
+ },
+ {
+  "id": "casa",
+  "word": "casa",
+  "occ": 1
+ },
+ {
+  "id": "inversor",
+  "word": "inversor",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "electrodomesticos",
+  "word": "electrodomésticos",
+  "sfx": "tick"
+ },
+ {
+  "id": "guardarse",
+  "word": "guardarse",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "bateria",
+  "word": "batería",
+  "sfx": "rise"
+ },
+ {
+  "id": "red",
+  "word": "red",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "dedia",
+  "word": "De",
+  "occ": 4,
+  "sfx": "whoosh"
+ },
+ {
+  "id": "dependes",
+  "word": "dependés",
+  "sfx": "pop"
+ },
+ {
+  "id": "tarifa",
+  "word": "tarifa"
+ },
+ {
+  "id": "queres",
+  "word": "Querés",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "escribinos",
+  "word": "Escribinos",
+  "sfx": "pop"
+ },
+ {
+  "id": "volttech",
+  "word": "VoltTech",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "luz",
+  "word": "luz",
+  "occ": 2
+ },
+ {
+  "id": "electricidad",
+  "word": "electricidad"
+ },
+ {
+  "id": "salir",
+  "word": "salir"
+ },
+ {
+  "id": "produce",
+  "word": "produce"
+ },
+ {
+  "id": "tuyo",
+  "word": "tuyo"
+ }
+]

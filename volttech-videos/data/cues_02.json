@@ -1,0 +1,67 @@
+[
+ {
+  "id": "mito",
+  "word": "Mito",
+  "sfx": "drop"
+ },
+ {
+  "id": "apagon",
+  "word": "apagón",
+  "sfx": "flicker"
+ },
+ {
+  "id": "dato",
+  "word": "Dato",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "red",
+  "word": "red",
+  "sfx": "tick"
+ },
+ {
+  "id": "sinbateria",
+  "word": "batería",
+  "occ": 1,
+  "sfx": "pop"
+ },
+ {
+  "id": "apaga",
+  "word": "apaga",
+  "sfx": "click"
+ },
+ {
+  "id": "seguridad",
+  "word": "seguridad",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "bateria",
+  "word": "batería",
+  "occ": 2,
+  "sfx": "drop"
+ },
+ {
+  "id": "esencial",
+  "word": "esencial",
+  "sfx": "rise"
+ },
+ {
+  "id": "respaldo",
+  "word": "respaldo",
+  "sfx": "whoosh"
+ },
+ {
+  "id": "cierre",
+  "word": "Preguntanos",
+  "sfx": "pop"
+ },
+ {
+  "id": "protege",
+  "word": "protege"
+ },
+ {
+  "id": "queres",
+  "word": "Querés"
+ }
+]
